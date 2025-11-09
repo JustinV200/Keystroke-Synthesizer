@@ -79,9 +79,7 @@ model = TextToKeystrokeModel(BASE_MODEL, num_features).to(DEVICE)
 if torch.cuda.device_count() > 1:
     model = nn.DataParallel(model)  # multi-GPU support
 
-# ============================================================
-# 4. OPTIMIZER, LOSS, SCHEDULER
-# ============================================================
+#Optimizer, Loss, Scheduler
 
 optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
 loss_fn = nn.MSELoss()
@@ -91,10 +89,7 @@ scheduler = CosineAnnealingWarmRestarts(optimizer, T_0=3, T_mult=2)
 
 scaler = GradScaler()
 
-# ============================================================
-# 5. TRAINING LOOP
-# ============================================================
-
+#traning loop
 best_val_loss = float("inf")
 patience_counter = 0
 global_step = 0

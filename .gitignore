@@ -1,6 +1,10 @@
 # Ignore Microsoft Word docs
 *.docx
 
+#ignore dataset files, we just wanna push the zip
+data/
+*.txt
+*.csv
 
 # Ignore temporary / OS files
 __pycache__/
