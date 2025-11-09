@@ -5,6 +5,7 @@
 data/
 *.txt
 *.csv
+misc/
 
 # Ignore temporary / OS files
 __pycache__/
