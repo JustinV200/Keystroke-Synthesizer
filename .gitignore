@@ -1,0 +1,8 @@
+# Ignore Microsoft Word docs
+*.docx
+
+
+# Ignore temporary / OS files
+__pycache__/
+*.pyc
+.DS_Store
