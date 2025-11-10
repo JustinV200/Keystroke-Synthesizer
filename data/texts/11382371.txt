@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b7eacb1ad00be36700b12746832b542f37167458cd9fa03a041af67aa2c999de
-size 2291
+  The pursuit of wealth and goods lies at the foundation of our capitalistic society. However, the excesses of materialism should be criticized in our modern society. Conflating material goods with happiness is an easy way to create a dissatisfied society. Materialism also often has negative impacts in other parts of the globe that produce the goods that we consume.
+
+  Large corporations and advertizing agencies will often try to link their products to happiness. Certainly, you have seen smiling people drinking coke on TV or influencers on social media overjoyed with their sponsored item. However, I would argue that confusing consumption for happiness can actually lead to greater unhappiness in society. In order to afford the goods that will make them "happy" people feel the need to work more and more, which can lead to less time for the activities that they would actually gain greater joy doing. Wealthy people might feel pressured by society to maintain a certain level of consumption, even to the detriment of their financial health, while poorer people might feel unhappy when they are unable to afford the goods that will supposedly lead to happiness. Therefore, society could be criticized for valuing materialism, and metrics such as GDP, at the expense of more intangible factors such as the happiness of the population.
+
+  In order to produce the goods consumed by a society driven by materialism, a production process is needed that can cause negative ripple effects, especially in third-world countries. Because a materialistic society values obtaining wealth at every stage, workers are forced to work for the lowest feasible wages, which can lead to overcrowded and unsanitary living conditions. The factories that employ them may release toxic pollution into the enviroment, and disposable items such as fast fashion and plastic containers may clog landfills and rivers. These externalities can be easily overlooked by a society that only focuses on wealth creation or other materialistic aims.
+
+  In summary, society should be criticized for focusing on materialism at the expense of human happiness. Focusing on reducing inequality and the environmental impacts of production and consumption could lead to a more sustainable and moral social model.
+  
+

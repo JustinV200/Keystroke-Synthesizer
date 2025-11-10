@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e4c1107ad52d2f2e2931eaa3f18fae193a7842b359cb0776dba97d28fd0e29b6
-size 2446
+Do people achieve more success by cooperation or by competition?
+
+Success has many metrics dependant on what situation or dicipline are being guaged. In many early situations we are educated that cooperation is the only way to succeed, such as helping with school projects and participating in team sports. Once an individual steps into the adult realm of employment, they are tasked with finding a balance between cooperation and competition. So we ask the question of which is more benefical, cooperation or competition and how a person defines success.  I believe that cooperation is more benefical in the long run to more people and thus has a greater impact to society.
+
+One person can make a small difference, but with a group of like minded and dedicated people, greater accomplishments can be made.  For my own success metric, as an adult, it is to move my projects forward at work and at home while creating the best situation for both.  This can not be accomplished without help from others.  If I had attempted to build programs, raise a child and manage all other aspects of life on my own, I would have been swamped and unable to be as successful as I am today.  I constantly lean on others to help with these goals.  This cooperation has the direct effect of making me more efficient and creates a better product, regardless of the task. 
+
+However, competition has its place in my life as well.  I have found that having a rivalry has had a causation of making me push harder at tasks in both work and personal life. How can we beat them? This is a question I routinely ask in job interviews to gauge a persons reaction and overall thought process twards being successful. This aspect is good for the buisness nature of life.  One where we strive to get ahead of the competition, in some instances, no matter the cost.  But, there is a cost to the hard charging, beat the competition into the ground, crowd. If this mentality crosses over into other aspects of life, an individual has the potential of alienating friends and potential partners to the detriment of the persons overall success in life.
+
+In conclusion, cooperation is the best method, in both personal and professional aspects, to achive the greatest amount of success.  Competition can be usefull as a tool to create drive, but it can be detrimental to the person and projects it is used upon.  What I impolore is that an individual finds a balance of both 

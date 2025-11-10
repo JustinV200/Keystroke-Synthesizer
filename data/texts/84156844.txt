@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5a056dd03e1e2a80bef0b71b92c09ebef5c24f4ccb214c3b961d140a8f0c8778
-size 1494
+When handling challenges, humans are given two choices: work together, or fight to win. We all have a tendency to want to be the best, however, most times we find the most successful outcome lies when we share the win. Cooperation for a greater goal far outshines choosing to compete alone for the glory.
+
+It is often said that "two heads are better than one". The reason this is such a common knowledge quote is because the evidence of cooperation exists through history and through daily life. In work, in sports, and in social activity, we achieve greatness as a society by working together. Cooperation is the very foundation that modern society has been built upon. It can be said that conflict and competition can light a fire in our souls to be better, to be the best we can be. While this can be true for many individuals, it doesn't necessarily drive them to do better on a larger scale. Many times, competition is rooted in selfishness. When we want to win, we want to win for ourselves and not for everyone. On the contrary, when we factor in the goals of everyone involved, innovative solutions are found. We grow and learn together; as families, as teams, as countries, as a global community.
+
+Success is born when we as humans choose to put aside our differences and join forces to solve problems.  This is innately true through history and in all facets of life. While competition will always exist, there is much more large-scale progress to be made through cooperation.
+

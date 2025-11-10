@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1ca951c936d49dfdc8d96af39bfd738400b30de07550259e70fd2d8ad8478f74
-size 1356
+  Happy, a short, simple word for such a complex and desired idea. Humanity has chased after it for its entire existence and people have spent their entire lives trying to describe it. But how can it be attained and is it the same for everyone.
+  Some people believe that happiness can only be attained by focusing on yourself and your dreams, desires, or goals. I think most people are like this, spending their time making themselves better or just enjoying a favored pasttime. I think everyone can relate to that.
+  Others believe that happiness can only be attained by helping others, making others happy and recieving it in return. Humans are social creatures that have needed to rely on one another for tens of thousands of years, so it does make sense that we would have evolved to want to make each other happy and to be happy to do so.
+  Personally, I think it is probably a bit of both. They may prioritize things differently but even the most self focused have friends or family that they help over their own wants or desires, and in turn even the most charitable and selfless people have to take time just to unwind and focus on themselves.
+  I don't believe there is an easy answer to finding happiness. I guess we will just have to chart our own course and hope for the best, just like the hundreds of generations that have come before.

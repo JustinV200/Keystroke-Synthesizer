@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a7d3fdbaeb3944be3844f0c34e76d7be2795eac7320249d7d5ca3892648f56ee
-size 2042
+Images, packaging,  and impressions can often effect how and why people make the choices they make.  As people we are often drawn in by these superficial things on the outside rather than examing what is beyond it.  Whether it be consumer decision making, voting for a politician or simply whether or not to walk in to a particular store, all of which are driven by what gets our attention on the outside first.
+
+Marketing and branding exist for these very reasons.  Designed to grab the consumers attention and draw them in.  Many studies have been done as far as what colors to use for packaging, what font to use, as well as where to place an item on a store's shelf. Politicians are guided by experts on what to wear when campaigning. There are several industries that focus solely on these things, designed to get people's attention and "sell" their product.  Marketing, human factors and pyschology all play an important role in determining how best to accomplish this.  It has been proven time and time again that people operate this way and that they are often influenced by these things, forming a first impression based on these attributes, before ever looking further to see what is beyond or on the inside.
+
+One could argue that this isn't the case, however, I would point to the many studies that show otherwise.  However, as with most things, there certainly are exceptions.  Not everyone will be so capitavated by the initial impression and will dig deeper to learn more before making a rash judgement or forming an opinion based soley on what is on the exterior.  They will want to know more about the person, product, politician etc. before forming and finalizing their thoughts.
+
+In conclusion,  we know that many things influence people's judgements and decisions.  Many of the factors at play here have nothing to do with what is on the inside but everything to do with what is on the outside.  This is why there are countless industries across the globe who do nothing but study and influence this human behavior.

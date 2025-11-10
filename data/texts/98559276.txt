@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cfcd307408e56fd89acf6a57faebf912f7fd859b92c3073d03d2a055a8d59897
-size 1537
+    Have you ever been told, "you have to make a good first impression"? When you run into someone at the grocery store, do you judge them for having wrinkly clothes; or not wearing whats socially deemed as being acceptable?  The fear or peoples perceptions and judment are often what guides people to impressions and images, and thus as an effect are having too much of an effect on society.
+
+     Have you ever worried how people percieve you; in how you talk, look, or act? For many evolved social constructs have been inplace since infancy; at least once in a persons life they have felt as though they hadn't to fit in. First impressions are too often looked at being important, espcially within forming one's opinions. One of the many downsides of these constructs is that on first impressions, because after these opinions are formed one can either be veiwed negativly or positivly.
+
+     The placehold within the fear of  how one's preceived is judgement. The effects of this has been becoming increasingly obvious primarily due to the almaring presence social media has on every ones lifes. One of the core elements for many social media platforms is is personalization in having and creating acounts for ones self and veiwing others accounts . We often times immediatly form thoughts and opinions about others without have ever spoken to them; and as a result it effects how we speak, treat, and view others. All and all; always remember; in talking or treating others, rememer how you would prefered to be treated.
+
+
+

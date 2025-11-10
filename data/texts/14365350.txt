@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bf505bb069600ea9af5bfa1779573ec8b16c4a5f359e474cc827b6f22b822b2b
-size 2004
+In today's enviornment, it is evident that there are many ways people choose to achieve success. Specifically, two paths emerge as the types most people tend to obviously take; through coperation or competition. It is in my opinion that through the use of cooperation, people can achieve sucess through helping each other out and also serves as a way to reduce friction in a competitive workplace. 
+
+Its pretty evident early stages of life in school, when assigned to a task, employing the use of a team is a great way to partition the workload and spread it among a number of people as opposed to a daunting task that seems like it will take forever to do. Not only that, but you get to have the commradierie of people with like minded goals and no sense of competitiveness or rivalry to put you on edge. There is also the issue of creativity. When you have more minds put to a task, there is often a lot more creativity and sponteanity that arises from working with a group of individuals that have different values and backgrounds that is worth so much more than just a lone person working from their sole mind. This benefit alone is a huge in fostering ideas.
+
+There are some things that can happen to make this an ideal situation, when you have slackers or lazy people on your team that do not take the task seriously or care for anything above an average completion and this can cause rifts and make for an annoying experience from beginning to end. Getting stuck withthese types of characters can lead to either failure or lackluster results. In this instance it would probably make for less headaches and frustrations to work competitively, which understandably can be a better fit for those that strive for great results.
+
+Really, there's an arguement for both means, but for someone that likes to work with others that feel the same, it can make for a far more pleasant working experience and reduce stress and anxiety especially at the precipice at the start of a challenging task.    

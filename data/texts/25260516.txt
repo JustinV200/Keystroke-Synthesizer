@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9f508e6afa508ce1174180c0be2c17ca580495575ab1845336df2ac728b953ea
-size 1526
+Do people achieve  more success by cooperation or by competition? 
+
+Both cooperation and competition are vital elements in achievement. Most achievement involves both of those elements. For example, if a brilliant scientist conducts completely original research, he still depends on technicians to maintain his equipment, assistants to help him, etc.
+
+On the other hand, those helpers would be unable to duplicate the scientist's intellectual feats. So I would argue that, in general, significant, lasting accomplishments are more the product of individual efforts. These efforts often spring from a drive to excel, to do better than others, or to do better than oneself.
+
+Some may argue that cooperation is more likely to produce great accomplishments. I would argue that even when cooperating, people are also competing against each other, or against the problem itself. 
+
+One could liken achievement to a good marriage. The husband is competing with other men for success and status. His wife is cooperating with him by supporting his efforts. If things go well, they will achieve worldly success and a happy family.
+
+To summarize the metaphor, the competitive drive of the husband is responsible for his success, but he couldn't achieve that success without his wife's support. Conversely, without the man's ambition, a supportive wife will be unable by herself to ensure the family's happiness and prosperity. So in summation, cooperation and competion are intertwined, but competition is the dominant thread.

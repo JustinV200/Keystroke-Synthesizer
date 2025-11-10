@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2e0c436f347c17ad6b65ac4434ee9d4e5c048a3bc313d7fcef49b75056cf0450
-size 1412
+In a world full of challenges where many people seek sucess, the question is often asked whether competition or cooperation will get them there. While competition might motivate them to do their personal best, sometimes at the expense of others, cooperation and working with others teaches valuable skills to ensure they become and stay successful. Thus, cooperation and the skills that come with it, such as interpersonal communication, collaboration, and good relationships to form, which easily make a person more successful.
+
+One of the most imporant skills when working with others is interpersoal communication. This allows people to collaborate effictively, from updating each other as to where they are at on the project and how things are coming along, to asking questions when they get stuck so the project can move along and remain on track. Additionally, good communiction and teamwork can allow friendships to form and boost the morale and productivity of the team members.
+
+Overall, working as a team allows a person to form skills that they would not if competition were promoted over teamwork. Forming strong relationships and connections with others, improving interpersonal communications, and teamwork is facillitated in group settings compared to competitive settings. Overall, cooperation and the skills that come with make a person more successful, and allows them to stay successful.

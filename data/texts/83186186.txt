@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a7f382bd97ebbf194cff2dae5a1cd9cd3c194c892fdbe90f43f234fa108f2b21
-size 1582
+In this task I will discuss the effectiveness of competition versus cooperation in achieving goals or a desired result. It is possible that both approaches will lead to a successful outcome, but vary to a large degree based on the complexity of the task.
+
+It is my belief that cooperative method will result in the most successful outcome in a large majority of circumstances. The ability to leverage off of multiple individuals, and their expertise, to achieve a common goal would seem to offer an advantage that is beyond what a single person could provide. This should be evident, especially in larger more complex projects or problem solving situations. 
+
+Although the cooperative approach would be more applicable in tackling problems of a greater magnitude, it could be argued that competition would be more effective at smaller scales, in more targeted tasks. If such tasks are well within the scope of knowledge of the individuals, then pitting them against one another in a competitive manner could have the best chance for arriving at the most efficient or optimized solution.
+
+After examining both approaches it is my conclusion that the cooperative approach would be more successful in the greatest number and variety of cases. While competition would be better in certain circumstances, it would be ineffective on problems of a greater scale, whereas cooperation should always lead to a successful result. Although it might not consistently produce the most optimized solution, the cooperative approach should be guaranteed to always produce a viable result.
+ 

@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1c0d2d84f398efcbcbaa3c3aef7f52a1a7e2ef43a43ed4a358f30e2a5f6f5176
-size 2130
+While competitive sports are exciting to participate in or to watch, when it comes to the most complex problems of international import, the best outcomes are more likely to arise out of cooperation, not competition.
+
+The expression "jack of all trades, master of none," can refer to an individual who is competent at many different aspects of a given complex task, but not exceptional at any one of those aspects.  For everyday purposes, people like this are very useful, as they can work alone and accomplish many basic tasks.  In contrast, someone who is an expert in a single field cannot be expected to be equally skilled across the board in many tasks  
+
+As the complexity and importance of a problem increases, the likelihood tha one  person can solve it by themselves decreases sharply.  So even having a hundred "jack of all trades" competing at the project, it is unlikely that the best possible outcome will be achieved.  This is because no one worker can possibly be an expert in every one of the necessary skills, so in the end, some aspects will not have been optimized.
+
+By sacrificing the individualism and glory of competition between many jack-of-all-trade-type workers, a collaborative effort among many different subject experts can be expected to result in the best possible outcome, overall.
+
+For example, imagine a massive undertaking such as the international space station.  Instead of the US, Russia, China, and others each competing to creatr their own versions, the best experts of each subfield from each country worked together to make a better spacestation, faster, than any one country could have done on its own.  And the ongoing benefits that come from such a collaboration can benefit everyone on Earth more than a bunch of independently operating stations could ever have hoped to.
+
+There is always going to be a place for competition - for example, in finding the very best scientists in each of the subject fields needed for the space station.  But ultimately, the spacestation that exists now is greater than any competition between individual countries could ever have achieved.

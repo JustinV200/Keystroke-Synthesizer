@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2140f07afe8dbaa08e51cd64d1891bc202c687350cb98c44c822db8be68bbe4c
-size 3157
+The question before us today is whether cooperation or competition promote success more.  On the surface it seems like a simple question but in reality it is far more complex.
+
+Competion may be considered to drive us to succeed by out performing our opponents but it really doesn't. The main problem with competition it that it relies almost entirely on the personal skillsets of the individuals that are competing against each other.  That, in itself, creates hard limits on what can be achieved.  No matter how great a persons experience and knowledge are, it cannot possibly compete with the experience and knowledge of a group that the individual belongs to.
+
+Cooperation, by its very nature, brings many people with varying skillsets together.  Where one person is lacking, another has strength and vice versa.  By working together, individuals combine their resources to create a stronger whole.  Cooperation also has the advantage of people being able to compare notes and identify flaws in each others thinking, eliminating or, at least, drastically reducing, the chance of failure.
+
+In simple terms, the whole is greater than the sum of its parts.
+
+This is far more than a hackneyed cliche.
+
+Consider a military leader.  No matter how great a strategist that individual may be, they cannot possibly coordinate an entire army by themself.  The logistics alone would be staggering. As a result, they must have advisors to suggest the best ways to go about implementing strategy. Similarly, they must have others who can point out supply issues, potential transportation problems and any number of other details that no single person could possibly know or anticipate by themselves. If the leader were to simply issue orders and ignore the knowledge and advice of others, their campaign would most likely be doomed to failure. By combining the knowledge and skills of the group, though, a comprehensive plan may be achieved, anticipating setbacks and problems, and taking full account, and making full use of, the strengths of the team as a whole.after a 
+
+Another example would be a simple footrace.  Although a single runner may perform well in the short term, their strength and stamina will soon fail.  In order to do best over a longer distance, they must have team mates that they can rely on to continue the race. It is the difference between a sprint and a relay race.  On person may do well alone for a short time but to go the distance, as it were, they need to be part of a team. What a single individual can achieve falls far short of what a group can achieve when working together, 
+
+We must also take into account that there is competition even in cooperation.  The difference here, though, is that people will be in competition to be a greater asset to the group as a whole rather than in a struggle for personal glory and so their competitive spirit is not squashed but harnessed in the greater interest of the group, leading to greater results.
+
+In summary, although some may suggest that competition makes us strive harder, it is undoubtedly clear that it is by cooperation that we achieve more and greater success.

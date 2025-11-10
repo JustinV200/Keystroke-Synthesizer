@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:31f356f4bfe916e1a7157e2ba7d09260dbabe49670caea35bbd2614bfb959d1d
-size 2416
+These days, all around us we are constantly bombarded with videos, social media, news and advertisements that are all fighting for our attention in a constantly changing online and physical world. When you consider how much advertising and content we take in on a daily basis, you have to ask yourself: are we being psychologically affected by this, or do we remain strong in our convictions despite all the external noise?
+
+While it would be nice to think that a few media messages won't penetrate our psychie, realisticly is we have to accept that no one is an impenetrable fortress to marketing and advertising. There are just too many incoming ideas to believe we can't be influenced, both in negative and positive ways.
+
+When it comes to products, marketing companies have become masters of attracting our attention and in doing so, our dollars as well. Since the early 1900s, industrialists and manufacturers have been honing in their ability to compete and sell their products to the masses in order to maximize their profits. During the 'Madmen' era marketing companies became laser focused on this concept which has shaped our modern marketing techniques. What started as focus groups and sketches has evolved into advanced A/B testing algorithms that can analyze thousands of data points in a split second, making marketing more of a science and less of a creative endeavor.
+
+One of the greatest examples of proficient marketing is Facebook. What started as a way to connect with friends has turned into a literal selling machine. This free service now uses all of our information - our likes, dislikes, connections, interests, etc. - to sell us products and push similar companies into our lives. Some would even say that these algorithms now us better than we know ourselves. With that kind of constant pressure, it would be impossible for the average person, or even an extraordinary one, to avoid being influenced.
+
+So what does that mean for our daily life? Well, it means we are prone to these marketing tactics whether we like it or not. The bad thing is that we are often exposed to this influence without our knowledge and can wind up in dangerous wormholes where we only consider one opinion because we are fed what relates to us. The good aspect of modern marketing is that we can often be exposed to companies and products that apply to us that we wouldn't have known otherwise.
+
+
+

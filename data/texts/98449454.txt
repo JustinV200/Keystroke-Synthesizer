@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ba87dbd22d84a7591ca21d638acfeb0025239b42f52d88bbb4ffc5c3978db4a0
-size 1949
+What you see may not be reality.  Have you ever watched a commercial for fast food, only to receive a meal that looked less delicious and juicy than what you saw on television? In this essay I will describe how images and impressions have too much of an effect on people in advertisements, stores, and the media.
+
+Advertisements often leave the viewer with a favorable impression, but little or nothing is said about the actual products. An example of this in popular culture is the holiday television ads that feature cute animals like penguins or polar bears. The commercials will say nothing of the flavor, the price, or any relevant feature of the products, yet most know exactly which product has been referred to here.
+
+Product packaging in stores show the tastiest, larger-than-life versions of the contents inside, often resulting in disappointment by consumers when they are faced with something that looks less appetizing than the front of the box. Japan, notably, has legislation opposing larger pictures than the actual product to prevent such misleading advertising.
+
+In the media, we demand our entertainers dress to impress. In many cases, it would be a bigger scandal to see a politician on stage in casual clothing than to find out your favorite pop idol was lip-syncing. I recently found out that most televised appearances by musicians are pre-recorded to prevent unexpected "accidents", so often on television, these musicians are lip-syncing as a matter of course.
+
+While some may say that it's not a big deal if things aren't depicted exactly as they are in reality, I feel that in light of today's challenges in determining the veracity of news in traditional and social media, that it's more important than ever to be able to see the truth.
+
+In conclusion, images and impressions have too much of an effect on people through misleading advertisements, deceptive packaging in stores, and even the media we consume.

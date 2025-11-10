@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e50b8ae3f764198aeb55fefffa122d14b645ab2e69b39da7616cb802c2f4ca5f
-size 4196
+In today's world we increasingly rely on quick and fleeting images and impressions to make decisions about purchases, lifestyle choices, and entertainment. Images and impressions, such as signs, advertisements, social media posts, and packaging often have an outsized effect on people, rendering them uninterested in seeking further information beyond the bright and bold attention-seeking image that is presented.
+
+I feel that while we should pay attention to imaging and first impressions, we should also dig deeper into what is behind those images, especially when we are making important decisions that have a higher financial cost or long-term impact on our lives (such as buying a home or car or moving to a new city). Selecting medical treatment or drugs based on images presented to us as curative can be particularly dangerous. Chosing a television show or film based on impressions of celebrities, accurate or inaccurate, is less important. 
+
+As noted, one example that can be particularly harmful if not explored more carefully is that of pharmaceutical drugs that are shown through television or other media advertising to be completely curative of a particular disease or condition. While the side effects are now included in the advertisement by law, the overriding impression is that your life will improve immensely with these drugs. It is absolutely essential that people explore more about these drugs before they run to the doctor to ask for a prescription based only on the image and impression that was presented. 
+
+Another example is the type of advertising that is presented for airline and vacation travel. While it is harder to completely find out if an airline or vacation home or hotel is what it seems to be (from afar), it is essential that questions be asked and reviews checked before booking what can be a very expensive vacation based only on the images presented of a particular venue. 
+
+A third example would be how politicians present themselves in running for office. While this is probably the area where the fewest people actually do research to find out more, relying solely on campaign messaging or the views of their peers or friends, it would behoove voters to dig deeper about past actions and records of candidates in order to make a more well-informed choice. Candidates often downplay areas of their background that do not coincide with their "brand" such as where they were employed or the nature of previous employers, voting records, and past affiliations with non-profit groups. 
+
+We have learned in recent years that algorithms are used by media companies to promote certain images and impressions to users of social media. These ads that pop up seem like "mind readers" and are often intrusive. We are then forced to delete or block them and say why we did that, thus providing more information for sending of future images and impressions by the algorithm. 
+
+Some may say that because there is little time for people to do research and detective work about certain areas of their life, it is best to leave it to the experts who can present information in a well-crafted image, thus saving the time of the decision maker. Advertisers spend a lot of money on this and social media companies pay "influencers" to promote products that are meant to convey a positive life style or outcome that will result from use of the product or service.
+
+While this theory may have some validity, I feel that for large-scale purchases it is essential to "do your own research." For smaller feel-good items, such as a dessert or a blouse, perhaps you can take the plunge based on the fleeting impression. Over time, you'll learn which is the right path. My experience has shown that a bit of extra work will pay off in making the right decision. 
+
+In conclusion, I would argue that the rampant use of imaging and impressions in all walks of our present-day life has an large impact on the way people make decisions. If we can manage to narrow our focus to what is important, and when we are lured by an image, to ensure that we do more investigating, we will find ourselves less entrapped by the fleeting images that are presented to us.
+
+

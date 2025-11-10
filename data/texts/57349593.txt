@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dd642f3c4eee46a01be881773ca962229b604323f286dd5ee38b162ca3649285
-size 1849
+There are many roads to success and the most common are success through competion or sucess through cooperation. It is my belief that greater success is achieved when people cooperate and work towards a common goal.
+
+Success can be defined as accomplishing some preestablished goal such as passing a test, earning a promotion, or losing weight. Cooperation is key to achieving success. Preparing for an important test is easier when your house mates give you the space and quiet you need, or when fellow classmates agree to study together. Promotions at work are often based on how well you can integrate with a team. Your success depends on the success of everyone else. More personal goals, such as health and wellness plans, can be more manageable when you have help. For example, a walking or workout buddy can help spur you on when you need motivation. Friends and family can offer support on your health journey.   
+
+In each of the goals above, a person is well served by tapping into the skills, talents, and compassion of their network in order to suceed. 
+
+There are people who would argue the opposite, that competion, not cooperation, is the road to success. As humans are social animals that live in societies with other humans, the idea that success can be achieved through a solo endeavor, in competion with others, is laugable. Examples of success through cooperation abound in areas as diverse as the natural world, history, politics, and economics. Think of a pack of hunting dogs, of the city-states of the Roman Empire, the election of populists candidates, or the highly profitable cooperation of corporations in service of profit.
+
+Cooperation is key to achieving success, for the individual and the society. People achieve more success when they work together and harness the skills, ideas, and support of others.
+
+

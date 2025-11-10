@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ab267630acf0f7b18f4d1f8d355e8b8725ab0826ea75c2937a1b81ed6b0aa549
-size 1786
+     As a competitive Scrabble player I often think many of my successes are my own that come from creating the longest words perfectly placed yielding the highest score. While those words and placements do generate wins, I would however be remiss if I did not think of the game at large as highly cooperative and that ultimately drives individual success. 
+
+     Firstly, Scrabble is a game played by a certain set of rules that everyone abides by creating cooperative spirit that it is a game that has boundaries and there are consequences for failing to follow the agreed upon rules. The rules of the game are simple enough however everyone must agree to them before the game is played in addition to choosing the dictionary that will be used to judge the words played 
+
+      Secondly, individual success comes from practice with those that are better than oneself. To acheive greater success individually one must have cooperation and guidance from those that have built a greater skillset. These skillsets ranges from time management, larger vocabulary, mathmatical placements and an ability to show others how to create words out of letters.  
+
+      Finally, Scrabble is a game that encourages others in the same skillset levels to play with one another in the spirit of crafting skill with those at ones level and making the game enjoyable for all those that play.
+
+      While momentary success in Scrabble and much of life may come from high competition among others the true successes are gained from a cooperative and a learning mindset. In Scrabble if high cooperation is acheived then individual success is sure to follow as everyone gets better in the end and more words are learned and played and discussions had for future words to be added to dictionaries. 

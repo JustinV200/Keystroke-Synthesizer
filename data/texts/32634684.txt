@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c7a7ffa8d01059bd4605ea16b5f254b23b993b4cde8a0d1512ad97e823c97c69
-size 2617
+Images and impression have too much of an effect on people and this is true across several examples. 
+
+The lines between entertainment and reality have been blurred. This especially true when looking at the internet and social media. It is easier to just accept information that is being given to us rather than to critically think about a topic. Many people have lost the difference between entertainment and factual information, and they do not analyze the information that is being presented or where they are consuming that information. 
+
+Socia media sites thrive in the sharing of information and content. Whether that is content for entertainment, our own personal information, or information about the world. Many people have decided that the headline they read shared on social media holds the same factual understanding as more reliable sources. Social media, which was born as entertainment, has become a major news source. 
+
+Reputable news sources must also be analyzed critically as they are not without fault. Often the stories with the most likely for interaction raise to the top, instead of the stories that are critical and important (and therefore might be too boring for the common person). 
+
+Humans only have so much attention and brain space to give. At the end of the day, when we've gone about living our lives and doing our jobs, we want to be entertained. We want the images and impressions to come quickly and be easily digestable. We feel a sense of merit when we can turn our entertainment into "learning" about the world. This comes as a cost as we have become a society of headlines with no backstory. We remember sound clips taken out of context, but do not have the time or mental capacity to dive deeper and critically analyze what we are learning.
+
+While there is a reason for this pervasiveness in our culture, it should not go unchecked. We should be holding each other accountable for accepting information without critically thinking. Schools should continue to be diligent in teaching people to notice biases in writing and understanding motive in information presented. We should also learn that studies and data can be manipulated by the powers that fund such research, and we should ask what a company might gain by funding such research. 
+
+In conclusion, there are plenty of places where images and impressons have too much of an effect on people. This is particularly true when looking at social media and news outlets. We can resist our natural urge to accept this easily digestable information by remaining constantly vigilent in our intake and assumptions.

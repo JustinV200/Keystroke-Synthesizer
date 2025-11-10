@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:aa7c124617f1ebd6337dfd86353442155bf74521c3268882b626d81f60cac706
-size 1542
+Materialism is an ongoing concern in our society, especially as the world faces economic challenges. Many individuals attribute their meaning, happiness, and social status to acquiring possessions and spending money, whether or not they do so intentially. Should we be criticized for materialism? I say yes.
+
+First, materials contributes to climate change. The demand for goods drives manufacturing of goods, which in turn drives production of pollutants. Additionally, carbon emissions are created through the shipping process for goods to arrive in the hands of a consumer. Excessive materialism directly increases an individual's contribution to climate change and is not sustainable. 
+
+Second, material goods do not increase happiness and satisfaction in the way that individuals hope they will. Studies have shown that increased wealth and posessions do not provide additional joy beyond a certain point. In some cases, excessive purchase of material goods can lead to shopping addiction, personal debts, and hoarding.
+
+In conclusion, materialsism is bad for modern society and deserves to be criticized. The amount of energy and resources used to produce material goods is bad for the planet and unsustainable long term. The temporary dopamine hits obtained by purchasing products to not have an impact on overall happiness and have potential to lead to addition and further trouble. For this reason, we as consumers should make an effort to be more conscious in what we buy, including the decision to purchase less overall. 
+ 

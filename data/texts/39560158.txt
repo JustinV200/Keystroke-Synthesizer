@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a97701901fd9d6f8f2eb38b70a22223647c6c68fea88a06c6b6ff23b3c326c04
-size 1857
+In the current world of social media, everything is carefully curated to portray a certain image. Pictures are filtered and Photoshopped, videos are altered, endorsements are bought. We are under the impression that image is more important than the actual product or person. Because of this, it is hard to know what is actually real and what is just created for our attention and money.
+
+Our attention spans are increasingly short, meaning advertisers are content creators have mere seconds to reel us in before we swipe them away. Because of this, they are under pressure to create something flashier, more appealing, more sexy. The thought is that as long as your attention is theirs for a short time, it doesn't really matter what the product is they are selling. The ad is better than the product. How often do you see on TikTok or Instagram a video of someone showing a subpar product they bought because "TikTok made me buy it"?
+
+Some might say that the advertisers aren't doing anything wrong. It's still up to the consumer to do their due diligence and research before purchasing. While it is up to the consumer to ultimately decide what to buy or not buy, it is disingenuous to put out a product where the result has been edited. For example, if a company puts out an ad for an amazing new pore-reducing, fine-line eliminating foundation and the accompanying picture has been blurred and Photoshopped to death, that's not a true representation of the product and not what the product will accomplish for the average consumer. 
+
+In conclusion, we are truly in an age of style over substance. As long as the ad looks good, there is little consequence for promoting a subpar product. While the consumer has to be vigilent and not buy into all the hype, advertisers and creators bare the responsibility of truthfully protraying what they sell. 

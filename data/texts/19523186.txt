@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ccb9384ec4aef5b979a72b23e705e24f680799bca61a5de752069e124375207e
-size 1552
+In the modern age, we are constantly inundated with advertisments in every aspect of our lives. Regardless of where we are, or what we are doing, we are surrounded by and are constantly being exposed to advertisements--whether on television, social media, or simply driving or walking around. The result of this inundation of information leads to a spurrious perception of reality, a lingering sense of self-doubt, and a confused psyche. 
+
+The influence of advertisements and social media on the modern persons life can not be overstated. For instance, social media often leads us to compare and contrast our lives to that of others, but social media can be deceptive in many ways. Social media incentavises people to exaggerate positive aspects of their own lives which leads to the false assumption that we are in a worse than we truly are. In the case advertisments we are constantly shown things that are meant to be representations of ideal qualities, but we do not realize that the purpose of advertisements are meant to sell products. In both cases, the result is a manipulation of reality.
+
+For these reasons, the constant manipulation that we experience at the hands of advertisements and social media is quite insidious. Our incorrect perceptions of reality that come as a result of these manipulations have drastic affects on our psyche, the things that we believe, and the way that we act--mostly negatively. As long as we continue to allow ourselves to be manipulated in this way, we will continue to experience negative effects.
+
+

@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:90af3fa066fbc4d685d8d7d0e3f07285e71557e897d8d074e53e12830685030f
-size 1424
+   Happiness is a positve emotion that people experience for a variety of reasons. In this essay I will tell you why my opinion on whether people are more likely to be happy if they focus on their personal goals or on other people's happiness is a question that I cannot answer with one or the other. My opinion on this may be a lot different than other peoples, and it may even be misunderstood. Here is what I think.
+
+    If focusing on someone elses happiness makes a person happy, it is as self satisfying as focusing on their personal goals. I honestly believe that a person will focus on what they want to focus on because they must feel some sort of happiness while doing so, or their focus would be elsewhere. Everyone has different things that make them happy. I have found that If a you do what is right, and not what is going to make you wish you hadn't done it, happiness comes a lot easier and more often. A lot of people would totally disagree with my answer to this question and say that it had to be one or the other, but that is ok. We are all different.
+
+    So, to sum it up, I truly believe different people have different preferences and personalities and some people may not be likely to be happy by focusing on their goals or the happiness of others. Some people may be more likely to be happy by focusing on something rather than a person, including themselves. It all depends on that person.
+

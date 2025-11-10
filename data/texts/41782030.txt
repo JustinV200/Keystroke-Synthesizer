@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a8c8b2d0ab85a6543e1a2bd7101ff27a044d241df4b0e9b21e95c2068866abaa
-size 2201
+The concept of how to achieve success is a fundamental part of the human experience. Success is a goal that is sought after by all walks of life. There is much debate about how to achieve success. Should success be attained through a competitive means, where the strongest or fittest ultimately win? Or should success be the result of cooperation amoung those in a group? This essay will argue that the latter is the way more people will ultimately achieve success.
+
+Cooperation amoung people supplies the foundation of most of our successful societal structures. There have not been many societies where a cutthroat competitive atmosphere has resulted in an environment that anyone would define as 'successful.' A competitive environment that fosters intense rivalries often result in poor outcomes for those involved. A cooperative environment, on the other hand, introduces harmony amongst potential rivals. As as result more often then not, this results in a successful experience.
+
+Good examples of cooperation leading to success are manifold. Cooperation between nations can often lead to peacetime in time of conflict. An example would be the European Union. The EU through cooperation has led to more equitable and successful outcomes for the countries that have joined. Cooperation also is evident in more mundane arenas, such as sports. While a sport may be competitive in nature, when a team coordinates together as one, success is oftentimes the result. 
+
+Some will argue that vigorous competition can lead to more successful outcomes. They may point to the business world as one place where driving away cooperation can lead to successful outcomes. Competition can produce some successful outcomes in business, but to what end? Is the goal of making money justification for working against others and potentially harming them? I think that goal is shortsighted and counterproductive.
+
+To summarize, humankind has shown that cooperation, rather than competition, is a better path towards lasting success. Cooperation leads to a better space for humans to exist in together. While some competition can be healthy, hearty cooperation between people leads to a better place for all.

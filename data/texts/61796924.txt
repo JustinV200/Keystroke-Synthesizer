@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:341e4c8786f6195fabedcf0528cd6839e7717a2ba4d6e0626ab1f53ab87235c3
-size 2883
+Is modern society too materialistic? Many would probably (even hypocritically) say yes, in spite of working full time and even putting in extra hours to afford more stuff. Sometimes materialism seems like an inescapable trap we fall into, due to social, political, and media pressure to consume more resources.
+
+Personally I believe that my culture (United States) is indeed too materialistic. Many have been pressured into wage slavery - trading all their time and energy for a tiny fraction of wealth. With the skyrocketing cost of living in recent years, is it even worth it to try and advance in a career? Wages are simply not keeping up, and many are feeling the pressure. This is causing a lot of stress and unhappiness, and the pursuit of material wealth is partly to blame. Those in higher social positions with political and economic power are the worst - using their resources to exploit workers just to hoard wealth for themselves and make their company's stock go up. The end goal of capitalism seems to be extreme wealth for a handful of powerful people at the expense of utterly depleting our natural resources, destroying our environment, and causing wage slavery, poverty, and depression for the many people below them.
+
+In my experience it seems that those who derive a large portion of their personal identity from material status symbols are often quite insecure at heart and deeply unhappy. Of course there are exceptions, but I feel that trying to fill an empty void with the latest tech or fashion products just creates a vicious cycle of unhappy consumerism that can spiral out of control. Of course this is what the corporations want - a bunch of mindless consumers they can exploit.
+
+Naturally one can find counterarguments supporting materialism. A free capitalist market can spur technological innovation which may lead to scientific breakthroughs and societal improvements. However, this is often not the case. Are we happier now constantly glued to our phones and social media?
+ 
+That is often the issue with tech breakthroughs - people quickly find ways to manipulate, exploit, control, or harm others using the new technology. The issue of online privacy is a great example. Partially because of our materialistic nature, many of us are willing to give up all our personal information online. This information is then used to create and serve personalized ads to manipulate us into buying more stuff.
+
+In conclusion, there are many arguments to be made against materialism in our society. Materialism can lead to a spiral of poor mental health, traps many of us as wage slaves, contributes to extremely unequal distribution of wealth, is destroying our environment, depleting our natural resources, and manipulating us into giving up our online privacy. So yes, modern society should be criticized for being materialistic in my opinion.
+
+

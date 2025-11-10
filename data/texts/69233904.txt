@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:95c97776a65808e162c75db9fd2036cdbcd247ea42f2dbc094014314b5880056
-size 1450
+In today's world what we see is not always what we get. Medications advertised on TV sound like miracle cures for what ails you, but the side effects, in some cases are worse than the cure. Politicians tell you they are going to make your life better if you elect them, but doesn't tell you how they will accomplish that promise. Actors look great in the parts they play. They're good looking, kind and smart and that's how people see them and think they have the same attributes in real life.
+
+The reality is very different than what you thought it was. The medication gives you side effects that make it very difficult to continue taking them. The politician you elected, isn't doing anything he promised, and in some cases has made your life a lot worse. The actor you thought was so great beats his wife, drinks too much and in reality is an idiot. 
+
+We have no way of knowing any of these things without the information to make an informed decision. We don't research these things any further than what we are given in an advertisement, a speech or a TV program. It's our responsibility to get this information before taking that pill, or voting for that politician or making a decision as to how great that actor is. 
+
+In today's world we have so much information available through the internet, there is no reason why we can't do the research before the damage is done. The information and the responsibility to use it is in our hands.

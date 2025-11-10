@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ad47a458e5ca7cc78bb2aaa0e0bf868f256735e553fc1276fd917014c8bd93b8
-size 2383
+There are many varied opinions on the usefulness of competition as a driving motivator to achieve successful outcomes in pursuits of all forms. The typical thought is that competition makes people strive to be the best and as a result creates higher quality output than if they were not in competition with others. In recent years however, more attention has been given to the idea that cooperation can better serve to produce good outcomes which continue to increase for longer periods of time.
+
+While competition can be a useful motivator and does yield results, it can also lead to problems such as tension, stress, anger, and other similar interpersonal conflicts which have the opposite effect of decreasing productivity. On the other hand, cooperation leads people to feel connected and appreciative of one another, supporting the work as a whole. Together people work towards accomplishing a shared goal and realize that what benefits the individual benefits the advancement of the work for everyone.
+
+For example, a competitive project where bonuses are awarded to only top performers may lead to people actively attempting to sabotage the work of their competitors so that they can gain advantage. Even if they do not interfere with other's work, they will not offer any help since their individual goal is to be on top. But in a cooperative structure where everyone is awarded, no one would be motivated to disrupt the work of any one else and instead would be motivated to help their fellow workers since the goal is shared by all.
+
+Some may say that cooperative goals are not as effective at driving people to work as hard as they would when in a competitive state, and while this may be true in the short term, the long term benefits outweigh any initial losses. The cooperative team maintains a healthy working dynamic which only grows stronger as more time passes, while the competitive team will grow weaker as individuals become more disconnected from one another and disenfranchised when they do not perform well.
+
+In today's world, it is becoming increasingly clear that to grow towards a healthier and more productive working environment we must give more attention to a philosophy of cooperation in the workplace. The more commonplace this becomes, the more it will branch out and help to create a world where we all work together for a shared benefit.

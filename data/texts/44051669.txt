@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f13fc3138e2a5b128624d532974ba0180dd47af3af73feb41b810126a164eedd
-size 2838
+Information overload. We've all heard this phrase and with each passing year, it becomes more and more relevant to society. Society has progressed from newspapers, radio, television, and now the internet and social media. Information in the digital age seems to follow a expoential growth curve. Just think of the web in the year 2000 to the web today. And yet the average citizen's ability to parse through this wave of information has only slowly progressed. To adapt to this, people use mental shortcuts in their thinking to parse through information quickly. One of the most prominent is relying on surface level impressions to reach a conclusion. After all, who has the time to juggle the demands of modern life -- work, study, transportation, housekeeping, et. cetera -- with careful analysis of each new piece of information? It's so much easier to just rely on first impressions and move on. Unfortunately for many people nowadays, this simple heuristic is becoming the sole means of sifting through all the information they encounter, leading to negative outcomes.
+
+One example of heavy reliance of images and impressions leading to negative outcomes is through online dating. Prior to dating apps, people spent time cultivating relationships organically and through their social cirlces. Now, when faced with looking for a partner, one's entire persona is boiled down to a few images and some brief snippets of text. A decision is made in a few seconds whether to swipe or not. First impressions are the sole criteria here. One cannot help but think of the missed chances that result (say for instance a bad photograph leading to a missed connection). 
+
+Another example of images and impressions having too much of an effect on people is the growth of influencers on social media. The vast majority are not experts but rather they are promoted based on their looks. And yet despite not having much substance beyond having a pretty face, they are able to generate extensive sales via social media. This leads to consumers making unwise purchases.
+
+Perhaps no other instance where an overreliance of image and impressions can lead to a negative outcome is in politics. With the relatively short political cycle in the US, a citizen must devote quite a bit of time to become informed of the issues and where politicians sit on issues. Given that onerous time committment, people instead look to quick sound bites and impressions. This led to a focus on form rather than substance. For example, see how the slogan "make America great again" catapulted Trump up into the opinion polls. In actuality, Trump did not care for America as his numerous policies throughout his presidency shown.
+
+All in all, images and impressions have become the primary means of evaluating information for people in the information age and 
+
+

@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7142cb0ee58e3a3f7da5a4010496fa65848fe7dd8b1c2238aa21df9a3a4b77ed
-size 2012
+The first impression that we have of someone or something can be a lasting one.  Sometimes there is little that can be done to change this.  How we view something at first can turn out to be extremely important.  This can be a sometimes good thing, however it often leads to negative outcomes later on.
+
+Images and impressions have a severe and noticeable impact on the way we percieve things.  Even when we are later presented with additional information that is contrary to our first impression, we are likely to view this as less trustworthy than the information that we were first exposed to.  This can lead to confusion, dissappointment, and disgust when we are finally exposed to the truth.  In some cases, a false first impression can even be permanent, whereby nothing can completely overtake the initial viewpoint.
+
+One example of this is the phenomenon that has been called "fake news". Fake news has become an all too common phrase in our society, and the danger of it is that it takes a toll on our ability to tell the difference between truth and fiction.  Even intelligent, well meaning people can easily become sucked in by this process and it can reak havoc on their beliefs.  
+
+Critics may say that fake news and first impressions are not likely to cause any serious negative impacts, because any reasonable person would be able to tell the difference.  This is a specious argument, however, because it fails to accept the truth.  Countless studies have shown that our first impressions are lasting and sometimes unshakeable.  We have seen in recent times what this can do to our electoral process, and our society.
+
+First images and impressions clearly have an important, and sometimes costly impact on our ability to know what the truth really is.  This can influence both the daily lives of people all around the world, and even our most sacred institutions.  We will need to do better as a society to take steps to combat this problem in order to eventually be able to overcome it.

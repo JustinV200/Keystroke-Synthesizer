@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c4ad9cf4e1376bce8fd6bea9240693dc1f958164e482e20c6b922612b93845fe
-size 1173
+  People feel very differently from one individual to the next on what it takes to acheive happiness in life. While some believe that money and success in business is the key to achieving happiness, some feel that contributing to community and society as a whole is most fufilling. 
+  Personally, I believe that it's a combination of both that is most rewarding. What good is all the money in the world if I'm the only one that benefits from it? I find that helping others achieve success is rewarding in it's own right. Having the ability to give and support others in the community, in the world, is a privelage in itself. I find it difficult to understand the motivations behind greed, when being generous to others is so much more rewarding. 
+  I definitely believe that helping to make others happy is key to being 
+happy myself. It provides a great feeling to be able to improve the lives of those around me if Im able. It would be selfish and morally reprehensible to keep my wealth for just my benefit, if given the option. I think that generousity is preferable to self focus in almost all possible situations, and will behave in such a way that conveys it.
+

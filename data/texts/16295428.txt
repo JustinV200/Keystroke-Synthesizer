@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6b7a0d6a7b72f2fbc4a77f13c4017764e8c4d58d81d719740548237991661ca6
-size 1264
+   Most people in the world are highly influenced by the images that they see on TV , in advertisements , and other media sources .  Often times , the images that they see , do not reflect the reality of the images or products that they are looking at . Companies , advertisers , and even social media influncers sometimes take advantage of this fact whenever advertising products and services .
+
+   This fact can be shown in many cases of consumers buying products and services that they have seen advertised, to later learn that the product or service that they purchased , was not as good as what the advertisement had shown or claimed .  By looking at or reading reviews for many products online , one can see that many products and services , just do not offer the quality that there advertisements claim .
+
+   There are some that may argue and say that the average consumer is well informed about advertisment deception , and that these consumers are able to make sound judgments when it comes to purchaseing products and services .  In other words , they may say that these people cannot be tricked through adverstisments and are aware of these deceptions .  However the numbers of bad reviews on many products , tells a different story .
+
+   
+
+  

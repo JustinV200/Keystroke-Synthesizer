@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4c36f0b93540b78043bd9bdf6438448ccefdc34c861f9337279cb66344de688c
-size 1931
+The question prompted here is "Do people achieve more succcess by cooperation or by competition?"
+While both methods can acheive great thins, which is reponsible for "more success"?
+What does "more success" even mean?
+Well, for the purposes of this paper innovation & efficiency will be our metrics.
+
+Competition is built into almost everything we do, and it is one of the major pillers of a great economy & in evolution. 
+Competition  spurrs creativity & innovation.
+Capitalism is firmly based on compition competing to do the job cheaper & more effectively.
+The drawback with competition is that there is inharently a lot of waste created by overlapping efforts, and the ultimate success of only one of these competitors.
+Competition can create "rockstars", e.g. people who are exceptional at what they do.
+
+Cooperation is built into almost everything we do aswell.
+Much of the world requires our cooperation in order to function.
+We must cooperate and agree to follow the rules & laws that apply to us.
+Cooperation is the basis for any healthy society.
+Cooperation is efficient. 
+Instead of everyone competing for themselves, vast amounts of resources, time, energy, and pain are spared.
+
+Cooperation is responsible for the existance of every society that has ever been, so you could argue that it has been used to achieve more success & stability.
+Competition creates winners and losers, but it also spurs innovation.
+
+In conclusion, it would seem that cooperation is necessary for stability & efficiency, and competition yields innovation & waste.
+Depending on the goal, either competition or cooperation could yield different benefits.
+Competition is a tool used to innovate and just get things done.  
+It's a means to an end.
+Cooperation is a method of utilizing those innovations for the betterment of a group.
+
+In the end a balance of cooperation & competition will result in the best outcome.

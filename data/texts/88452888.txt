@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cee4713b36a2ffb5b3755457b0a5922883e48a222367777646d5402920edb528
-size 2112
+Children in elemenatary school, teenagers playing sports, and adults in the workplace all desire to achieve success on different levels. There are two main ways to achieve success: by cooperating with your team members, or by competing against them. Measureable and long-lasting success is made by working together rather than alone. 
+
+For example, I work at a special education school with students with varying abilities and needs. Success is measured by looking at the progress students have made with their goals. If one team member works on one goal in isolation, the child will not make progress with the goal. The team must work together to address the goal in different contexts throughout the school day. The collaborative environment also means the team can brainstorm solutions to any problems. By working together, my team creates lasting success for the child.
+
+Soccer is a team sport, but individual victories can be measured by the number of goals an individual scores. Which is more significant: a team winning the state title or one person scoring 10 goals in one game? The team winning the state title produces a lasting accomplishment. To acheive success, winning the state title, the members of the soccer team all need to communicate, put the team above their individual ego, and work together. 
+
+Some people might argue that sucess in the workplace is fueled by competition. For example, a scientist researching the cure for cancer wants to "win" by being the first to do so. However, these research labs do not exisit without the help of a team: undergraduate students, research assistants, managers, juniors scientists, and more. By prioritizing a team apporach, more can be accomplished than by working alone.
+
+Overall, working in cooperation with a team is more likely to help acheive success. This success might be a student with a disability making progress, winning the state soccer title, or contributing important research knowledge to the cancer field. These are all very different victories, but all were achieved by working together as team rathan than by competition.

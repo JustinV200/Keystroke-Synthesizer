@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:884198bb2bd1133f6b8fc0e30447f9a17569618de4a9a0d6d13add0a28da6c0c
-size 1867
+It is often the case that people believe competition is the key to success. In sports, for example, a contestant in a race is often prompted to run their very fastest just because he or she is running beside someone who can run as fast as they can. However, it is my belief that, important as competitition is to the success of a project, more is gained from cooperation than from competition.
+
+Take the space race, for example. Although Russia was the first country to put a space capsule into space orbit around the earth, and although this even spurred the U.S. to achieve similar feats and beyond, much more has been accomplished by Russian and the U.S. working together on space projects. Just take the space station as an example. Continued cooperation between the two countries built this wonderful structure in space and continues to support one another's missions to and from the destination. The space station is a huge endeavor, built on the basis of cooperation, not competition, between countries.
+
+Others might say that it is a competetive spirit, not a cooperative one,that leads sports teams such as the Boston Red Sox and New York Yankess to great victories. But just look at the tremendous cooperation these results between all the members of these teams to achieve the specatacular results they do. It is cooperation, not competition, that actually gets the job done. And great structures, such as the Eiffel Tower and the Washington Monument are built by workers acting cooperatively, not competitively.   
+
+In conclusion, although competition does play an important role in the spurring of the human spirit to success in various fields, it does seem that cooperation often plays a greater role in that success than does competition. Cooperation is the very glue that keep a team together in striving toward ultimate lofty goals.
+
+
+
+
+

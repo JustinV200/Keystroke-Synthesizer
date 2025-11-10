@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eb1a45926f23b9d905d9da51dca6fbe7e82aed3eab37c0ed5a6475acdc3bc83a
-size 1335
+Cooperation and competition are not mutually exclusive from each other.  A business project may have many aspects that need to be completed for the project to be succesful.   Assigning two or more teams to a project to get different methods of  completion is a common method used with rewards given to the team with the best solution. 
+This means that the members of each team must cooperate with each other and with managment to develope their best solution for the project.  Cooperation is always necessary for any business to succeed while the same business is in competition with other businesses for the same work and customers.  Competition usually succeeds in developing new products and better ways to accomplish certain tasks.  But to create the actual products and services takes cooperation from every employee and manager.  
+The same dinamic of competition and cooperation is evident on every sports team and in most businesses. The team members must work or play together to win and be successful, but there is always competition for every position on the team whether sports or business. Life itself is always placing people in situations of eather competition or cooperation. Cooperation is necessary for a family to live and survive together ,but each member is in their own competition for love and affection.
+
+ 

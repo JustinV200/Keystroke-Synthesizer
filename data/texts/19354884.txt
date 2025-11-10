@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d900cde95c65ab6229f31c715521598b67a465d8f15cf5b4a5e157cea138e471
-size 2009
+  Happines is a subjective term with multiple implicattions. Furthermore, happiness can be classified as an emotional state where a person feels joy, satisfaction, and fuffilment. Happiness cannot be associated with one single feeling or desire, it is determined by the state of a persons mind whether it be in the preset moment or in a more general sense.
+
+  Every person defines happiness in their own manner. for example, some may belive that happines can come from "pursuing their dreams and their own personal goals". Other people may believe that helping others achieve their goals will bring them happiness. There can be moment of happiness such as when a person buys a new car or purchases a home. These events can trigger a good state of mind that allows for them to be happy. Sometimes a person can feel happiness for an event/moment in the near future that brings them excitment or joy. The time a person feels happiness may also vary. For example, a person may feel a breif moment of hapiness after watching a good movie. On the other hand, a person can experience long term happiness after marrying the love of their life.  More selfish prople will tend to feel happiness when they focus on their own personal goal or success and therefore the vast majority may say that happiness is defined by personal gain and joy. However, there are countless examples of people expressing happines by focusing on the happiness of others. To give an example, a parent seeing their son or daughter graduate from college can bring them immense joy.
+
+  In conclusion, happiness is something that various from person to person. It is something that is defined by people in different ways. There is no single way to identify how or what a person can do to achieve the feeling of happiness. To answer the question,  people are just as likely to feel happy when they focus on their personal goals or when they focus on the happiness of others. It all depends on the person in question, as answers may vary.
+
+

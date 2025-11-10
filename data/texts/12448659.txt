@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:015a3f745713994b29d58d6f102e552f473c227be5918be28df94b6842b572d8
-size 1605
+It may seem on the surface that what something appears to be in the eyes of society is important than what it actually is--that image rules over substance.  However, people can always see through a shiny package given enough time to analyze it.  The truth of what someone (or something) really is still holds importance, even when that truth is initially unknown to others.
+
+Makeup gurus will give a scathing review to a foundation packaged in a beautiful case that does not actually perform well on the face.  An overly cheerful advertisement for a bad product will elicit a derisive chuckle from the viewer, and the product itself will be passed over on shelves nationwide.  A celebrity who gets plastic surgery to look better will still give a tell-all interview about lifelong struggles with body image, even years after the surgery, while fans fueled by anonymity online will gleefully trade pre-surgery pictures of the celebrity in question, saying, "this is how that person really looks."  Clearly the true state of a person or a thing does not disappear just because someone tries to hide it.  The truth continues to exist, and sits just under the surface, waiting to be uncovered.
+
+There is no denying that image plays a huge role in how we judge things, especially when we are given little time to come to a conclusion.  However, with the benefit of more time to mull it over, most people will put their powers of observation to good use and see things for what they really are, rethinking the snap judgments they made in the past.  While image is still important, image is not everything.

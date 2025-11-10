@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4886e782115af917e1e94868a1fc45e6fad5be2ec3583addb8d4211294b33b84
-size 2376
+     Human perception of images and impressions affect who we are and how we view the world - from the products we buy and consume, to the people and events we view on TV and in other media.  In many ways this effect is too great, negatively impacting humans, giving us a false reality of the world and what we should expect from it.
+
+     I believe one major area of impact is social media, particularly those with great popularity such as 'TikTok'.  Users are constantly shown videos and situations involving people (i.e. "Influencers") that exists [on social media] only to *influence* other viewers.  For example, vary rarely does someone have the fortune to travel the world to amazing places, enjoying every part of life - the primary goal of influencers.  This promotes a false sense of reality and in turn has an effect on viewers, and a negative one at that.
+
+     News and media also purvey an issue with images and impressions, in that they promote ideas and events that may not be of real relevance.  For example, media may continuously promote negative ideas about a particular politcal cantidate in order to have the desired effect of diminishing that cantidate's appeal to voters.  In reality, those ideas often have little to nothing to do with that cantidate's potential abilities.  Furthermore, we are fed opinions and thoughts from many whose job in no way relates to their voice (e.g. sports stars).
+
+    Product advertising and marketing can also be blamed for having too much effect.  Apple continuously comes out with new iPhone products, with little quantifiable advancement over previous models.  However, Apple has effectively sold humans on the idea that the latest is always the best, and if we don't have the latest then what we have is "old".
+
+    While it may be argued that this is not a result of media and other sources, and that it is a result of a weakness in humans, this doesn't consider that human nature is to want to believe what they see and hear.  News, media and product marketting pray on this weakness, knowning that the way we preceive them will have an effect.
+
+     In conclusion, the images and impressions we receive from the world around us have an impact that is greater than people realize.  Often times this impact is too great -and often also negative- and helps to form a reality that isn't honest and true.

@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:280ceb30aaed1707439c038dd64b5f79b91f738fd1d2c73d2074b23f032db701
-size 1339
+Happiness is the state of being happy.  It can mean many different things to people.  What makes one person happy and gives them joy may not be the same as someone else.  Everyone has a different personality and that may be what determines their ability to be happy.
+Types of things that being happiness are starting a family and seeing your children grow and prosper, increased productivity at work, having a large group of friends to hang out with, or doing an extracurricular activity that you enjoy.  These kinds of things make a person feel good about doing something for themself.  It can give a sense of satisfaction that their life is moving in the right direction and that everything is falling into place.
+Other types of things that can bring happiness is actually not doing something for yourself, but doing it for other people.  Someone who volunteers their time at a food bank or being a big brother or sister to a child in need, or even planting flowers at a local garden often see the benefits of what they are doing by the happiness that they bring other people.
+In conclusion, happiness is an individual thing.  What makes one person happy may not be the same as what makes another person happy and it is not possible to determine if personal goals or the happiness of others will bring more happiness than the other.

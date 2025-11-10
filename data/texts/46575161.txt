@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3709279b87a23cb9536f1dcd7b1aef911a53f9f28f6fd7bebf8c2245639ad07c
-size 1335
+What is happiness?  This can mean different things to different people. Some think that it is the result of achieving their personal goals.  Others think that happiness comes from focusing on something other than their own happiness.  Happiness is achieved through the act of helping others, or of improving society as a whole.  Which type of person is more likely to be happy?
+
+It may seem that acheiving a personal goal will result in happiness.  However, it may turn out that this was actually the wrong goal to pursue, or that it does not turn out to be as meaningful as anticipated.  Also, after the goal is achieved, then there may no longer be anything for this person to focus on. This person may feel rather lost without that dream to drive them.
+
+For the person that truly helps someone, or improves society as a whole, there is little chance of it being the wrong goal, and I believe that meaning can always be found in improving the situation of a person, or a group of people.  In addition, we are all interconnected. Thus, helping others helps us as well.
+
+In conclusion, I would have to state that people are much more likely to be happy when they focus on the happiness of others, rather than on their own happiness.  The happiness found through this means is more often a true and lasting type of happiness.   

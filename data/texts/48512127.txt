@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3907a8f0d557c37c303a87db392cef0e4ccf36ef9a5db5209b89af8611d99911
-size 1707
+This  is an excellent question that has a great many implications, not only for the working environment , but also for a wide variety of social, economic and environmental shperes. First though, we would hve to clarify the objective - that is to say: best for what or whom? In a general sense, competition forces all parties to try and improve in order to survive, but there is almost always a winner and loser in some shape or form. History(natural and human) is perhaps the best demonstrator of this.
+
+While the idea of mutually beneficial competition, or 'co-opetition' has been recently popularised, one can argue that by its very nature, competition is rarely accepted by choice and is seldom friendly. It pits us against the 'other' and appeals to our primal instincts to win by any means necessary - particulary if the stakes are high enough. While there may be rules to keep competition fair, there will almost always be those who push the boundaries of what is deemed fair and acceptable behaviour. To survive in competition, this ultimately forces others to similarly test these boundaries, pushing them ever outwards, resulting in a destructive race that seldom benefits all parties.
+
+On the other hand, collaboration, by its very nature, demands mutual co-operation to benefit all parties involved. We all become part of a single network, where demaging a single node would also harm ourselves, further  encourages the sharing of knowledge and creates an  environment where collective intelligence can be fostered to address some of the more challenging problems that we face. The sharing of ideas is also more conductive to  creativity, innovation, adaptability and speed of progress.
+
+

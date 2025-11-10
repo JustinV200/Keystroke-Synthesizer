@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a6f36419265db7c58eba92606834a326fed968a41df5c90470ec7f5d4d491912
-size 2613
+The topic we are discussing today is competition vs. cooperation, which leads to the most success? I believe that competition is more likely to result in success than cooperation. I feel this in my day to day work life and sometimes in my personal life.
+
+Sure you can cooperate with your team at work and then you will all come up with something that you can all take partial credit for. But when this happens some ideas are bound to get voted out by the rest of the team as "the majority rules". An idea that could have been the best one now has no chance of being the one that gets discussed and improved on. The group will choose what they like or maybe what's easiest and that will be the idea that gets chosen to be the one that will be implemented. Keep in mind that sometimes group members are kind of lazy.
+
+Let's take for example an assignment to come up with a slogan for an advertising campaign. We have two options, work together as a group or each person works on their own. The group will throw out ideas one by one and eventually they will vote. The winning idea will be the one that the most people in the group like or think will be the easiest (remember the lazy ones) to create the campaign for. Now they have to do the same thing to figure out the campaign for the idea.
+
+On the other hand, each person goes off on their own and starts brainstorming ideas and then comes up with the one they think is the best and they develop a campaign idea to go along with it. In this case we have each person competing against the rest of them and therefore trying harder to get the best idea so that they will be chosen and therefore they will get the kudos or maybe even a bonus.
+
+Perhaps you think that the group will come up with a better idea than each individual on their own. I would like to point out my experience with this. My office would have these staff meetings and break up into small groups and each group would attempt to accomplish a series of tasks. We would get in each other's way and no one would serve as the leader of the group and it was a confused mess. If I had been able to go out on my own and do the tasks I wouldn't have been slowed down by the group and the constant questions like "who thinks this is the answer?". I could make my own decisions, use my own brainpower and be done a whole lot faster.
+ 
+To me it is pretty clear that the scenario with the individuals working alone will create more great ideas and lead to greater overall success for the company. Competition causes people to work harder and cooperation leads to complacency and compromise. 
+
+

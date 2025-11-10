@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:557b1554284905ee7a83c0bc7492a02410c8b747b14520ee00494433a9335f38
-size 1317
+Happiness is not a fixed or defined state, and it can mean different things to different people.  A common factor among all of us, however, is that we are social beings, and so focusing only on one's own individual goals is not likely to lead to true happiness, because it's very difficult to be happy in isolation.  To be happy is, in part to be happy among others who can enjoy and reinforce your happiness.
+
+The phrase "personal goals" is somewhat vague, and it may be that what is meant is career goals.  I think much evidence has shown that people who focus exclusively on their careers, to the detriment of other activities and of rich personal relationships, may end up achieving those goals spectatularly but not being happy.  One often hears of people "making it to the top," only to find that the sucess feels hollow or unfulfilling.
+
+This prompt itself is in the affirmative mode - underlying it is the assumption that "happiness" is an agreed-upon good towards which we all should aspire.  I could easily imagine that working on the "improvement of humanity" would, while being important and potentially fulfulling work, not not lead to happiness, because once you start that work you realize the immensity of the project.  I'm wary of a form of happiness that is really just ignorance or solipsism.

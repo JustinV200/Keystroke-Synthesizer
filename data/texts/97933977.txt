@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:14144542f4cdcb325b404de390b235bf83cb05cdf561ac2fb31908d7071ef182
-size 1561
+"A rose by any other name would smell as sweet." William Shakespeare obviously was not an advertising consultant. Today the package tells us what we should smell, and by  concurrence, what we should think. This is not as inocuous as it may seem.
+
+There has been a considerable effort to mold public opinion since the start of civilization.  The great philosphers of ancient Greece would use parables to describe the world around them as well as public opinion molders everywhere (Plato's shadows, the Bible, etc.). All of this has had both good and bad outcomes. 
+
+The impact of packaging has progressed to the point that it impacts world politics and economics. The "big lie" has been and is used to convince the population that what they see is not what they know. The Holocaust denials and the invasion of Ukraine for de-nazification are just two examples of modern day repackaging presented with aplomb by their perpetrators. Fortunately, documentation abounds to refute these myths.
+
+Admittedly, much of what is presented is done to shine a favorable light on genuine products or issues. The idealized Big Mac doesn't harm you, it's just hard to find. Obamacare does come with no pre-existing conditions, and maybe forgiving student loans will help us in the end. 
+
+Being alert to the nuances involved is our best defense against mindless acceptance of the influencers' craft. Though it seems we will be forced to live with a branding mentality for eternity, it will do us well to consider the little boy who shouted "The Emperor has no clothes!"

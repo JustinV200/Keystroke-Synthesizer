@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9b68bb92664619d729741036705378ce4fa768da05d7849ef7975d45d6535e4c
-size 1275
+How do you find happiness? Some people will say you will be happy when you do things for yourself. Other people will say that you will find happiness when you forget about yourself and to things for other people. I say, there is no unique way to find happiness. 
+
+
+There are people whose entire life is dedicated to finding the key to happiness. Many books have been written about the fact. But the truth is, 100 people can read 100 different book and try 100 different things and yet never find happiness. 
+
+
+Some people will tell you "I did one thing in one book and it worked for me!" but that is what is known as anecdotal evidence. It can't be reproduced. Other people won't be happy no matter what. And some other people will say that what matters is not achieving happiness in the end, but what you do to try to get there.
+
+
+There is one thing that has been proven to help with happiness, though: money. If you look at a lot of people in different income brackets and you ask them how happy they are, you can statistically correlate more happiness with more money. If we want to make more people happy, we have to make sure they get enough money to ease their financial concerns.  Avoiding evictions, medical debt, student debt, bankruptcies, it all helps. 

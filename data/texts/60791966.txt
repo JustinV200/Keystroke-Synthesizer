@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ce368a5346e77d66647c4f7d4478fad8d9e30392ba7ea65791a9c433db87d6f7
-size 1276
+In the modern world of business, success is more or less required and dictates what reaches the top. There are different approaches to reaching this level of success that can vary. Is there more success from individuals cooperating or competing? Let's talk about that.
+
+I'm inclined to say that people find more personal incentive to see accomplishment when they're going at something entirely solo. That kind of situation can essentially awaken ideas that might not otherwise reach the table. However, one can also say that working together with others brings a collective force to the group and has the potential to generate more ideas (albeit not better for certain) that can lead to overall success in the end. It should be noted that not all people get along in groups, though, which can directly change the outcome of work.
+
+All in all, I would probably give an edge to competing over cooperating (even if slightly). I think it's fair to say that most people are opinionated and could perhaps work more effectively as a solo unit to reach success. Even though reaching a common goal is generally accepted by a group, the smallest of details can derail an outcome with disagreement and thus failure. These details can become more important than one might think.
+
+

@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5245209e34ce6ed35d07f70014027fd22270ba666c2788c440bbc54150c5ae8b
-size 1371
+Images and impressions seem to play a big role in our perception of people and products. Social media and marketing teams seem to spend a great deal of time and resources finding ways to hook their viewers with eye-catching products and "looks". A good portion of company budgets are dedicated to package presentation and promotions. But does this approach really pay off?
+
+Given the fact that this system still exists, it seems that the resounding answer is yes! Brand props placed in movie ads, paid promotions, social media influencer sponsorships, to name a few seem to be effective marketing strategies showing the effect of impressions on our perception of things. Take a look at YouTube, non-Hollywood personalities seem to have videos laden in ads and flashy products that are eye catching. But the real question is, are the products themselves that good?
+
+RayCon earbuds, many hours of media playback with a charging case of its own and a competitor to Apple's Airpods. Can we really say this flashy product is all that high quality? Have we had any reviews on its durability or its battery life and sound quality in comparison to its "uglier" counterparts? This is how impressions effect us. No one is thinking about how poor an experience these products would deliver. We instantly hone in on the chic design and flashy presentation of the product shown.

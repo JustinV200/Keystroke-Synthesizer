@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:21011a8a6458b23a493399578d8be0d80e6a775a6bd06d9495d506201baa4d78
-size 2528
+In society, both competion and cooperation play a role in human endeavor. Success and general health of a civilization is dependent upon cooperation amongst its citizens. For example, for liberal democracies to flourish and not fall into disrepair and collapse into authoritarian regimes, there must be free elections, politicians who share common values despite  differing views on policy, and a population willing to cooperate and compromise. However, within a system of societal cooperation, on a smaller scale, individuals competing against peers can develop skills, grit, and achieve success.
+
+If we are solely considering individual success, competition becomes a proving ground, which leads to the development of talents
+cooperation might stymie. In sports, in intellectual pursuits like math and science, and in games like chess, competition often drives people to achieve excellence.  The motivation for hard work is often fear of failure and embarassment in the eyes of one's peers.
+
+Soccer is a team sport, but teams that are most successful in tournaments and league play are comprised of individuals who push one another for limited spots on the squad. Practice is a constant competition to win the favor and trust of the coach.  If a player falls off the pace, the next man up will replace him. This affects wages and endorsements.  This applies to all team sports.
+
+In academia, researchers are pushed to "publish or perish." There is always a compeition to be first, to conduct cutting edge research, to shine a light on new theories, and accomplish something greater than their predecessors. Tenure depends on this. Grants depend on this. The pressure can be immense but it can lead to great rewards.
+
+In chess, it is one ego attempting to crush another. Fischer relished destroying his opponent's ego. His obsession and rugged individualism allowed him to conquer the Soviet machine when he took down Spasky and became world champion. Modern chess players are not overly different but perhaps less overt in their desires to crush their opponents, at least in public
+
+Individual success is often achieved through competition in various human endeavors.  Whether it is business, sports, science or board games like chess,  pressures from competition often lead to new ways of thinking, performing, and novel ways of seeing the world. People are motivated by myriad things, but fear of humiliation, or loss of income and other resources, can bring out the best individuals in the right circumstances.

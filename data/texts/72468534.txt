@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c1305ddc3a08ef8b5c06974de41df078d4c6f61c9fc676712ce2d6276d3ded4c
-size 1218
+Cars, houses, and vacations, oh my! Every day, we're reminded of life's luxuries. We constantly compare ourselves to others based on how much money we have and how many nice things we own. But should we? Personally, I don't believe modern society should be criticized for being too materialistic.
+
+First of all, the great debate of nature vs. nurture comes into play. While biology definitely plays a part in how people act and what they value, an even bigger factor is what people are brought up to value. The more people are taught that money and posessions are desirable, the more it becomes ingrained in their brain and the harder it is to dispel those types of thoughts. Second, it does not harm society to be materialistic, and in fact may make people work harder in order to afford luxurious items.
+
+Some people may argue that materialism makes people more spoiled. However, the amount of money and possessions a person has does not mean that this person can't donate money or volunteer their time to make the world a better place.
+
+In conclusion, modern society should not be criticized for being materialistic, as it is a natural part of many people's upbringing that does no concrete harm to society.

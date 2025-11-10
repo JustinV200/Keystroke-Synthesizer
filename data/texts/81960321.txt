@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9be147270669592aa23b980ceb6ad59c656def917a18df8aeb102854622d43ec
-size 1633
+The goal of success for an individual or team can be acheived by a duality of competition and cooperation, with each driving force lending itself to different marks of accomlishment along the way. Often, humans tow the line between competition and cooperation at the same time, but is one attribute of success better really better than the other? 
+
+Look no further than the Space Race of the 1960s. Stark competition between Soviet Russia and the US led to exponential growth in science and technology that landed America squarely the winner in space. The result of intense outpour of money and interest in outerspace trickeled into every day society and spawned a nation full of emerging technology. Antitrust laws also show that competition is the best way host idea incubators and spur econmic growth of a nation. Competition prevents monopolies and is generally regarded worldwide as a positive thing. Many countires have antitrust laws in place to allow free and fair trade in business. In a highly competitive marketplace, technology and innovation flourishes as companies attempt to gain the market share of consumers. One may argue, however, that this type of rivalry could lead to depletion of scant resources, in which case, cooperation is best to regulate these behaviors in order to avoid violence, uprising, and social unrest. Cooperation can level the playing field and promote unity through lasting accomplishments.
+
+
+Different situations call for different measures to balance cooperation and competition, but in the capitalist world that humans created, intense rivalry motivates for the best man to the moon.

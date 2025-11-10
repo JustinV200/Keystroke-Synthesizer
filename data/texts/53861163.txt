@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0b7c0d0252b65603e4756e49cb61c9ddc52b563bbbcc952ccbb4a3f0fd8e1a70
-size 2523
+People achieve more success through cooperation than competition. Cooperation has aspects of competition ingrained within it, thereby promoting avoiding failure and achieving important victories. 
+
+Cooperation has many benefits in contributing to success. First, when cooperating with others to achieve a similar goal, the work burden lessens. When people are stressed, they tend to perform worse. By spreading responsibility over a group of people, there are defined roles that piece together to achieve the greater goal. By pouring all effort into one thing, the person can ensure that the thing is perfected. 
+
+Second, when cooperating with others, there is a greater share of ideas that one may not have thought of, when competing individually. Through the sharing of ideas, people tend to get into deep discussions that help weigh out the pros and cons of each idea. An idea that one person has, may not be one that another has. With greater discussion of ideas, there is a higher likelihood to think of something novel, while also building upon existing good ideas. 
+
+Third, working cooperatively creates a sense of camaraderie that helps push the focus of the people in your group. PEople do not want to let each other down. While this could be a good and bad thing, a lot of the times, it is a good thing. The fear of letting others down can prove to ensure that people get their work done. It even allows people to talk to their peers if they are struggling. If someone is struggling, a member of the group is more likely to help out. A group sense of identity creates more opportunities to help others out. 
+
+Overall, when helping ease the pressure, people work harder and better, thereby allowing for greater progress towards the common goal. 
+
+While competition and intense rivalry can drive people either to avoid failure or to achieve important victories, cooperation can also do the same. Intense rivalry corners oneself into themselves and puts immense pressure. While doing it alone, there may be no one to turn to, as there are other comeptitors around. When all seems hopeless, the likelihood that one gives up is greater. Success always has some sort of failure. But failing alone feels much worse than failing as a group. Failing alone leaves you no one to turn to, while failing as a group may have more likelihood that everyone wants to make it up to each other and solve the problem. 
+
+Given all these reasons, people achieve more success through cooperation, rather than competition. 

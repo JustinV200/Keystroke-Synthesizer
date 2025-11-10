@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9a6c70b3997a62d54e741d17dd509db2d1c6f008d1c60dabb9edafa577ee7f91
-size 1611
+Man has always wrestled with how to live a happy life. Some argue that happiness is the accumulation of personal accomplishments and satisfying one's desires and passions. Others argue that happiness comes only from serving others and bettering the world at large. To this perennial question, I have no doubt - happiness comes from improving others rather than oneself. 
+
+This position is based on a timeless quote by Marion Wright Edelman: "Service is the rent we pay for living". Many communities throughout history have recognized the importance of serving others. In our modern times, even individualistic entrepenours have realized that the accumulation of individual status  was not sufficient unless they gave of themselves to better humanity. An excellent example of this is the multi-millionare Bill Gates who founded the Bill and Melinda Gates Foundation and who has donated much of his fortune to the service of society.
+
+Some might argue that happiness can only be achieved in pursuit of one's desires and that those unfilled desires lead to despair. This is a key theme of Langston Hughes poem "What Happens to a Dream Deferred:.  It is true that individual desire is a powerful component of happiness, however only in community and in service to others can the achivement of this deisre be shared - and happiness fully realized. Our happiness is found in the reflection of others.
+
+In conclusion, Edelman is right, service is indeed the rent we pay for living and the true cost of happiness. We are all better served wben we realize this fact, and shape our lives to make it a reality.
+
+

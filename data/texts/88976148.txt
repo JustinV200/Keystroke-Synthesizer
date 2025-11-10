@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0247d44289f7e7f3e3bc72c6960244ab7229f3a893ca04e127d5e07ed1498a2e
-size 1465
+All around us there is evidence that image and impressions have a great impact on people.  Marketing and advertising companies employ people who are skilled at appealing to consumers. Surveys and studies are conducted to gain in depth insight regarding consumer habits. Some may even consider it manipulation. We have seen through social media just how much of an impact this can have. Sometimes this can even be detrimental.
+
+Social media is filled with people who "fake it for the gram" as they say. Its a medium in which an individual can create whatever persona they desire.  All that is needed is a timeline, story, or photobook filled with images that intirgue the everyday person. Usually these images portray a lifestyle that the average person desires for themselves but typically cannot achieve. Often, people will live through others in this manner. Very rarely do people care enough to determine if the lifestyle portrayed is factual. 
+
+The willingness to believe what is presented online can lead to depression. This is especially present in the adolescent demographic.  The images presented on social media, along with likes, reactioms, and comments shape how young people view themselves and the world around them.  They then attempt to emmulate what they've seen and deem popular despite the possiblity that it isn't reality. Many young people even go to the extent of harming themselves if they match  the images they are drawn to online.
+
+

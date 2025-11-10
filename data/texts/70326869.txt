@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:24148d9ceec683f400a91b8e99709658dc65749ed65edd34f877d33c877a05a2
-size 1488
+Swayed by the Two Sentence Soundbite
+
+Increasingly we are more and more exposed to quick sound bites, quick images or 2-3 sentence social media posts.   Many get most of their news and information this way.     Unfortunately the skill with which these brief images are produced has become  more important the facts behind them.      A well crafted message becomes the message the viewer accepts.
+
+A short advertisement or social media post has no time to document information sources.   They do not present the justifications or context behind their message.     The certainly do not present and refute counter opinions.
+
+Some argue that short blurbs are the way consumers quickly get information.      They do not need more than a couple of sentences as long as those sentences are true.         
+
+Consider, however, a political ad from Candidate X who is running against Candidate Y for School Board.      Candidate X creates a social media post of a child in a sunny playground with a "banned" symbol superimposed and with a caption that reads, 
+'Candidate Y says "Children should not be in parks"'.      This is a quote is true but is completely out of context.    Candidate Y made the statement after several children were accosted after dark.  The full statement was "Children should not be in parks alone after dark until the perpetrator has been apprehended".
+
+Would most people think Candidate Y really wants to ban children from parks if they knew the full story?
+

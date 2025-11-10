@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:de8e9805e4f2929e25667b0dae4088d84ee6d7122d2127254a44da093ca301d9
-size 1503
+     The pursuit of happiness can be recorded back throughout the hundreds of years our human history but as times change will our strive for true happiness be aimed towards one's self or to others. The definition of happiness can mean something different between individuals but a constant remains, happiness means one is truely content with where they are at in their current moment in life. Whether a dictator has completed their goal of ruling the country they've sought after for years to come or child finally got the toy they've been asking for christmas hapiness can range vastly different between individuals. People's happiness depends on the person they are which leads to whether they will be happy for their own personal goals or the happiness of others.
+
+The situations or lack of people have gone through their lives will determine they strive for their own happiness or others'. For example, a person who grew up comfortably wealthy will ultimately be happier pursuing their own goals because of the examples most likely set for them while growing up. Finacial success will likely be their main goal in life and after a certain amount of wealth achieved from a goal they've set they will be happier for themselves. Their priority in life will likely be them and they will not bother assisting and caring about others' success.
+
+On the other hand a person that grew up in a third world country were they have see everyone around them struggle and suffer through many situations 
+
+

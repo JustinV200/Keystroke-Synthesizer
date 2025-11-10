@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:59cb226a1e0f39519ba37a99ac29837c381ae325c30fbcfb5788c1dc3fa33284
-size 1466
+No man is an island. This is a well-known concept that most would agree with. It's not possible to be completely independent of anything, and one wouldn't want to be either. Why? Cooperation yields superior results to working alone. This also means that cooperation is superior to competition, as competition is something that is generally done individually. When it's competition among groups, the groups who have greater cooperation perform in a super manner to those who do not.
+
+Take an example of a family farm. Such a farm can have dozens of farm animals, of several kinds. A single person can learn how to take care of all the animals, but it's inevitable that that person will be out of commission in one way or another at some point in the future. At that point, the farm will need cooperation from other people in the family to keep it going. And that's why cooperation within a family farm is superior.
+
+One might say that a really strong person would perform better alone than a group. Sometimes this is true, but overall it is not. No one is completely self-sufficient, and even that highly-effective person will overall benefit from working with other people.
+
+The sum of cooperation is greater than the alternative of having non-cooperative, competitive parts. Competition can be good to create efficiency, but ultimately the greatest form of competition involves cooperation, because that's what wins in the end. A house divided cannot stand.

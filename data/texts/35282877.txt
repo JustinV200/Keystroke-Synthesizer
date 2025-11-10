@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f16bff370307072768cc483e68fc9308e21fe38c780b32be8c1c927fa5e2fae9
-size 1753
+People achieve more success by cooperation than competition. Humans have evolved to socialize and cooperate as a group; this is how humans managed to survive and thrive over the eons. The rugged individualist can't build giant temples and monuments or travel to space on their own. I heard at my old job at a semiconductor factory that they stopped using competition as a motivator to make people work harder because it made people less honest, if I recall correctly. My old job saw better results when they switched to a more cooperative mindset across shifts.
+
+Cooperation also allows people to have different roles in society. For example, someone can dedicate their lives to practicing medicine while someone else farms crops for a living. If people always had to compete directly, it would discourage people from focusing on one area like medicine since people would have to still worry about food production. Without cooperation, we wouldn't have people highly skilled in certain areas and the standard of living and life expectancy would decline for everyone as a whole.
+
+In my own experience, I have definitely achieved success competing rather than cooperating, but only on an individual basis and not as a group. In school, in particular, I would put a lot of time into my projects and studies to beat the other students and I often got better grades and results, but it did not prepare me well for the real world where people need to work together as a group to achieve their goals for their organizations.
+
+In conclusion, while competing may produce better results on an individual basis, it does not produce better results for groups, organizations, and societies; my own experiences, knowledge, and reasoning shows this to be true.

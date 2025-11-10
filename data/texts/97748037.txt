@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eb6286cf8fbf99df6c79192605bf4e925f8b07181067e9846464e2ea785f1112
-size 1330
+Cooperation and competition both are similar words in term of achieving results.  They are like families both started with "c".  Cooperation and competition both get the work done it is just the process that differ.  
+
+Cooperation would the be traditional way to do this, where teamwork is the key to have everyone strive to finish the work by assisting each other.  Contributing ideas and efforts to combine all the pieces and becoming whole.  There is a Chinese proverb that indicates a lone chopstick might be broken easy, however a bunch of chopsticks held together will be very diffult to break.  So same rules apply to teamwork where multiple contribution from all types of viewpoints will enhance the project.
+
+However alternatively there are competition type of method some people use to have the same result.  Where people try to outperform each other in order to gain certain favor.  Basically you step on another person's head in order to thrive, therefore being on top will be the ultimate goal.  Thus everyone is improving themselves to become even better in order to survive in that environment.
+
+In conclusion, there may be two methods to achive the same goal, however it depends on what group you are using it on and one could be better than another.  You got to have the wisdom to know which one to use.
+

@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fc7929f185b05ad58897b2c470ed2dff605552954af0f035ac21c0bd40d46352
-size 2210
+   When did the credo, "Image is everything" become a mantra for our lives in 21st century America? It's hard to say, but people today are clearly vulnerable to appearances and impressionable when the lines between reality and fake news are blurred, sometimes with catastrophic consequences. What can we do when images and impressions have too severe an effect on us?
+
+   One strategy I use to separate fact from fiction is fact check.  This practice came regularly into use after Donald Trump was elected President, which is no accident.  For example, in the first week of his presidency, Trump claimed that more people attended his inauguration that had attended the inaugaration of Barak Obama.  
+   
+   Newspapers checked.  The photos of Obama's inauguration clearly showed that many more folks attended his inauguration than attended Trump's ceremony.  They say a picture is "worth a thousand words".  Unfortunately today, technology exists which can alter a photo, so Trump claimed that the photos had been altered.  
+   
+   During the first months of Trump's presidency, he repeatedly claimed that he was personally responsible for an over $700 million sale of fighter jets to a foreign nation.  In fact, the sale was completed by the Obama administration.  News media called Trump out on this false claim, but many people were impressed by this false statement, which seemed to indicate a high level of leadership and a follow-up to Trump's campaign promise to "make America great again".
+
+   Were millions of Americans stupid to believe Donald Trump? No.  Repetition is a well-accepted method of "selling" people on ideas and products.  Trump was advocating for his personal "brand", just as he had done in business for decades.
+But advocating for one's personal brand, when that person is the President of the United States, who has taken an oath to defend and protect a nation, can prove to be dangerous, immoral and even illegal.
+
+   To replace the facts with fiction, including the long-debunked "steal" of the 2020 presidential election, presents us with a dangerous precadent that, in my view, must never be repeated.  Simple fact checking is a starting point to debunk lies.
+
+ 
+

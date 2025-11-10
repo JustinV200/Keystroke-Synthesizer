@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6a12bce98e0d54338ab223405d1644ae1b7e826e69cc5f3d3ea2a81c43a35520
-size 1423
+I believe that images and impressions do have too much of an effect on people.  I know, for example, that food (grocery and restaurant) commercials and billboard advertisements use fake food props to depict the food being advertised.  When you get that food from the store or restaurant, it looks nothing like what was shown in the commercial or on a billboard.  
+
+The media has been known to use pictures and/or videos from unrelated stories to try and convince people that something is happening a certain way. For example, I remember seeing photos during the "beginning" of Covid-19, that showed caskets lined up in a church, talking about how bad it was in that area, when in fact, the photo was from a different place and time.  There were numerous videos that were proven to be false also.  I have seen countless videos of different United States cities showing long lines of people waiting to be seen at the hospital for Covid-19, then independent journalists have gone to these places themselves and taken videos to show that the lines of people waiting weren't real. Oftentimes, these journalists would get "chased" out of the area. 
+
+With politicians and other public figures, they frequently use "green screen" or fake sets to show that they are somewhere when they are not.  For example, recently, President Biden has used a fake set that resembles the White House, when he was in fact, not really there. 

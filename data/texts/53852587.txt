@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a60a7c09b56e383491f445bb148c1d848ef22bc34afe2ff42371c9f9df4e7224
-size 1519
+     Everyday, every minute, people everywhere strive to achieve success in one form or another. Success at one's job, at finishing a home chore, at being able to live through another day. Whatever it is, people are trying to succeed at something, anything. It is how that success is achieved that differs between individuals. Competition is a very common way, seeking to outdo or outwit rivals and thus encouraging growth and raising the chances of success. High rewards are possible this way, however there is of course high risks of failure if that competition is not beaten.
+
+     There is another way to the path of success. Cooperation. Working together to uplift one another rather than going against each other. It is often theorized that this method is the reason for our success as a species, why Homo sapiens are the dominant race on this planet. Not just because we were individually driven and intelligent, but because our ancestors worked together to shore up weakness and combine strengths and resources.
+
+     Of course, competition still has its place. Competition for food, water, money, social standing remain powerful motivators to succeed. But look around the world, at the most powerful individuals and countries, and realize that none of them got to where they were solely due to one individual's efforts to beat the competition. The cooperation of countless people backing a person, a nation, an organization or cause they believe in is what provides the foundations for continued success.

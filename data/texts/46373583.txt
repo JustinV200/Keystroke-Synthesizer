@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:62d2dd2d690f66dedf80c5d118914a33d8412942c12fefbd74db6c49c2b997e7
-size 2043
+We live in an age of mass consumption. Social media bombards us with images and video of a dream-life. In this essay I will argue that social media has been both a blessing and curse that often leads to feelings of depression and fear-of-missing-out.
+
+There is a stark difference between the way we actually live and the way we want the world to see us. Through social media we cultivate a persona that is completely false and then we post this creation for the world to marvel at and be envious of. All the pictures of eating fancy food and exotic vacations makes other people think that the poster is living a fabulous life others can only dream of, but the reality is that these images represent only a tiny sliver of that persons actual life. For the most part, their day to day reality is just as mundane as everyone else's, however social media allows us to post only the most impressive snipets of our life. The main idea is to use social media platforms to show off how we are better than others. 
+
+Social media has allowed people the world over to communicate and share information at a speed that was unfathomable just a couple of decades ago. However, this well-intentioned idea can also create feelings of isolation and depression. When others see how amazing a user's life is, we invariably begin to compare our own life and since the vast majority live lives of quiet desperation we begin to feel like somehow we are being left in the dust and that we are missing out on experiences. Filtered images of beautiful bodies, especially celebrities that we unfortunately place on a pedestal, eating fancy meals while traveling to some exotic locales exacerbates these feelings of perceived failure.
+
+In conclusion, social media creates false personas by using cultivated images that trick us into thinking others are living their best life while the rest of us are stuck in the doldrums of mundanity. It's important to remember that social media is largely fictious and that we need focus more on improving our own well-being.

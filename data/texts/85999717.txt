@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ab5f922f5a950e72248d4e496514ac26b23198e2fad06737f6d5cde02545e25e
-size 1959
+There are many things that can affect how we view ourselves and the world around us. Our inner thoughts are greatly affected by the messages being presented to us from external sources. A few of the things that highly affect our impression of ourselves and the world around us are advertisements and our social media feeds. The constant messages we are being fed through these sources become our inner thoughts and perceptions.
+
+Advertisments come in many forms. Sometimes a message can be obvious, like a billboard proclaiming a message we read as we drive by, or sometimes they are more subtle such as the alluring product packaging we see on store shelves. Advertisements are often made to be perfect and aren't an accurate reflection of reality. The burger at a fast food stop rarely looks like the television ad of it that played this morning. The model in the skin care ad might not have used the product before today. The simple statistics presented as evidence within the ad are often hand picked to prove a prechosen point, often with a heavily biased slant. And the large bag of chips is often half empty inside, giving the perception of a better value at first glance.
+
+Another big part of society nowadays is social media. These same false perceptions of reality seen in advertising are also found in our social media feeds from celebrities as well as our real life neighbors. Filters are common. The mess is outside the frame. And the true tears and struggle often don't get posted. And sometimes the ads from larger accounts are hidden in plain sight, so we no longer know what to believe.
+
+When we see the world through these false realities, our perception of true reality gets distorted. Algorithms within social media show us what we want and billions of dollars spent to make products and people look perfect aren't our everyday truths. And when we compare our everyday to this carefully curated perfection, we will lose every time.

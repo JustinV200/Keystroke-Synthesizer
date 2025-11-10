@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d79edbd55af093c4fe6a545a1d54509b3d1868bd55b626101f2f4e4b82d9ea73
-size 1548
+There has been heated discussion on whether people achieve more success by cooperation or by competition.  I think that people achieve more success by cooperation than by competition in today's world. Cooperation is the involvement of different parties to complete a project. Throught cooperation, the parties input their knowledge and effort to the team and enrich the power of the whole team. This can definitely not be able to be achieved through competition. In a competition, people work on their own to win the game. This would result in knowledge and expertise not being shared during the process. The end result would be blockage of information in a hostile environment in which the end goal is just achieving victory. For example, the performance of a company through cooperation of all the departments can obviously achieve better success for a company than through competition among the departments.
+
+Some people may argue that competition is unavoidable in today's world to stay in an advantageous position. I do not agree with this argument because competition causes an unfriendly and harsh environment that can hinder the normal development of a situation. I think that people working through cooperation in a situation can achieve more success which is fostered by harmony and honest communication.
+
+To conclude, I think that people achieve more success by cooperation than by competition in today's fast changing world, in which sharing of information and mutual effort of different parties are essential elements of success.

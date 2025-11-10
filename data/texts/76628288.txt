@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:43bf96e2a0f6f71117c2f6dc70f4ac5706314396b5fb7956e4839fdf397e931a
-size 1366
+People nowadays spend too much time working to obtain things that they don't need. Today, we are so focused on being able to buy things that we only want because we are told we want them via advertising. Every day, we are bombarded with ads. Many of our current top tech companies exist and are profitable because they sell ads to us. We are told to want useless items such as new clothes and iPhones, instead of enjoying what we currently have.
+
+One of the negative effects of materialism is the impact on our environment. Fast fashion makes it so that we are always buying a different dress, bag or apparel, merely for the sake of style. As a result, we are letting our landfills be stocked with last year's fashion and fabrics.
+
+Another negative effect of materialism is that we end up not appreciating the things we currently have. For exampe, technology is always being updated and are not significantly improved. A newer generation iphone doesn't significantly change the functionality of the phone, and yet the mere advertising and "keeping up with the jones" approach forces us to buy the newer version. As a result, we are unable to appreciate what we do have and are to focused on what we don't.
+
+In sum materialism forces us to work for things we don't need, so we are less able to enjoy what we do have. It is also detrimental to the environment.

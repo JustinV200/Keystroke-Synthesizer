@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:954de967db3aed6d5d9f1b986addc8e48ca48af7be362dcec0b547a855602363
-size 1202
+   Competition and cooperation is said to be one of the ways to achieve success. Is this true or is this false? Some say that competition drives others to work hard for their dreams or that cooperation is the better way to go if you want your success to last. People would rather cooperate due to real world situations. Cooperation is must for those who don't want to take a gamble in life and succeed.
+   Cooperation is the better way to go if you want to achieve success without risks. Competition can drive us to lose emotional control and act out, if certain things don't go as expected. It may be a great motivator to fully go for what you want, but it could end up being harmful. It can also be carried into the real life siuations where rivalry and competion isn't needed, but ends up being presented due to that kind of mentality to beat out everyone to get on top. Most people would rather follow the rules and act accordingly in order to achieve success. 
+  In conculsion, competition isn't needed to be succesful, especially in the real world. Cooperation and help from others is what makes successful people successful.  It is needed to have a lasting impression and accomplishments. 
+

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5bf8bedbbd13cbc70c17806657f1df3e14293eda7dc04778854f634fcc07be62
-size 1495
+Do people achieve more success through cooperation or through competion?  I believe that success is more likely through competition.  First, most people have a competitive nature that is natural and something that was built through years of playground games and sports.  Second, many aspects of jobs are set up to be competitive, to push for the best outcomes, regardless of if it is done in teams or as individuals.
+
+First, many people have a natural competitive nature.  They will turn aspects of work that do not have a competitive nature, into a competitive task.  People love to work hard to win and to push each other to excel.  As people compete they build a comradarie towards each other and engage in social interactions.
+
+Second, many aspects of jobs are set up in a competitive way.  The tasks pit individuals or groups against each other, to see who can come up with the best ideas.  They often give extra rewards or recognition to those that perform best.  This will, in turn, push those same people to seek out more competition and a chance for more rewards or recognition.
+
+So in conclusion, people do their best when there is an element of competition inherent in the task or group activity.  People will make the effort and in turn, push other's within the group to work harder.  Also, competition usually comes with the extra benefit or rewards or recognition for those who perform the best.  People will enjoy this feeling and seek it out in more aspects of their job.

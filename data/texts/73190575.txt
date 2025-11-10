@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b29eb53d90694e41b92e34f63256f8582ee7d67f848b5e1a197dc3f5d93222db
-size 2027
+Happiness is not really something that has an objective measure.  People can judge their own happiness, but when looking at another person's, they do not have the full perspective.  And people may not know what will make them happy until it does.  Obviously, events in a person's life can add to or subtract from their happiness, but their personality is also a factor.  Thus, happiness is not a one-size-fits-all concept.  What makes one person happy make make another miserable, and maybe a third person will be relatively unaffected emotionally.
+
+However, many people would likely say that being able to pursue their own goals does contribute to their happiness.  It may not only be in the achievement of a personal goal, but in the pursuit of the goal and in the freedom of making that pursuit that happiness lies.  Many people have at least some focus on themselves, as they should, and going after thing that are important to them would seem to lead to, at the very least, satisfaction.
+
+Now, since happiness is subjective, social scientists rely on self-reporting to judge happiness.  There are some stimuli that do light up pleasure centers of the brain or release hormones that can affect emotional response, but long-term continuous studies on a large enough pool of subjects to prove that pursuing a life goal would make more people happier than focusing on others doesn't seem practical.  But there are studies that being able to choose what they want can cause people to report satisfaction and happiness.
+
+Now, focusing on others and trying to improve humanity is, of course, a worthy goal.  It is one that many would find fulfilling.  But this could absolutely count as a personal goal, especially if they do find it fulfulling.  These two concepts are not truly in conflict with each other.
+
+Happiness is individual and up to each individual to determine for themselves what makes them happy.  But getting to do what a person wants to do should make that person happy, however their focus is aimed. 
+

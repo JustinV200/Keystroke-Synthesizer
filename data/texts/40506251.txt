@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4158f043772c86cb8f89313f48f65f999cc53b54076bdfc7e9af119141bf156b
-size 1315
+We always judge book by its cover. But we can not judge one based on their appearence. For example some advertisement make strong impressions on people by its image and looks. We automatically attracted to them, we just ignore their content but only focus on its image. Same habits goes to people also. 
+
+For example we attracted to media people, public figures by looking their image. We got strong feelings on them just looking at them. Because of their outter image. But in reality we really do not know about them. We judge them just by looking how they behave in public places. Many politicians use this method to manipulate people. When election time they make many promises, and give speech very purely and honestly also doing some good things. These doings makes people believe them. But we really do not know if they following these behaviors after elections too. 
+
+Like this, people also get strong impressions on celebrities. People just seeing their appearance and behavior when they are in public place. Some time they behave roughly due to some conditions. But most of people can not understand the situations they only judge what they saw. Almost every people have same behaviors. we can not change these behaviors. But at least we need to try to think once or twice before making judgements.
+

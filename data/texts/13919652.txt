@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5d1e06506d1c3a888a9e72155a42170a6c1286e6fb2b6b5429e628b527bdb589
-size 2334
+It can be difficult to fully comprehend the psycological basis for happiness. Happiness itself can come from many sources in our lives. Accomplishing personal goals, the pursuit those goals, and even seeing loved ones enjoy their own happiness can lead to happiness in our lives. However, the magnitude of happiness that people experience is likely due to the pursuit of goals. I firmly believe that one can become more happy by focusing on personal goals. 
+
+There are several reasons for my position, but I will only discuss a few. First, the pursuit of personal goals enables people to focus their attention on something that can be incrementally accomplished. The incremental accomplishments produce happiness that grows exponentially as they near the goal's endpoint. For example, losing weight becomes more exciting and leads to increasing happiness as the targent weight is reached. Next, the accomplishment of personal goals builds self-confidence in people and subsequently promotes happiness in their lives. A person who is confident in their ability to accomplish a personal goal is likely to be more happy as they focus on the particular goal. Lastly, personal goals provide people with a purspose outside of their professional and inter-personal lives. While the professional and inter-personal parts of someone's life can be highly variable and outside of their control, they will have their personal goals that remain constant. Having a constant, personal goal will likley increase the happiness of an individual.
+
+One can argue that enjoying the happiness of others can make a person more likely to be happy. Watching a happy child play outside is rewarding and makes many parents and family members. Sports fans are likely to be happy when their local team wins a game. However, one can make finding happiness in others a personal goal. I believe that if you seek happiness by connecting with others, you have made that a personal goal. Thus, happiness is more likely to come from the focus on a personal goal.
+
+Personal goals provide self-confidence, exponential doses of happiness, and the prospect of future happiness. Focusing on the happiness of others is also a personal goal that people can set. In conclusion, I believe that people are more likely to be happy if they focus on their personal goals.
+
+

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a48070b073e6b3b7a6eddebdc7f642c5750e54173633d00ece56d0fa05d4505e
-size 1901
+Happiness is a very subjective topic; everybody knows that. Nobody can really tell you what it means without just using a synonym of happy, and what brings happiness is different for every living person. While some happiness can be derived from focusing on the happiness of others, it can only truly come from people focusing on their own personal goals and happiness.
+
+People can only find true happiness from themselves and their own goals. Humans are happiest when they are achieving things, so to have goals and achieve them brings joy. Whether big or small, humans need hope and goals provide a means of hoping to do something or achieve something. The goals can be anything from finishing a book to becoming a lawyer to literally anything, but having concrete ideas of what one wants for the future is what keeps them going and knowing that they accomplished something that they had wanted to do so badly is always going to be a source of joy. 
+
+While some say that happiness comes from focusing on the happiness of others and/or the improvement of humanity, that isn't quite an accurate representation of the intricacies of how humans work. People may derive happiness from helping others, but what is that if not just a different goal that a person can work towards accomplishing. Depending on one's point of view it could be considered focusing on the happiness of others rather than one's own happiness, but having a goal of helping others is a goal nonetheless. 
+
+Although some say that people are more likely to be happy if they focus on the happiness of others rather than their own, people are actually more likely to be happy if they focus on their own personal goals. Those goals can be as selfish or as selfless as the person in question wants, and can help or harm or have no effect on others, but pursuing ones own goals will still be most likely to bring happiness and joy.

@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:43b06c88cf68a000fc2cfe67e5950d73513b8d48f579c3f5bd574d4338196e55
-size 1554
+Competition drives success.  No doubt.  In an ideal world, cooperation definitely provides much more lasting results and accomplishments.
+
+I believe people achieve more success by cooperation than competition.  Competition definitely fuels the drive to do better and be better, but these are not lasting successes.  For instance, something simple like a weightloss journey between two people.  Person A and Person B are completing to see who loses the most weight in X amount of time.  Person A falls short, and Person B wins.  Is the success in beating out the other person?  Beating out the other person is a short-term success.  That win lasts only an instant.  On the other hand, if Person A and Person B were to work together and encourage each other on this weight loss journey, the success to a healthier lifestyle may last longer than the success of simply winning.
+
+On the other hand, competition also plays in as a factor to success.  People strive to do better and be better when there is something to "win."  For example, look at the capitalistic society we live in today.  What drives this success?  Companies constantly compete with one another to come up with the best new innovative product.  That win is short-lived because the next company can come up with another new innovative item the next day.    
+
+In conclusion, success can be achieved through cooperation and competition.  The only difference is the success stemming from cooperation will have a lasting impact, whereas success derived from competition is short-lived.
+

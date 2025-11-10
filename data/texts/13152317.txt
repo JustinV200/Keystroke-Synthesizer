@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5a745f021fad914ee1bd15e68871be399e6ee86ca5287121f92821002c16e168
-size 1415
+Modern society is often criticized for being materialistic.  I believe this is a fair criticism.  We want the latest version of our technological devices and we want them delivered immediately.
+
+Many people spend an obscene amount of money to feed their technology addition.  They want the newest model even if the old one works fine.  Retailers are offering faster and faster delivery because customers want everything from groceries to technology immediately.  If we are unhappy with a purchase, we may not even be asked to return the item.  The seller issues a refund and doesn't find it cost effective to process the return.
+
+Technology does have its benefits and may even facilitate communication and real world events.  There are many examples of technology being used to keep families in touch during the COVID pandemic.  Nursing home residents were able to video chat with their children and grandchildren when in person visits were not allowed.  Patients in intensive care were able to say goodbye to loved ones who could not be at their beside.
+
+To conclude, material possessions in general and technology in particular can do much good in the world.  However, we have become obsessed with acquiring far more things than we need.  I hope that we remember the lessons of the pandemic and put more value on human relationships than on accumulating technology and other possessions as status symbols.

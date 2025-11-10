@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4504987ccd14ac57b8313857f9c769569729b349a561995feebb9a0afed1834d
-size 705
+Cooperation is far more effective than competition when individuals are working together to achieve a common goal. When people work together and share different ideas the overall result contains a variety of thoughts that come from diverse thinkers. One example would be working on a production line. All the people need to work together to complete the finished product. If anyone on the production line does not cooperate, the whole process could change the outcome of the finished product. Some my think that it is better to work more aggressively than others when working together. This way of thinking only benefits the person not the whole group. It is always better to work together as a group.
+

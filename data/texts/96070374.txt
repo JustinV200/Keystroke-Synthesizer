@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cefbccf299e3cb076ef179441faaac61305b84cd163b334f8c67196c591a1305
-size 1834
+It is widely debated whether people achieve more through cooperation or competition.  Some people find that competing with others really drives them to succeed more and try harder.  Others find that cooperating with others enables them to get more things done.   I think that competition drives success moreso than cooperation.
+
+A lot of the time, the work being done determines whether cooperation or competition will lead to more success.  For example, in a setting where websites are being developed, or other sorts of software development, cooperation will lead to drastically more success than competition.  People cooperating with each other will work better together and get different parts of the process done faster.  It is a worthwhile time to cooperate in this setting and will definitely lead to vastly more success.  In this setting, if people were competing, various people would be working on the same task at the same time when tasks could be split up better and accomplished faster.
+
+In other tasks, competition can lead to greater success.  In sales and marketing, a competitive workplace can lead to better outcomes.  If people are competing for a particular client or a bonus or something else entirely, they will be motivated to work harder and come up with a better pitch.  I think in this setting, competition leads to more success.  If people were to cooperate, I don't think it would lead to their best ideas being brought forth.  If instead they were competing for some sort of monetary prize, it would motivate them to work harder.
+
+In conclusion, I think the way to achieve more success depends on the field of work.  In different fields, both cooperation and competition can have their value.  The type of work being done needs to be evaluated for it to be determined which will find more success.

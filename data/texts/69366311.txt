@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:22e95e2055f56d4bb885efbe5e6ac672baa1949780d2a21759751c560faa5c2c
-size 1322
+These days, with nearly everyone outside of an uncontacted Amazon tribe spending 25 hours a day staring at a screen of some kind, I'd venture to say that there's no question whatsoever that images and impressions have a great effect on people.   The question of course is whether or not this effect is so great as to be detrimental or harmful in some way.
+
+Without any hard data or evidence it is of course difficult to say for sure, but you have to think that when people spend their time merely looking at pictures and not actually reading that that's not likely to be a good thing.  Photographs are of course open to the interpretation of the individual viewer, and any given observer is certainly more likely to find evidence to support rather than challenge their pre-existing views and outlooks.  People generally speaking don't like to have to rethink their opinions.  
+
+Another issue in recent years is that it's possible to fake a photo of practicallyy anything.  Even if a particular photo isn't outright faked it's almost certainly been enhanced in some way, either through photoshop or some sort of instagram filter.  That's got to artificially affect the way people view themselves and the world around them, which ultimately can't be a good thing for the mental health of the populous in general.
+
+
+

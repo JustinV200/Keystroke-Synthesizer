@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c001d337380affbafa71b15171b501fbfe786f36c261ec1014ab7e000806e9f1
-size 1999
+These days, we are constantly bombarded with marketing messages that aim to persuade us to click through, buy now, or support a particular issue or candidate. Some might aruge that flashy advertisements and slick packaging have too much, and perhaps a detrimental, effect. However, I believe that in general, the nature of the world we live in has made us all savvier consumers, and we are perfectly capable of adapting to these conditions.
+
+If anything, people these days are more equipped than ever to critically evaluate their surroundings. Most of us are aware that we are contantly being bombarded with messages, many of which serve the sender more than the reciever. In schools, criticial thinking is becoming a greater part of the curriculum. 
+
+This is not to say that as humans, we are completely equipped to deal with our changing world. For 10,000 years of prehistory,  our ancestors, who were biologically no different than us, lived in a world of feast and famine. This is why we find it difficult to resist immediate gratification; our brains are still programmed to gorge ourselves when we see food, especially food that is high in fat or sugar. For our ancestors, this programming helped greatly in ensuring their survival.
+
+However, because we possess the ability to reason, we have the power to ignore our biological urges. Technology can help with this. For example, we can read information about health and nutrition in online forums, and we can use an app on our phone to keep a food diary, which allows us to evaluate our food intake more easily and make better choices that aren't based on cravings for foods that do not serve our nutritional needs.
+
+Perhaps this is overly optomistic, but I truly believe that as humans, we are only becoming more equipped to deal with our ever changing environment. We may not be evolving in a biological sense, but as one of the most intelligent animals on the planet, we still have an amazing capacity to adapt to our environment.

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:db84cba49cb5fa274674ba27c0106dd449bdfcd5b3c46035aea56905de3c7ea2
-size 1739
+Modern society does deserve some criticism for being overly materialistic. Materialism may lead to short-term happiness, but the negative affects on people and the planet outweight this in the long run.
+
+Buying things has not been shown to lead to long-term happiness. People may get a dopamine rush when they obtain something they've been wanting and that signals their success to others, but this typically only lasts a few days or weeks. People become accustomed to things quickly, and often need to continue buying new, often more luxurious or expensive things, in order to recapture that same amount of pleasure. This is known as the "hedonic treadmill", and can quickly lead to problems with overspending and overconsumption if a person doesn't recognize it for what it is, and can't afford to keep up with their new lifestyle.
+
+In addition, materialisn is bad for the planet. So much of what we buy for short-term happiness leads to increased carbon emissions, air pollution, and solid waste, as well as production of manufactured substances like plastics that can't decompose like naturally derived materials would. Our landfills are filling up with junk that used to be yesterday's treasures, and we're quickly approaching the day when we won't be able to reverse the effects of climate change, due to the increased amount of carbon emissions that production of material goods entails.
+
+In conclusion, people should learn to be happy with what they already have. It's not always a bad thing to buy a new product, but it should be researched carefully, and the person needs to seriously think about whether they really need it. This will lead to less consumption over time, and better outcomes for people and the planet.   

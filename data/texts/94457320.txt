@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0298f0abf1f197e90394f39c2a52bf2fe0f1e845bae7fcc274caa66c2e612ee4
-size 1366
+Human being are visual animals, images aren't just images but a means to communitcate ideas, sway opinions and advance the narratives of certain groups. The bright smile of a politician, the vibrant red of a new car, the saturated colors of a movie poster shower the brain with info to be intepreted. The eyes are the first to interact with the external eviornment, without text, cues or prompting the brain interprets visual cues without hesitation. It is only a moment later that one decodes the image and comes to his own conclusions. 
+
+Most people would say that the media; specifically televison, the internet and especially social media have a disproportionate impact on everyday life. People are quick to believe any video as long as the presenter "seems" correct. If it looks true and seems to fall within the realm of possibilty than it must be true, never mind with fact checking or personal research. If a stranger posted pictures of her miraculous 20 pound weight loss achieved in a week then why shouldn't you believe it?
+
+On the other hand it's not as if media consumption is a requirement or a physical need, if one feels like the media has too much of a say in their life they could always logoff. Nobody has to be swayed by glossy pictures posted by strangers on the internet. If an indvidual disagrees with the images why not research it?
+
+

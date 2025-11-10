@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d941f473f2f583d89fc19151ca429ea0d7606996b940184f7a181085ed40de9f
-size 2308
+Humans have been living in communities since pre-historic times to increase chances of survival and ultimitaly increase the likelyhood of successfully fostering kin. Communal living arrangements distill down to two nearly zero-sum behavioral choices: to cooperate and expand group and individual success, or to compete and capture all the potential benefit for a single individual. Both of these methods have been widely observed throughout history, and both have resulted in unequal outcomes. 
+
+Cooperation results in the greatest communal gains in the long-run. Whereas competition may reward the competitor with outsized rewards with respect to the risk or cost  they undertook to compete, competitors may lose in other, potentially more detrimental aspects. One such example is a co-worker who competed for a promotion and may have used unscrupulous methods to do so. In this case, this person's co-workers may have limited respect for this person or will not cooperate as willingly as before since they now see them as a competitior rather than a cooperator. 
+
+Alternatively, a group of co-workers could cooperate efficiently at work and increase their cumulative productivity which, in an ideal scenario, would result in some form of reward or promotion. Moreover, cooperation rarely presents a zero-sum outcome as further social rewards can be reeped such as agreeabilty, trustworthiness, and generally being more favored by peers.  
+
+The glaring counterargument is that many highly succesful individuals exist which have used rather unsavory tactics to gain that success. Those that have directly taken from others, or have used others to outcompete for resources and wealth. It is critical to remember that once again these types of people are not viewed favorably and there have been instances where these people do ultimatly lose everything they gained, but are unable to resurect the empathy to restore their prior, or normal ways of living. 
+
+Cooperation is the safest method of growing individual resources and wealth which benefits the cooperator, and the cooperator's community. Although these rewards can be overshadowed by the illustrious rewards given to those who compete against the community, it is cooperation that on average, results in the greatest quality of life. 
+
+   

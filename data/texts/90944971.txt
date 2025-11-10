@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b27b58b87a7db67c639bd9c6628c07b3639e0fc25bdda05084919a1189fdfd76
-size 1215
+Images and impressions have too much of an effect on people, because people almost always believe what they see. Most people cannot see underneath what they see on the surface, either because they don't want to or because they aren't able to. 
+
+If people see someone being nice, they will assume that the person they saw is a nice person. If people see someone being rude, they will assume that the person they saw is a rude person. They will not take into context why that person is being nice or rude. Perhaps the person being nice is just putting up a show for other people to see, so that they will think that they are someone nice, but in reality they are not nice at all, and is planning to not be nice when no one is looking. Perhaps the person being rude was just in response to the person who did something terrible to them back in the past, and in reality they are a very nice person to everyone else who is nice to them. 
+
+People just assume that everything they see and hear is the truth, without digging deeper for themselves and verifying whether what they see and hear is the truth or not. They just blindly accepts what is in front of them as the "truth."                                      

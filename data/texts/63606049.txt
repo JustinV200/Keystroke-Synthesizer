@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fb9d79bad86bf0e64b7cdf2a727265e614fd52e804c9f162c510a4e7daa7f5aa
-size 2048
+A philosophical battle that has gone on ever since Charles Darwin's On the Origin of Species is the importance of competition in the creation of various forms of life.  However, there are plenty of life forms that form cooperative symbiotic relationships.
+
+One might wonder if people succeed more by cooperation or by competition.  In the grand scheme of species on this planet, humans are not significantly different than many other life forms, especially the primates.  I think Darwin was right about survival of the fittest and I think that applies equally well to humans.
+
+One can define competition as never being satisfied with the status quo and always working to improve your lot in life.  Even if one doesn't have direct competitors, one can compete against one's prior self.  On the other hand, cooperation, as in symbiotic relations, is really just saying "this is good enough".  
+
+Sometimes cooperation can lead to good successes.  For example, the Apollo space program required the cooperation of engineers, scientists, technicians, mathematicians, etc., to succeed.  Obviously, the Apollo space program was a huge point of pride for the Americans.  However, there is only one reason why Apollo occurred:  competition with the Russians.
+
+A society based simply on cooperation is basically like socialism or communism and every country that has had that system has had to adapt or move away from that system to succeed.  However, this isn't to say cooperation is all bad, just like some countries, such as parts of Europe, have borrowed parts of socialism to provide a strong safety net with positive results.
+
+However, at the end of the day, the continuous improvement we see in life forms and the continuous improvement that we see in humanity is the result of competing against others in order to more perfectly use the limited resources that exist on this planet.  From the cynobacteria to the Apollo program to the Manhatten Project, competition has driven great steps forward in this experiment of life on this planet.

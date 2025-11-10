@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:63089460c8c254f35b37f650c03de8d53673161daf5313fbedd8a1a16cec1685
-size 1447
+What leads to true happiness? This is an age old questions that most humans ask themselves, and have asked themselves for thousands of years. While some belive that happiness can be found in the pursuit and attainment of a personal goal, I argue here that true happiness is a state that can be reached only when people focus on bettering society. 
+
+Why is making some substantial contribution to the world or society so essential to achieving happiness? While some in the world may believe that they are here solely for their own pleasure, I believe there is a fundamentally human craving to find meaning and value in life. This deep human urge compells most to seek in one way or another. This is an urge that can be satisfied in some way, and results in a profound happiness that one cannot get through simply pursuing their own dreams with no care for others in the world.
+
+Some nihilists may argue that the world has no meaning and purpose, and that we are here to serve our own desires. Although this may be the case, it seems a more difficult philosophical stance for the achievement of a deep happiness that speaks to the fundamental part of us that craves meaning. Meeting your own desires, if they are not for the betterment of society, may feel good in the moment, but this is not a happiness that last. True happiness, sustained happiness, comes from the satisfaction of feeling like you've done something meaningful for humanity.

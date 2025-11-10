@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:675ad93395dd07b0408f615e3f14f617b666c56473b198393ab26e1ee8aea546
-size 1589
+Some people think the best way to achieve success in the workplace is by cooperation, and some say competion is the best way. So cooperation or competition which is more effective to achieve success in the workplace? Both have a great amount of pros and cons. Yet both can help or hurt employees.  
+
+Cooperation in the workplace can help employees work as a team in achieving a goal in a timely matter. If there is a leader who knows how to incourage their team and all employees work at the same pace and work as hard as each other. This can also lead to not achieving the goal at hand. If the leader is too hard on their teammates, they can lose their respect and cause their team not to work together.
+
+Competion on the the other hand can encourage employees to work harder and more efficiently. As long as the competions are fair and just for all. However if the competions is only geared to allow the hardest working employees to win structure can fall apart. Such as employees will start caring less about their performance and may even quit.
+
+It is also possible to combine the two together. Maybe team the harder working employees with the slowest or weakest employees. This can help the weaker employees to see how to work more efficiently. By teaming employees together you can also make competions fairer for all. 
+
+In conclussion, there is no right or wrong answer to achieve more success in the workplace if it is fair to all of your employees. Fairness, fun and teamwork is the key to achieving success. Niether cooperation nor competion alone will achieve success.

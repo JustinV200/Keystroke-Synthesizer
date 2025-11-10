@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ee9178495630d8ff6265db3f47bb7460e546b816a81dd72e81beb4af4369411a
-size 1879
+People are subjected to images everyday. From morning to evening, we are often bombarded by celebrities and social media influencers who heavily curate a particular image they wish to convey. Do these images have any affect on our perception?
+
+The old adage, "It's all smoke and mirrors," bleeds through in just about everything we see in the modern world. All you have to do is scroll through your Instagram feed and you will find a stream of heavily edited photos of popular influencers and celebrities with flawless skin and perfect bodies. You will also find ads, whether through direct advertising or sponsored by social media influencers. 
+
+Evidence has shown that depression rates have been on the rise and many experts believe that the unattainable and heavily curated photos on social media have had a negative effect on people, especially young women. Beauty filters are now the norm on social media and accessable to anyone. With just a few clicks, a person can erase any "flaw" on their skin, shrink their nose, make their face more symmetrical, among many others. Then, they post this edited photo to their social media account, thus creating a domino effect of dissatisfaction, for both themself and others who see their photo, believing it to be authentic. This makes them compare themselves to others. There have been numerous polls and surveys that have shown that many people feel worse about themselves when they use social media, due to the unrealistic and unattainable beauty standards, due to filters and Photoshop.
+
+While many may disagree that they, themselves, have fallen into this trap, there is little to no doubt that we are living in a society that places image before ethics and we are most definitely affected by it. All one needs to do is open SnapChat and turn on their filter, post a photo and then look at all the likes and comments.
+

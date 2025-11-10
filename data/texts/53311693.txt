@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0384f564258aed458be516027503d729cd7fab2bedcb30d9fb6ae2c504f223c2
-size 1744
+Impressions form quickly and automatically. To have impressions -- about people, events, and the world around us -- is to be human. 
+
+Our impressions have profound effects on our subsequent behavior. First impressions about other people form rapidly, within seconds. If one meets someone and has an initially poor impression, that impression is determined by multiple factors. For example, aspects of a person's appearance, speech (accent, voice quality, etc.), demeanor, posture, attire, and so forth can drive an initial impression singly and in combination with one another. 
+
+First impressions form quickly, automatically, and implicitely, but they are maleable with effort. For example, someone might be aware that they are biased against those who speak with an accent (e.g., as being a non-native English speaker) because they assume that means they are immigrants and they have biases against immigrants.  With awareness of these biases, they might check their impressions and assumptions 'at the door', and tell themselves to set aside their prejudice, and take time and learn more about the person.
+
+Despite the potential mutability of first impressions, few people make the effort to become aware of their typical interpretative mindsets, which would necessarily precede changing them. Evidence of the rigidity of impressions is found in, for example, police violence against unarmed people that was based on the first impressions of those people.
+
+Forming impressions is one way that humans manage the information overload and the cognitive burden that characterize contemporary life. While the function of impressions is positive, to help us manage information, the consequences of those impressions are often negative.
+

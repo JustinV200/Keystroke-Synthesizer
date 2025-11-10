@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0790402016f8bd3fb12b22a8f44de077aeba3221ab818a1992f876751749a825
-size 1592
+In our world, people approach success in different ways. Some people believe that the best way to be successful is to collaborate, while others believe that competition is the best road to success. In this essay, we will explore this theme and explain why, while competition may yield short-term success, collaboration is likely to lead to long-term results.
+
+Competition is a powerful force in human dynamics. The internal drive to succeed, to dominate, to be the best is part of the human experience. Everyone loves to win, and a strong rivalry or competitive environment can drive individuals to success. But for every winner, there has to be at least one loser (if not more).
+
+In contrast, collaboration leads to long-term success for a team of people. While this success may not come as quickly as in a competitive environment, or feel as viscerally satisfying, it is ultimately a success shared by all participants. In addition, when more people are invited to work together and succeed, the resulting success benefits from diverse perspectives and skillsets. 
+
+Competition is compelling. It is sexy. To compete and win is one of our fundamental human desires. But the success resulting from competition is short-lived, as it relies on a single individual to carry the torch. By collaborating with others, many hands lighten the load.
+
+Ultimately, I believe that collaboration is likely to lead to more enduring success. A single ruler is only as strong as her rule, but a parliament of leaders can work to counteract one another's weaknesses and create true, lasting success.

@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d400fec16c75315e69ae509ae46d3cd21251fd90b453b319a68f994603ba6299
-size 1172
+Happiness, or finding happiness, in my opinion, should not be a personal goal for people. Happiness is a kind of feeling; it's only one of our many emotions and expressions. We feel it every day; even if other people think they don't. The smallest things that can make us smile, I believe we are already feeling happiness at that point.
+
+That said, I think it depends on the person what really makes them happy. Some people are likely to be happy when they focus on their goals, sometimes it's the journey to that goal, or the goal itself. And other people are happy when they see others happy, putting others before themselves. Although personally, I would be happy if I put myself first, because once I'm happy with myself, I believe I can make people happy. When I accomplish my personal goals, learned a skill, or build a relationship with people, that's what makes me happy the most.
+
+So, in conclusion, I would say that happiness depends on what makes the person happy, whether it's to focus on themselves or other people. But in my opinion, it's an emotion. It should be an emotion rather than the end-all, be-all. All people should be able to feel happiness.

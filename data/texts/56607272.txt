@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:526e1ba7836544833a6e5be11a8fa506a8d9e6a523b3e9d3adda3fb4a8972621
-size 2178
+The idea of cooperation versus competition has been debated for ages. Surely there are times and places where each path to success is best. However, people generally achieve more success by cooperation.
+
+One example would be in a department in a business environment. If there is a competent department manager and a skilled team, cooperation would make the department successful. The manager would bring leadership capabilities and would know how to capitalize on each team member's talents. The manager would also set expectations for a collaborative culture. The team members would offer their best ideas, aptitudes, and enthusiasm to projects. With such cooperation, the department could reach its business goals.
+
+Another example would be a basketball team. While the team would certainly be in competition with other teams, the team members must first and foremost cooperate amongst themselves in order to be successful. They would need to work together to carry out the plays given by the coach. They would need to communicate well on the court to be ready for passes or other moves. They would need to support and assist each other in strategies for scoring points. These ways of working together would lead to success during games.
+
+On the other hand, there are specific times when competition better leads to success. For example, there are game shows where individual contestants play against each other  in order to win. Here, cooperation with the other players could lead to a loss. Each player must engage in a competitive manner to succeed on the show. That being said, a game show is hardly representative of real life. It is rare to encounter a situation like this where true rivalry and competition are needed above all else. In the real world, people are much more likely to encounter cooperative situations like the business department or sports team mentioned above. 
+
+In today's world, people are highly likely to be in situations where collaboration is needed and expected. Although there are occasional situations where strict competition is favorable, the ability to cooperate with others is much more likely to result in successful outcomes. 

@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3dfe562cf74b922ae13cd09c25b73eb937f8a1b37d7690cef23cf4878d2ce059
-size 1427
+Competition and cooperation are two very different approaches to achieving the common goal of success. Some people are naturally inclined to compete and enjoy the thrill of hard-earned victory. Other people are better suited for cooperative effort, working together to accomplish significant achievements. Regardless of the approach taken, the end result of success is the prize. Which approach, then, is most effective to attaining that goal?
+
+Cooperation is the most effective means to success because of the variables in human beings. Not every individual is endowed with the same physical or mental characteristics to successfully compete. Consequently, there is no level playing field for competition that does not favor the strong. Cooperation can engender a sense of victory that is shared among the group. By working together cooperatively, everyone can be a winner regardless of inherent differences.
+
+Competition, by contrast, is often learned in childhood, one of the most common examples being sibling rivalry. Contrary to being a driver to success, forced competition may actually create a fear of failure in some people, a lasting deterrant that becomes a self-fulfilling prophecy for defeat. While competition can enable the strong to fluorish and be rewarded for their strengths, it can create a sense of personal empowerment which, though effective, can result in isolation and group exclusion.
+
+
+
+
+

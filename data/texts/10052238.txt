@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:70721e0e531017edb1ab1053bea147ba186903aec40881e37e676edacb2ed5c4
-size 1535
+In a world economy driven by capitalism, it may seem counterintuitive to focus on cooperation over competition.  However, it is joining together that yields the most financial success.  It is working with, instead of against people, that builds a stronger business community.
+
+For those who wish to argue that competition is the better approach, there are plenty of examples.  One is the self-driving car industry.  It became a race for companies to have their services widely adopted.  That race pushed technology further, faster.  But at the same time, it resulted in safety problems.  Pressure to win was stronger than keeping workers safe.  And the competition kept industries from sharing technology breakthroughs that could have saved precious time and effort--and maybe even lives.
+
+The spread of giant corporations like Wal-Mart illustrate the dark side of capitalist competition.  What begins as an open playing field, quickly turns into a monopoly.  Large businesses that argue for access into small towns, to compete with the smaller shops, eventually drive those shops into bancruptcy by underpricing them.  When all that is left are the big franchises, these locations are the only source for jobs.  Unfortunately, those jobs are lower paying, with fewer benefits or none at all.  
+
+Economies are stronger when businesses work together instead of competing against one another.  With cooperation they can enrich each other's growth.  They can embrace a community that works together, for everyone--not just a few. 

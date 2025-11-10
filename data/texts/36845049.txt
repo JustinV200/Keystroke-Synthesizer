@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:31866f89c6175f5e6885fca4a967430652ec5f258e7de20a05a2cba50b19a8f9
-size 1539
+In most settings, both cooperation and competition are required to have healthy progress. Cooperation in itself does not drive innovation. Competition by itself causes burn-out and. Despite these two, being cooperative is more beneficial than being competitive. 
+
+In today's age, cooperation means being able to listen to diverse opinions and thoughts and working together with a group of people to solve a problem. The strength of different perspectives drives better solutions compared to pure competition, where teams are pitted against each other. An example of competition leading to detrimental results can be seen in the case of Theranos. Elizabeth Holmes, in her mission to build a blood diagnosis machine, hired two engineers to compete against each other. In the end, one of the engineers decided to build something easier in order to "win". However, the end product did not live up to the mission of the company, and in the end, led to several setbacks and eventual bankruptcy. If an approach of cooperation were taken, there might have been more ideas and empathy so that the team could build a lasting product. However in the greed of competition, people were blinded by the mission and eventually failed.
+
+To reiterate the initial claim, competition and cooperation work well hand-in-hand. When both are at play, companies can generate healthy amounts of innovation while representing the diverse brand that the customers represent. However, cooperation is by far the more healthy path towards lasting accomplishments. 

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7afa7d8de6f6749930a27bd6cd18d5a6be9bf0f03d764d3c8e4d43bffc62a864
-size 1217
+Competition is part of human life which is a known fact. Many times people face competition when they are living their daily lives like going on job interviews to even playing competitive sports like boxing or football. 
+
+While competition is known to be valued in some ways like playing sports, cooperation has its benefits as well. People who cooperate believe in fairness and also don't believe in competing for things. Cooperating through tough situations also makes things run more smoothly and keeps stress levels down which is a great benefit. Cooperating is more healthier and doesn't cause a lot of stress, anxiety, or even high blood pressure for some. Competition has its limits for certain situations, but cooperating is the better choice if you are facing important decisions or even working a job. Competition can also have a setback at times because some people get too competitive which can lead to fights and cause really bad outcomes for any given situation. 
+
+Cooperation is a great stress reliever and doesn't cause a lot of major stressors in life. Competition can be fun at times, but many people will get more done if they cooperate more. Cooperation is the better choice of the two. 
+
+

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:554823748d030f5b485ce3ee71d76aa159c1455d8cab679f491a6c6ae21dbc9c
-size 1872
+Happiness is something that we all seek in our lives, yet we all have different definitions for it. For some, happiness means acceptance, love, friendship, hobbies, sports, and following their life goals. While others find joy in giving, and supporting their communities. I believe that true happiness comes from helping the community because it gives us a sense of purpose, especially since we live in such a divided and unfair world. 
+
+Our society is currently going through some tough times and many people are in desperate need for help. Those who choose to help are then rewarded with a sense of purpose. The thought of having achieved something is often what causes us to be happy, but achieveing something and helping the community also gives us a sense of belonging. On top of this, we make the people in need happy too. An example from my personal experiences would be comparing my volunteer work to video games. The main goal of any game is to win but the joy experienced from winning is temporary and lackluster. On the other hand, helping to sort and distribute books to children made me feel happier in the long run. Knowing that I made an impact and helped my community made me feel better than winning in a video game. 
+
+However, some might say that true happiness comes from seeing yourself achieve your personal goals. Although I agree that seeing yourself grow as a person brings joy, I also believe that aiding the community doubles the amount of happiness. This is because it makes the person helping happy, as well as the people in need. 
+
+In conclusion, we are happiest when we do something that makes us feel like we belong. Helping other people makes both parties happy and makes us feel like we have an impact in this world. Ultimately, we are social beings and helping one another and seeing each other grow is what brings true happiness.

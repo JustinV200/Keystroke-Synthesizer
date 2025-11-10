@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3ce66e94321532c8054481ff4ad244ab90711169e968ab32d73327a0e9490a9a
-size 1685
+While the idea that people achieve more success in either a cooperative versus competitive environment is more muted than other, "hotter" topics in this country, it is still a divisive one. Most of modern society instills cooperativeness over competitiveness in our precious children, and while both are inarguably important behaviors, which one achieves more success?
+
+To long to be more attractive, wealthier, and smarter than others is exactly what fuels us to achieve such things in life. However, these ideals are often taken to extremes, and can keep us alienated from others, or we may end up tirelessly running in place. On the flip side, someone who isn't looking to be more attractive, wealthy, or smart than anyone else, someone who isn't keeping score, someone who doesn't compare themselves to anyone else: they are free. That person is open to new ideas and critique, they are open to the fact that not a single person is perfect, but with cooperation, they can get close to ideal.
+
+In recent years of society, we have been taught to cooperate moreso than compete. The complete absence of competition is just as bad as the complete absence of cooperation, though; some people become content with how life is, and do not strive for innovation. Additionally, some people are intelligent, while others are abject idiots. You cannot take the good without the bad.
+
+I believe that you should be proud of your accomplishments and of yourself, and even your teammates. Accept and welcome other's input, and I'm sure they will welcome yours as well. Innovation takes more than one mind to meet its end goal, and it will never make it there if you shut everyone else down.

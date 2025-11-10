@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5eaf4aa6ac1fc44b1718e9702eba4643a4d98f8cbb843c25c2da3130584389ca
-size 2317
+Do images and impressions have too much of an effect on people?
+
+Images have always affected people but with the invention of modern advertising, mass media, especially social media, image has increased the effects on people exponentially. This phenomena has had a seriuos impact on society. It often leads to disastrous consequences.
+
+The most promient example of the influence of image has been through broadcast television.  Since its invention, a single image could be transmitted simulataneously around the world nearly instantaneously. This created a mass effect of common influence. The audience only had to react to a highly contructed image that may or may not be based in reality or truth. This influence was often used to change behavior or for people to take action that could be harmful to themselves or their communties.
+
+A second prominent example of the impact of images is in social media. A new platform for this kind of public interaction seems to pop up weekly. The consequences can be just as destruction as with the television example. 
+
+Images distributed through social media have the added dimesnsion on near unrestricted personal access at all times. The impact of images is also amplified by the effect of millions sharing them with each other simulataneously, creating a swarm effect. 
+
+This aspect of social media has led to instances of bullying, self-harm, harassment and even criminal behavior. Such imagery has the same risk of inautheticity as with television. Additionally, advances in super computing technology has made it possible for fake images to be nearly indistinguishable from real ones.
+
+Some argue that the benifits of the mass distribution of images far outweight the pitfalls and risks. The ability to share a common experience has facilitated creation of new communities and unleashed a new, robust economy that is open and free.
+
+That matters very little if malign actors can use images for dangerous, detrimental purposes. The power to manipulate can lead to exploitation, malfeasance and even death.
+
+While technology has allowed images to advance and improve modern society, such advances in image use must be tempered by the risks they present. It is the responsibilty to society to balance incredible benefit with what is helathy for everybody.

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e7123058f6e75455dd6607a270481be460692d5f60b17c6236dca97f1ac3b2ea
-size 1377
+  ''Sometimes one makes a powerful impression by saying something, but sometimes one makes just as substantial an effect by being silence, ''according to an English proverb. It's a tired cliche in an age when everything trully profound has already been stated. Our forefathers, who coined this saying, were giving a clear and powerful message to their descendants appearance and impressions are not the most important criteria in determining who we are as people. 
+
+  It also doesn't pass judgement on our actions. Indeed, our behaviours mirror our inner thoughts and determine which social groub we blong to. Our genuine horizon is what demonstrates our ideals in this world.
+
+  Impression can only provide people a hazy picture of a person we've just met, but it isn't necessarily unchangeable when we delve into the depths of a person's character and accomplisment.
+
+  Stephen William Hawking, a renowned theoretical British physicist known for his contributions to the disciplines of cosmology and quantum gravity, was diagnosed with amyotrophic lateral sclerosis, which required him to rely on technological gadgets to live. I was completely petrified when i first saw ''shocking'' image in my science textbook. He could only type on a computer with slight motions of his body while lying on the side of his wheel chair with a rigid smile on his face all the time.

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a27025820e92ed28fae0a7706f1b2d77a5bfcac45ac22893624ef1cc3109cb01
-size 1480
+Images and impressions are often deceiving.  As attractive or repulsive as they may be, they may mislead us and convince us to draw false conclusions.  In the course of our busy lives, it's tempting to take things at face value because we don't have the time to stop and analyze everything that crosses our paths.  That's unfortunate.  
+
+Just because something is outwardly appealing doesn't mean it has any true value.  A lousy product in a pretty package is still a lousy product.  An idiot in a business suit is still an idiot.  By the same token, however, that guy who looks like a bum on the street might actually have a Ph.D. from Harvard.  And that generic box of cereal in the black and white package on the grocery shelf might actually taste better than the name brand competitors' cereals.  
+
+There are those who think appearances are everything.  They claim that the way things look tell you a lot about those things.  If you buy something that looks nice, the people who created it must really care about it, they say, thinking also that things that are ugly are things that weren't worth anybody's time and trouble.  That's not always true though.
+
+Some of the best books I've ever read were the ones with the least atractive covers.  And some of the most interesting people I've ever known were the ones that didn't stand out in a crowd.  People and things just aren't always what they appear to be at first glance.  But that's what makes life interesting.  

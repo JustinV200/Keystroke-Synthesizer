@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fd9a94af1f77346547f52adb5474edcd538aa5ea6b9ef6f81da209d3c904e650
-size 2035
+People are very impressed by images.  This has been gradually shifting over the past few years.  With the rise of visual media, such as television, we are more attuned to visual prompts over written ones.  This makes us very easily mislead, as one can misjudge character and content more readily in visual media verusus written.  
+
+Since the earliest of times, we have evolved to process information.  Visual media was with us from the start, as the cave drawings made by earliest man can attest.  With the invention of written language, text become our primary means of communication, and information was transmitted via books and lesser documents.  As the mercantile class increased, this was an obvious way to advertise and sell wares.  Of course, text could be misleading, but one could compare the textual evidence to the visual and come up with a more comprehensive picture of the reality of the situation.
+
+Since the advent of television, we have abandonded text an rely on visual cues to for input and decison making.  As a result, use of text has been reduced to brief snippets and bites which can be easily digested.  This has been further exacerbated by social media, which by nature limits text and images to short, easily digestible material.  This has caused a decrement in attention span and information processing, and makes us more easily mislead.  In fact, the the mere appearance of quality has now become synonymous with actual quality, and we can be attracted by bright colors, flashy lights, etc. since our attention is so attuned to these cues.
+
+One only need to look at the rampant spread of disinformation and conspiracy theory to see how this has eroded the concept of generally accepted facts and fractured and regressed our society.    If we could return to careful textual analysis and thoughtful writing, even in with the bombardment of imagery that we are exposed to, we would be less susceptible to misleading information and less likely to be led down the paths of misinformation and despair.  

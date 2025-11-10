@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ca58dad12f93878400c567550070a7225ae734b3e8fc0d387b92b4fb83df3dfa
-size 1558
+Some people describe the best way to achieve success is through competition, as this can show a clear answer to who is the most successful. However, success can also be measured through cooperation with others. I believe more success can be achieved through cooperation.
+
+When working independently and competitively to show your level of competency and success, it is easy to see who is the most success based on actual results. While this is more clear-cut, it also can be misleading as competitions sometimes only focus on one aspect of something. A person may be very intelligent and successful in this aspect, but may lack or struggle in another. Through cooperation, a group of people can pool their talents together and create one outcome that could even provide a more successful result. By taking individuals with different specialty areas and collaborating together, the outcome can be stronger and more beneficial. 
+
+While competition can push individuals to try their hardest to prove themselves, as mentioned above it only measures certain areas of one person. By collaborating, many people with different skillsets can work together to reach one outcome that has many strengths highlighted rather than only one and lacking in others. This has been proven time and time again in any projects one might come across as it is rarely found that one person is responsible for the entire outcome, especially in this day in age. With this reasoning, it makes sense to conclude that people can achieve more success by cooperation over competition.

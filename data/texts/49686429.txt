@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:95daac22e13e9de7809ea10ad2a0bf71a9342bb6d12a6eeab91634a90789247f
-size 1336
+When it comes to success, it is posible to acchieve it through different means. Some people promote competition as the only way to achieve success, however, cooperation is a much more likely way to produce significant, lasting accomplishments.
+
+Competition is something that has been happening in humanity since the beginning of time - it's a natural instinct and behavior in humans. There are some people who are more competitive than others, and thrive from a competitive environment. However, this is not the case for everyone. Some people find competition discouraging, and become intimidated by competition, causing them to fail to succeed.
+
+Cooperation is also a natural human instinct. We need other people in order to exist and continue the order of the world. Working together with other people is helpful because people have different ideas, skills and talents to offer, and when pooled together, they can be used to achieve greater things than one would be able to do on their own.
+
+Although it is possible for some people to achieve success in a competitive environment, studies have shown that when people work and cooperate together, it is much more likely to produce significant, lasting accomplishments. The more we cooperate, the more information we have together, which can ultimately lead to greater success. 

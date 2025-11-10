@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9e32e728bd1292d9cd07882ad9b60f056536f1e4ed8098f42020673517e54c3f
-size 1584
+Humans are social creatures. We don't live in isolation, but always in interaction with others. These interactions can be of different nature: competition, cooperation, conflictual, peaceful, generate joy or anger... As the French philosopher Jean Paul Sartre stated: "L'enfer, c'est les autres". So we can wonder which type of interaction is the most fruitful, most successful.
+
+A first approach, supported by our experience in the domain of sport or business is to say that competition will push individual to train, to practice long hours and days to achieve a performance or objective. It will result in an improvement in a measured indicator, like time, height or speed. At the end, by competing with our peers we will be pushed to give the best of ourself, motivated by competion.
+
+On the other hand, one cannot win a football game without a team. One cannot achieve a great project by itself. Even in individual sports, results come from working with a great coach, a preparation team, and the support of our loved ones. The human species differs from its cousin primates that it can organize and cooperate on a large scale, with people we don't intimately know. To build the Great Wall of China, the architect didn't know all the workers, and workers didn't know each others. Though they were able to cooperate to achieve this great project.
+
+In conclusion, even if the basis of any competition is cooperation, and that competition is not possible without cooperation,  competition allows to improve results. Both of them are therefore needed to achieve great results.

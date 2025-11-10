@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2207148868e5ecd682bdf46038886ee4cda747a0bc76826f9f46ecd01d72e826
-size 1445
+ Competition and cooperation are two valuable skills that people need both to succeed in life. Competition is great to measure and test individual skills against the ability of others while cooperation is a great measure to test how people can handle constructive critism, and  the ability to change an idea in the admittance that another may have a better way. 
+ 
+ Where cooperation starts to succeed competition however is just in the fact that two, three, four heads are better than one. People have an unfortunate flaw in that they can't see something from all angles, from the past, future, and present all at the same single moment they come up with an idea. When you have a team of people working a singular idea however more problems are solved, angles looked at and it becomes a better idea in the long run. 
+ 
+ In these arguments are where I truly believe that cooperation is the only way to achieve long lasting ideas, products, or accomplishments. People independently are great but if you can get a group of independently great people to lay down their pride and work with a group of others there is no guessing what could be solved by this. This was the foundation thought of democracy and government however, it must be said that this group of independently great people must lay down their pride and accept it's not a competition but cooperation for great things to be realized otherwise you only have a great old mess.
+
+

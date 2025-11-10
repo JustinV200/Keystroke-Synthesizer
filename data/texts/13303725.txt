@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:02fbbbff154519d2f03f2b6b7bb05972c88790ef4b614aab8969bc5d385b228e
-size 1472
+In modern times, human beings the world over are bombarded with images from. They're unavoidable. Walk outside and billboards tower over you. Advertisements permeate almost all retail stores. And now, these images are found on social media apps an websites. Why are they so prevalent? What's the goal? Who benefits? And most importantly, who suffers? Images and impressions have too much of an effect on people. 
+
+Since the early 1920's, large corporations have used images and impressions in advertising as tools to take advantage of vulnerabilities an peoples' psyche. They realized how easy it was to manipulate the masses by attaching desirable images and symbols to their products. These symbols could give the impression that if a product was purchased, the consumer would reap the same benefits as those in the advertisement. The beauty indusustries use of highly edited photos of models to sell products is an example.
+
+Those who disagree may argue that, images and impressions don't have much of an effect on people, because they inherently don't have that power. It may be argued that consumers are at fault for being easily influenced, and not exercising discipline when engaging with images. While those arguments are fair, so much information about the effect of these images aren't presented to the public. And that's intentional. If more people were aware of the impact that imaging and impressions had, they'd likely be more responsible and vigilant 

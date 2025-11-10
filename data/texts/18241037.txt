@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:896cbe8b5560628355ae01006f09f34b5cc35acf51cc4dbd61fb1e62b74a1e94
-size 1742
+Everybody wants to find happiness. In modern society, there are many avenues to happiness, but certain paths are more successful and efficient than others. I believe the most optimal way to happiness is to persue one's goals. 
+
+Some people maintain that helping others is the best way to become happy. While I acknowledge that this is possible, I believe it's more essential to focus on one's own personal goals. By achieving personal goals such as academic or career advancement for instance, an individual can improve their own circumstances, develop a healthy self esteem and improve their overall mental well being. For example, a person may have career aspirations of becoming a doctor. He or she may then work their way through education, get a residency, and then becomes a doctor. Once they become a doctor, their social and economic status will improve. They will find themself feeling more capable and confident. And perhaps most importantly, they can find a sense of purpose and meaning in their life. 
+
+On the other hand, if a person chooses to focus on the happiness of others, they may not develop better individual skills or mental toughness. They may even end up feeling less happy or resentful that their economic circumstances have improved. If they instead had chosen to persue their own personal goals, they will likely end up mentally happier and also have skills that can help others. Their financial situation and social status may also improve.
+
+In conclusion, I believe people are more likely to be happy if they focus on their own goals. They will develop proper life skills and feel a sense of accomplishment. Once they achieve their own goals, they will also be in a better position to help others.
+
+
+
+

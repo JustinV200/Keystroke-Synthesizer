@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6ba4bc6734324e4fb8b4e9bae36bcb67f17bcaa780172b86ee6b05972986d052
-size 1193
+  Competition versus Cooperation can be an argument that many people have in the office, on the job, or just in school. Competition drives individuals to come up with different ideas where as cooperation can be a group of people working on making just one idea flourish. The value of success being determined with either the method of competition or the method of cooperation is what will be discussed in this essay. In my opinion competition has the opportunity to bring different ideas, which individuals will try their hardest to bring forth as the best idea, but cooperation has more people working together, rather than trying to compete with one another, 
+ which brings out a more precise and successful product or service. 
+Competition can cause people to be against one another and can bring tension to a work enviornment. If there were 100 people in the room that all needed to get vaccinated, competition in the work enviorment can cause the workers to move faster than they should and not being careful trying to be the one with the fastest time. where as cooperation brings people together checking behind one another making sure things are being done in an orderly fashion. 
+

@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ae2a104c2b5bdcc3bab0ef32629b9b2b22f7072b9ec8f8339f68823d43f6ab0b
-size 2193
+Achieving success is something all humans strive for. We set goals for ourselves and try to achieve them. However, there is debate on the best way for a group to acheive success. Some feel that pitting members of the group against each other in a competition is the best way to acheive success. By competing each person does their absolute best in order to win. Others feel that the best way for a group to achieve success is by cooperation. This allows all members of the group to contribute to the common goal.
+
+I believe cooperation is the best way for a group to achieve success. Cooperation means that no one person is one hundered percent responsible for the outcome of the group. No one person, gets "the credit" either. Instead each person is encouraged to contribute their own perspective on the problem at hand.
+
+In my experience, when people work together, ideas for solving a problem get shaped by multiple experiences. For example, if you are trying to build the ultimate house, you may decide it must have a basement because the house you live in has a basement. However, you may learn from a member of your group that where they grew up, basements would not be dry enough to use. They would be flooded and detract from the value of the house. This may lead the group in a variety of directions that include customizations for different climates.
+
+By cooperating, more ideas are explored, different perspectives and requirements are considered. In fact, during a brainstorming session hearing others contributions will increase ones own creativity by sparking new thoughts and ideas.
+
+People who favor competition may argue that there is no way to ensure all are motivated to contribute if they have nothing to gain. People will slack off and not try. However, in my experience, building a team of people who are all committed to achieving the goal is sufficient to motivate people to give their best effort.
+
+In conclusion, cooperation creates a superior solution when solving a problem. It allows more points-of-view to be considered that ultimately gathers more complete requirements, and sparks the creativity of team members through collaborative brainstorming. 

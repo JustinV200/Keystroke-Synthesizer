@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:64ac66c4b16a6b7f42060c629ace060d62290b66fcb3c801dc048ecedd2e9024
-size 1624
+I would argue that people achieve more success by cooperation rather than competition. While some would say that competition can be helpful and drive to motivate individuals to work harder, be more creative, and generally increase performance, I say that the opposite is true. Cooperation is the superior pathway to success, and having a competitive mindset is more harmful than helpful.
+
+Using competition as a motivator for success is, as its root, based in various negative emotions: jealousy, rivalry, and fear being just a few examples. These negative emotions are used as fuel to push oneself to perform better and achieve the goals at hand. In contrast, when using cooperation as a motivator and tool for success, the core emotions are positive ones: satisfaction, happiness, comradarie. I believe that motivation rooted in positive emotion is not only healthier, but also leads to better results when compared to motivation rooted in negative emotion. In addition, cooperation can lead to more creative ideas and solutions, because people are able to bounce ideas off of one another rather than being left to rely only on their own thoughts.
+
+Some may say that competition is a good way to drive people to success. While it is a valid method, I believe that people are able to achieve more success when using cooperation rather than competition. Not only is it healthier for the individuals working toward success, but the end result is more likely to be of a higher quality due to the mental state of the individuals working in a cooperative environment and the additional level of creativity that it enables.

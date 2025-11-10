@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:17f2e8fd9aaec90b40932830a8abf8a261cca27fd1f6b3698f2cac78a471443c
-size 1960
+Success is something we all strive for. Sucess is the reason we take on certain tasks, enter into certain situations, and begin a certain prolong journey. We never set out to become failures, instead we seek success and try to find the best way to achieve it. There are many paths to becoming successful. Some say you can't do it alone. Some say you can, and have. And with advancements in technology, borderless workplaces, and the rise of independant contractor jobs on the internet, it's time we ask ourselves: Do people acheive more success by cooperation or by competition.
+
+I believe more success is achieved by competion. Competition is the reason we gain new skills or sharpen our already existing skills. Steel sharpens steel and without competition we would relax ourselves into a state of mediocrity and thus our ecomony as a whole would suffer. Good, fair competition is the reason our good progresses into better. Its the reason our huts made from sticks and straw have became two-hundred story buildings made from concrete and glass. Competition is our driving force for innovation.
+
+Some would say if everyone works toward the same goal our goals will be accomplished faster. This may be true. However, if everyone works toward the same goal it would stagnate not only independant thinking, but also our variety of products/services and power of choice. Cooperation is important, but cooperation should be departmentalized. Departmentalizing cooperation will not only get goals completed, but each department would be in competition either with a rival department or an unrelated department within their own organization, thus increasing productivity.
+
+In conclusion, competition is a tried and true success method to acheive success in any area. Our planet was built on competion. Our species is stronger because of competition. And, without competition, our sucesses are hollow, uninspired completions we do, finish, and move on from. 

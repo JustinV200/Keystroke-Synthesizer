@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a886c4ed35c29bde0346d9e56226ddac503cbcfbf0d2911e30f94e2314b685a0
-size 2045
+Modern society should absolutely be criticized for being too materialistic. We seem to be living in an increasingly materialistic society as we head further into the future. It is my contention that society's obsession with money and material goods is causing a number of problems that weren't as prevalent in past times. 
+
+Materialism has undoubtedly had a negative impact on our environment. By prioritizing money and the endless production of goods, 
+we are placing a huge strain on the health of our planet. Earth is on an accelerated path toward global warming and rising sea levels as a result of the harmful emissions and pollutants from industries all over the world. On a micro level, by focusing on acquiring money and physical possessions humans are losing sight of small everyday experiences that can give them feelings of great fullfillment. Materialism only creates the illusion of happiness. True happiness cannot be achieved from money and physical objects, but rather by cultivating relationships with one another and by becoming more connected with nature. 
+
+However, it can't be disputed that materialism has had some positive benefits to society. Capitalism and the pursuit of money has been responsible for lifting millions out of poverty. Countries that embrace materialism tend to have a much higher standard of living than other countries. There is no better way to stimulate an economy than to give people the ability to manufacture and purchase goods at their discretion.
+
+That being said, the drawbacks of materialism still outweigh the positives. The negative impacts on the environment are undeniable.  The pursuit of physical things seems has certainly left people feeling more empty than ever before, and has certainly played a role in the mental health crisis plaguing the United States. There seems to be an overriding sense that if we can just have more money and own nicer things, then we'll all be happier. But to quote Tyler Durden from the movie Fight Club, "The things you own, end up owning you".

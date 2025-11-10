@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:86bc40882f40e48a1d03251d32fa118bda55cfdbcdee4d253d5bb2ee6c80d0e0
-size 1224
+Competition, we are taught at a young age, is healthy for us. It weeds out the weak and allows those who excel to shine. However, it also brings out anxiety and other debilitating mental blocks in some. Someone who may be a genius in a subject, may falter when having to compete with others. New ideas or ways to complete tasks may never be presented for use because when faced with competition, the person freezes and stumbles.
+Cooperation is also taught to us in our youth, but it is not the focus it should be. Many people working together to accomplish a goal or to solve a problem offers a multitude of solutions as well as many ways in which to reach the goal. People do not feel the pressure felt when competing with one another. Ideas are seen and can be improved upon without the need to be better than another.
+While successes are birthed from both competition and cooperation, cooperation allows for more people to combine their ideas and strategies for the best possible outcome. Cooperation works to gather the best ideas and solutions from many, thus incorporating the best solution. Competition may or may not give us the best solution, as some freeze up never to have their idea reach the light of day.
+

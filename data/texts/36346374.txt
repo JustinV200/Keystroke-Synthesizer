@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ea92b939d3f6a6048e2b95f28ef4b44271ca0c5421f6eafa9beb1a05cc1d1214
-size 1994
+In the modern world, much information is passed through infographic or meme form. This has created a new way to spread information, and, as a society, we must examine this form of communication. As they say, a picture is worth a thousand words, and memes have proven to spread their messages to millions of people. 
+
+I do believe this phenomenon should be studied now, in order to mitigate any possible damage in the future. We have already seen the political and civil unrest that has been brought about by infographics on social media feeds. In some cases, it could literally say anything -- not fact checked or verified -- but if it's in a convincing meme format, why don't people question it like they should? 
+
+It doesn't take much to see this in action. The genocide in Myannmar is a good example of this. In Myannmar, the military is hunting down dissidents, and normal, regular people are encouraged to help them, through repeated memes and images. Soon, these people feel no empthy towards their targets; their victims are effectively dehumanized through something an innocuous as a, say, gorilla. As long as the words are snappy enough, and if it gains significant social capital, that gorilla could eventually convince anyone to do anything.
+
+Of course, one can argue that the modern world is a fever dream of noise, pictures, communication, and wailing modems. It only seems natural that our information is packaged into meme form. Fact checkers exist, and they're always ready to make their case on the internet. Unfortunately, we live in a "post truth" world, and fact-checkers are often harassed to the point that they stop posting altogether. What is the fact-checker population going to be in a year from now? The truth-speakers are already beyond exhaustion.
+
+In closing, we must be vigilant of the new forms of communication that are essential to the internet. As a species and as a civil society, we have not learned how to differentiate good information from bad.

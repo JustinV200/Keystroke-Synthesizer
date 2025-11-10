@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8b3a97a2bb248880d4594f6166595f27ee0eeb057c1defb3df5a958c81ac33ea
-size 1529
+Some people say that images and imporessions have too much of an effect on people. I believe that this is true. In  the days where our ancestors were cavemen, the only way to tell what something was good or bad in a world of limitied knowledge was by its appearance. Large animals with big teeth were probably threats, so our ancestors would run away. Plant that bore fruit looked edible, so our ancestors would eat them. These actions caused the human race to develop their instincts based on what they saw.
+
+The human race today has not evolved as much as we may think it has. People still react strongly to the appearance of a person or item. Our reactions are subconsious in most cases. If you were to ask someone why they chose one shirt over another in a store, they likely would not be able to identify particular reasons. They would likely just have a feeling that one was more enjoyable to them than the other. This evolutionary residue may be what is referred to as a 'gut feeling.'
+
+Some may argue that for the most part humans are logical creatures, and that they are not as easily tricked by appearances as I have argured. But if that is the case, why is marketing such a profitable industry? Companies allocate large amounts of resources into trying to make a product look good so consumers will purchase it. This itself implies that making something pretty is the most successful way to ensure people want it. It can logically be concluded that images and impressions have a strong driving effect on people. 

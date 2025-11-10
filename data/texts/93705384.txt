@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3f677678cece8bf1700d7ae5d3daa137bafbf7112340aeecc6ec7cfdbd9dbec4
-size 1621
+In the corporate world, determining methods of maximizing the efficiency and effectiveness of one's workforce is of the utmost importance to decision-makers. The debate over whether collaboration or competion is the optimal method of getting employees to promote the best outcomes is rather contentious. While collaboration presents numerous benefits to corporate entities, reducing the possibility of discord and maximizing the efficiency of team, ultimately competition creates some many superior benefits to cooperation that it likely provides groups more success than collaboration would.
+
+Competition first provides individuals with greater incentives to work that might be lost under collaborative paradigms. Competition lets people gain the glory and rewards that are not ordinarily possible under collaborations. When an individual knows that they can achive recognition and financial incentives by performing by themseleves, they will usually prefer to get all of it by themselves rather than in a groups.
+
+Competition further probides the ability to provide a diverse group of ideas that can all be attempted individually. Groups oftentimes are forced to stifle some ideas by their very nature. Some ideas are mutually exclusive and cannot be attempted by a collaborative group. Solo individuals have no such concerns and have no fear of their ideas being suppresed by others, letting them be bolder and more aggresive. Such boldness permits a great possibility for seismic success. We should be prioritizing the chance for great wins rather than hedging our bets by prioritizing collaborative moderation.

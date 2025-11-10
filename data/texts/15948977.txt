@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cb7f020c25d9a6b624fb4f8bb715e3ac73025fe9eb9a68fb6f09273abd549329
-size 2823
+     There is debate in regards to success, and if it is better to be competitive or cooperative in order to achieve success. Some feel as though competiton encourages skill improvement and the desire to do better. Others feel as though it is better for people to get along with one another and be supportive in order to help each other succeed.
+
+     I assert that it is more beneficial to be cooperative rather than competitive in order to be successful. Competition can sometimes lead to hostility. When there is a lot of hostility the outcome can be bad, either for one person or for several. It can make others resentful of those they view as rivals, and if they are on the less successful end of the spectrum, they may feel as though they were bullied, or that the outcome is unfair. Furthmore, other stakeholders, such as customers in a business environment, or teams or schools in sports or other activities, may not want to be involved with individuals they view as too competitive. It may be viewed as rude, or as poor sportsmanship. The fun can be taken out of games and the workplace is no longer a place that people want to be. This is clearly problematic for the people involved. 
+
+     Counter arguments often make the case that competition is healthy and it encourages people to work harder. You improve yourself in order to better compete with others, and ultimately, to win. It provides the drive and the encouragement for success. If people feel there is nothing to work towards then they are less likely to try as hard. 
+
+     This counter argument for competition ignores people that may simply stop trying if they feel as though there is no chance for them to win. In this case, they are not bettering themself and in fact, may do more poorly because they no longer have to desire to try. Furthermore, they may feel intimidated and do more poorly on tasks because they are nervous. Not everyone responds to competition in the same manner. Some people are more outgoing than others. Moreover, it is almost inevitable that cooperation will be required, in some form or another. Considering this, there is no reason both competition and cooperation can't coexist, but because cooperation is needed, it's better to focus on it.
+
+     In conclusion, considering that cooperation is already needed in some form, both in and out of the workplace and in all areas of life, it is better to be cooperative than competitive. Working in cooperation with others helps to ensure that everyone is comfortable and they help each other to be successful. With cooperation people can help each other learn new things and better themselves with the help of others - rather than feeling nervous or like there is no reason to try when confronted with a situation they feel as though they won't win. 
+
+
+        

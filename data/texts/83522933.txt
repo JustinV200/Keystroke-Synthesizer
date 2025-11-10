@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7e0fa81b7cf39c06cc000f335d93097efd86b26463ee802df724fa6ade67149a
-size 1475
+     The following essay is to achieve a consensus on success.  Is it better to be more competitive or to cooperate with others to achieve goals?  By going alone do you get more success and thus more rewards?  In other words, you will get all the credit while others may claim the credit by cooperation on doing the task.  This also depends on how each individual sees success.  Answering this question is the theme of this essay.
+
+     What is success?  Is it fame and fortune?  Is it higher pay?  Is it self gratifying to be better than others?  For each person this could be different and also include all these questions.  For myself I believe that success is completing the job and doing it well.  If it requires help from others to make sure it is successful then I'm fine with the help.  If others later try to hog the credit it will be annoying but the ultimate goal is to succeed and finish the task.  In that way we will get paid.
+
+     So in conclusion.  Success if done alone will make the person take the credit or failure of the task on themselves.  The reward could be greater but the risks are even worse if you fail to succeed.  In most businesses in this world the usual motto is team.  If the team wins the company wins.  When the company wins the company gets more work and the team wins.  With more work there will be more chances of advancement.  There will be more chances of better pay.  So team work is the key to most successful companies.
+
+

@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e98dc2277279b387763668bb15539506c0034e6e6d9f2b4e1cbf72dc786e4a1e
-size 1397
+People achieve more success by competitions, because when people have competitions to go up against, they will work harder to better themselves. If there is a prize to be won, then people will work harder against the people that they have to go against to win that prize, because if they lose they will lose it all, but if they win against the people that they have to go up against, they will win it all, and everyone wants to win.
+
+On the other hand, when people are cooperating with each other, it doesn't really matter who wins in the group, because if one person wins, then everybody in the group wins. So that doesn't really influence everyone to try their best because everyone will be looking at someone else to work harder, as they don't want to put in the work themselves. That means that everyone will slack off, and thus the success of the group will go down a lot because no one wants to work harder than the person next to them. 
+
+In conclusion, when people have a reason to work harder, such as a compensation, or a prize that they will receive if they manage to win, then they will try their hardest to achieve success, no matter what. But when people have no reason to work harder, because no matter what they do, the compensation, or prize will be split among a group, then everyone will be trying to work less, and looking for somebody else to do the majority of the work.

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:17e2f77f55088225514cad1c0f8675652d09f0df826a1c0e255628594b5ceace
-size 904
+For the majority of individuals, we share the common goal of achiving happiness. Just as each individual is different, the method each individual uses to achieve happiness may vary. Often, there are two opinions regarding happiness; that either achiving goals for themselves is the most effective way to obtain happiness, or, that achiving goals for others in the community around them is the most effective way to reach the greatest personal happiness. From my perspective, I achieve the greatest happiness when I combine both schools of thought.
+
+I often set a goal for myself benefits me personally and then after I have achived my goal use the lessons I learned from the endevor to help others achieve their own similar goals. I find that after helping myself and then others achieve their own goals usually leaves me with the most satisfaction and happiness.
+
+Although some may argue that 
+
+

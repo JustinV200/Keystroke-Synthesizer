@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b0834a13a3a506402016506d7555e242be953379fb3312dde984e577afb0709f
-size 2674
+The duality of competiveness and cooperation isn't something most people tend to ponder or pontificate as a driving force for being successful. Can success be better achieved using competitive spirit, or is cooperation more suitable? In order to answer that question I think we first must look at what success is, how we define it, and how to quantify it.
+
+Success to me is making progress on a goal, and ultimately achieving it. With that in mind there are merits to both schools of thought when you measure success and I'd like to touch on their strengths. 
+
+Competition has a whole different feel and range of emotion compared to cooperation. It touches on something more primal, where the pressure is individual and you either fall to the level of your training and experiences or you rise to the occasion. Pressure can make things crumble, but it can also form diamonds. Some things break, some things bend, but some things are tempered when going into a trial by fire.
+
+Cooperation on the other hand is less individual based, and much more team focused. If you think about a thin long brittle twig and how it is easily snapped by itself, you can see the principle of cooperation and its benefits come into play. The more long thin brittle twigs you put together, the harder it is to snap. Given sufficient amount of twigs it becomes far stronger and resilient if you try to break them all together it becomes exponentially more difficult. The singular becomes the many, supporting one another to make something greater than the sum of it's individual parts.
+
+ If you look at something which compiles both cooperation and competition for definitive pinnacle ability, let us consider chess engines. "Mu zero" was developed a few years ago from scratch with the premise that enough simulations it would be able to beat any human at chess without any issue and even compete against other top tier chess engines. The most impressive part of that isn't the result, but the method used to achieve it. It wasn't programmed to know anything other than if a move is legal, and if the game was won or lost. A beautiful combination of cooperation in the form of data and competition in the form of simulations gives wildly successful results.
+
+I believe that success can be achieved under a myriad of circumstances, and the effectiveness of competition or cooperation vary from person to person. However because cooperation is capable of using the sum of its parts to form something greater I believe that is "more successful" than individual success. 
+
+Driving force is compelling, but we're looking at achievement as the indicator of the highest level for success.

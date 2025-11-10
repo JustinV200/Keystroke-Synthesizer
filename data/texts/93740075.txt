@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ae4a87e2fa5a7d2fe1dbaf4434a59691a9e3d2122a9366088715fb1ba4fbfbdf
-size 1610
+In today's society, images and impressions have too much of an effect on people.  People are drawn to flashy packaging, elaborate advertising, and the need to look like something they are not.  While the product may not be great, people care about the status it may bring them and are more likely to gravitate towards those things that "scream" they are better than the rest.
+
+A false reality has become all too popular, with the main cause being social media.  Our current society is growing up behind a screen.  A computer or phone that allows you to photoshop things to look the way you want, filter a picture if it's not your best day, and a place to speak your thoughts without ever having to face someone in person.  Social media allows you see what appears to be the best of someone, when in reality you are only seeing the parts they want you to see.  Products and advertisements have taken on this same false reality.  A product can tell you that this celebrity uses it, or it solves this problem and with enough convincing, make you believe they are better than the rest.  Society today cares more about the image they can portray, than about just being themselves.  
+
+Images and impressions have too much of an effect on people.  This can be seen in the false realities people portray on social media.  The negative effect can also be seen in the increase in suicide rates.  People willing to take their own life because others have made them believe their life is not one worth living.  Our current world could take some tips from the boomers that grew up in a world before screens took over.

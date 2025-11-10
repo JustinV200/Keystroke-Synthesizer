@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:54b899c7c8bec085278c56353ddc64989121e7e3c0ce97c35ad64b5d842d080e
-size 2054
+Human beings use different techniques to accomplish goals and achieve success, whether self-defined or socially recognized. In the United States, where capitalism is abundant and success is often measured in terms of work advancement, wealth and accumulations of things, not everyone is motivated by competition.  
+Cooperation, especially in the form of collaboration, makes for an alternative and highly effective approach to achieving success.
+
+There are three main reasons for this: the possibilities of stacking knowledge from multiple people, the increased amount of perspectives regarding challenges and solutions, and the minimizing of the learning curve in the achievement of a goal.
+
+Let's look at some examples. Two people decide to compete to see who can attain Japanese language proficiency in the fastest amount of time. They can choose their own resources, use the internet, ask friends and family, but cannot engage in any tutoring or conversation practice with another speaker. Both people are essentially starting from zero and trying to attain fluency. Now, compare that to a small group of native English speakers learning Japanese. Instead of competing with each other, they are using collaboration and cooperation in and out of class. They decide to form study groups, go to Japanese restaurants to practice their conversational skills, and trade notes from class. When one student doesn't remember the translation of a word, a fellow student may recall and offer the answer, and both continue learning. They are not only building on their own progression but the collective progression of their peers.
+
+Another example of this exists within the startup business culture. Startups, by nature, have to be collaborative and cooperative. Yes, they are competing with other companies. But within a startup, with a footing that is not yet steady, competition within its ranks will cause it to become fragmented. The parts of the whole need to work together in order to form a foundation for running a successful company.  
+ 
+
+

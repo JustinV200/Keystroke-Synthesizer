@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0d57f475c61d27af2e98620dc9c57d0bab88343c7975f33ce86fd5495899ae3d
-size 1455
+In today's world, people are constantly bombarded with information. It has become extremely tough to sift through all the information to come to any proper conclusion. Considering we also live in a world with constant deadlines, priorities and responsibilities, it is no wonder that any type of image or quick ad we see leaves a massive impression on us, since our attention spans have dramatically shrunk in previous years.
+
+Before social media, information came at a somewhat snail's pace. People would hear news from a friend or a newspaper the next day. We may not even know when an important event is coming up until it passed. However, today, people now have smart phones, social media and 24-hour news channels. Information flows easily like a river. But with that comes massive implications for things to be done quicker. Everything is easier today than it was ten years ago. We can send files quicker and talk to people around the world in a blink of an eye. With all that, our attention spans have decreased and we no longer can assess information like we used to. People have too many things to worry about. So, if we see quick ad on TV or a post, we do not have time to really dig deep into what it really means. First impressions have become the only impression. Therefore, these items now have a ton of effect on people, since people no longer have the time to think.
+
+On the other hand, it very much depends on the person. Yes, people

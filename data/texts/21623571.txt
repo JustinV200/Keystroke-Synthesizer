@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1cfb7e72d7d44c095c3707e61c74bb761b673a205d0970db705bf6e1e31d8a37
-size 1305
+Images and impressions often have too much of an effect on people.
+
+Over millions of years we have evolved to trust our senses and to react quicky and instinctively to what our senses percieve.  It is only in the last ten or twenty thousand years that we have developed significant cognitive ability.  Not only does thinking about things take more time and energy, but we are wired to strongly respond to what we see.  It takes conscious effort to pause and consider and reason.
+
+Some would argue that our instinctive reactions are not necessarily a bad thing, and certainly in many cases that is true.  Unfortunately, it is too easy for our instincts to be manipulated.  Too often those who produce physical products or media messages take advantage of those unwilling to invest the time to deliberate on the true nature and implications of those products or messages.
+
+While it is quite evident that images and impressions can in some cases disproportionately affect us in negative ways, it seems that there is not a great deal to be done about it.  We should certainly endeavor to make the effort to think things through and take the time to deliberate on what we see, but until or unless our evolution gives us cognition which reacts as quickly as our senses there is little that can be done. 

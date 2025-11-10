@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:707e41ea995f01a7e4a2e8fbd7e38aba5af6c9a55cb2c561e7ecf05ccab7f3c0
-size 1322
+Success in any area of life is best achieved through competion. Whether in the classroom, the sports arena, the workplace, or the marketplace, competion is what drives individuals to reach their highest potential.
+
+We humans are driven by self-interest. Self-preservation is a deep part of our DNA and has been a crucial element in our evolution. All of us have a deep interest in preserving our safety and well-being. To that end, we all seek to be winners in every indeavor in which we find ourselves.
+
+The reason for this is clear: above all else we want to stay alive and be happy. Fortunately, just staying alive is easier than it has ever been in human history. Modern life (at least in the developed world) has made staying safe from preditors, staravation, and most disease a thing of the past. Happiness, on the other hand, remains elusive. 
+
+To achieve happiness, we must achieve success doing in areas in which not all people can be winners. While life is not totally a zero-sum game, in many situations, it is. There can only be one class valedictorian, one Super Bowl winner, one top salesperson in each company, etc. 
+
+The reason the best in any field IS the best is that they won out over others competing with them. 
+
+In conclusion, competition is the fountainhead from which all success flows.

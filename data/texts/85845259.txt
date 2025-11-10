@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:70337ef630473a394a32badd081258ebe61b2079042a1bed6a5d45c1fda6a718
-size 1869
+Humanity has advanced throughout history by competing and cooperating with their fellow man. While there can be benefits to healthy competition, it is through cooperation that we've been able to achieve our greatest successes. By working together, we can achieve far more than we would alone.
+
+Some of our greatest scientific achievements were the result of teams working together, refining results, building prototypes and iterating until they succeeded. Edison alone did not make the lightbulb. It was the result of dozens of scientists' countless hours of labor. A single person simply wouldn't have been as successful. They would have been able to make glacial progress by comparison. Nor would those scientists competing have accomplished the same thing. They wouldn't have shared resources, ideas, or designs if the lightbulb were a prize only one person could win.
+
+Success can even be measured by how many people we can persuade to join a group. A political party, for instance, succeeds based on the number of people who are associated with it. A great business is seen as such if it employs many people. Compare this to someone working by themselves in a garage. While an isolated genius is romanticised in media, the simple truth is that there is only so much work one person can do on their own.
+
+As an alternative, competition can bring out the best in those with a sporting spirit. However, the same competative environment that allows some to flourish can also bring out toxic traits that are incompatible with success. A salesman who lies to his clients isn't a success, but he may be tempted to do such a thing if it means getting first place in the sales competition and the bonus that comes with it.
+
+In conclusion, while we may achieve on our own, we achieve more when working together. For humanity, we are more than the sum of our parts.

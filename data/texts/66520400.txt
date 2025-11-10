@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4bbed26152b2c8813f00481d01644c7986a50002fa056d6a50c0a1cc40e98407
-size 1215
+Life, liberty, and the pursuit of happiness is so quintessential to the American experience that it is part of the Declaration of Independence in the United States. However, we do not all agree what most contributes to the happiness of individuals. Some people think that individuals should focus on their personal goals and others think they should focus on the happiness of others in order to maximize their individual happiness. 
+
+Evidence shows that most people are happiest when they focus on the happiness of others rather than focusing on their own individual pursuits of personal goals. Humans are social animals who have evolved to live in communities. Communities function best when everyone is best trying to serve one another. To be a highly functioning society, people must act in service of and for one another. 
+
+Often our own personal goals are not maligned to the benefit of society. Anyone who has had a family is so aware of how making others happy makes you happy. The joy you may see on your child's or spouse's face when you have done something nice for them is unparalleled. Additionally, achieving your own personal goals feels totally meaningless without anyone to share it with. 
+
+

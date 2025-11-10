@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:77a1dbdf975016ba463ee76a660bfad0f93713a842a0bef77b8f856a28faca92
-size 1438
+Whether in work or in play, competition has long been promoted as a means to success. However, stiff competition has its drawbacks, mentally, physically and emotionally. For this reason, cooperation is a better avenue to success than compeition, as it fosters a more well-rounded character but still produces results.
+
+This isn't to say competition is only negative--quite the opposite. For many people, having a goal to achieve or a title to win is a significant motivator, especially if it means keeping someone else in a lower status. For these highly-motivated individuals, no task is too great to overcome in the name of winning. However, having a winner necessitates having a loser, and for that loser, competition may feel disheartening. This may lead to fewer attempts at competition in the future, thereby reducing even the chance of success.
+
+Cooperation, on the other hand, does away with winners and losers, and instead focuses on teamwork and the communal achieving of a goal. The focus is not on rank or heirarchy, but rather on growth and learning. Without the pressure to win and the fear of losing, burnout and fatigue are less likely to inhibit success, especially when one has teammates to lean on for support.  
+
+In conclusion, competition may be a motivator for some, but is necessarily discouraging for others. Cooperation, in contrast, does not leave anyone behind, and helps all involved reach their goals.

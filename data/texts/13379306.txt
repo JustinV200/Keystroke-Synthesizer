@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:73c2e414cde284ad3b493f9169ff0f50b3e0051a7713c2c1c1bd464f8e9d3d61
-size 1662
+     There are two schools of thought of that can bring true happiness in a persons life.  On one hand, some believe that one's own fulfillment of personal goals and desires leads to happiness.  Others belive service to others leads to a more fufilling life.  In this essay I will assert my position that serving others is the way that I belive will lead to a happier life.
+
+     In my personal opinion, I believe that living a life in service of other people leads to a happier, healther life.  I am a father of three children.   I find it far more rewarding when I am able to guide them through their life difficulties than when I have my own personal success.  An example of this would be when my son went into 6th grade and was deciding on an elective activity.  I stongly encouraged him to pick marching band even though he did not really want to.  Making that decision turned out to be the best for him.  He developed a passion for music and now plays multiple instruments.  Helping him make tha decision turned out to be extremely rewarding for me.
+
+     I can the the other side of the argument, however.  Some people belive that acheiving their own personal goals brings true happiness.  I set a goal for myself about a year ago to score below 90 in a round of golf.  After much work I was able to achive it, but felt somewhat empty afterward.  The it felt wonderful but only temporary.  The next day I wanted to go back and try for an 85.  
+
+     In conclusion, I belive that living a life in service to others leads to a more fulfilling life.  Achieving one's own goals can lead to temperory happiness, but typically not lasting satisfaction. 

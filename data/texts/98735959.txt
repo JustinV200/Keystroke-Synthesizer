@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:845d535ee1001f6767048ef9b6b17618aafb4afca96461fb9820b1d81d4f1496
-size 2844
+Cooperation gives better results both when performing a task, and after the task is complete. A group of people working together can support each others' strengths and make up for their weaknesses. Moreover, this group has gained valuable experience working together; they'll be able to cooperate more effectively in the future. A member of a cooperative group has learned to evaluate their own skills and the skills of others. It's an approach which builds on itself, and has benefits which outlast any specific project--and even a specific cooperative group.
+
+Competition, however, is a short term goal. By its nature, a competitive approach means attempting to exceed the performance of another person or group. A competitor's measure of 'success' is whether they've exceeded a somewhat arbitrary standard of comparison. That can lead to underperformance at the task. A competitor may ease up on effort once this measure has been exceeded, and the standard they're striving to beat may be far lower than what they could achieve without a comparison.
+
+The competitive outlook does have benefits. A person in competition may strive to achieve a goal which is out of their reach, and in doing so, improve their own capability by the effort. Unfortunately, even with superlative performance, they may consider this effort a failure, because they haven't won. A competitor may feel a thrill of victory at a success, and be depressed by failure. Achieving a very good result may nonetheless feel disappointing. It makes success or failure a binary condition--have I won or have I lost?--rather than focusing on the outcome achieved and the skills learned. In being obliged to rely entirely on themselves, a competitor will also identify weak points in their own skillset, which may help them in future tasks.
+
+The benefits of a cooperative group come at a cost. Additional effort must be made in communication, organization, and managing conflicts between different personalities--effort which could otherwise go into completing the group's goal. Such a  group can also be sandbagged by a member who isn't putting in the same effort as the others. However, learning to manage these problems can have long-term benefits by improving the speed and quality of the work the group can produce in the future. It can take time to arrive at a solution which is workable for everyone.
+
+A mix of approaches is probably ideal; competition for small projects and very short term goals, and cooperation for large projects and long term goals.
+
+Still, if one was obliged to choose just one approach to use for all times and all purposes, cooperative work is the superior option. It shores up strengths, covers weaknesses, allows members of the group to take breaks, and gives a valuable skillset of teamwork skills which are useful future endeavors.

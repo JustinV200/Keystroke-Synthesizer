@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:33cee56634648060cf0f5c695144cf59816d92fcf661c861e514a5ae3c8903b9
-size 1651
+They say that the way to eat an elephant is one bite at a time, but that time will go by much faster if you have others to help you finish. Society generally focuses on competition, just look at the broadcasts for the Olympics and sporting events. Some schools may promote student rankings as a way to motivate, and even the so-called "free market" is based on the idea that competition will promote greater success and ingenuity. However, cooperation achieves much more than any individual can.
+
+Cooperation was the basis for early societies. We needed to come together, cooperate, and share resources in order to survive. Cooperation is at the heart of "Social Contract" from the Enlightenment period. Currently, even the best athletes in the world cannot achieve titles all by themselves. They need the cooperation and determination of their teammates to help. Even if it is a solo sport, there are coaches and support systems built in to place which cooperate together for the success of that athlete. The Amish are able to build barns at an exceptional rate for other farmers just by cooperating and working together. A solo competition for the fastest barn build would still be much slower than the Amish community working together.
+
+However, competition may promote more outside-the-box thinking than cooperation. In cooperation, you need to agree and work with the majority. In competition, you only need to agree with yourself and your work may be more agile and more responsive to problems. Ultimately, you will hit a snag and need to lean on others for your success. For these reasons, people achieve more success through cooperation.

@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eeeb123a17593b3e57b58747c8efafa52982f503814c2689b34b00a512076578
-size 2287
+Notions of happiness come from various sources depending on the individual. Some people find happiness in pursing their own personal goals and others find happiness in focusing on the happiness of others. While it is possible that people can obtain happiness by focusing on their personal goals, I think people are more likely to be happy if they focus on the happiness of others. Notions of the eastern philosphy of karma support this claim. 
+
+In the simplest of terms, karma is the idea that if a person acts in a bad manner, then it adds badness to the world which will ultimately affect the perpetrator who is an actor in the world that was made less good by their act. On the other hand, if a person acts in a good manner then it adds goodness to the world which will also affect the person who commited the good act. Based on this simple definition of karma, if a person focuses on the happiness of others by contributing to the improvement of humanity, then they will ultimately be contributing to their own happiness as the person is also part of humanity. 
+
+It is entirely true that a person may not immeditely benefit from their efforts to improve humanity. For example, a rich person may donate to a food bank. Their happiness in this situation would be derived from knowing that they helped a less fortunate person. Whereas a person who cleans up a local park is both helping humanity and also benefitting from having a clean park. 
+
+A limitation to this stance involves the unique characteristics of the individual. A person who sees no value in altruism or places the idea of the individual over the idea of commjnity as more important may be more likely to be happy if they focus on their personal goals. Since happiness is a subjective notion that depends greatly on the individual, it can be said that people are equally likely to dervive happiness from personal goals or from the happiness of others.
+
+Despite this counterpoint, I strongly believe people are more likely to be happy if they focus on the happiness of others because of karma. I find this to be true even if the benefit isn't immediately seen or felt by the proponent of good because the world will ultimately be a better place due to the good act and everyone benefits from a better world.
+
+

@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b4d871de99fdec663db094c900042e3c6a8b05b2c141d7e9b22c05748f7ab219
-size 2365
+"Life, liberty, and the pursuit of happiness" are the fundamental rights underpinning the Declaration of Independence, but it is up to each citizen to determine what makes them happy. Is it happiness from focusing on a personal goal, a dream for success, or is it happiness derived from making others happy by improving their lives? While they may appear to be in opposition, these two positions are not incompatable. People are more likely to be happy by having personal goals that also comport with improving other peoples' lives. 
+
+One's career choice can combine these two "happiness tracks" in a variety of ways. For example, a medical career would allow you to pursue a personal goal involving some self-benefit, such as achieving fame and fortune by finding a cure for a deadly disease, at the same time as you would be serving patients and helping them to live healthier, longer lives. The satisfaction of treating sick patients and improving their quality of life would bring a special kind of happiness along the way. 
+
+Another example of a career that can combine the pursuit of happiness for the self and for others is that of a teacher. Teachers serve society as a whole, helping their students to become better informed citizens and obtain the kind of knowledge and skills to get jobs and be able to live successful lives in which they pursue happiness to their fullest potential. Yet they are also continually learning and finding new ideas and information to incorporate into their lessons as well as new methods to use in the classroom; indeed, this is often what keeps teachers engaged even when their pay is low, students may be unappreciative, and hours are long. 
+
+Some may say that there are risks with devoting oneself too much to others' happiness--that one can focus so much on trying to make others happy that one ends of neglecting one's own well being. And this is certainly a danger. The key is balance: one must continuously pivot between self-care and the care of others, recoginizing that the ability to serve others begins with taking care of yourself.
+
+In conclusion, the pursuit of happiness is not a zero sum game. One can seek happiness with social and not just individual goals. As many doctors and teachers know, it is possible, even probable, to combine one's own achievement of happiness with making others happy. 

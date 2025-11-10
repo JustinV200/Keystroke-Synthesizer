@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b84f563f6048e26cfcfb0915e7b320cfbc3d89da00f845c65a4a95b17dbea4ca
-size 2578
+There are differing opinions on the question whether competition or cooperation is better to achieve success.  Valid arguments exist on both sides.  
+
+However, all great successes in the course of human civilization have depended upon cooperation.  In mathematics and science, the great advances have been due to individual efforts and genius, often in a context of competition.  But it is clear that each advancement is built upon the previous advances and, viewed in total, the canons of academic progress are great examples of human cooperation.
+
+We also recognize the value of the team in motivation and success.  Individuals are not just competing, they are part of the team and they work hard to enhance the team success.  This idea is promoted in contemporary corporate thinking, where we see teamwork promoted in various ways.
+
+When individuals cooperate, one person's success can be immediately replicated by a cooperating person.  One person's abilities are enhanced by the abilities of another.  The diversity of ability implied in cooperation provides the tool to overcome diverse challenges.
+
+In fact, practically, every human endeavor is a team endeavor whether it is a development in science or production of commercial items in a factory or anything in between.  We depend on one another.  
+
+In the case of individuals addressing small tasks in their daily lives, there is usually no inference of competition.  There is almost always some degree of necessary cooperation.  We often tend to abstract ideas like success into "macro" worlds such as athletics or corporate environments, but a better idea of success might be the small victories in our daily lives.  A couple maintaining a home together do not tend to compete but to cooperate in all matters.
+
+It is true that human beings have a competitive nature and are driven by that competitive nature to work hard and achieve.  We see this in athletics and in the case of individuals striving for corporate advancement.  But even in these cases, we see that cooperation is ultimately the key to success.  Indeed individual success depends on group success.  In college football, for example, the best player is not necessarily likely to win the Heisman trophy if his team does not succeed.  An individual may advance in his corporate position but ultimately receive less rewards if the corporation does not succeed.
+
+While competition may drive an individual to harder work and preparation, cooperation, not competition, is ultimately the key to success, no matter how we define that success.
+

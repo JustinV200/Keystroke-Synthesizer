@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6421b285a7ebe15ab9a21c6de3e420590d77adaaeb7dcf58602c00bd99601f9c
-size 1839
+Let's examine this conundrum: is the goal of success more highly reached by cooperation, or by competition? I would maintain that the answer to this lies in the purpose of the success. Does one wish to win a medal in, say, a ski competition? Or does one wish to climb the professional ladder to achieve higher status and pay?
+
+If one is competing in a sport in which personal achievement is the focus, competition should be the driving force. Certainly, one must cooperate with the personal trainer and teammates prior to the competition. One must cooperatively wear the uniform, acknowledge the perameters set by organizers, do what and be where instructed. But the end result is reached through the sheer force of individual competition. 
+
+If one is working toward a specific professional outcome, be it personal or universal, cooperation with fellow workers is crucial. One's success in a thriving company is the company's success, and lays a groundwork for the success of others. Most of us have experienced the selfish me-me-me coworker who claims credit for things completed by several, leaves his cooperative compatriots in the dust while focusing exclusively on his own projects, and has no problem throwing others under the bus. He may get to where he's going, but at the expense of company moral. Indeed, he may change the trajectory of the company for the worse, just through his own thoughtless deeds in reaching his ambitions and establishing a path others may feel is fine to follow. Conversely, if he reaches his pinacle with the aid and cooperation of others, his coworkers and subordinates feel invested in him and in the company. All for one and one for all.
+
+In conclusion, the purpose of the hoped-for success (personal or shared achievement) determines whether one proceeds through competition or cooperation. 

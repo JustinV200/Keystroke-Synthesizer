@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4b351de695b1dff02d39ec5161778e450ba9f06b41d1713c0190df99c18bc0e1
-size 1749
+People achieve more success through cooperation. Although some may argue that competition may increase productivity, teamwork is the key to achieving lasting and higher levels of long-term success.
+
+Humans are inherently social beings, seeking the approval of others. Working as a team with other individuals is more likely the average person's cup of tea than being singled out in competition with others. By working with others to achieve a goal, team members can lift each other up and put their minds together to accomplish more while also validating each other and their relationship with one another. People like to feel accepted and valued and working as a team can nurture those desires, allowing a more comfortable and safe working environment, which may increase productivity in turn.
+
+Further, this comfortable work environment may foster new and more innovative ideas, since coworkers are not so intimidated and more apt to pitch their ideas and receive positive feedback. This may open the door for team members to bounce ideas off of each other and come up with new and improved ideas.
+
+In contrast, a competitive work environment may promote people to avoid failure and work on their toes diligently to come out on top. Although this may be efficient, it can have a negative impact on the quality of work. Whether the work is thrown together to meet a time requirement or is restricted in its potential because the worker may be too hesitant to use their novel ideas and stick to traditional methods, competition seems to be a less successful method for success. 
+
+So, although competition may achieve success in the short term, cooperation among team members is more likely to have long- lasting and better quality results.

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:63f677f0aa64d69908ba5d3f00ce2355b25aff6fd3a15fc2f100845b6ca2b0f6
-size 1770
+We are bombarded by a variety of images in our lives. The way media shapes our perception can be traced back to psychology. We regard beauty in the highest esteem and often this can be used to manipulate audiences.
+
+Technology has brought us farther into a world filled with icons and design and it provides a stage for various authors of media to push their distorted images on us. Take, for example, the advancement of video games. When the Nintendo 3DS came out a few years ago, parents bought the gaming devices for their young children, not knowing that the technology that caused the graphics to appear 3D on the screen could negatively impact their children's vision permanently.
+
+Further, appearance plays a huge role in how technology is constructed. We find it easier to perceive and navigate an electrionic divice with harmonious visuals, and so it can be tempting to sweepingly claim that this type of graphic design is a virtue. However, this has led to a homogenization of technology and ease of access and usability has made it simpler for technology to be used as a substitute for child care.  It's tempting for parents to park their kids in front of screen all day. But this stupurous, homogenzing early experience prevents children from encountering critical life stages. It is more common now than ever for children to enter Elementary school with no grasp of the written language or even how to write their own names, let alone hold a pencil or focus on the material in class. This delay can set children back and impact them for the rest of their life.
+
+We should be aware of the power images hold over us, how iconography shifts and changes our perceptions of the world, and work to maintain our own views and ideals before they are eroded.

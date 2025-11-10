@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f94805bc1a632cc546fe3643f9cd373a0a3e5ade1725bf24cab43e147cc94066
-size 1510
+Happiness, as a term and concept, is generally subjective. But one thing that all humans agree on is that, happiness is a state of mind where one is genuinely pleased and satisfied with one's self. It is a feeling of pleasure and satisfaction, either for achieving a goal, for hitting a milestone, for the successful completion of a task, for meeting a loved one and getting pleasantly surprised by them, or for offering a helping hand to someone in need.
+
+It can be argued that happiness is a very personal feeling, and what brings happiness differs from one person to the other, hence, happinness is based on individual disposition. 
+
+For an individual who cares more about his or her own self, focusing on personal goals will surely bring happiness, while for others who sees the world as a global village, someone who is very much concerned about others, giving out aids, and offering a helping hand to others would bring them happiness.
+
+The distinction between the two types of people can be seen as selfishness and selflessness. For people who focus more on themselves and their ambitions, they rush through the world without a care for others, but people who are selfless, who give more to others than they take, they are the ones who truly find deep satisfaction in life, and are the ones who are truly happy.
+
+On a final note, the world would be a better, happier place if people put the needs of others before theirs, if we all care about the well-being and happiness of others above ours.

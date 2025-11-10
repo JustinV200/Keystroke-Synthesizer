@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:83e2d3e8b2fa9c207bfdaa472d56fdb5ecce5245b8026665cce1b322ebcab680
-size 1189
+Acheiving happiness is a goal that all of us share. But the approaches used to make this happen are widely varied. Some find happiness by focusing on themselves while others opt to reach this goal by helping others or making the world a better place.
+
+This most direct and concrete way to achieve happiness is to engage in behaviors and actions that have a positive impact on your particular situation. This may seem trite and simplistic, but it can can be seen as a fairly obvious answer to this complex question.
+
+The solution for finding happiness can be muddled by the subjective measure of this emotion. Many people find themselves with varying degrees of happiness which can make the successful achievement of this noble goal a difficult one to document and finalize.
+
+When people pursue happiness by focusing on external items, they still end up making themselves happy at least in an indirect manner. Therefore, it could be argued that if someone has a personal goal of focusing on the happiness of others, than the distinction mentioned in the question may end being moot. The ultimate answer may be that by choosing to help others to be happy also makes you feel happy.  

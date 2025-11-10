@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bddc0bd6e873dd424e4d8d5934de710e63dc795e016709b904d207135021d99f
-size 1700
+There are many different ideas as to how exacly success is acheived. Some belive in competition and rivalry as the best way to acheive success while others belive that a more cooperative attitude is better. I belive that cooperation is the better approach to success for a number of reasons but most importantly they allow teams to pool skillsets and acheiving better workloads together. Together these advantages are less inherant in a more competitive rivaly style and can overall reduce effectiveness. Cooperation simply has better advantages.
+
+People only have limited amounts of time to learn things. Pooling learned skillsets and effectively sharing them allows for a much broader range of skillsets to be brought to the table. Greater skillsets generally allows for problems to be solved in more unique ways. Competition limits the exchange of these skillsets and the sharing of them to complete the tast. Greater skillsets also allow for completion of more complex tasks that would otherwise be possible with competition.
+
+Cooperation has several benefits over competition rivalry style of woking but perhaps the biggest is the ablity for cooperation to produce better and faster workloads. If more people are working to acheive the same goal of success then more can be accomplished and it can be done faster. Competiton limits how much can be done as well as creates additional friction that interfear with faster workloads. 
+
+In general the creative brainstorming that a diverse skillset brings and the shared workload makes cooperation more likely to acheive success. There are just more avenues for success where as competition comes with overhead that limits its effectiveness. 

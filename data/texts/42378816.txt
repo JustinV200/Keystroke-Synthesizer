@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:73632f770484d4fd4b7e83f4313fce9fa1cec63c6d0c7b876a6e56028fcab77c
-size 1444
+How do people find happiness? is it through internal direction, by following their own desires for happiness, or can happiness be found by accident while aiming at a different goal? This question has plaged humanity for a long time, as time and time again humans have tried to come up with an answer, each with their own solution.
+
+Happiness is a collective issue, which is why it can only come from an external goal. In the worst of times, humanity has banded together and found lasting happiness. The collective is an important componant, as it takes everyone working towards happiness in order for us to actually be able to achieve it. A group is strong than the individual, and if I am working towards helping 7 other people get happiness, and have 7 people in turn helping me, then we are better off than each pursueing individual goals.
+
+Now, one might argue that the happines can be found if they focus on themselves, and that is the ultimate goal in life. After all, why else are we here if not for happiness for ourselves? However, if that were the case, there would be a lot more happiness in the world. After all, people are looking out for themselves, for their own happiness. Yet, there are only fleeting moments of joy in their lives. This question of happiness will continue to persit until the day humanity can agree that the collective outweighs the indidiual, and we are better off with the former instead of the latter.

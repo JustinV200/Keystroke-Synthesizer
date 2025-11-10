@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1da6584cff8235e87fb1b629453f69a28828f67f22289376994deafd96621839
-size 1736
+Do Images and Impressions have too much of an effect on people?
+
+From the outset, I should like to say "yes" far too much of an impact - much more than is warranted or deserved.  Far too much of society is swayed by ephemora and the way information is presented, rather than based upon sound reasoning and analysis.
+
+Research and analysis for this stance that I have adopted is based upon life experience rather than statistical data collection and analysis.  Presentation of self, or beliefs or product or service efficacy is too frequently made by attractive spokespersons making unproven claims that are not necessarily based upon sound scientific principles or analysis.  Too often, politicians, say, promote life-altering and improving actions that simply pander to people's wishes rather actually attempting to solve or remediate the perceived problemmatic issue.   We are led firstly to understand the 'problem' as it is presented and then happily find that the presenter has a ready-made solution to the issue at hand.  We are thus already part-way convinced that the solution is good.  
+
+Alternatively, there are others that analyse and structure the problem prior to determing an appropriate solution that is quantifiable, and provably effective.  It may well be that this approach is more sound but less well accepted by the audience - simply because outcomes are put forward in a drier, less attractive format, by a less attractive presenter.
+
+In conclusion, I would like to recommend that for the greater good, not only must research and analysis, data formulation and presentation be scientifically and ethically undertaken, but also presented with appealing imagery and by a photogenic and attractive presenter.

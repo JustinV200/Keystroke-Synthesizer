@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9d2461845fd8a14bad7daf740d8dc03e703083dfe8a0c2d322b0a6b44e4f699e
-size 1793
+It can be argued that competition and cooperation are two powerful ways to achieve   success  However, i think competition has more merits than coorperation. In this essay i will write about the advantage of competition over coorperation.
+
+First of all  , When people compete against eachother , it creates an ennvioment that allows them measure   how well they perform  against an opponent . This gives them a clear  goal to achcive and helps in devising a plan to achieve the said goal on the other hand , coorperation has  nothing to measure its success against  Hence making actionable plans challenging .
+
+Scondly, You can only say you are the best at something when you can do it better than anybody else , in business competitive advantage is very important to the success of the business , it is important to know what  you are doing that gives you an edge over a rival business and if not, make plans on what to do to get an edge. If businesses do not compete for  customer satisfaction, the quality of servise they render will not improve over time. for example over the years iphone has led the smart phone industry beause of their competitive advantage over their rivals, they aim to give the user an eperience on a smart phone that is unmatched in the market.  Features like the camera quality, artificial intelligence algorithms stands tall above its competitors, this feat cannot  be achived without knowledge of what your rival is doing. on the other hand if a business focuses only cooperation , it  puts the business at the mercy of the market place  as you cannot trully measure how well you  are doing.
+
+In conclusion, coorperation has its merits  and i think its important when it is rightly used but i think competition is by  far a better way to acieve succss.  

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b593b8bb914af5c0a8722e936e5c89b32137556fb1c6a38bfc505d5d0ade3d55
-size 1817
+What bring happiness in life? Some say true happiness can only come from the pursuit of helping others and reducing the amount of suffering in the world. Still others would say having a sense of purpose and working toward one's own personal objectives is the only path to lasting happiness. 
+
+The premise of this argument alone is flawed, however, as these are not binary, opposite opinions. One could easily argue that those who would say that helping others is the key to happiness are simply individuals who have made helping others their own personal goal. It follows that everyone is following the same path to happiness: they are defining a goal that is important to them and pursuing that goal.
+
+But what if someone's personal goals are inherently selfish, and their pursuit of those selfish goals actually diminish the happiness of others? If the question is focussing solely on the happiness of one individual, the impact of their pursuit of happiness on others is moot -- all that matters is the happiness of the individual in question. As such, if that one selfish person claims to be happy, or just as happy as a more selfless person, who could miscount their assessment of their own subjective experience? How quantifiable is the concept of happiness to begin with?
+
+In conclusion, everyone follows the same path to happiness, whether just or unjust. We all select a goal that is important to us and work toward that goal with the hope that it will make us happy in the end. We may judge or dislike one person's chosen path to happiness, but we cannot definitely state that a selfess act brings forth more happiness than eating a McRib sandwich at your local participating McDonald's restaurant while supplies last. If you think it does, then you've clearly never tried a McRib. They are awesome.

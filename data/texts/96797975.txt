@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:246b94e3b04b4ff42dd34e7c510860d756787f220b6bb8a51b1ab5f96a30f7a9
-size 2254
+How do we know that what we're seeing is actually what's there?  This is becoming more of a problem in recent times.
+
+All too often, what we see is not genuine.  Maybe it's a fast food advertisement in which a cheeseburger is robust and filled with toppings, but when you buy the burger in real life it's a small, floppy sandwich.  Or it's a photo on Instagram in which a celebrity has chiseled features, perfect skin, and smooth hair - but only because they used a filter or Photoshop to improve their looks.
+
+It is important to be critical in one's thinking; to question what we see.  There's that old saying, "Believe half of what you see and none of what you hear" - and that applies today more than ever.
+
+Bots can be used to control narratives and influence outcomes.  For example, a casual observer might think that a large majority of Americans believe that Johnny Depp should win his defamation case against Amber Heard.  Comments on social media paint Depp as an innocent victim, and Heard as a mentally ill abuser.  Everywhere you look, there are videos and blogs supporting him and tearing her down.  But when you look a little closer, you find that many of those "supporters" are bots that were deployed by Depp's legal team to influence the public narrative.  Exert a little effort and you'll easily find that many people support Ms. Heard.
+
+Another example is prevalent in online clothes shopping.  Ads appear on Facebook and Instagram offering beautiful, high-quality clothing for a fraction of the typical price.  But this is because the clothes are knock-offs, made from cheap materials, with stolen designs.  The ad will show a photo of the "real" clothing item, but that's not what they're selling.  It's vital to do research to ensure that what you're seeing is what you will actually get.
+
+If we are to be a fair, productive, and intelligent society, we must be skeptical of what we see.  I'm not arguing that we should question every mundane aspect of life.  Not everything is a conspiracy, and I don't believe that there are secret societies running the world or shadow organizations doing nefarious deeds.  But when you see something that is too good to be true, ask yourself if that's because it isn't actually true.

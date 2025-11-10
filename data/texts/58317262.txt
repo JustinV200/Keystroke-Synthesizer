@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:486397c6a061b92ffd51366f9125350a9a889c9315d18f6bcc4b5bcff9125837
-size 1694
+In my opinion, people achieve more success by cooperation than competition. 
+
+Teamwork and a shared goal will nearly always be completed or achieved faster than a single person can accomplish and there is no shame in that. Working together instead of competing ensures efficiency of time and a team of people that each team member can rely on to further the project.
+
+A single person would struggle to know most things of a certain subject but a group of people have a much higher chance of covering that knowledge together and more efficiently. A pilot knows how to opperate a plane but do they know how to repair it? An airplane mechanic does, but does the mechanic know how to design an air plane? No, and that is what we have engineers for. A single person could design, opperate and make neccessary repairs of an airplane but to be as efficient and precise as the pilot, mechanic and engineer would call for that person to have all of their degrees, certificiations and achievements. And a single person to do all of these things could takes as much as three times the amount of time, energy and effort to accomplish. This is not efficient
+
+It is true that a sense of competition can make people work harder, dig deeper and push for excellence in a way that a team setting might not. But applying yourself in the strengths you have and allowing others who possess strengths where you have weekness eliminates the need to push, strain and struggle to come out on top and instead promotes positive work flow and high success rates.
+
+A group of people working together for the same end goal is absolutely going to have better chances than a single person working on that same goal. 

@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c7c522bde0172dd88ae93f2953bcb7197bf22eabb8a1a92746a5ebc76f66c6ad
-size 1314
+Humans are incredibly impressionable and easily misled by what we see. We are constantly bombarded by imagery in our environment, particularly in these hyper-connected internet days. The deluge of information is difficult to process without training, deliberate effort, and logical thinking. 
+
+Branding is the quintessential example of the overproliferation of shallow impressions. Branding is everywhere today, not just applied to products that we purchase. As jobseekers, college applicants, political candidates, freelancers, and content creators, we are forced to develop our "personal brand."
+We are told that this branding is the only way to stand out in a noisy and crowded marketplace. But this barrage of imagery overwhelms our brains and senses, deadening our empathy and connection to others. 
+
+All of the slick packaging of people, events, and information today makes it increasingly difficult for us to find truth, depth, and meaning in the noise. This creates more disconnection between people and causes more problems like violence and depression. If we can educate ourselves on how to sort through the mess, it's helpful; but we may find that limiting our exposure is the only way to truly maintain our sanity and health. Skills for parsing the truth should be taught in schools and at home.

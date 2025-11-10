@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:87c1ecba590007a9cbf24dbcfa2231a96553788f485cc28510d51367ad53598e
-size 2534
+Competition and cooperation are contrasting ideas that often are used by companies to motivate and reward employees. Often, employees are judged by how well they performed relative to their peers. However, many industries, such as technical computer support, also value cooperation. The teams of employees must often work together to excel as a group. This type of team cooperation also often reveals who is a leader, who motivates others to excel, who uses the cooperation to their own advantage and who prefers to stay in the middle of the pack.
+
+An example is the the makeup of my former job. I was a technical support engineer on a team which specialized in a particular computer system. Each engineer was individually responsible for their own customer solutions. Their individual statistics, such as number of solved calls each week, length of time to solve a problem and if a problem was reopened, were tracked by management. In addition, each engineer was rated on how they contributed to the team success. Did they teach a class to their team? Did they improve a process used by the team? These were just a few of the ways we were evaluated and on which our ranking and subsequent annual pay raises were based.
+
+There are valid arguments against this type of system. Some say it opens people up to being sabotaged by their peers by not sharing important information with those they feel in competition with. Or that it leads to jealousy towards a peer who is rated higher. Additionally, for those weak in areas such as peer-to-peer instruction, some may feel they are at an unfair disadvantage. Personally, I was strong with customer to customer interactions, but lacked the confidence to teach a formal technical class to my peers. I and my manager often disagreed on my contributions to the team, even though my customer reviews were among the highest.  
+
+However, in the 20 years I worked in that position, these arguments didn't surface. The team had top performers, low performers and middle-of-the road performers. But each person excelled in their own way. The entire team prospered through the combination of individual strengths and the company as a whole profited.
+
+The sucess of using cooperation or competition to achieve depends on the situation. An olympic rowing team is all about team cooperation which is focused on competition with the other team. Individual olympic sports such as skiing are all about beating the competition.  No one technique ensures more success over the other in all cases.
+

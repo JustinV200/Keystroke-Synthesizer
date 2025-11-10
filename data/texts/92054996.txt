@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b0f1c8de1e519e4242af625031d76bec0d9e5dcfde5c728f544b2caaba1a7715
-size 3251
+ Though each individual person seeks happiness in their own unique way, we all have in common the wish to find happiness. Some people seek happiness in self-serving ways, while others' method is more altruistic. It may seem logical to focus on one's own happiness exclusively, as it may seem like a more attainable or practical goal, but in truth this attitude will not result in true happiness. Because we are all interconnected, one can only feel satisfied, at ease, and happy by focusing on the happiness of others.
+
+If each individual were truly independent of all other people, then it would be feasible to find happiness through pursuing one's own goals alone. If there is no relation or connection to others, then it may be reasonable to think that only one's own welfare matters. However, that is not the case for any living being, especially humans. We are all dependant on countless other people, both in ways we are aware of, and in ways we are not.
+
+We all know of the people who we see and interact closely with on a regular basis, and can easily understand how we have some dependancy on them. For instance, we have parents who took care of us, friends and partners who have supported us, bosses who employ us, and customers who make our employment possible. These are obvious examples of how people are interdependant. 
+
+On a wider scale, we also have countless other people who we are connected to through varying degrees of separtation. Someone made the clothes we are wearing, the phone we are using; someone is managing the tech company that runs the WiFi, and someone grew the food we are eating. Even in less tangible ways, people say good or bad things about us which affect our reputation and therefore affect our life. All people have endless connections to innumerable other people. 
+
+Thinking in that way, to only pursue one's own goals would be foolish at best. Someone who does not give consideration to the benefit of others will eventually alienate anyone they meet. They would gradually lose the good connections they have to people, and eventually find themselves alone with no support. This will not be a joyful or happy situation at all. The selfish pursuit of their goals will have left them in a sad situation.
+
+On the other hand, if someone focuses genuinely on benefitting others, then the people who know them will enjoy their company, and the connections will become closer and warmer. Once people see that someone is kind and selfless, they naturally feel happy and comfortable around them, and also feel willing to help the person in return. By selflessly focusing on others' well-being, one will find they have closer and more rewarding connections in their life, which will gradually bring more and more happiness. 
+
+In short, if we examine how interconnected all beings are, we will find that it is impossible to live a life that is totally independant from anyone else. Since we have a vast dependance on others, it is only logical to give consideration to their happiness and well-being. By doing so, the other people will feel good, and our relations with others will be strong and fulfilling. In this way, putting others' well-being above our own will result in our own happiness as well.

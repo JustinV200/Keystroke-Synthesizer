@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5d8363e88655f16b4d466649ba8b189094bc0d970f29227b766e626dd3d3caad
-size 1217
+With the ever-changing business environment companies around the world are trying to find the right mix of competion and cooperation to motivate their employees.
+
+One could argue that, with this day and age of bullying, companies should err on the side of cooperation thus avoiding left-over hard feelings when the competition is over.  
+Many people are not competive but most people are cooperative.  When competition is used as a motivator a certain subset of the company group will pull back and, maybe even back off.  While cooperation can be a harder sell to many as a motivator if it is a common culture backed a promoted from the top down of a company it can be very effective.
+
+It is understandable that a number of people are motivated more by competition.  Company competitions have their place but overuse could have adverse results.  I would submit that a competition that combines fun with team-building is worthy to be included in the work culture mix.
+
+Perhaps a compromise towards more cooperative measures taking a larger role than competitve ones would suit companies better.  At the end of the day it is about keeping your employees motivated but happy with their job and their work mates.

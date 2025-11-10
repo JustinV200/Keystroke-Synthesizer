@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e0fc4adb801b3a65f2e427f9a35e007744c331d439fc22acfff62502a8aa625c
-size 1664
+What is truly the definition of success? Success can only be defined by the person who is measuring it and the person trying to achieve it. What drives individuals to achieve success is a highly personal combination of past experiences and expectations. Due to the fact that no two people have experienced the exact same set of circumstances in their lives, their own definitions of success will always be different. Based on the highly personal nature of simply defining success, is clear that people achieve more success by competition rather than by cooperation. 
+
+Humans are naturally competitive. Since the begininng of time as hunters and gatherers, we have been engrained to beat out our competiton for survival. Each individual has their own personal motivations to reach what they consider a level of success. Many times in a team setting, such as a corporate enviornment, indiviuals may truly want their team to be successful, but it comes along side the motivation of indivual success and the motivation to achieve a promotion, a pay increase, or recognition. Competition motivates individual to continuously better themseleves to achieve their next goal. Many times when cooperation is the only desired outcome, it stunts the required output of individuals to only be "as good" as the others they are working with. 
+
+While it can clearly be argued that cooperation and teamwork are essential to being truly successful, it is competition that drives the internal desire to win that creates success. Individuals will always achieve more by constant competition against their peers rather than simply coopearting for the best outcome of the team. 
+

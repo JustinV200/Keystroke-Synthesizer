@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0c2270f4dc03363ac9a7ddc26a8ba9e3fbe299a3d3b0d06f6903c719404cf2fd
-size 1582
+Experts have long argued between cooperation and competition as the most effective motivation for collective success. My belief is that cooperation ultimately drives more frequent outcomes amongst both individuals and groups. Below I will outline the reasons why I hold this belief. 
+
+Competition is predicated on the assumption that participants in the system are extrinsically motivated; that they derive fulfillment and define success from the perception of their acheivement from others. Using competition as a motivation tactic excludes those participants who are instrinsically motivated, who derive fulfillment from collaboration and personal growth. 
+
+In time, I suspect we will find those individuals, while temporarily charged by external incentives, will eventually reach a place of burnout, as their internal reward system is not being properly fed. 
+
+But, how do we account for those who are extrinsically motivated in a cooperative system? Competition can be cultivated internally and those individuals can always use an arbitrary goal or competitor as a motivating force. 
+
+A competitive system, however, can never be inclusive of intrinsically motivated people, as they rely on an intentionally fostered environment of collaboration, cooperation and kindness to thrive. 
+
+In conclusion, a competitive system is inherently exclusive of varying work and behavioral styles, while a cooperative system is inherently inclusive. For that reason alone, I believe that we should implement a cooperative system to acheieve signficant and lasting accomplishments. 

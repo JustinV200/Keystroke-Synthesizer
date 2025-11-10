@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1d3e6e42aab5d98223f297e6d965ccdc638f446cc999ff11b835e3f51853b3e4
-size 1788
+Happiness is something that every human being aspires to achieve in ther life. However, there is a dichotomy that exists. Do we become happier by serving others, or by serving ourselves? Everyone has their own opinion on the subject.
+
+While there are those individuals who have a clear preference for which approach to take to find joy in their life, I personally believe that in order to find happiness, one must find a balance between making others happy and following their own dreams. I do not think that it is possible to find true happiness and satisfaction by being selfish and only thinking of oneself. But I also see the danger in only serving others, at the expense of my own needs and wants. 
+
+Of course, there are those who claim that a truly happy life can only be reached by being as selfless as possible and putting oneself last. But the problem is that a person must take care of themselves in order to have the energy and spirit neccessary to nurture others. I have seen this myself in my life and in the lives of my friends who are parents. We want to give everything possible of ourselves to our children, but then we can become mentally and physically exhausted, sometimes to the point of illness. We may feel guity for taking some time for our own needs, but we are better equipped to be good parents when we are restored and refreshed. There are those opponents to this theory, who think (and don't hesitate to tell us) that childten should always come first, 100% of the time. While it does bring some joy to us to serve our children, we will quickly become burnt out if that's all we ever do.
+
+To sum it all up, one cannot effectively give to others by giving some time and energy to your own goals, so that you may keep enjoyng the act of serving others. 

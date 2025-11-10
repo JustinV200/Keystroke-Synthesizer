@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:df419fa2419eb4701efc602c0272c1a6203ee74fec79b1d9aac0c7d4c4a53248
-size 1383
+Ellen DeGeneres, a woman who was beloved by many for her great sense of humor and charming personality, wasn't found to be so charming behind closed doors with credible accusations of worker mistreatment and a not so fun persona when interacted with directly. Was Ellen DeGeneres using her happy-go-lucky guests to mask her true indentity?
+
+You wake up early in the morning feeling miserable, forcing yourself to get out of bed because you have to go grocery shopping before the store gets too packed. While out shopping, you run into an acquaintance you haven't seen in a couple of years. They ask how you've been and your answer, despite not feeling well, is "good." In your head, you know you're not feeling good, in fact, you're feeling terrible but you don't want to leave a negative impression on your acquaintance that you haven't seen in quite some time. You want them to believe that your life is going great.
+
+We're self conscious beings, the way we interact with others, our dress, grooming habits, and everything else done in the open is to leave an impression on others and it's incredibly effective. Think of the last time you were complimented, whether at work or in your personal life, was the compliment 100% warranted or was it manufactured to some degree based on the way you carried yourself (personally or aesthetically) in whatever situation you were in? 

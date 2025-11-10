@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:38748f1644fb3d61b1ef77931d97c74d4a5f36030fbd97a31adffbdd48272b07
-size 1666
+Everyone has their each unique talents and these talents can come about in various situations. Whether from being pushed by a competition or being carried along side their team to success, everyone will be unique in their method of achievment. 
+
+Competition gives the person a definitive goal to outrank their opponents by simply being better than the rest. They can clearly see how far they will have to push themselves to succeed, whether through acheiving a higher number, score, or grade. The results become finite and the winner is only able to succeed as far as their competition makes them go. 
+
+Where as with cooperation as a motivation for success, the results can becomin infinite. Your success is now dependent on your team's willingness to push themselves to a point. You have no constraints while working with others in a coopereative fashion, assuming everyone is able to focus on the end goal and has similar values to uphold along the way. The determing factor of success in cooperation is the team's mindset in agreeing what needs to be done, how to achieve it, and when to decide when everyone is satisified with the results.
+
+Whether someone chooses to use their competitive side or their cooperative side, it is difficult to categorize success definitively. You could argue that success is simply the completion of the desired goal, but you could also argue that success is simply learning something from the failures or mistakes along their journey. I believe no matter the methods chosen, anyone can still be successful as long as they are putting forth the effort, focused determination and personal time to become a better person.
+
+

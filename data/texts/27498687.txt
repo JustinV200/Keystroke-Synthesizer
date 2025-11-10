@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:074469fc8de4e76ebf03a3c6d88259255b0900f71bcc7e8deb9e4ba7cdba95d0
-size 2548
+Competition or Cooperation? A question that is as old as society itself. Some would say that competition is a result of evolution, of natural selection. All things on this planet compete with each other to survive.
+In our early history we, like many other animals, did the same. We were once prey, out on the African Savannah. We competed with each other, with nature, until somehow, we developed our intelligence.
+We began to work together. We cooperated in hunting, gathering, making tools. We formed society. Because of our cooperation with our own species we grew past our natural boundaries, and became what we are today.
+
+Cooperation is better than just solely competition. Competition can be healthy, but the effectiveness of cooperation, the spread burden of a job over the many instead of the one, is just much more efficient.
+A group of people working towards a goal can finish, and even sometimes exceed expectations much better than someone working solo. An extreme example of this would be the pyramids in Egypt. No one person could build megastructures like that
+all by themselves. It took the man-power of thousands of people to bring the goal of the pharoh into reality. Another example is when we put the first man on the moon. It took dozens of the country's top minds in order to not only learn how to build proper rockets, but how to keep someone alive in space.
+
+Some may argue that competition is better because it builds character, and drives one to do the best they possibly can. While this can be correct, you cannot succeed in every goal you set solely by yourself.
+We are a species that depends on each other. A healthy sprinkling of competition in a cooperative environment can boost morale, but we as humans did not get where we are today by going it alone.
+Every aspect of our society depends on people cooperating with each other in one way or another. Business requires employees and higherups to cooperate in order to turn profit. Government requires representatives and other officials 
+to cooperate in order to decide on legislation. Scientists require cooperation with each other in order to further our understanding of the universe. Medical practices need cooperation between doctors, nurses, and patients in order to save lives.
+
+At the end of the day, we all need to work with someone else to go about our daily lives. People need other people's help, and that's okay. Cooperation is the key to true success.
+Without each other we would still be gathering berries, and running from Smilodons.

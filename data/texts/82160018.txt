@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:42a3f34ed9f566462fc7a54c8800968da09fd34b1aa9cfbc2ddfaaad13b2574f
-size 1682
+Playing a game of tennis against a friend or catching the football from your teammate and running down the field to get a touchdown. Coding an application by yourself or commiting to a startup with a team of peers. Cooking and planning a meal alone or making a dish to contribute to a potluck with a group of friends. All of these examples lead to success but achieve it differently, by competing against others (or yourself) or cooperating with a group.
+
+Competing against others to succeed has and will always be apart of life, but is it the best way to get to an end goal? Competing against others very much relies on the drive of the individual. If a person if driven and ambitious, they will likely succeed when competition is the driver. They most likely will develop a need to achieve their goal and that will drive them to do their absolute best and reach whatever end goal they have set their mind to.
+
+Cooperation is something that has been part of the human way of life since the beginning of time. It differs from individual cooperation because if one person is lacking in a certain area, someone else on their "team" is there to pick up the slack. Cooperation works because people can pool their varying strengths together and overcome their individual weaknesses. Cooperation does not rely solely on an individual's drive, but instead the strength of a group together.
+
+While there are many ways to reach success in life, cooperation between different people will likely always lead to the most persistant and important accomplisments in life. When we work together to reach a goal and help lift each other along the way, we will always find a road to success.

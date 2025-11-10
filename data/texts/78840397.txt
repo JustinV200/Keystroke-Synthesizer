@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3a2da51e8198623bd7a6e5a11c88c7214cb8a41165139b93b6be56883e4f87d9
-size 1829
+Images and impressions in advertising have too much of an effect on people.
+
+Advertising portrays images of healthy people using products, smiling and carefree. No real factual information is provided about the products being advertised, we are simply assured the products are good, will provide the benefit promoted, etc. 
+
+Because of the feelings conjured by advertisers, people are swayed to purchase goods they don't need or can't afford. The appeals of advertisers are to our emotions. 
+
+Here are a couple of examples of products which are advertised using impressions:
+
+Automobiles:
+---------------
+
+The driver is happy and carefree and enjoying the vehicle. Never mind that he cannot afford it and the payments will cripple his household budget.
+
+Soda Pop:
+------------
+
+Soda is a very unhealthful product which leads to childhood and adulthood obesity for a significant proportion of the population. But the advertisements only show us how great the beverages taste, never how unhealthy they are. People would be better off drinking tap water, but the smiling faces of people enjoying soda convince people to buy the stuff.
+
+Advertisers will tell you they are only providing information about their products, how they are used and the like. But in reality they only show the positive aspects of the items they are selling, never the downsides to buying the item. In fact, advertisers simply try to create a need where none is there. 
+
+While it can be argued creating demand for products helps the economy by promoting consumer spending, the harms the process results in outweigh the advantages to economic growth.
+
+In what I have detailed, I hope you have a sense of how the cynical tactics used by advertisers induce people to buy things they should not be buying or which are unhealthy for them.

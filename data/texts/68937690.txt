@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8cb7f56f8d1bf44295a93317669925ebd3e3f9a282d1b0f5e355e47653bc21f9
-size 2104
+One concept that is often tossed around in our household is the question of whether success is best achieved through competition or through cooperation.  This is not a simple question.  It requires one to define the terms of success and the best method to achieve the goal, and these elements may be defined diferently by different people.  But for the sake of this discussion, let's pretend success is easily defined and measured.  In this case, do people achieve more success through harnessing the spirit of competition or  embracing the strength of cooperation?  The proverb, "Iron sharpens iron" comes to mind.  During competition, the friction of competing can sharpen the outcome.  But in cooperation, the team works together toward a common goal, and the close association of team mates can sharpen ones performance and the product outcome.
+
+Competition enables participants to clearly measure success relative to the performance of others.  As such, it forces one to seek a standard which will exceed that of the competitors.  There is an adrenaline rush that comes with competition, and often causes the participant to think more clearly, work with more urgency, and refuse top settle for mediocre performance.  However, not everyone excels under pressure, and competition can be riddled with pressure.
+
+Cooperation enables participants to draw from the strengths of team members to achieve an outcome that may be superior to what any one participant is capable of performing alone.  
+
+Cooperation is less riddled with pressure to perform, because the weight of success is shared with team members.  But cooperation has hazards of its own.  Communication is critical to enable team members to work together and not undermine the efforts of the group through petty squabbles or innocent time-wasting caused by lack of group leadership.  When one works alone, communication and leadership are less of a challange.  Thus, cooperation has the potential to result in higher levels of success if the challanges of working with others can be overcome.
+
+In the end, I am a fan of cooperative 

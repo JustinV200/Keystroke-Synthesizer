@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4b3c2b94f20fdf893105a742b9d04f5e8d731b6001db1fa703adaebeb280a589
-size 1682
+Happiness is often considered elusive, and people have wondered since the beginning of time about how it can truly be achieved with no clear consensus. Some people focus on achieving happiness by turning the focus inward on themselves. Others, on the other hand, choose to focus on things other than themselves in this pursuit.
+
+Despite the two sides that are presented, it is evident that people are more likely to achieve the end goal of happiness if they focus less on themselves. Although it can seem counterintuitive at first glance, focusing on the happiness of others is a surefire way of making sure one achieves it oneself. This is when concepts such as altruism and selflessness comes into play, helping achieve a level of happiness that transcends that which would occur if one soley focused on oneself. This is not to say that personal achievement don't amount to anything - of course, one can achieve a great deal of joy when one become a lawyer or becomes fluent in a new language. This kind of happiness, however, can almost seem superficial compared to the one that results when you don't focus on just your own happiness. For example, putting a genuine smile on someone's face is something that may not take as much time as learning a new language but can set your own heart smiling instead. 
+
+Of course, many would argue that there no amount of selflessness will make you happy if you are unable to achieve any of your personal goals. Although this may be true, the point is not to abandon your personal goals. The goal should be to try to make the world you live in better and eventually the happiness you put in the world will come right back to you.
+
+
+

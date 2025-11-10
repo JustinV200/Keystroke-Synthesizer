@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:70ccc362a2ca27722b2ab276b4a5a95482c27442a99120a3d9137d99073d6233
-size 1369
+While competition can be a motivating factor when it comes to measuring success, people accomplish more through cooperation. Success can be defined differently based on the person being asked, but here it means to accomplish a goal while simultaneously avoiding any negative consequences.
+
+Cooperation is the backbone of human society. We're a social species who cannot live without each other. We survived and thrived precisely because of our ability to cooperate with other people, and thus it comes naturally to us. We even experience positive emotions when achieving something with a team and building relationships. When people cooperate with each other there's less of a burden on everyone, as the weight of responsibilites can be shared and delegated to everyone based on their personal strengths.
+
+While some people do well competitively, the majority find it unnecessarily stressful. Friendly competition can certainly inspire people to push themselves, but it can also cause them to burn out or shoulder too much responsibility. Without people to fall back on, in the end it can be more harmful than helpful.
+
+Due to the potential harm of competition and the positive effects of cooperation, it's ultimately true that coorperation means people will achieve more success. While competition has it's place, it should take a backseat to working together.

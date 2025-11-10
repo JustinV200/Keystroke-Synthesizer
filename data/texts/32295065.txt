@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:28f8eefacac2129ee84e6633a6c639712c1ccf0f0ac49b3511d732dff328774b
-size 1962
+Humans are a very complex race that have come to this world to learn one way or another. They can make their learning difficult by competing with each other or they can make it easier by coperating with others. Thorought history, it has been shown that the easiet way to learn and to become successful is by working with others. Cooperations is the basis to achieve more success since it is easier, faster, and smart.
+
+Through cooperation, goals are achieved easier. When people work together, the work is divided into equal parts and everyone gets the necesary amoun of work. No one has to do extra work or work harder. For example, a project is easier to complete when it is done in groups that when it is done alone. During a grop project, everyone is assigned a part of the project and only has to concentrate on that part of the project and nothing else. This makes it easier for everyone becaus they only have one part to complete. On the other hand, the project would be very difficult if it is assigned to only one person since that one person would have to complete every single part of the project. This means that this person would have to use a lot of energy to do the work.
+
+In addition, cooperation makes achievement to be faster. When people work together, they can achieve their goals faster. For example, when the vaccine for the covid-19 was created, a lot of scientists worked together to get the vaccine faster. If this had only been done by one scientists, the making of the vaccine would had taken a longer time and many more people would have died. 
+
+Furthermore, when people work together, they can achieve unimaginable things. When people put their brains togther, they can think of many different things that one person alone would never be able to do. Combining ideas can make people create things out of this world. For example, if the United States and Russia came together and combined their research and thinking, instea 
+

@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0f5377032e35472ff479766a1d0952ab63b964dd1cfbaffbac5e8bd5aa9448c3
-size 1405
+Today, with the development of the internet, advertisements of all kinds have appeares to promote products, services, etc.
+ In most cases the ads are not even that relevant and difficult for people to understant, web pages on the internet every day became havier due to the number of ads, intenet user sometimes close the pages with so much promotional content, the people prefer that the content is clear and readable and that the ads that are mostly not of great interest appear as little as possoble on web page
+, the big companies, promote products and services more and more, the internet becomes heavier and with it the traffic increases, the web pages have became more colorful and beautiful with the ads but the network becomes slower for theose who have access to lowes data speeds. Incredibly even the images we see seem to describe a lot about what you show us when in truth it is very far from reality.
+More events, forums, shoes, concerts are promoted on the internet, that is a reality where our world moves, even polotics is already reflected and seen by everyone on the internet, the weather, all this wonderful world that we have created and that constinues to grow by leaps and bounds.
+Conclusion, the network of networks has become the greatest source of knowledge ever seen and it is growing at an accelerated pace, we do not know until when, but we are surely on the right path.

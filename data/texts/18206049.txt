@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f17ca17ce474f820a4c62af4de58ad5f63988f89a52fed53019384b91bed8b9b
-size 1381
+The modern world is one that is dominated by many forms of media - from TV and movies to the many social networking platforms. Actors, musicians, athletes, and politicians dominate our attention, and advertisers bombard us with images between the regular portions of the shows we watch. And it is all carefully contrived to manipulate our consumer choices, our voting options, and more.
+
+This is a pseudo-reality full of illusions and motivators that control our thoughts more than we realize. We are given ideals that are unrealistic to try to attain. Ever noticed all these pharmaceutical ads for elderly people, for example, where without exception they will be pictured with adoring grandchildren, outside on a sunny day? Think how far that is from the average senior's experience... Actors and musicians on the red carpet, sports heroes glorified, politicians making empty promises - we live in a world of hype and exaggeration. Too much emphasis on what's on the surface, with very little attention to depth.
+
+It's probably way too late to curtail this disturbing social trend. "Pandora's Box" has opened and we'll never get back to a world of objective reality, at least as a society. Children would rather play video games than play outside. Youth are addicted to their smartphones. Adults are also caught up in this world-wide web of media. Where will it end? 
+
+
+

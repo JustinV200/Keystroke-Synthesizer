@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9ddd9aaed6f28244e2e94150b3039571e177b724c08513974e8636936f1cfd02
-size 1784
+Have you ever seen an ad for a product that seems too good to be true? How many times have you bought a product simply because it looks great in the package? Everyday we are bombarded with colorful, alluring advertisments claiming their product is the best on the market when in reality it's only the ad that looks great and the product is usually average if not, subpar. We are going to take a look at how images and impressions can create illusions and effect the way we perceive an something.
+
+Advertisment are everywhere these days, from TV to outdoor ads and even on our phones everytime we access the internet. An ad is not a good one unless it presents a perfect image of a product. Why? Because visual impression is probably the most important factor for an ad to successful lure people to their product. People want to see beatiful, appealing things, in fact that's usually why they go to the internet. The internet is based on visuals, themes and photos which have been edited to look like the best version of themselves all because people want to see beauty. No one goes online to look at something grainy, dull and unappealing. Ads take advantage of the aesthtic that people want to see and use that to appeal to their target audience and often times looks can be deceiving. This is true of most product advertisments but more often than not people fall for it due to the magnificent imagery used by the company.
+
+In today's age people consume visual imagery and advertising companies use that to their advantage to lure people to their products. Often times looks can be deceiving but somehow people still flock to their products. This is because people, as a whole, are visual and can easily be fooled by the images created by companies to sell their products.
+
+

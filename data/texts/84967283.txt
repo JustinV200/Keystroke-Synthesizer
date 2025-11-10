@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2750a7fa608f4cd8619330a4acafe1ad6c80a4ba8a0fe52b8385bb69dc3de185
-size 1338
+Humans are a competitive species.  This is a natural part of who we are.  It is engrained in our DNA so that we can thrive and succeed as a species.  Whether it is in education, sports, or at work.  It is natural to want to be the best at something and to experience the praise that is a result of being the best.  We all would like to win that gold medal.  But does always being competitive promote cooperation?
+
+While in school and participating in sports, being competitive is promoted with spelling bees, tournaments, races, and games such as football and basketball.  But when we graduate and join the workforce, this mindset may not work anymore.  For sports, being competitive can help an athlete or team become number one.  But there are other aspects of life where cooperation is needed in order to achieve a goal.  Being an employee of a company oftens means working in groups.  Working within a group requires cooperation.   When a company has employees that work well together, the business succeeds.
+
+While competition can help us to achieve great accomplishments individually, cooperation can help us to acheive monumental things as a society.  Businesses will perform more effectively and efficiently.  As society becomes more diverse and complex, cooperation will be a vital tool for individuals in the workforce.   

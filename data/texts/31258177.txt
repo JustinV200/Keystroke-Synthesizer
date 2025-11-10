@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8bdb6ca4df5f7c017cd67b4e2bc89465767aab601233c8a537acc9ae8b2a2c7d
-size 4363
+The traditional wisdom is that teamwork and working together is key to success. While this is true generally, it fails the grasp the fundamental nature of our existence and human nature so can often be misleading. Obviously competing interests can often cause unfavorable outcomes, however, it is also known to drive innovation.
+
+My argument here is that if we were to analyze the 'key ingredient' to success, what we'd find is an overwhelming skew in the direction of competition. 'Competition' in the sense of the word I'm using it could roughly be defined as "the drive to create or accomplish something faster or better than another, with the risk of some sort of perceived negative impact if one fails".
+
+We can look at today's semi-conductor industry as an example of how competition breeds innovation (since, in my opinion, whoever can develop the world's most advanced technology will be the world's next super-power).
+
+The semi-conductor industry relies almost entirely on Taiwan for manufacturing and distribution of today's cutting-edge chips. And while we can broadly state that cooperation with Taiwan has resulted in a technological revolution, more fundamentally Taiwan is the "battle ground" of innovation, with numerous competing sovereign interests having their eyes squarely fixed on this tiny island.
+
+This has driven the US to begin producing and manufacturing chips domestically as well as China. We can say that without this competition, perhaps countries would be complacent in allowing Taiwan full-monopolistic power over this industry that the entire world relies upon.
+
+Indeed that is ENTIRELY the definition of a monopoly: a cornered market with little to no COMPETITION. Competition is healthy, it breeds innovation and allows us to be more fluid in response to modern circumstances, it transforms dictators into servants. One could also look simply to the war in Ukraine as another great example, where Russia's firm clutch over European energy forces Western Europe to grapple with their ethical challenges and weigh those principals against their sovereign energy needs, especially in the winter when many rely on energy from Russia just to survive and stay warm.
+
+It was precisely Western Europes cooperation with Russia that placed them in a difficult position and the lack of competitive parties that leave them at Russia's mercy. One could perhaps argue "yes but it's Russia's competitiveness that caused them to invade Ukraine" etc. and while this is true, we have to be realistic in our assessments of the world around us and also call into question how much this runs against the grain of the human condition generally.
+
+There is essentially no country or civilization that has achieved broad consensus among the people for any noteably extended period of time, it has been (and likely always will be) a turbulant volatile wave of COMPETING interests and different worldviews or visions of civilized society (or even lack thereof). 
+
+One could argue that to think otherwise or to attempt to structure society in a completely different way is highly experimental, highly speculative, and highly likely to fail. It is essentially a "bet", the same way Europe made a bet in it's reliance on Russian energy, or the US has made a bet in its reliance on imported goods, or anything else.
+
+And just like any bet, you have to calculate odds, risks, maximum loss, etc.  and by pretty much any objective metric, betting on restructuring our modus operandi to cooperative as opposed to competitive is to say "this time is different". It's to say "we will do something that has never been done in history" and one would question that even if it does succeed, what would be the costs associated with it? What concessions have to be made on an individual basis in order to ensure the risks of cooperation are mitigated as much as possible?
+
+These are important questions that I personally don't feel have been answered adequately, or if they have, are pretty disagreeable conditions. Working together, or cooperation, works as a tool rather than as an underlying principal. There is mutual assurance in a cooperative yet competitive environment that it's in everyones best interest to get along and create agreements that benefit all parties involved. In environments with no competition, there is no such incentive.

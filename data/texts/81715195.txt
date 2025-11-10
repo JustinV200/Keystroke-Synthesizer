@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2f4fefe0a85b34c62f662ea044cc6d2d04c95ff2b58e1db92a69bf769303efbd
-size 2482
+It has been more than 30 years since Madonna declared that we are living in a Material World, but has our world become too materialistic? If we examine the long-term and systemic effects of prioritizing material possessions over other values in our societies and economies, it is clear that our path is unsustainable.
+
+Post WWII, industrialized countries moved towards economies valued for manufacturing, and so society shifted toward valuing consumption, and individuals began identifying as consumers. Gross Domestic Product, the key indicator used all around the world to judge a country's economic health, was only adopted in 1944 and represents the fundamental shift in how society at large began to value the world around us.
+
+The fundamental problem with prioritizing materialism as the primary economic engine is that it assumes infinite resources and infinite growth, both of which are impossible. Since there are not infinite resources from which to make things, nor infinite markets to buy and consume them, we end up in a cycle of artifically inflated economies based on waste, and an inequitable system in which the largest and least responsible economies are rewarded at the expense of smaller developing economies. The biggest losers in this equation are labor, the one guaranteed renewable resource that large economies and companies can push to the bottom of the economic system, and our planet since the cost of disposal and waste is less valued than the 
+
+But how do we begin to turn back the clock on a materialistic, consumption-based economy? How do we turn off the pipeline of increasingly cheap and wasteful stuff? Bhutan famously shifted its key economic indicator from GDP to GHP, Gross Domestic Happiness, but is the concept scalable globally? What about developing and colonized nations that feel they have been unfairly treated and are now being asked to forfeit the propserity enjoyed by larger nations?
+
+On an individual level, the cultural shift may have already started. Concepts such as minimalism, frugalism, upcycling, and experience purchasing are already trending. The demographic size of younger generations like Gen Z may have the economic power to move society if these trends continue. And developing countries may be able to take an advantage of a step change in economic propserity by embracing responsible use of renewable resources and new industries if there is less of an established infrastructure resistant to change. 
+
+

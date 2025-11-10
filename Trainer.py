@@ -2,17 +2,17 @@ import os
 import numpy as np
 import torch
 import torch.nn as nn
-from torch.utils.data import DataLoader
-from transformers import AutoTokenizer, AutoModel, get_scheduler
+from torch.utils.data import DataLoader, random_split
+from transformers import AutoTokenizer, AutoModel
 from tqdm.auto import tqdm
-from torch.cuda.amp import autocast, GradScaler
+from torch import amp
 from torch.utils.tensorboard import SummaryWriter
 from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts
-from dataLoader import dataLoader  # your custom loader
+from dataLoader import dataLoader
 
 # 1. configuration
 
-BASE_MODEL = "deberta-v3-base"
+BASE_MODEL = "microsoft/deberta-v3-base"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 EPOCHS = 12
@@ -33,21 +33,26 @@ writer = SummaryWriter("runs/keystroke_experiment")
 print("Loading tokenizer and datasets...")
 tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
 
-train_dataset = dataLoader(
-    base_dir="data/train", tokenizer=tokenizer,
-    preprocess=True, max_length=MAX_TOKENS, max_keys=MAX_KEYS
-)
-val_dataset = dataLoader(
-    base_dir="data/val", tokenizer=tokenizer,
-    preprocess=True, max_length=MAX_TOKENS, max_keys=MAX_KEYS
+full_dataset = dataLoader(
+	base_dir = "data", tokenizer = tokenizer,
+	preprocess=True, max_length=MAX_TOKENS, max_keys=MAX_KEYS
 )
 
-train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=4)
-val_loader   = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=4)
+#split up dataset 80/20
+n_total = len(full_dataset)
+n_val = int(0.2 * n_total)
+n_train = n_total - n_val
+train_dataset, val_dataset = random_split(
+    full_dataset, [n_train, n_val],
+    generator=torch.Generator().manual_seed(42)
+)
+
+# DataLoaders (start with num_workers=0 on HPC)
+train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=0, pin_memory=True)
+val_loader   = DataLoader(val_dataset,   batch_size=BATCH_SIZE, shuffle=False, num_workers=0, pin_memory=True)
 
 print(f"Train samples: {len(train_dataset)}, Val samples: {len(val_dataset)}")
 
-# 3. Models
 
 class TextToKeystrokeModel(nn.Module):
     def __init__(self, base_model, num_features):
@@ -87,7 +92,7 @@ loss_fn = nn.MSELoss()
 
 scheduler = CosineAnnealingWarmRestarts(optimizer, T_0=3, T_mult=2)
 
-scaler = GradScaler()
+scaler = amp.GradScaler(device="cuda" if DEVICE.type == "cuda" else "cpu")
 
 #traning loop
 best_val_loss = float("inf")
@@ -101,13 +106,13 @@ for epoch in range(EPOCHS):
     total_train_loss = 0.0
     progress_bar = tqdm(train_loader, desc=f"Epoch {epoch+1}/{EPOCHS}")
 
-    for batch in progress_bar:
+    for batch_idx, batch in enumerate(progress_bar):
         input_ids = batch["input_ids"].to(DEVICE)
         mask = batch["attention_mask"].to(DEVICE)
         target = batch["target"].to(DEVICE)
 
         optimizer.zero_grad()
-        with autocast():  # mixed precision
+        with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
             preds = model(input_ids, mask)
             loss = loss_fn(preds, target)
 
@@ -115,7 +120,7 @@ for epoch in range(EPOCHS):
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         scaler.step(optimizer)
         scaler.update()
-        scheduler.step(epoch + len(progress_bar) / len(train_loader))
+        scheduler.step(epoch + (batch_idx + 1) / max(1, len(train_loader)))
 
         total_train_loss += loss.item()
         progress_bar.set_postfix({"loss": loss.item()})

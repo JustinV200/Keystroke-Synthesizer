@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d22c730caeeb400d4eec1ce7ef99583a06815d474e216c5a4901880976241cca
-size 2045
+Do images and impressions have to muc of an effect on people?
+
+Yes they do. Firstly, images have too much effect on people because images are a powerful but silent tool that is used to relay information to individuals which is then interpreted by our brains. Imgaes alone have the ability to trigger emotions, we can learn just by looking at images and they help us remeber useful events that we have experienced in the past or experiences others have had.
+
+Images have the power to make use visualize places and things even if we have not been there. For instance someone who wants to travel to a place like Cancun in Mexico must have seen images that made them visualize how awsome Cancun might be. that is images give us the first view on how a place can or cannot be which makes us determine if we want to visit that place or not. Images make our brains work.
+
+Secondly, impressions also have too much effect of people, reason being that an individuals judment on how a place or another person is, will be based on the first impression they get about that person or place (its just human nature) which acts as a determining factor if they will see the place or person in a positive or negative light. In which positive might lead to social interactions or the zeal to visit a certain place we saw whereas a negative first impression might lead to bias (criticism).
+
+In conclusion, images and impressions have too much of an effect on people because they both play a great role when we are taking certain decisions, or relaying information to another person(s). For instance a great image of a product will draw customers close nd make them want to know more about that product and a great review from a customer to others will give them a great first impression about that product causing them to develope interest in purchasing the product. While a bad image and bad customer review will push potential customers awasy due to bad ideas they have associated with the image (already a bad first impression) and then the bad review. 

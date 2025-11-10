@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0601d583c166349980f921db64dd8d9ad6eee4ac8eb069caee086d80d806fc95
-size 1300
+When are people the most happy? Is it when they accomplish a goal they set out for? Or does happiness stem from helping out others? Humans have evolved to be cooperative and appeasing the group leads to greater over all happyness.
+
+Civilization would not be able to exist if we did not help eachouther out. Now, this is not saying some of those tasks are undisirable, although neccisary, but that the end results give off a higher level of happiness. When people focus on their own goals, they become isolated. This isolation can lead to depression and anxiety. Though they might accomplish their goals, the feeling of happiness will be short lived. Like an addict, they will move on to the next goal, to try and get their next fix. This pattern leads to a downward cycle on their minds.
+
+Helping out our communities is hardwired into our DNA. We need to do it in order to advance ourselves as a group. When we help others our levels of happiness far exceed those of solo missions. Why is this? We can see the end results better. We can see how it effects others and makes their lives better. Seeing group accomplishments, or helping out others, increases the want and need to do more. In a sense it is the oppisite cycle of what happens to people who isolate and focus only on persona l goals.

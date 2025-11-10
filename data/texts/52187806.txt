@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ce284407d4c8031a1b8431259a8031f95edb7cb6d91b393eb6b1d7e294c1bf19
-size 1491
+Our entire world is often based, at least initially, on visual impression, accurate or not. We have been warned: Don't judge a book by its cover. All that glitters is not gold. It goes far to explain the importance of, and the cost and effort put into packaging in marketing a product. Extremes of colorful, eye-catching and ornate to plain brown wrappers, all designed to give off an impression. Opening the big box and looking at the tiny product is often disappointing but grounding; it's Cinderella after the ball, but it's reality.
+
+It's fair to say that because of intense competition in the marketpace and life in general, companies need to have their product stand out. Politicians needs to make themselves look different from the other "guy" to make sure you'll vote for them, your local market wants to you to think you won't get a cleaner, fresher, better deal anywhere else. But look below the surface and you'll see what you knew all along - your options are about all the same.
+
+Now, there are exceptions. There are people and products which don't need a fancy wrapper or product advertising to convince you of being the best choice. You won't see a Porsche advertisement on American television. Quality stands out and doesn't need to hide behind words and bling. So don't blame the guy in marketing. Forget the box, forget the nice suit and great speech, stop looking at the flurry around the pitch. The truth is right in front of us if we really, really want to see it.

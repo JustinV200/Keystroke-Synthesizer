@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a0806e2abe0662f7fcd1f417ecee843d59e44bfe4c966b5a0dcba7a0a574bfda
-size 1630
+Success is something we all strive to achieve, but the best method to achieve it is often a matter of disagreement. Some people say competition improves the chances of success while others promote cooperation as the best tool to acheive success. While both methods can lead to success, which one is more likely to produce a positve end result for most people.
+
+Some people seem to thrive with the excitement of competition, while others seem to crumble from it. Although competition may be a driving factor for some to try their hardest, it isn't necessarily a good way to acheive the best final result. The primary goal of competition is to win. Quality and integrity come secondary. So the final result of a competitive environment may bring out a winner, but it does not necessarily produce the most successful outcome. 
+
+A cooperative environment promotes all involved to work together to achieve success. Some argue that in a cooperative environment, some people will not try hard and instead leave others to complete the task. While that may be true in some circumstances, cooperation can also promote a sense of teamwork, leading to people encouraging eachother participate. Cooperation also allows indiduals to utilize their own strenghts and the strengths of others, compensating for each person's weakness.
+
+With cooperation, success is more likely. Instead of competing against each other,  each person can contribute to achieve the best final result. The worries of failure are reduced when people can rely on each other, resulting in a much more positive experience for all and an increased chance of quality.

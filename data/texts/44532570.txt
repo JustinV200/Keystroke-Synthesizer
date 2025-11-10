@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:48aab71467a2633f9a608c0cb46b669a45d1b0726f345e1eabea6e1212379980
-size 1130
+ The public image of a person has a huge effect on what others think. The masks we wear are what we want people to see about us. We all put on a little bit of a show for the rest of the world. If people don't know us personally, they will usually take what we put out there at face value. 
+ This is especially true about social media. We only post the best of ourselves. It presents a skewed version of our lives. We're not doing great all the time, yet we want people to thikn we are.
+ Same is true for products that stores sell. Advertising is specially curated to the consumer. Marketing make the product look so good, we just have to have it. It somewhat tricks us into thinking we need things we don't necessarily need. 
+ What happens when theses things, or people, don't measure up to the assumed greatness. We get dissapointed or mad. Some times, it can even hurt people. If a politican just says and does what everyone wants to hear to get elected, and then backs out on his promises...it can cost people jobs, homes, and livelihoods. A little more transparency in this world would go a long way in helping everyone. 
