@@ -28,4 +28,4 @@ export OMP_NUM_THREADS=$(nproc)
 export TORCH_USE_CUDA_DSA=1
 
 # run training (adjust if your entry point differs)
-python Trainer.py
+python synthesizeKeystrokes.py
