@@ -15,7 +15,7 @@ class dataLoader(Dataset):
         self.tokenizer = tokenizer
         self.max_length = max_length   # only used to cap tokens at model max (e.g., 512)
         self.samples = []
-
+        #check dirs exist
         if not os.path.isdir(self.text_dir):
             raise FileNotFoundError(f"Text dir not found: {self.text_dir}")
         if not os.path.isdir(self.csv_dir):
@@ -40,7 +40,7 @@ class dataLoader(Dataset):
             for s in self.samples:
                 try:
                     prep = prepper_class(s["csv_path"])
-                    df = prep.get_prepared_data()  # ensure dataPrepper.normalize() is disabled
+                    df = prep.get_prepared_data()  
                     keep_cols = [
                         "DwellTime", "FlightTime", "typing_speed", "char_code",
                         "is_letter", "is_digit", "is_punct", "is_space",

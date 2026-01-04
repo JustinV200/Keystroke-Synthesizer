@@ -18,22 +18,23 @@ class dataPrepper:
     # ---------- cleaning ----------
     def clean_data(self):
         initial_len = len(self.data)
+        #drop duplicates
         self.data.drop_duplicates(inplace=True)
-
+        #drop rows with missing essential columns
         essential = ['DownTime', 'UpTime', 'ActionTime', 'DownEvent']
         self.data.dropna(subset=essential, inplace=True)
-
+        #convert to numeric
         for col in ['DownTime', 'UpTime', 'ActionTime']:
             self.data[col] = pd.to_numeric(self.data[col], errors='coerce')
         self.data.dropna(subset=['DownTime', 'UpTime', 'ActionTime'], inplace=True)
-
+        #sort by DownTime
         self.data.sort_values(by='DownTime', inplace=True)
         self.data.reset_index(drop=True, inplace=True)
+        # Report on numer of rows removed
         removed = initial_len - len(self.data)
         if removed > 0:
             print(f"Cleaned data: removed {removed} rows ({removed/initial_len*100:.1f}%)")
-
-    # ---------- feature engineering ----------
+    # What transformations to apply
     def transform_data(self):
         # dwell = Up - Down
         self.data['DwellTime'] = self.data['UpTime'] - self.data['DownTime']
@@ -54,7 +55,7 @@ class dataPrepper:
         removed = initial_len - len(self.data)
         if removed > 0:
             print(f"Filtered unrealistic timings: removed {removed} rows")
-
+    #add in contextual flags, what type of key was pressed, pauses, cumulative counts, typing speed
     def addContextFlags(self):
         de = self.data["DownEvent"].astype(str)
         punct_set = set(string.punctuation)
@@ -74,10 +75,11 @@ class dataPrepper:
         self.data["is_backspace"] = is_backspace.astype(int)
         self.data["is_enter"]     = is_enter.astype(int)
         self.data["is_shift"]     = is_shift.astype(int)
-
+        #short pause
         self.data["is_pause_2s"] = (self.data["FlightTime"] >= 2000).fillna(False).astype(int)
+        #long pause
         self.data["is_pause_5s"] = (self.data["FlightTime"] >= 5000).fillna(False).astype(int)
-
+        # cumulative counts, total backspaces and total chars
         self.data["cum_backspace"] = self.data["is_backspace"].cumsum()
         self.data["cum_chars"]     = (~self.data["is_backspace"].astype(bool)).cumsum()
 
@@ -94,6 +96,9 @@ class dataPrepper:
         return cpm
 
     def add_char_encoding(self):
+        # map DownEvent to char code
+        #if space, backspace, enter, shift, use standard codes
+        #otherwise, use char_to_code to get ASCII code
         de = self.data["DownEvent"].astype(str)
         def char_to_code(char):
             if len(char) == 1:
@@ -105,14 +110,14 @@ class dataPrepper:
             return 0
         self.data["char_code"] = de.apply(char_to_code)
 
-    # ---------- (optional) scaler ----------
+    #use to normalize features, no longer used in main pipeline
     def save_scaler(self, path):
         if self.scaler:
             joblib.dump(self.scaler, path)
     def load_scaler(self, path):
         self.scaler = joblib.load(path)
 
-    # ---------- main API ----------
+    #  do everything here
     def get_prepared_data(self):
         print(f"Starting preprocessing: {len(self.data)} rows")
 
@@ -130,6 +135,7 @@ class dataPrepper:
         print(f"Stats on data after preprocessing: {self.get_statistics()}")
         return self.data
 
+    # finalize finite values in key columns
     def _finalize_finite(self):
         cols = [
             "DwellTime", "FlightTime", "typing_speed", "char_code",
@@ -150,7 +156,7 @@ class dataPrepper:
             self.data["typing_speed"] = self.data["typing_speed"].fillna(0.0)
         if "DwellTime" in self.data:
             self.data["DwellTime"] = self.data["DwellTime"].fillna(0.0)
-
+    # get statistics on the data, may be useful for reporting
     def get_statistics(self):
         def safe_mean(col):
             return float(self.data[col].mean()) if col in self.data and len(self.data) else float("nan")

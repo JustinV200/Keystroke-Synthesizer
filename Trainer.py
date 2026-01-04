@@ -1,3 +1,6 @@
+#Justin Verlin, Keystroke Synthesizer Model Trainer
+#Trainer.py
+# 1/4/2026
 import os
 import torch
 import torch.nn as nn
@@ -10,21 +13,21 @@ from torch.utils.tensorboard import SummaryWriter
 from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts
 from dataLoader import dataLoader
 
-# ---------------- Config ----------------
+# config and init
 BASE_MODEL   = "microsoft/deberta-v3-base"
-DEVICE       = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-EPOCHS       = 12
-BATCH_SIZE   = 8
-LR           = 2e-5
-WEIGHT_DECAY = 0.01
-MAX_TOKENS   = 512
-PATIENCE     = 3
-OUTPUT_DIR   = "checkpoints"
+DEVICE       = torch.device("cuda" if torch.cuda.is_available() else "cpu") #use gpu if possible
+EPOCHS       = 12 # number of runs
+BATCH_SIZE   = 8 # per-GPU batch size
+LR           = 2e-5 # learning rate
+WEIGHT_DECAY = 0.01 # weight decay, for how much to regularize
+MAX_TOKENS   = 512 # max tokens for transformer input
+PATIENCE     = 3 # early stopping patience, if no val improvement
+OUTPUT_DIR   = "checkpoints" # where to save models
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 writer = SummaryWriter("runs/keystroke_experiment")
-torch.set_float32_matmul_precision("high")
+torch.set_float32_matmul_precision("high") 
 
-# ---------------- Batch collate (no target padding) ----------------
+# this will pad the variable-length inputs and targets in each batch
 def make_collate_fn(pad_token_id: int):
     def collate(batch):
         # Token side (pad for transformer)
@@ -56,18 +59,19 @@ full_dataset = dataLoader(
     base_dir="data", tokenizer=tokenizer,
     preprocess=True, max_length=MAX_TOKENS
 )
-
+# split into train/val
 n_total = len(full_dataset)
-n_val   = int(0.2 * n_total)
-n_train = n_total - n_val
+n_val   = int(0.2 * n_total) # 20% for validation
+n_train = n_total - n_val # rest for training
+
+# random split with fixed seed for reproducibility
 train_dataset, val_dataset = random_split(
     full_dataset, [n_train, n_val],
     generator=torch.Generator().manual_seed(42)
 )
-
 pad_id = tokenizer.pad_token_id if tokenizer.pad_token_id is not None else tokenizer.eos_token_id
 collate_fn = make_collate_fn(pad_id)
-
+# Data loaders
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True,
                           num_workers=0, pin_memory=True, collate_fn=collate_fn)
 val_loader   = DataLoader(val_dataset,   batch_size=BATCH_SIZE, shuffle=False,
@@ -75,27 +79,46 @@ val_loader   = DataLoader(val_dataset,   batch_size=BATCH_SIZE, shuffle=False,
 
 print(f"Train samples: {len(train_dataset)}, Val samples: {len(val_dataset)}")
 
-# ---------------- Model ----------------
-class TextToKeystrokeModel(nn.Module):
-    def __init__(self, base_model, num_features):
+# Model definition, updated to have multi-head outputs, once for
+# continuous features (regression), once for binary flags (classification)
+class TextToKeystrokeModelMultiHead(nn.Module):
+    def __init__(self, base_model, num_continuous=8, num_flags=7):
         super().__init__()
         self.encoder = AutoModel.from_pretrained(base_model)
         hidden = self.encoder.config.hidden_size
-        self.regressor = nn.Sequential(
+        
+        # Shared backbone
+        self.backbone = nn.Sequential(
             nn.Linear(hidden, 512), nn.LayerNorm(512), nn.ReLU(), nn.Dropout(0.2),
-            nn.Linear(512, 256),   nn.ReLU(),
-            nn.Linear(256, num_features)
+            nn.Linear(512, 256), nn.ReLU()
         )
+        
+        # Regression head (continuous features)
+        self.regression_head = nn.Linear(256, num_continuous)
+        
+        # Classification head (binary flags)
+        self.classification_head = nn.Linear(256, num_flags)
 
     def forward(self, input_ids, attention_mask):
         x = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
-        return self.regressor(x.last_hidden_state)   # [B, T, F]
+        hidden = x.last_hidden_state  # [B, T, hidden]
+        
+        shared = self.backbone(hidden)  # [B, T, 256]
+        
+        continuous = self.regression_head(shared)  # [B, T, num_continuous]
+        logits = self.classification_head(shared)  # [B, T, num_flags]
+        
+        # Return both; apply sigmoid to logits during inference
+        return continuous, logits
 
 # infer feature size from one batch
 probe = next(iter(train_loader))
 num_features = probe["target"][0].shape[-1]
 
-model = TextToKeystrokeModel(BASE_MODEL, num_features).to(DEVICE)
+# Initialize multi-head model with correct feature counts:
+# - 6 continuous features: DwellTime, FlightTime, typing_speed, char_code, cum_backspace, cum_chars
+# - 9 binary flags: is_letter, is_digit, is_punct, is_space, is_backspace, is_enter, is_shift, is_pause_2s, is_pause_5s
+model = TextToKeystrokeModelMultiHead(BASE_MODEL, num_continuous=6, num_flags=9).to(DEVICE)
 if torch.cuda.device_count() > 1:
     model = nn.DataParallel(model)
 
@@ -103,9 +126,13 @@ optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=WEIGHT_DEC
 scheduler = CosineAnnealingWarmRestarts(optimizer, T_0=3, T_mult=2)
 scaler    = amp.GradScaler(device="cuda" if DEVICE.type == "cuda" else "cpu")
 
-# ---------------- Train ----------------
+#  Training loop
 best_val, patience, step = float("inf"), 0, 0
 print("Starting training...")
+#define which indices are continuous and which are binary flags
+cont_idx = [0, 1, 2, 3, 13, 14]
+flag_idx = [4, 5, 6, 7, 8, 9, 10, 11, 12]
+
 
 for epoch in range(EPOCHS):
     model.train()
@@ -117,14 +144,22 @@ for epoch in range(EPOCHS):
 
         optimizer.zero_grad(set_to_none=True)
         with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
-            preds = model(input_ids, attention_m)  # [B, Lt, F]
-            loss_sum, count = 0.0, 0
+            #break up tuple into continuous and logits
+            continuous, logits = model(input_ids, attention_m)   
+            loss_sum, bce_sum, count = 0.0, 0.0, 0
             for j, target in enumerate(targets):
-                L = min(preds.shape[1], target.shape[0])
-                se = (preds[j, :L, :] - target[:L, :]).pow(2)
-                loss_sum += se.sum()
+                L = min(continuous.shape[1], target.shape[0])
+
+                # Compute MSE loss on continuous features for regression
+                mse = F.mse_loss(continuous[j, :L, :], target[:L, cont_idx], reduction="sum")
+                # Compute binary cross-entropy loss on flag logits for classification
+                bce = F.binary_cross_entropy_with_logits(logits[j, :L, :], target[:L, flag_idx].float(), reduction="sum")
+                
+                loss_sum += mse
+                bce_sum += bce
                 count += L
-            loss = loss_sum / max(1, count)
+            
+            loss = (loss_sum + bce_sum) / max(1, count)
 
         scaler.scale(loss).backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
@@ -140,7 +175,7 @@ for epoch in range(EPOCHS):
 
     # ---- Validation ----
     model.eval()
-    val_loss_sum, val_mae_sum, val_count = 0.0, 0.0, 0
+    val_loss_sum, val_bce_sum, val_mae_sum, val_count = 0.0, 0.0, 0.0, 0
     with torch.no_grad():
         for batch in val_loader:
             input_ids    = batch["input_ids"].to(DEVICE, non_blocking=True)
@@ -148,16 +183,24 @@ for epoch in range(EPOCHS):
             targets      = [t.to(DEVICE, non_blocking=True) for t in batch["target"]]
 
             with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
-                preds = model(input_ids, attention_m)
+                # Unpack continuous and flag outputs from model
+                continuous, logits = model(input_ids, attention_m)
                 for j, target in enumerate(targets):
-                    L = min(preds.shape[1], target.shape[0])
-                    se = (preds[j, :L, :] - target[:L, :]).pow(2)
-                    ae = (preds[j, :L, :] - target[:L, :]).abs()
-                    val_loss_sum += se.sum().item()
+                    L = min(continuous.shape[1], target.shape[0])
+                    # Compute MSE loss on continuous features only (indices 0,1,2,3,13,14)
+                    mse = F.mse_loss(continuous[j, :L, :], target[:L, cont_idx], reduction="sum")
+                    # Compute BCE loss on binary flag logits (indices 4,5,6,7,8,9,10,11,12)
+                    bce = F.binary_cross_entropy_with_logits(logits[j, :L, :], target[:L, flag_idx].float(), reduction="sum")
+                    # Track MAE only on continuous features for interpretability
+                    ae = (continuous[j, :L, :] - target[:L, cont_idx]).abs()
+                    
+                    val_loss_sum += mse.item()
+                    val_bce_sum  += bce.item()
                     val_mae_sum  += ae.sum().item()
                     val_count    += L
 
-    val_loss = val_loss_sum / max(1, val_count)
+    # Combine MSE and BCE losses for total validation loss (matches training computation)
+    val_loss = (val_loss_sum + val_bce_sum) / max(1, val_count)
     val_mae  = val_mae_sum  / max(1, val_count)
     writer.add_scalar("Loss/val", val_loss, epoch)
     writer.add_scalar("MAE/val",  val_mae,  epoch)
