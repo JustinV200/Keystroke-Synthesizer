@@ -4,6 +4,7 @@ import pandas as pd
 from transformers import AutoTokenizer, AutoModel
 from torch import nn
 from collections import OrderedDict
+import torch.nn.functional as F
 
 
 class TextToKeystrokeModelMultiHead(nn.Module):
@@ -27,7 +28,9 @@ class TextToKeystrokeModelMultiHead(nn.Module):
     def forward(self, input_ids, attention_mask):
         x = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
         shared = self.backbone(x.last_hidden_state)
-        return self.regression_head(shared), self.classification_head(shared)
+        continuous = self.regression_head(shared)
+        continuous = F.relu(continuous)  # ensures non-negative outputs
+        return continuous, self.classification_head(shared)
 
 
 def predict_keystrokes(
@@ -76,6 +79,7 @@ def predict_keystrokes(
     with torch.no_grad(), torch.amp.autocast("cuda" if device.type == "cuda" else "cpu"):
         continuous, logits = model(**enc)
         flags = torch.sigmoid(logits)  # probabilities 0–1
+        continuous = torch.clamp(continuous, min=0.0)
 
         # Assemble full feature tensor
         B, T, _ = continuous.shape
