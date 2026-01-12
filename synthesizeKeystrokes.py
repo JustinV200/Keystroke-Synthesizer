@@ -6,26 +6,29 @@ from torch import nn
 from collections import OrderedDict
 
 
-class TextToKeystrokeModel(nn.Module):
-    def __init__(self, base_model, num_features):
+class TextToKeystrokeModelMultiHead(nn.Module):
+    def __init__(self, base_model, num_continuous=6, num_flags=9):
         super().__init__()
         self.encoder = AutoModel.from_pretrained(base_model)
         hidden = self.encoder.config.hidden_size
-        self.regressor = nn.Sequential(
+
+        self.backbone = nn.Sequential(
             nn.Linear(hidden, 512),
             nn.LayerNorm(512),
             nn.ReLU(),
             nn.Dropout(0.2),
             nn.Linear(512, 256),
-            nn.ReLU(),
-            nn.Linear(256, num_features)
+            nn.ReLU()
         )
+
+        self.regression_head = nn.Linear(256, num_continuous)
+        self.classification_head = nn.Linear(256, num_flags)
 
     def forward(self, input_ids, attention_mask):
         x = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
-        hidden_states = x.last_hidden_state
-        preds = self.regressor(hidden_states)
-        return preds
+        shared = self.backbone(x.last_hidden_state)
+        return self.regression_head(shared), self.classification_head(shared)
+
 
 
 def predict_keystrokes(
@@ -46,7 +49,7 @@ def predict_keystrokes(
 
     # Load tokenizer and model
     tokenizer = AutoTokenizer.from_pretrained(base_model)
-    model = TextToKeystrokeModel(base_model, num_features).to(device)
+    model = TextToKeystrokeModelMultiHead(base_model, num_features).to(device)
 
     checkpoint = torch.load(checkpoint_path, map_location=device)
     # handle DataParallel checkpoints
@@ -72,7 +75,21 @@ def predict_keystrokes(
 
     # Run inference
     with torch.no_grad(), torch.amp.autocast("cuda" if device.type == "cuda" else "cpu"):
-        preds = model(**enc).cpu().numpy()[0]
+        continuous, logits = model(**enc)
+
+        flags = torch.sigmoid(logits)           # probabilities
+        # flags = (flags > 0.5).int()           # if you want binary
+
+        # Reassemble full feature tensor
+        B, T, _ = continuous.shape
+        out = torch.zeros(B, T, 15, device=continuous.device)
+
+        cont_idx = [0, 1, 2, 3, 13, 14]
+        flag_idx = [4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+        out[:, :, cont_idx] = continuous
+        out[:, :, flag_idx] = flags
+        preds = out.cpu().numpy()[0]
 
     # Trim predictions to actual text length
     seq_len = enc["attention_mask"].sum().item()
