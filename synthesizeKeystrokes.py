@@ -1,4 +1,4 @@
-#take in text, use model to predict keystroke features, save to csv
+# synthesizeKeystrokes.py
 import torch
 import pandas as pd
 from transformers import AutoTokenizer, AutoModel
@@ -30,13 +30,11 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         return self.regression_head(shared), self.classification_head(shared)
 
 
-
 def predict_keystrokes(
     text_path,
     checkpoint_path="checkpoints/best_model.pt",
     base_model="microsoft/deberta-v3-base",
     output_csv="predicted_keystrokes.csv",
-    num_features=15,
     device=None,
 ):
     if device is None:
@@ -49,7 +47,8 @@ def predict_keystrokes(
 
     # Load tokenizer and model
     tokenizer = AutoTokenizer.from_pretrained(base_model)
-    model = TextToKeystrokeModelMultiHead(base_model, num_features).to(device)
+    num_continuous, num_flags = 6, 9
+    model = TextToKeystrokeModelMultiHead(base_model, num_continuous, num_flags).to(device)
 
     checkpoint = torch.load(checkpoint_path, map_location=device)
     # handle DataParallel checkpoints
@@ -68,7 +67,7 @@ def predict_keystrokes(
         text,
         return_tensors="pt",
         truncation=True,
-        padding="max_length",  # you can also use padding=False
+        padding="max_length",
         max_length=512,
     )
     enc = {k: v.to(device) for k, v in enc.items() if k in ["input_ids", "attention_mask"]}
@@ -76,14 +75,11 @@ def predict_keystrokes(
     # Run inference
     with torch.no_grad(), torch.amp.autocast("cuda" if device.type == "cuda" else "cpu"):
         continuous, logits = model(**enc)
+        flags = torch.sigmoid(logits)  # probabilities 0–1
 
-        flags = torch.sigmoid(logits)           # probabilities
-        # flags = (flags > 0.5).int()           # if you want binary
-
-        # Reassemble full feature tensor
+        # Assemble full feature tensor
         B, T, _ = continuous.shape
         out = torch.zeros(B, T, 15, device=continuous.device)
-
         cont_idx = [0, 1, 2, 3, 13, 14]
         flag_idx = [4, 5, 6, 7, 8, 9, 10, 11, 12]
 
@@ -101,8 +97,7 @@ def predict_keystrokes(
         "is_letter", "is_digit", "is_punct", "is_space",
         "is_backspace", "is_enter", "is_shift",
         "is_pause_2s", "is_pause_5s", "cum_backspace", "cum_chars"
-    ][:num_features]
-
+    ]
     df = pd.DataFrame(preds, columns=feature_cols)
     df.to_csv(output_csv, index=False)
 
@@ -115,6 +110,5 @@ if __name__ == "__main__":
         text_path="sample.txt",
         checkpoint_path="checkpoints/best_model.pt",
         base_model="microsoft/deberta-v3-base",
-        output_csv="predicted_keystrokes.csv",
-        num_features=15
+        output_csv="predicted_keystrokes.csv"
     )
