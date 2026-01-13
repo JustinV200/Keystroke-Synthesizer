@@ -119,10 +119,10 @@ def predict_keystrokes(
 
     # ---------------- Assemble full feature tensor ----------------
     B, T, _ = continuous.shape
-    out = torch.zeros(B, T, 15, device=continuous.device)
+    out = torch.zeros(B, T, 13, device=continuous.device)
 
     # Indices must match training
-    cont_idx = [0, 1, 2, 3, 13, 14]
+    cont_idx = [0, 1, 2, 3]
     flag_idx = [4, 5, 6, 7, 8, 9, 10, 11, 12]
 
     out[:, :, cont_idx] = continuous
@@ -139,7 +139,7 @@ def predict_keystrokes(
         "DwellTime", "FlightTime", "typing_speed", "char_code",
         "is_letter", "is_digit", "is_punct", "is_space",
         "is_backspace", "is_enter", "is_shift",
-        "is_pause_2s", "is_pause_5s", "cum_backspace", "cum_chars"
+        "is_pause_2s", "is_pause_5s"
     ]
 
     df = pd.DataFrame(preds, columns=feature_cols)
