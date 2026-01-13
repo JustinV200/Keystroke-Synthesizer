@@ -106,25 +106,29 @@ def predict_keystrokes(
         # y = y_std * std + mean
         continuous = continuous_std * cont_std + cont_mean
 
-        # ---------------- Physical constraints ----------------
-        continuous[:, :, 0] = torch.clamp(continuous[:, :, 0], min=0.0)  # DwellTime
-        continuous[:, :, 1] = torch.clamp(continuous[:, :, 1], min=0.0)  # FlightTime
-        continuous[:, :, 2] = torch.clamp(continuous[:, :, 2], min=0.0)  # typing_speed
-        continuous[:, :, 4] = torch.clamp(continuous[:, :, 4], min=0.0)  # cum_backspace
-        continuous[:, :, 5] = torch.clamp(continuous[:, :, 5], min=0.0)  # cum_chars
+    # force outputs to float32, fix error
+    continuous = continuous.float()
+    flags = flags.float()
 
-        # ---------------- Assemble full feature tensor ----------------
-        B, T, _ = continuous.shape
-        out = torch.zeros(B, T, 15, device=continuous.device)
+    # ---------------- Physical constraints ----------------
+    continuous[:, :, 0] = torch.clamp(continuous[:, :, 0], min=0.0)  # DwellTime
+    continuous[:, :, 1] = torch.clamp(continuous[:, :, 1], min=0.0)  # FlightTime
+    continuous[:, :, 2] = torch.clamp(continuous[:, :, 2], min=0.0)  # typing_speed
+    continuous[:, :, 4] = torch.clamp(continuous[:, :, 4], min=0.0)  # cum_backspace
+    continuous[:, :, 5] = torch.clamp(continuous[:, :, 5], min=0.0)  # cum_chars
 
-        # Indices must match training
-        cont_idx = [0, 1, 2, 3, 13, 14]
-        flag_idx = [4, 5, 6, 7, 8, 9, 10, 11, 12]
+    # ---------------- Assemble full feature tensor ----------------
+    B, T, _ = continuous.shape
+    out = torch.zeros(B, T, 15, device=continuous.device)
 
-        out[:, :, cont_idx] = continuous
-        out[:, :, flag_idx] = flags
+    # Indices must match training
+    cont_idx = [0, 1, 2, 3, 13, 14]
+    flag_idx = [4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-        preds = out.cpu().numpy()[0]
+    out[:, :, cont_idx] = continuous
+    out[:, :, flag_idx] = flags
+
+    preds = out.cpu().numpy()[0]
 
     # ---------------- Trim predictions to actual text length ----------------
     seq_len = enc["attention_mask"].sum().item()
