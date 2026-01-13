@@ -117,12 +117,12 @@ def predict_keystrokes(
     continuous[:, :, 4] = torch.clamp(continuous[:, :, 4], min=0.0)  # cum_backspace
     continuous[:, :, 5] = torch.clamp(continuous[:, :, 5], min=0.0)  # cum_chars
 
-    # ---------------- Assemble full feature tensor ----------------
+# ---------------- Assemble full feature tensor ----------------
     B, T, _ = continuous.shape
-    out = torch.zeros(B, T, 13, device=continuous.device)
+    out = torch.zeros(B, T, 15, device=continuous.device)
 
     # Indices must match training
-    cont_idx = [0, 1, 2, 3]
+    cont_idx = [0, 1, 2, 3, 13, 14]  # keep all 6 continuous outputs
     flag_idx = [4, 5, 6, 7, 8, 9, 10, 11, 12]
 
     out[:, :, cont_idx] = continuous
@@ -135,6 +135,7 @@ def predict_keystrokes(
     preds = preds[:seq_len]
 
     # ---------------- Save to CSV ----------------
+    # Drop cum_backspace and cum_chars in output CSV
     feature_cols = [
         "DwellTime", "FlightTime", "typing_speed", "char_code",
         "is_letter", "is_digit", "is_punct", "is_space",
@@ -142,12 +143,20 @@ def predict_keystrokes(
         "is_pause_2s", "is_pause_5s"
     ]
 
-    df = pd.DataFrame(preds, columns=feature_cols)
+    # Select only columns we want
+    df = pd.DataFrame(preds, columns=[
+        "DwellTime", "FlightTime", "typing_speed", "char_code",
+        "is_letter", "is_digit", "is_punct", "is_space",
+        "is_backspace", "is_enter", "is_shift",
+        "is_pause_2s", "is_pause_5s",
+        "cum_backspace", "cum_chars"  # still in `preds` but not in CSV
+    ])
+    df = df[feature_cols]  # drop cum_backspace / cum_chars
+
     df.to_csv(output_csv, index=False)
 
     print(f"Saved predicted keystroke CSV: {output_csv}")
     print(df.head())
-
 
 if __name__ == "__main__":
     predict_keystrokes(
