@@ -27,5 +27,5 @@ export TOKENIZERS_PARALLELISM=false
 export OMP_NUM_THREADS=$(nproc)
 export TORCH_USE_CUDA_DSA=1
 
-python Trainer.py
-#python synthesizeKeystrokes.py
+#python Trainer.py
+python synthesizeKeystrokes.py
