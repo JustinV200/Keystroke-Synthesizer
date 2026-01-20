@@ -6,10 +6,10 @@ from transformers import AutoTokenizer, AutoModel
 from torch import nn
 from collections import OrderedDict
 import torch.nn.functional as F
-
+import numpy as np
 
 class TextToKeystrokeModelMultiHead(nn.Module):
-    def __init__(self, base_model, num_continuous=6, num_flags=9):
+    def __init__(self, base_model, num_continuous=3, num_flags=9):
         super().__init__()
         self.encoder = AutoModel.from_pretrained(base_model)
         hidden = self.encoder.config.hidden_size
@@ -58,7 +58,7 @@ def predict_keystrokes(
 
     # ---------------- Load tokenizer and model ----------------
     tokenizer = AutoTokenizer.from_pretrained(base_model)
-    num_continuous, num_flags = 6, 9
+    num_continuous, num_flags = 3, 9
     model = TextToKeystrokeModelMultiHead(base_model, num_continuous, num_flags).to(device)
 
     checkpoint = torch.load(checkpoint_path, map_location=device)
@@ -114,44 +114,44 @@ def predict_keystrokes(
     continuous[:, :, 0] = torch.clamp(continuous[:, :, 0], min=0.0)  # DwellTime
     continuous[:, :, 1] = torch.clamp(continuous[:, :, 1], min=0.0)  # FlightTime
     continuous[:, :, 2] = torch.clamp(continuous[:, :, 2], min=0.0)  # typing_speed
-    continuous[:, :, 4] = torch.clamp(continuous[:, :, 4], min=0.0)  # cum_backspace
-    continuous[:, :, 5] = torch.clamp(continuous[:, :, 5], min=0.0)  # cum_chars
 
 # ---------------- Assemble full feature tensor ----------------
     B, T, _ = continuous.shape
-    out = torch.zeros(B, T, 15, device=continuous.device)
+    out = torch.zeros(B, T, 12, device=continuous.device)
 
     # Indices must match training
-    cont_idx = [0, 1, 2, 3, 13, 14]  # keep all 6 continuous outputs
-    flag_idx = [4, 5, 6, 7, 8, 9, 10, 11, 12]
+    cont_idx = [0, 1, 2]  # 3 continuous outputs: DwellTime, FlightTime, typing_speed
+    flag_idx = [3, 4, 5, 6, 7, 8, 9, 10, 11]  # 9 binary flags
 
     out[:, :, cont_idx] = continuous
     out[:, :, flag_idx] = flags
 
     preds = out.cpu().numpy()[0]
 
-    # ---------------- Trim predictions to actual text length ----------------
+    # Trim predictions to actual text length
     seq_len = enc["attention_mask"].sum().item()
     preds = preds[:seq_len]
+    
+    # fix first flight time
+    # FlightTime for first keystroke is undefined (no previous key)
+    if len(preds) > 0:
+        preds[0, 1] = np.nan  # Set first FlightTime to NaN
 
-    # ---------------- Save to CSV ----------------
-    # Drop cum_backspace and cum_chars in output CSV
+    # Save to CSV
     feature_cols = [
-        "DwellTime", "FlightTime", "typing_speed", "char_code",
+        "DwellTime", "FlightTime", "typing_speed",
         "is_letter", "is_digit", "is_punct", "is_space",
         "is_backspace", "is_enter", "is_shift",
         "is_pause_2s", "is_pause_5s"
     ]
 
-    # Select only columns we want
     df = pd.DataFrame(preds, columns=[
-        "DwellTime", "FlightTime", "typing_speed", "char_code",
+        "DwellTime", "FlightTime", "typing_speed",
         "is_letter", "is_digit", "is_punct", "is_space",
         "is_backspace", "is_enter", "is_shift",
-        "is_pause_2s", "is_pause_5s",
-        "cum_backspace", "cum_chars"  # still in `preds` but not in CSV
+        "is_pause_2s", "is_pause_5s"
     ])
-    df = df[feature_cols]  # drop cum_backspace / cum_chars
+    df = df[feature_cols] 
 
     df.to_csv(output_csv, index=False)
 

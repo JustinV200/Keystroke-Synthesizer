@@ -12,6 +12,7 @@ import os
 import pandas as pd
 import numpy as np
 from synthesizeKeystrokes import *
+from scipy import stats
 
 # calculate dwelltime, flighttime, typing_speed for original data
 # return lists of values for each feature
@@ -88,18 +89,59 @@ def computeSynthStats(Synthesize = True):
 def compare():
     ogDwell, ogFlight, ogTyping = computeOgStats()
     synthDwell, synthFlight, synthTyping = computeSynthStats()
-    print("Original Data Stats:")
-    print(f"DwellTime - Mean: {np.mean(ogDwell)}, Std: {np.std(ogDwell)}")
-    print(f"FlightTime - Mean: {np.mean(ogFlight)}, Std: {np.std(ogFlight)}")
-    print(f"Typing Speed - Mean: {np.mean(ogTyping)}, Std: {np.std(ogTyping)}")
-    print("\nSynthesized Data Stats:")
-    print(f"DwellTime - Mean: {np.mean(synthDwell)}, Std: {np.std(synthDwell)}")
-    print(f"FlightTime - Mean: {np.mean(synthFlight)}, Std: {np.std(synthFlight)}")
-    print(f"Typing Speed - Mean: {np.mean(synthTyping)}, Std: {np.std(synthTyping)}")
-    print("\nComparison:")
-    print(f"DwellTime - Mean Diff: {abs(np.mean(ogDwell) - np.mean(synthDwell))}, Std Diff: {abs(np.std(ogDwell) - np.std(synthDwell))}")
-    print(f"FlightTime - Mean Diff: {abs(np.mean(ogFlight) - np.mean(synthFlight))}, Std Diff: {abs(np.std(ogFlight) - np.std(synthFlight))}")
-    print(f"Typing Speed - Mean Diff: {abs(np.mean(ogTyping) - np.mean(synthTyping))}, Std Diff: {abs(np.std(ogTyping) - np.std(synthTyping))}")
-
+    
+    print("="*80)
+    print("KEYSTROKE SYNTHESIS EVALUATION")
+    print("="*80)
+    
+    print("\n--- BASIC STATISTICS ---")
+    print("\nOriginal Data:")
+    print(f"  DwellTime    - Mean: {np.mean(ogDwell):8.2f}, Std: {np.std(ogDwell):8.2f}, N: {len(ogDwell)}")
+    print(f"  FlightTime   - Mean: {np.mean(ogFlight):8.2f}, Std: {np.std(ogFlight):8.2f}, N: {len(ogFlight)}")
+    print(f"  Typing Speed - Mean: {np.mean(ogTyping):8.2f}, Std: {np.std(ogTyping):8.2f}, N: {len(ogTyping)}")
+    
+    print("\nSynthesized Data:")
+    print(f"  DwellTime    - Mean: {np.mean(synthDwell):8.2f}, Std: {np.std(synthDwell):8.2f}, N: {len(synthDwell)}")
+    print(f"  FlightTime   - Mean: {np.mean(synthFlight):8.2f}, Std: {np.std(synthFlight):8.2f}, N: {len(synthFlight)}")
+    print(f"  Typing Speed - Mean: {np.mean(synthTyping):8.2f}, Std: {np.std(synthTyping):8.2f}, N: {len(synthTyping)}")
+    
+    print("\n--- STATISTICAL TESTS ---\n")
+    
+    features = [
+        ("DwellTime", ogDwell, synthDwell),
+        ("FlightTime", ogFlight, synthFlight),
+        ("Typing Speed", ogTyping, synthTyping)
+    ]
+    
+    for name, orig, synth in features:
+        print(f"{name}:")
+        
+        # 1. Two-sample t-test (tests if means differ)
+        t_stat, t_pval = stats.ttest_ind(orig, synth)
+        sig_t = '***' if t_pval < 0.001 else '**' if t_pval < 0.01 else '*' if t_pval < 0.05 else 'ns'
+        print(f"  t-test:       t={t_stat:7.3f}, p={t_pval:.4f} {sig_t}")
+        
+        # 2. Kolmogorov-Smirnov test (tests if distributions differ)
+        ks_stat, ks_pval = stats.ks_2samp(orig, synth)
+        sig_ks = '***' if ks_pval < 0.001 else '**' if ks_pval < 0.01 else '*' if ks_pval < 0.05 else 'ns'
+        print(f"  K-S test:     D={ks_stat:7.3f}, p={ks_pval:.4f} {sig_ks}")
+        
+        # 3. Effect size (Cohen's d)
+        pooled_std = np.sqrt((np.std(orig)**2 + np.std(synth)**2) / 2)
+        cohens_d = (np.mean(orig) - np.mean(synth)) / pooled_std if pooled_std > 0 else 0
+        effect = "negligible" if abs(cohens_d) < 0.2 else "small" if abs(cohens_d) < 0.5 else "medium" if abs(cohens_d) < 0.8 else "large"
+        print(f"  Cohen's d:    {cohens_d:7.3f} ({effect})")
+        
+        # 4. Mean absolute difference
+        mean_diff = abs(np.mean(orig) - np.mean(synth))
+        mean_pct = (mean_diff / np.mean(orig) * 100) if np.mean(orig) != 0 else 0
+        print(f"  Mean diff:    {mean_diff:7.2f} ({mean_pct:.1f}%)")
+        print()
+    
+    print("="*80)
+    print("Significance: *** p<0.001, ** p<0.01, * p<0.05, ns = not significant")
+    print("Goal: Low p-values in t-test/K-S mean distributions differ (bad for synthesis)")
+    print("      High p-values (>0.05) mean distributions are similar (good!)")
+    print("="*80)
 if __name__ == "__main__":
     compare()

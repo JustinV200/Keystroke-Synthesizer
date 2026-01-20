@@ -17,7 +17,7 @@ class dataLoader(Dataset):
         self.max_length = max_length   # only used to cap tokens at model max (e.g., 512)
         self.samples = []
         self.standardize = standardize
-        self.cont_idx = [0, 1, 2, 3, 13, 14]  # indices of continuous features
+        self.cont_idx = [0, 1, 2]  # indices of continuous features: DwellTime, FlightTime, typing_speed
         self.stats_file = os.path.join(base_dir, stats_file)
 
         # check dirs exist
@@ -60,7 +60,7 @@ class dataLoader(Dataset):
                     prep = prepper_class(s["csv_path"])
                     df = prep.get_prepared_data()  
                     keep_cols = [
-                        "DwellTime", "FlightTime", "typing_speed", "char_code",
+                        "DwellTime", "FlightTime", "typing_speed",
                         "is_letter", "is_digit", "is_punct", "is_space",
                         "is_backspace", "is_enter", "is_shift",
                         "is_pause_2s", "is_pause_5s"

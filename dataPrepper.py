@@ -79,9 +79,6 @@ class dataPrepper:
         self.data["is_pause_2s"] = (self.data["FlightTime"] >= 2000).fillna(False).astype(int)
         #long pause
         self.data["is_pause_5s"] = (self.data["FlightTime"] >= 5000).fillna(False).astype(int)
-        # cumulative counts, total backspaces and total chars
-        self.data["cum_backspace"] = self.data["is_backspace"].cumsum()
-        self.data["cum_chars"]     = (~self.data["is_backspace"].astype(bool)).cumsum()
 
         # typing speed (chars per minute) over rolling window of DownTime
         self.data["typing_speed"] = self._calculate_typing_speed()
@@ -138,10 +135,10 @@ class dataPrepper:
     # finalize finite values in key columns
     def _finalize_finite(self):
         cols = [
-            "DwellTime", "FlightTime", "typing_speed", "char_code",
+            "DwellTime", "FlightTime", "typing_speed",
             "is_letter", "is_digit", "is_punct", "is_space",
             "is_backspace", "is_enter", "is_shift",
-            "is_pause_2s", "is_pause_5s", "cum_backspace", "cum_chars"
+            "is_pause_2s", "is_pause_5s"
         ]
         for c in cols:
             if c in self.data:

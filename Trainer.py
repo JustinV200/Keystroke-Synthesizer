@@ -82,7 +82,7 @@ print(f"Train samples: {len(train_dataset)}, Val samples: {len(val_dataset)}")
 # Model definition, updated to have multi-head outputs, once for
 # continuous features (regression), once for binary flags (classification)
 class TextToKeystrokeModelMultiHead(nn.Module):
-    def __init__(self, base_model, num_continuous=8, num_flags=7):
+    def __init__(self, base_model, num_continuous=3, num_flags=9):
         super().__init__()
         self.encoder = AutoModel.from_pretrained(base_model)
         hidden = self.encoder.config.hidden_size
@@ -116,9 +116,9 @@ probe = next(iter(train_loader))
 num_features = probe["target"][0].shape[-1]
 
 # Initialize multi-head model with correct feature counts:
-# - 6 continuous features: DwellTime, FlightTime, typing_speed, char_code, cum_backspace, cum_chars
+# - 3 continuous features: DwellTime, FlightTime, typing_speed
 # - 9 binary flags: is_letter, is_digit, is_punct, is_space, is_backspace, is_enter, is_shift, is_pause_2s, is_pause_5s
-model = TextToKeystrokeModelMultiHead(BASE_MODEL, num_continuous=6, num_flags=9).to(DEVICE)
+model = TextToKeystrokeModelMultiHead(BASE_MODEL, num_continuous=3, num_flags=9).to(DEVICE)
 if torch.cuda.device_count() > 1:
     model = nn.DataParallel(model)
 
@@ -130,8 +130,8 @@ scaler    = amp.GradScaler(device="cuda" if DEVICE.type == "cuda" else "cpu")
 best_val, patience, step = float("inf"), 0, 0
 print("Starting training...")
 #define which indices are continuous and which are binary flags
-cont_idx = [0, 1, 2, 3, 13, 14]
-flag_idx = [4, 5, 6, 7, 8, 9, 10, 11, 12]
+cont_idx = [0, 1, 2]  # DwellTime, FlightTime, typing_speed
+flag_idx = [3, 4, 5, 6, 7, 8, 9, 10, 11]  # 9 binary flags
 
 
 for epoch in range(EPOCHS):
