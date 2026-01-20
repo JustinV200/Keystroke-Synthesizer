@@ -93,8 +93,9 @@ class TextToKeystrokeModelMultiHead(nn.Module):
             nn.Linear(512, 256), nn.ReLU()
         )
         
-        # Regression head (continuous features)
-        self.regression_head = nn.Linear(256, num_continuous)
+        # Heteroscedastic regression heads - predict mean AND variance
+        self.mean_head = nn.Linear(256, num_continuous)
+        self.logvar_head = nn.Linear(256, num_continuous)  # log-variance for numerical stability
         
         # Classification head (binary flags)
         self.classification_head = nn.Linear(256, num_flags)
@@ -105,11 +106,11 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         
         shared = self.backbone(hidden)  # [B, T, 256]
         
-        continuous = self.regression_head(shared)  # [B, T, num_continuous]
+        mean = self.mean_head(shared)  # [B, T, num_continuous]
+        logvar = self.logvar_head(shared)  # [B, T, num_continuous]
         logits = self.classification_head(shared)  # [B, T, num_flags]
         
-        # Return both; apply sigmoid to logits during inference
-        return continuous, logits
+        return mean, logvar, logits
 
 # infer feature size from one batch
 probe = next(iter(train_loader))
@@ -144,18 +145,22 @@ for epoch in range(EPOCHS):
 
         optimizer.zero_grad(set_to_none=True)
         with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
-            #break up tuple into continuous and logits
-            continuous, logits = model(input_ids, attention_m)   
+            # Model now returns mean, logvar, logits
+            mean, logvar, logits = model(input_ids, attention_m)   
             loss_sum, bce_sum, count = 0.0, 0.0, 0
             for j, target in enumerate(targets):
-                L = min(continuous.shape[1], target.shape[0])
+                L = min(mean.shape[1], target.shape[0])
 
-                # Compute MSE loss on continuous features for regression
-                mse = F.mse_loss(continuous[j, :L, :], target[:L, cont_idx], reduction="sum")
+                # Gaussian Negative Log-Likelihood loss for continuous features
+                # NLL = 0.5 * [log(var) + (target - mean)^2 / var]
+                var = torch.exp(logvar[j, :L, :])
+                nll = 0.5 * (logvar[j, :L, :] + ((target[:L, cont_idx] - mean[j, :L, :]) ** 2) / (var + 1e-8))
+                nll_loss = nll.sum()
+                
                 # Compute binary cross-entropy loss on flag logits for classification
                 bce = F.binary_cross_entropy_with_logits(logits[j, :L, :], target[:L, flag_idx].float(), reduction="sum")
                 
-                loss_sum += mse
+                loss_sum += nll_loss
                 bce_sum += bce
                 count += L
             
@@ -183,18 +188,21 @@ for epoch in range(EPOCHS):
             targets      = [t.to(DEVICE, non_blocking=True) for t in batch["target"]]
 
             with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
-                # Unpack continuous and flag outputs from model
-                continuous, logits = model(input_ids, attention_m)
+                # Unpack mean, logvar, and flag outputs from model
+                mean, logvar, logits = model(input_ids, attention_m)
                 for j, target in enumerate(targets):
-                    L = min(continuous.shape[1], target.shape[0])
-                    # Compute MSE loss on continuous features only (indices 0,1,2,3,13,14)
-                    mse = F.mse_loss(continuous[j, :L, :], target[:L, cont_idx], reduction="sum")
-                    # Compute BCE loss on binary flag logits (indices 4,5,6,7,8,9,10,11,12)
-                    bce = F.binary_cross_entropy_with_logits(logits[j, :L, :], target[:L, flag_idx].float(), reduction="sum")
-                    # Track MAE only on continuous features for interpretability
-                    ae = (continuous[j, :L, :] - target[:L, cont_idx]).abs()
+                    L = min(mean.shape[1], target.shape[0])
+                    # Compute NLL loss on continuous features
+                    var = torch.exp(logvar[j, :L, :])
+                    nll = 0.5 * (logvar[j, :L, :] + ((target[:L, cont_idx] - mean[j, :L, :]) ** 2) / (var + 1e-8))
+                    nll_loss = nll.sum()
                     
-                    val_loss_sum += mse.item()
+                    # Compute BCE loss on binary flag logits
+                    bce = F.binary_cross_entropy_with_logits(logits[j, :L, :], target[:L, flag_idx].float(), reduction="sum")
+                    # Track MAE on mean predictions for interpretability
+                    ae = (mean[j, :L, :] - target[:L, cont_idx]).abs()
+                    
+                    val_loss_sum += nll_loss.item()
                     val_bce_sum  += bce.item()
                     val_mae_sum  += ae.sum().item()
                     val_count    += L

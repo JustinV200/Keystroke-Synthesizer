@@ -24,8 +24,9 @@ class TextToKeystrokeModelMultiHead(nn.Module):
             nn.ReLU()
         )
 
-        # Regression head (continuous features)
-        self.regression_head = nn.Linear(256, num_continuous)
+        # Heteroscedastic regression heads - predict mean AND variance
+        self.mean_head = nn.Linear(256, num_continuous)
+        self.logvar_head = nn.Linear(256, num_continuous)
 
         # Classification head (binary flags)
         self.classification_head = nn.Linear(256, num_flags)
@@ -34,10 +35,11 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         x = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
         shared = self.backbone(x.last_hidden_state)
 
-        continuous = self.regression_head(shared)
-
+        mean = self.mean_head(shared)
+        logvar = self.logvar_head(shared)
         logits = self.classification_head(shared)
-        return continuous, logits
+        
+        return mean, logvar, logits
 
 
 def predict_keystrokes(
@@ -93,20 +95,26 @@ def predict_keystrokes(
 
     # ---------------- Run inference ----------------
     with torch.no_grad(), torch.amp.autocast("cuda" if device.type == "cuda" else "cpu"):
-        # Model outputs STANDARDIZED continuous values
-        continuous_std, logits = model(**enc)
+        # Model outputs STANDARDIZED mean and log-variance
+        mean_std, logvar_std, logits = model(**enc)
 
         # Convert logits → probabilities for binary flags
         flags = torch.sigmoid(logits)  # values in [0, 1]
 
-        # If you want hard binary outputs instead of probabilities, uncomment:
-        # flags = (flags > 0.5).float()
+        # ---------------- De-standardize mean and variance ----------------
+        # De-standardize mean: y_mean = y_std * std + mean
+        mean = mean_std * cont_std + cont_mean
+        
+        # De-standardize variance: var = exp(logvar_std) * std^2
+        variance_std = torch.exp(logvar_std)
+        variance = variance_std * (cont_std ** 2)
+        std = torch.sqrt(variance.clamp(min=1e-8))  # prevent negative/zero variance
+        
+        # ---------------- Sample from predicted distributions ----------------
+        # N(mean, std) - adds realistic variability!
+        continuous = torch.randn_like(mean) * std + mean
 
-        # ---------------- De-standardize continuous outputs ----------------
-        # y = y_std * std + mean
-        continuous = continuous_std * cont_std + cont_mean
-
-    # force outputs to float32, fix error
+    # force outputs to float32
     continuous = continuous.float()
     flags = flags.float()
 
