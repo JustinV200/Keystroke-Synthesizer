@@ -63,7 +63,7 @@ class dataLoader(Dataset):
                         "DwellTime", "FlightTime", "typing_speed", "char_code",
                         "is_letter", "is_digit", "is_punct", "is_space",
                         "is_backspace", "is_enter", "is_shift",
-                        "is_pause_2s", "is_pause_5s", "cum_backspace", "cum_chars"
+                        "is_pause_2s", "is_pause_5s"
                     ]
                     cols = [c for c in keep_cols if c in df.columns]
                     if not cols:
@@ -101,7 +101,7 @@ class dataLoader(Dataset):
                     json.dump(stats, f)
                 print(f"[INFO] Saved continuous feature stats to {self.stats_file}")
 
-        # fallback if standardization disabled
+        # when we don't standardize, set mean=0, std=1, dont rlly use this anymore but kept for safety
         if not self.standardize:
             self.cont_mean = torch.zeros(len(self.cont_idx))
             self.cont_std  = torch.ones(len(self.cont_idx))
