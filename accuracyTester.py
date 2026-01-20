@@ -26,7 +26,10 @@ def computeOgStats():
         if not fid.endswith(".csv"):
             continue
         csv_path = os.path.join(csv_dir, fid)
-        df = pd.read_csv(csv_path)
+        try:
+            df = pd.read_csv(csv_path, encoding='utf-8')
+        except UnicodeDecodeError:
+            df = pd.read_csv(csv_path, encoding='latin-1')
         #calculate features
         dwelltime = df['UpTime'] - df['DownTime']
         flighttime = df['DownTime'].shift(-1) - df['UpTime']
@@ -69,7 +72,10 @@ def computeSynthStats(Synthesize = True):
         if not fid.endswith(".csv"):
             continue
         csv_path = os.path.join(csv_dir, fid)
-        df = pd.read_csv(csv_path)
+        try:
+            df = pd.read_csv(csv_path, encoding='utf-8')
+        except UnicodeDecodeError:
+            df = pd.read_csv(csv_path, encoding='latin-1')
         #calculate features
         dwelltime = df['DwellTime']
         flighttime = df['FlightTime']
