@@ -9,7 +9,6 @@ from torch.utils.data import DataLoader, random_split
 from transformers import AutoTokenizer, AutoModel
 from tqdm.auto import tqdm
 from torch import amp
-from torch.utils.tensorboard import SummaryWriter
 from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts
 from dataLoader import dataLoader
 
@@ -20,11 +19,13 @@ EPOCHS       = 12 # number of runs
 BATCH_SIZE   = 8 # per-GPU batch size
 LR           = 2e-5 # learning rate
 WEIGHT_DECAY = 0.01 # weight decay, for how much to regularize
+KL_WEIGHT_START = 0.001   # KL weight at epoch 0 (focus on mean first)
+KL_WEIGHT_END   = 0.01  # KL weight at final annealing epoch (then focus on variance)
+KL_ANNEAL_EPOCHS = 6    # Linearly increase KL weight over first 6 epochs
 MAX_TOKENS   = 512 # max tokens for transformer input
 PATIENCE     = 3 # early stopping patience, if no val improvement
 OUTPUT_DIR   = "checkpoints" # where to save models
 os.makedirs(OUTPUT_DIR, exist_ok=True)
-writer = SummaryWriter("runs/keystroke_experiment")
 torch.set_float32_matmul_precision("high") 
 
 # this will pad the variable-length inputs and targets in each batch
@@ -51,7 +52,7 @@ def make_collate_fn(pad_token_id: int):
         }
     return collate
 
-# ---------------- Data ----------------
+# Data loading
 print("Loading tokenizer and datasets...")
 tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
 
@@ -78,6 +79,17 @@ val_loader   = DataLoader(val_dataset,   batch_size=BATCH_SIZE, shuffle=False,
                           num_workers=0, pin_memory=True, collate_fn=collate_fn)
 
 print(f"Train samples: {len(train_dataset)}, Val samples: {len(val_dataset)}")
+
+# Compute empirical variance from training data (in standardized space)
+print("Computing empirical variance from training data...")
+all_cont_features = []
+for idx in range(min(len(train_dataset), 2000)):  # Sample 2000
+    sample = train_dataset[idx]
+    all_cont_features.append(sample["target"][:, [0, 1, 2]])  # DwellTime, FlightTime, typing_speed
+all_cont = torch.cat(all_cont_features, dim=0)
+empirical_var = all_cont.var(dim=0, unbiased=True)  # [3] - variance per feature
+print(f"Empirical variance (standardized space): {empirical_var.tolist()}")
+empirical_var = empirical_var.to(DEVICE)
 
 # Model definition, updated to have multi-head outputs, once for
 # continuous features (regression), once for binary flags (classification)
@@ -136,6 +148,14 @@ flag_idx = [3, 4, 5, 6, 7, 8, 9, 10, 11]  # 9 binary flags
 
 
 for epoch in range(EPOCHS):
+    # Compute current KL weight using linear annealing schedule
+    if epoch < KL_ANNEAL_EPOCHS:
+        kl_weight = KL_WEIGHT_START + (KL_WEIGHT_END - KL_WEIGHT_START) * (epoch / KL_ANNEAL_EPOCHS)
+    else:
+        kl_weight = KL_WEIGHT_END
+    
+    print(f"Epoch {epoch+1}/{EPOCHS} - KL weight: {kl_weight:.5f}")
+    
     model.train()
     train_loss_sum = 0.0
     for i, batch in enumerate(tqdm(train_loader, desc=f"Epoch {epoch+1}/{EPOCHS}")):
@@ -157,11 +177,16 @@ for epoch in range(EPOCHS):
                 nll = 0.5 * (logvar[j, :L, :] + ((target[:L, cont_idx] - mean[j, :L, :]) ** 2) / (var + 1e-8))
                 nll_loss = nll.sum()
                 
+                # KL divergence penalty: penalize predicted variance deviating from empirical
+                # 0.5 * [-logvar_pred + log(σ²_emp) + exp(logvar_pred)/σ²_emp - 1]
+                kl_div = 0.5 * (-logvar[j, :L, :] + torch.log(empirical_var) + var / empirical_var - 1.0)
+                kl_loss = kl_div.sum()
+                
                 # Compute binary cross-entropy loss on flag logits for classification
                 bce = F.binary_cross_entropy_with_logits(logits[j, :L, :], target[:L, flag_idx].float(), reduction="sum")
                 
                 loss_sum += nll_loss
-                bce_sum += bce
+                bce_sum += bce + kl_weight * kl_loss  # Use annealed kl_weight
                 count += L
             
             loss = (loss_sum + bce_sum) / max(1, count)
@@ -174,13 +199,12 @@ for epoch in range(EPOCHS):
 
         train_loss_sum += loss.item()
         step += 1
-        writer.add_scalar("Loss/train", loss.item(), step)
 
     avg_train = train_loss_sum / max(1, len(train_loader))
 
-    # ---- Validation ----
+    # Validation
     model.eval()
-    val_loss_sum, val_bce_sum, val_mae_sum, val_count = 0.0, 0.0, 0.0, 0
+    val_loss_sum, val_bce_sum, val_kl_sum, val_mae_sum, val_count = 0.0, 0.0, 0.0, 0.0, 0
     with torch.no_grad():
         for batch in val_loader:
             input_ids    = batch["input_ids"].to(DEVICE, non_blocking=True)
@@ -197,6 +221,10 @@ for epoch in range(EPOCHS):
                     nll = 0.5 * (logvar[j, :L, :] + ((target[:L, cont_idx] - mean[j, :L, :]) ** 2) / (var + 1e-8))
                     nll_loss = nll.sum()
                     
+                    # Compute KL divergence penalty
+                    kl_div = 0.5 * (-logvar[j, :L, :] + torch.log(empirical_var) + var / empirical_var - 1.0)
+                    kl_loss = kl_div.sum()
+                    
                     # Compute BCE loss on binary flag logits
                     bce = F.binary_cross_entropy_with_logits(logits[j, :L, :], target[:L, flag_idx].float(), reduction="sum")
                     # Track MAE on mean predictions for interpretability
@@ -204,15 +232,16 @@ for epoch in range(EPOCHS):
                     
                     val_loss_sum += nll_loss.item()
                     val_bce_sum  += bce.item()
+                    val_kl_sum   += kl_loss.item()
                     val_mae_sum  += ae.sum().item()
                     val_count    += L
 
-    # Combine MSE and BCE losses for total validation loss (matches training computation)
-    val_loss = (val_loss_sum + val_bce_sum) / max(1, val_count)
+    # Combine NLL, BCE, and KL losses for total validation loss (matches training computation)
+    val_loss = (val_loss_sum + val_bce_sum + kl_weight * val_kl_sum) / max(1, val_count)
     val_mae  = val_mae_sum  / max(1, val_count)
-    writer.add_scalar("Loss/val", val_loss, epoch)
-    writer.add_scalar("MAE/val",  val_mae,  epoch)
-    print(f"Epoch {epoch+1}: Train={avg_train:.5f}  Val={val_loss:.5f}  MAE={val_mae:.5f}")
+    val_kl   = val_kl_sum   / max(1, val_count)
+    emp_var_str = f"[{empirical_var[0]:.3f}, {empirical_var[1]:.3f}, {empirical_var[2]:.3f}]"
+    print(f"Epoch {epoch+1}: Train={avg_train:.5f}  Val={val_loss:.5f}  MAE={val_mae:.5f}  KL={val_kl:.5f}  EmpiricalVar={emp_var_str}")
 
     if val_loss < best_val:
         best_val = val_loss
@@ -225,5 +254,4 @@ for epoch in range(EPOCHS):
             print("Early stopping triggered.")
             break
 
-writer.close()
 print("Training complete!")
