@@ -15,7 +15,7 @@ class dataPrepper:
         self.scaler = None
         self.original_length = len(self.data)
 
-    # ---------- cleaning ----------
+    # cleaning data, remove invalid entries
     def clean_data(self):
         initial_len = len(self.data)
         #drop duplicates
@@ -46,15 +46,14 @@ class dataPrepper:
 
         initial_len = len(self.data)
 
-        # strip negatives / unrealistic
-        self.data = self.data[(self.data['DwellTime'] >= 0) & (self.data['DwellTime'] < 2000)]
-        self.data = self.data[(self.data['FlightTime'].isna()) |
-                              ((self.data['FlightTime'] >= 0) & (self.data['FlightTime'] < 5000))]
+        # Remove only clearly invalid data (negatives), keep outliers for stats
+        self.data = self.data[self.data['DwellTime'] >= 0]
+        self.data = self.data[(self.data['FlightTime'].isna()) | (self.data['FlightTime'] >= 0)]
 
         self.data.reset_index(drop=True, inplace=True)
         removed = initial_len - len(self.data)
         if removed > 0:
-            print(f"Filtered unrealistic timings: removed {removed} rows")
+            print(f"Filtered invalid timings (negatives): removed {removed} rows")
     #add in contextual flags, what type of key was pressed, pauses, cumulative counts, typing speed
     def addContextFlags(self):
         de = self.data["DownEvent"].astype(str)
