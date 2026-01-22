@@ -29,3 +29,4 @@ export TORCH_USE_CUDA_DSA=1
 
 #python Trainer.py
 python synthesizeKeystrokes.py
+#python accuracyTester.py
