@@ -31,6 +31,8 @@ def computeOgStats():
             df = pd.read_csv(csv_path, encoding='utf-8')
         except UnicodeDecodeError:
             df = pd.read_csv(csv_path, encoding='latin-1')
+        # set size of df to first 512 rows to match synthesized data length
+        df = df.head(512)
         #calculate features
         dwelltime = df['UpTime'] - df['DownTime']
         flighttime = df['DownTime'].shift(-1) - df['UpTime']
@@ -139,9 +141,9 @@ def compare():
         print()
     
     print("="*80)
-    print("Significance: *** p<0.001, ** p<0.01, * p<0.05, ns = not significant")
-    print("Goal: Low p-values in t-test/K-S mean distributions differ (bad for synthesis)")
-    print("      High p-values (>0.05) mean distributions are similar (good!)")
+    print("Note: larger datasets will not necessarily yield better p-values due to increased statistical power.")
+    print("consider the size of the dataset, for larger ones, cohen's d and mean differences may be more informative.")
+
     print("="*80)
 if __name__ == "__main__":
     compare()

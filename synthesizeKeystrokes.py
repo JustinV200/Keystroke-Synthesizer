@@ -53,12 +53,12 @@ def predict_keystrokes(
     if device is None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    # ---------------- Load text ----------------
+    #  Load text 
     with open(text_path, "r", encoding="utf-8") as f:
         text = f.read().strip()
     print(f"Loaded text ({len(text)} characters)")
 
-    # ---------------- Load tokenizer and model ----------------
+    #  Load tokenizer and model 
     tokenizer = AutoTokenizer.from_pretrained(base_model)
     num_continuous, num_flags = 3, 9
     model = TextToKeystrokeModelMultiHead(base_model, num_continuous, num_flags).to(device)
@@ -76,14 +76,14 @@ def predict_keystrokes(
     model.load_state_dict(checkpoint, strict=True)
     model.eval()
 
-    # ---------------- Load standardization stats ----------------
+    #  Load standardization stats 
     with open(stats_path, "r") as f:
         stats = json.load(f)
 
     cont_mean = torch.tensor(stats["mean"], device=device)
     cont_std  = torch.tensor(stats["std"],  device=device)
 
-    # ---------------- Tokenize input text ----------------
+    #  Tokenize input text 
     enc = tokenizer(
         text,
         return_tensors="pt",
@@ -93,7 +93,7 @@ def predict_keystrokes(
     )
     enc = {k: v.to(device) for k, v in enc.items() if k in ["input_ids", "attention_mask"]}
 
-    # ---------------- Run inference ----------------
+    #  Run inference 
     with torch.no_grad(), torch.amp.autocast("cuda" if device.type == "cuda" else "cpu"):
         # Model outputs STANDARDIZED mean and log-variance
         mean_std, logvar_std, logits = model(**enc)
@@ -101,7 +101,7 @@ def predict_keystrokes(
         # Convert logits → probabilities for binary flags
         flags = torch.sigmoid(logits)  # values in [0, 1]
 
-        # ---------------- De-standardize mean and variance ----------------
+        #  De-standardize mean and variance 
         # De-standardize mean: y_mean = y_std * std + mean
         mean = mean_std * cont_std + cont_mean
         
@@ -109,8 +109,8 @@ def predict_keystrokes(
         variance_std = torch.exp(logvar_std)
         variance = variance_std * (cont_std ** 2)
         std = torch.sqrt(variance.clamp(min=1e-8))  # prevent negative/zero variance
-        
-        # ---------------- Sample from predicted distributions ----------------
+    
+        #  Sample from predicted distributions 
         # N(mean, std) - adds realistic variability!
         continuous = torch.randn_like(mean) * std + mean
 
@@ -118,12 +118,12 @@ def predict_keystrokes(
     continuous = continuous.float()
     flags = flags.float()
 
-    # ---------------- Physical constraints ----------------
+    #  Physical constraints 
     continuous[:, :, 0] = torch.clamp(continuous[:, :, 0], min=20.0)  # DwellTime
     continuous[:, :, 1] = torch.clamp(continuous[:, :, 1], min=10.0)  # FlightTime
     continuous[:, :, 2] = torch.clamp(continuous[:, :, 2], min=0.0)  # typing_speed
 
-# ---------------- Assemble full feature tensor ----------------
+#  Assemble full feature tensor 
     B, T, _ = continuous.shape
     out = torch.zeros(B, T, 12, device=continuous.device)
 
