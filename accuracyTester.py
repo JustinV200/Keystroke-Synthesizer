@@ -36,6 +36,9 @@ def computeOgStats():
         #calculate features
         dwelltime = df['UpTime'] - df['DownTime']
         flighttime = df['DownTime'].shift(-1) - df['UpTime']
+        # Set first FlightTime to NaN to match synthesized data
+        if len(flighttime) > 0:
+            flighttime.iloc[0] = np.nan
         # Calculate typing speed per keystroke using rolling window (matching synthesized approach)
         window_size = 10
         elapsed = df['DownTime'].diff(window_size)
@@ -46,6 +49,16 @@ def computeOgStats():
         ogDwell_times.extend(dwelltime.dropna().tolist())
         ogFlight_times.extend(flighttime.dropna().tolist())
         ogTyping_speeds.extend(typing_speed.dropna().tolist())
+    
+    # Debug FlightTime distribution to check for outliers
+    flight_array = np.array(ogFlight_times)
+    print(f"FlightTime distribution analysis:")
+    print(f"  Mean: {flight_array.mean():.2f}, Std: {flight_array.std():.2f}")
+    print(f"  Min: {flight_array.min():.2f}, Max: {flight_array.max():.2f}")
+    print(f"  Percentiles: 50%={np.percentile(flight_array, 50):.1f}, 90%={np.percentile(flight_array, 90):.1f}, 95%={np.percentile(flight_array, 95):.1f}, 99%={np.percentile(flight_array, 99):.1f}, 99.9%={np.percentile(flight_array, 99.9):.1f}")
+    print(f"  Values >10sec: {(flight_array > 10000).sum()}/{len(flight_array)} ({(flight_array > 10000).mean()*100:.1f}%)")
+    print(f"  Values >30sec: {(flight_array > 30000).sum()}/{len(flight_array)} ({(flight_array > 30000).mean()*100:.1f}%)")
+        
     return ogDwell_times, ogFlight_times, ogTyping_speeds
 
 # synthesize keystrokes for each text file and get stats

@@ -1,5 +1,4 @@
 
-
 1/25/2026, after introducing kl, and making sure to limit the size of og data so N's are similar.
 --- BASIC STATISTICS ---
 
@@ -32,3 +31,19 @@ Typing Speed:
   K-S test:     D=  0.139, p=0.0000 ***
   Cohen's d:      0.308 (small)
   Mean diff:      42.07 (16.6%)
+
+*Cohen's d values are good (negligible to small effect sizes: 0.068, 0.169, 0.308)
+*DwellTime mean is accurate (6.5% error), but FlightTime mean is severely off (155% error)
+*Typing Speed mean has moderate error (16.6%)
+*Major variance collapse: DwellTime std 55% underestimated, FlightTime std 62% underestimated
+*Typing Speed variance is better preserved (only 16% underestimated)
+*K-S tests show moderate to large distributional differences
+*FlightTime has the worst performance across all metrics. 
+*Ignoring t-tests due to large sample sizes
+
+plan for now: significantly increase kl to handle the variance collapse
+also, updating accuracytester.py to look through the original flightime data, wondering
+if some outliers are skewing things?
+
+Also just realized we never set the first flightime in each csv to nan in the original stats, while we do in the synthesized one, this is probably
+a big reason for the issue. Just fixed that now. gonna retrain and then rerun accuracytester
