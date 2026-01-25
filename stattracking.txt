@@ -41,7 +41,7 @@ Typing Speed:
 *FlightTime has the worst performance across all metrics. 
 *Ignoring t-tests due to large sample sizes
 
-plan for now: significantly increase kl to handle the variance collapse
+plan for now: significantly increase kl weight to handle the variance collapse
 also, updating accuracytester.py to look through the original flightime data, wondering
 if some outliers are skewing things?
 
