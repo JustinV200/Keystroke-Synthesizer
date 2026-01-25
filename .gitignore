@@ -3,7 +3,6 @@
 
 #ignore dataset files, we just wanna push the zip
 data/
-*.txt
 *.csv
 misc/
 

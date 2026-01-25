@@ -1,0 +1,34 @@
+
+
+1/25/2026, after introducing kl, and making sure to limit the size of og data so N's are similar.
+--- BASIC STATISTICS ---
+
+Original Data:
+  DwellTime    - Mean:   102.65, Std:   127.30, N: 2555814
+  FlightTime   - Mean:   443.97, Std:  5378.20, N: 2550822
+  Typing Speed - Mean:   254.16, Std:   147.84, N: 2555814
+
+Synthesized Data:
+  DwellTime    - Mean:    95.94, Std:    57.40, N: 1960056
+  FlightTime   - Mean:  1132.87, Std:  2057.10, N: 1955064
+  Typing Speed - Mean:   212.10, Std:   124.45, N: 1960056
+
+--- STATISTICAL TESTS ---
+
+DwellTime:
+  t-test:       t= 68.557, p=0.0000 ***
+  K-S test:     D=  0.157, p=0.0000 ***
+  Cohen's d:      0.068 (negligible)
+  Mean diff:       6.70 (6.5%)
+
+FlightTime:
+  t-test:       t=-169.834, p=0.0000 ***
+  K-S test:     D=  0.374, p=0.0000 ***
+  Cohen's d:     -0.169 (negligible)
+  Mean diff:     688.90 (155.2%)
+
+Typing Speed:
+  t-test:       t=320.659, p=0.0000 ***
+  K-S test:     D=  0.139, p=0.0000 ***
+  Cohen's d:      0.308 (small)
+  Mean diff:      42.07 (16.6%)
