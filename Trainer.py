@@ -22,6 +22,8 @@ WEIGHT_DECAY = 0.01 # weight decay, for how much to regularize
 KL_WEIGHT_START = 0.001   # KL weight at epoch 0 (focus on mean first)
 KL_WEIGHT_END   = 0.03   # KL weight at final annealing epoch (then focus on variance)
 KL_ANNEAL_EPOCHS = 8    # Linearly increase KL weight over first 6 epochs
+# Feature-specific KL multipliers [DwellTime, FlightTime, typing_speed]
+KL_FEATURE_WEIGHTS = [1.0, 0.8, 0.3]  # feature specific weights for KL divergence
 MAX_TOKENS   = 512 # max tokens for transformer input
 PATIENCE     = 3 # early stopping patience, if no val improvement
 OUTPUT_DIR   = "checkpoints" # where to save models
@@ -90,6 +92,10 @@ all_cont = torch.cat(all_cont_features, dim=0)
 empirical_var = all_cont.var(dim=0, unbiased=True)  # [3] - variance per feature
 print(f"Empirical variance (standardized space): {empirical_var.tolist()}")
 empirical_var = empirical_var.to(DEVICE)
+
+# Create feature-specific KL weight tensor
+kl_feature_weights = torch.tensor(KL_FEATURE_WEIGHTS, device=DEVICE)  # [3]
+print(f"Feature-specific KL weights: {KL_FEATURE_WEIGHTS}")
 
 # Model definition, updated to have multi-head outputs, once for
 # continuous features (regression), once for binary flags (classification)
@@ -180,7 +186,8 @@ for epoch in range(EPOCHS):
                 # KL divergence penalty: penalize predicted variance deviating from empirical
                 # 0.5 * [-logvar_pred + log(σ²_emp) + exp(logvar_pred)/σ²_emp - 1]
                 kl_div = 0.5 * (-logvar[j, :L, :] + torch.log(empirical_var) + var / empirical_var - 1.0)
-                kl_loss = kl_div.sum()
+                # Apply feature-specific weights: DwellTime=1.0, FlightTime=1.0, typing_speed=0.3
+                kl_loss = (kl_div * kl_feature_weights).sum()
                 
                 # Compute binary cross-entropy loss on flag logits for classification
                 bce = F.binary_cross_entropy_with_logits(logits[j, :L, :], target[:L, flag_idx].float(), reduction="sum")
@@ -221,9 +228,9 @@ for epoch in range(EPOCHS):
                     nll = 0.5 * (logvar[j, :L, :] + ((target[:L, cont_idx] - mean[j, :L, :]) ** 2) / (var + 1e-8))
                     nll_loss = nll.sum()
                     
-                    # Compute KL divergence penalty
+                    # Compute KL divergence penalty with feature-specific weights
                     kl_div = 0.5 * (-logvar[j, :L, :] + torch.log(empirical_var) + var / empirical_var - 1.0)
-                    kl_loss = kl_div.sum()
+                    kl_loss = (kl_div * kl_feature_weights).sum()
                     
                     # Compute BCE loss on binary flag logits
                     bce = F.binary_cross_entropy_with_logits(logits[j, :L, :], target[:L, flag_idx].float(), reduction="sum")

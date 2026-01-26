@@ -49,6 +49,9 @@ class dataPrepper:
         # Remove only clearly invalid data (negatives), keep outliers for stats
         self.data = self.data[self.data['DwellTime'] >= 0]
         self.data = self.data[(self.data['FlightTime'].isna()) | (self.data['FlightTime'] >= 0)]
+        
+        # Cap FlightTime at 10 seconds (10000ms) to remove extreme outliers (e.g., long breaks)
+        self.data.loc[self.data['FlightTime'] > 10000, 'FlightTime'] = np.nan
 
         self.data.reset_index(drop=True, inplace=True)
         removed = initial_len - len(self.data)
@@ -87,7 +90,9 @@ class dataPrepper:
         elapsed = self.data['DownTime'].diff(window_size)
         # cpm = window_size / (elapsed_seconds / 60)
         cpm = window_size / (elapsed / 1000.0 / 60.0)
-        cpm = cpm.replace([np.inf, -np.inf], np.nan).fillna(method="bfill").fillna(0.0)
+        cpm = cpm.replace([np.inf, -np.inf], np.nan).fillna(method="bfill")
+        # Replace 0s with NaN (invalid data), then backfill
+        cpm = cpm.replace(0.0, np.nan).fillna(method="bfill").fillna(50.0)  # fallback to reasonable minimum
         cpm = cpm.clip(upper=500)
         return cpm
 

@@ -119,9 +119,10 @@ def predict_keystrokes(
     flags = flags.float()
 
     #  Physical constraints 
-    continuous[:, :, 0] = torch.clamp(continuous[:, :, 0], min=20.0)  # DwellTime
-    continuous[:, :, 1] = torch.clamp(continuous[:, :, 1], min=10.0)  # FlightTime
-    continuous[:, :, 2] = torch.clamp(continuous[:, :, 2], min=0.0)  # typing_speed
+    #todo, find actual minimums
+    continuous[:, :, 0] = torch.clamp(continuous[:, :, 0], min=20.0)  # DwellTime 
+    continuous[:, :, 1] = torch.clamp(continuous[:, :, 1], min=10.0, max=10000.0)  # FlightTime (cap at 10s)
+    continuous[:, :, 2] = torch.clamp(continuous[:, :, 2], min=50.0, max=500.0)  # typing_speed (match preprocessing)
 
 #  Assemble full feature tensor 
     B, T, _ = continuous.shape

@@ -1,5 +1,6 @@
 
 1/25/2026, after introducing kl, and making sure to limit the size of og data so N's are similar.
+klweight = 0.001
 --- BASIC STATISTICS ---
 
 Original Data:
@@ -47,3 +48,45 @@ if some outliers are skewing things?
 
 Also just realized we never set the first flightime in each csv to nan in the original stats, while we do in the synthesized one, this is probably
 a big reason for the issue. Just fixed that now. gonna retrain and then rerun accuracytester
+
+
+kl weight = 0.003
+--- BASIC STATISTICS ---
+
+Original Data:
+  DwellTime    - Mean:   102.65, Std:   127.30, N: 2555814
+  FlightTime   - Mean:   383.80, Std:  4163.66, N: 2545830
+  Typing Speed - Mean:   254.16, Std:   147.84, N: 2555814
+
+Synthesized Data:
+  DwellTime    - Mean:    99.03, Std:    58.38, N: 1960056
+  FlightTime   - Mean:  1415.29, Std:  2272.30, N: 1955064
+  Typing Speed - Mean:   197.24, Std:   118.00, N: 1960056
+
+--- STATISTICAL TESTS ---
+
+DwellTime:
+  t-test:       t= 36.895, p=0.0000 ***
+  K-S test:     D=  0.139, p=0.0000 ***
+  Cohen's d:      0.037 (negligible)
+  Mean diff:       3.62 (3.5%)
+
+FlightTime:
+  t-test:       t=-312.494, p=0.0000 ***
+  K-S test:     D=  0.386, p=0.0000 ***
+  Cohen's d:     -0.308 (small)
+  Mean diff:    1031.49 (268.8%)
+
+Typing Speed:
+  t-test:       t=441.807, p=0.0000 ***
+  K-S test:     D=  0.175, p=0.0000 ***
+  Cohen's d:      0.426 (small)
+  Mean diff:      56.92 (22.4%)
+
+
+*Dwell time is better, but Typingspeed is slightly worse
+*flightime is very bad, results are either huge numbers or 0, possibly indicates an outlier issue in
+*the original data. perhaps tied to ppl leaving to use the restroom, or longer breaks.
+*gonna cap flightime data in the next run.
+* second issue: 0s in Typingspeed. assuming something is causing this in the original data?
+* will be removing 0s in original data, and clamping typingspeed in the synthesizer.
