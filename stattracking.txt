@@ -90,3 +90,6 @@ Typing Speed:
 *gonna cap flightime data in the next run.
 * second issue: 0s in Typingspeed. assuming something is causing this in the original data?
 * will be removing 0s in original data, and clamping typingspeed in the synthesizer.
+
+*also adding in feature specific kl weights, as dwelltime seems to benefit from a high kl while flightime does not,
+* and typingspeed wants something in between.
