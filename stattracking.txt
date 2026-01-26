@@ -49,7 +49,7 @@ if some outliers are skewing things?
 Also just realized we never set the first flightime in each csv to nan in the original stats, while we do in the synthesized one, this is probably
 a big reason for the issue. Just fixed that now. gonna retrain and then rerun accuracytester
 
-
+1/26/2026
 kl weight = 0.003
 --- BASIC STATISTICS ---
 
