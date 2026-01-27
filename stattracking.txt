@@ -93,3 +93,43 @@ Typing Speed:
 
 *also adding in feature specific kl weights, as dwelltime seems to benefit from a high kl while flightime does not,
 * and typingspeed wants something in between.
+
+1/27/2026
+
+--- BASIC STATISTICS ---
+
+Original Data:
+  DwellTime    - Mean:   102.65, Std:   127.30, N: 2555814
+  FlightTime   - Mean:   383.80, Std:  4163.66, N: 2545830
+  Typing Speed - Mean:   254.16, Std:   147.84, N: 2555814
+
+Synthesized Data:
+  DwellTime    - Mean:    97.13, Std:    58.79, N: 1960056
+  FlightTime   - Mean:   439.37, Std:   507.91, N: 1955064
+  Typing Speed - Mean:   207.26, Std:   115.07, N: 1960056
+
+--- STATISTICAL TESTS ---
+
+DwellTime:
+  t-test:       t= 56.241, p=0.0000 ***
+  K-S test:     D=  0.155, p=0.0000 ***
+  Cohen's d:      0.056 (negligible)
+  Mean diff:       5.52 (5.4%)
+
+FlightTime:
+  t-test:       t=-18.555, p=0.0000 ***
+  K-S test:     D=  0.323, p=0.0000 ***
+  Cohen's d:     -0.019 (negligible)
+  Mean diff:      55.57 (14.5%)
+
+Typing Speed:
+  t-test:       t=367.010, p=0.0000 ***
+  K-S test:     D=  0.155, p=0.0000 ***
+  Cohen's d:      0.354 (small)
+  Mean diff:      46.90 (18.5%)
+
+
+* capped flightime in training data but not in the accuracytester, so ignore the og standard deviation for flightime
+* much better results this time, but still seeing a lot of 50s in the typingspeed(clamped value) and some huge numbers
+*in flightime, altho noteably better
+*gonna rerun with properly capped flightime and recompare
