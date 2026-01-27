@@ -170,5 +170,4 @@ Typing Speed:
   Mean diff:      47.00 (18.5%)
 
 *empericial values are huge for some reason: [405.102, 2.322, 0.995]
-* gonna try and retrain with a new const_stats.json to see if that fixes it,
-* also gonna raise kl for flightime and DwellTime
+* gonna try and retrain with a new const_stats.json to see if that fixes it
