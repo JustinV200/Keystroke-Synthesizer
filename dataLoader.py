@@ -88,8 +88,9 @@ class dataLoader(Dataset):
             # --- compute and save stats if not loaded ---
             if self.standardize and not stats_loaded and all_cont_features:
                 all_cont = torch.cat(all_cont_features, dim=0)
-                self.cont_mean = all_cont.mean(dim=0)
-                self.cont_std  = all_cont.std(dim=0)
+                # Use nanmean and nanstd to handle NaN values (e.g., from FlightTime >10s cap)
+                self.cont_mean = torch.tensor([all_cont[:, i][~torch.isnan(all_cont[:, i])].mean() for i in range(all_cont.shape[1])])
+                self.cont_std  = torch.tensor([all_cont[:, i][~torch.isnan(all_cont[:, i])].std() for i in range(all_cont.shape[1])])
                 # prevent division by zero
                 self.cont_std[self.cont_std == 0] = 1.0
                 # save to JSON

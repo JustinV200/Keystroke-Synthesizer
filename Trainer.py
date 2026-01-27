@@ -44,7 +44,7 @@ def make_collate_fn(pad_token_id: int):
 
         # Target side (keep variable-length sequences)
         targets = [b["target"] for b in batch]
-        target_masks = [torch.ones_like(t[:, :1]) for t in targets]  # simple validity mask
+        target_masks = [torch.ones_like(t[:, :1]) for t in targets]  #simple validity mask
 
         return {
             "input_ids": input_ids,

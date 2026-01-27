@@ -131,5 +131,44 @@ Typing Speed:
 
 * capped flightime in training data but not in the accuracytester, so ignore the og standard deviation for flightime
 * much better results this time, but still seeing a lot of 50s in the typingspeed(clamped value) and some huge numbers
-*in flightime, altho noteably better
-*gonna rerun with properly capped flightime and recompare
+* in flightime, altho noteably better
+* gonna rerun with properly capped flightime and recompare
+
+1/27/2026:
+================================================================================
+
+--- BASIC STATISTICS ---
+
+Original Data:
+  DwellTime    - Mean:   102.65, Std:   127.30, N: 2555814
+  FlightTime   - Mean:   282.34, Std:  1001.06, N: 2545830
+  Typing Speed - Mean:   254.16, Std:   147.84, N: 2555814
+
+Synthesized Data:
+  DwellTime    - Mean:    97.21, Std:    58.83, N: 1960056
+  FlightTime   - Mean:   440.14, Std:   508.32, N: 1955064
+  Typing Speed - Mean:   207.16, Std:   115.08, N: 1960056
+
+--- STATISTICAL TESTS ---
+
+DwellTime:
+  t-test:       t= 55.397, p=0.0000 ***
+  K-S test:     D=  0.155, p=0.0000 ***
+  Cohen's d:      0.055 (negligible)
+  Mean diff:       5.43 (5.3%)
+
+FlightTime:
+  t-test:       t=-201.370, p=0.0000 ***
+  K-S test:     D=  0.324, p=0.0000 ***
+  Cohen's d:     -0.199 (negligible)
+  Mean diff:     157.80 (55.9%)
+
+Typing Speed:
+  t-test:       t=367.756, p=0.0000 ***
+  K-S test:     D=  0.155, p=0.0000 ***
+  Cohen's d:      0.355 (small)
+  Mean diff:      47.00 (18.5%)
+
+*empericial values are huge for some reason: [405.102, 2.322, 0.995]
+* gonna try and retrain with a new const_stats.json to see if that fixes it,
+* also gonna raise kl for flightime and DwellTime
