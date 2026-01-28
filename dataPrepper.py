@@ -92,7 +92,10 @@ class dataPrepper:
         cpm = window_size / (elapsed / 1000.0 / 60.0)
         cpm = cpm.replace([np.inf, -np.inf], np.nan).fillna(method="bfill")
         # Replace 0s with NaN (invalid data), then backfill
-        cpm = cpm.replace(0.0, np.nan).fillna(method="bfill").fillna(50.0)  # fallback to reasonable minimum
+        cpm = cpm.replace(0.0, np.nan)
+        # Use median as fallback instead of hardcoded 50.0 to avoid contaminating data
+        median_speed = cpm.median() if not cpm.isna().all() else 150.0
+        cpm = cpm.fillna(method="bfill").fillna(median_speed)
         cpm = cpm.clip(upper=500)
         return cpm
 

@@ -207,5 +207,7 @@ Typing Speed:
   Mean diff:      35.44 (13.9%)
 
   *minimal improvement,
-  * still have alot of 50s in typing speed, putting that issue on backburner for now
+  * still have alot of 50s in typing speed, getting rid of the 50 minimal clamp to see what happens
   *gonna raise kl weights significantly and retrain
+  * thinking perhaps flightime has a lot of huge outliers and then center around somewhere, will probably
+  * run some stats on that if this next retrain is unsuccesful
