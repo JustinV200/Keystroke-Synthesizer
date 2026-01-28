@@ -50,9 +50,6 @@ class dataPrepper:
         self.data = self.data[self.data['DwellTime'] >= 0]
         self.data = self.data[(self.data['FlightTime'].isna()) | (self.data['FlightTime'] >= 0)]
         
-        # Cap DwellTime at 1 second (1000ms) to remove extreme outliers (e.g., held keys)
-        self.data.loc[self.data['DwellTime'] > 1000, 'DwellTime'] = np.nan
-        
         # Cap FlightTime at 10 seconds (10000ms) to remove extreme outliers (e.g., long breaks)
         self.data.loc[self.data['FlightTime'] > 10000, 'FlightTime'] = np.nan
 
