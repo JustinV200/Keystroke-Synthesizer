@@ -171,3 +171,41 @@ Typing Speed:
 
 *empericial values are huge for some reason: [405.102, 2.322, 0.995]
 * gonna try and retrain with a new const_stats.json to see if that fixes it
+
+
+1/28/2026
+--- BASIC STATISTICS ---
+
+Original Data:
+  DwellTime    - Mean:   102.65, Std:   127.30, N: 2555814
+  FlightTime   - Mean:   282.34, Std:  1001.06, N: 2545830
+  Typing Speed - Mean:   254.16, Std:   147.84, N: 2555814
+
+Synthesized Data:
+  DwellTime    - Mean:   101.07, Std:    63.48, N: 1960056
+  FlightTime   - Mean:   428.65, Std:   495.94, N: 1955064
+  Typing Speed - Mean:   218.73, Std:   116.33, N: 1960056
+
+--- STATISTICAL TESTS ---
+
+DwellTime:
+  t-test:       t= 15.839, p=0.0000 ***
+  K-S test:     D=  0.153, p=0.0000 ***
+  Cohen's d:      0.016 (negligible)
+  Mean diff:       1.57 (1.5%)
+
+FlightTime:
+  t-test:       t=-187.462, p=0.0000 ***
+  K-S test:     D=  0.318, p=0.0000 ***
+  Cohen's d:     -0.185 (negligible)
+  Mean diff:     146.32 (51.8%)
+
+Typing Speed:
+  t-test:       t=276.330, p=0.0000 ***
+  K-S test:     D=  0.135, p=0.0000 ***
+  Cohen's d:      0.266 (small)
+  Mean diff:      35.44 (13.9%)
+
+  *minimal improvement,
+  * still have alot of 50s in typing speed, putting that issue on backburner for now
+  *gonna raise kl weights significantly and retrain
