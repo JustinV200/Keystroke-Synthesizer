@@ -211,3 +211,16 @@ Typing Speed:
   *gonna raise kl weights significantly and retrain
   * thinking perhaps flightime has a lot of huge outliers and then center around somewhere, will probably
   * run some stats on that if this next retrain is unsuccesful
+
+  1/28/26
+
+  Higher kls failed entirely.
+  Gonna graph out the original data and see what the graph looks like.
+  Thinking its perhaps one big peak early and a moderate peak at the end.
+  current model is pushing for a single peak, centered around the mean, which may actually be very
+  uncommon in the actual data(due to skew). Graphs should reveal more.
+
+  1/29/2026(midnight)
+
+  ok so graphs show alot. flightimne has a huge left side that is causing alot of the issues, gonna reduce the cap to 2000ms, (see keystroke_distributions.png)
+  also gonna do something similar to typing speed. dwelltime looks good.

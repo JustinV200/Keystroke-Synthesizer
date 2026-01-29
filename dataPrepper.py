@@ -50,8 +50,8 @@ class dataPrepper:
         self.data = self.data[self.data['DwellTime'] >= 0]
         self.data = self.data[(self.data['FlightTime'].isna()) | (self.data['FlightTime'] >= 0)]
         
-        # Cap FlightTime at 10 seconds (10000ms) to remove extreme outliers (e.g., long breaks)
-        self.data.loc[self.data['FlightTime'] > 10000, 'FlightTime'] = np.nan
+        # Cap FlightTime at 2 seconds (2000ms) to remove  outliers (any extended breaks, we just wanna capture normal typing)
+        self.data.loc[self.data['FlightTime'] > 2000, 'FlightTime'] = np.nan
 
         self.data.reset_index(drop=True, inplace=True)
         removed = initial_len - len(self.data)
