@@ -6,14 +6,23 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def computeOgStats():
+def computeOgStats(n=None):
     base_dir = "data"
     text_dir = os.path.join(base_dir, "texts")
     csv_dir  = os.path.join(base_dir, "csv")
     ogDwell_times = []
     ogFlight_times = []
     ogTyping_speeds = []
-    for fid in os.listdir(csv_dir):
+    
+    # Get list of CSV files and optionally limit the number
+    csv_files = [f for f in os.listdir(csv_dir) if f.endswith(".csv")]
+    if n is not None:
+        csv_files = csv_files[:n]
+        print(f"Analyzing {len(csv_files)} samples (limited from total available)")
+    else:
+        print(f"Analyzing all {len(csv_files)} samples")
+    
+    for fid in csv_files:
         if not fid.endswith(".csv"):
             continue
         csv_path = os.path.join(csv_dir, fid)
@@ -31,6 +40,8 @@ def computeOgStats():
             flighttime.iloc[0] = np.nan
         # Cap FlightTime at 10 seconds to match training data preprocessing (dataPrepper.py line 54)
         flighttime = flighttime.clip(upper=10000)
+        # Remove negative flight times (data artifacts)
+        flighttime = flighttime.clip(lower=0)
         # Calculate typing speed per keystroke using rolling window (matching synthesized approach)
         window_size = 10
         elapsed = df['DownTime'].diff(window_size)
@@ -53,10 +64,10 @@ def computeOgStats():
         
     return ogDwell_times, ogFlight_times, ogTyping_speeds
 
-def plot_distributions():
+def plot_distributions(n=None):
     """Plot histograms and distribution plots for the original keystroke metrics."""
     print("Computing original statistics...")
-    dwell_times, flight_times, typing_speeds = computeOgStats()
+    dwell_times, flight_times, typing_speeds = computeOgStats(n)
     
     # Set up the plotting style
     plt.style.use('default')
@@ -64,7 +75,10 @@ def plot_distributions():
     
     # Create subplots
     fig, axes = plt.subplots(2, 3, figsize=(18, 12))
-    fig.suptitle('Original Keystroke Data Distributions', fontsize=16, fontweight='bold')
+    
+    # Add sample size to title
+    sample_text = f" ({n} samples)" if n is not None else " (all samples)"
+    fig.suptitle(f'Original Keystroke Data Distributions{sample_text}', fontsize=16, fontweight='bold')
     
     # Calculate reasonable x-axis limits (focus on 95th percentile to avoid extreme outliers)
     dwell_95th = np.percentile(dwell_times, 95)
@@ -75,14 +89,14 @@ def plot_distributions():
     axes[0, 0].set_title('Dwell Time Distribution')
     axes[0, 0].set_xlabel('Dwell Time (ms)')
     axes[0, 0].set_ylabel('Frequency')
-    axes[0, 0].set_xlim(0, min(dwell_95th * 1.2, 1000))  # Cap at 1000ms max
+    axes[0, 0].set_xlim(0, dwell_95th)  # Larger range to show full distribution
     axes[0, 0].grid(True, alpha=0.3)
     
     # Dwell Time box plot
     axes[1, 0].boxplot(dwell_times, vert=True)
     axes[1, 0].set_title('Dwell Time Box Plot')
     axes[1, 0].set_ylabel('Dwell Time (ms)')
-    axes[1, 0].set_ylim(0, min(dwell_95th * 1.2, 1000))  # Cap at 1000ms max
+    axes[1, 0].set_ylim(0, dwell_95th)  # Larger range to show full distribution
     axes[1, 0].grid(True, alpha=0.3)
     
     # Flight Time plots
@@ -90,14 +104,14 @@ def plot_distributions():
     axes[0, 1].set_title('Flight Time Distribution')
     axes[0, 1].set_xlabel('Flight Time (ms)')
     axes[0, 1].set_ylabel('Frequency')
-    axes[0, 1].set_xlim(0, min(flight_95th * 1.2, 2000))  # Cap at 2000ms max
+    axes[0, 1].set_xlim(0, flight_95th)  # Larger range to show full distribution
     axes[0, 1].grid(True, alpha=0.3)
     
     # Flight Time box plot
     axes[1, 1].boxplot(flight_times, vert=True)
     axes[1, 1].set_title('Flight Time Box Plot')
     axes[1, 1].set_ylabel('Flight Time (ms)')
-    axes[1, 1].set_ylim(0, min(flight_95th * 1.2, 2000))  # Cap at 2000ms max
+    axes[1, 1].set_ylim(0, flight_95th)  # Larger range to show full distribution
     axes[1, 1].grid(True, alpha=0.3)
     
     # Typing Speed plots
@@ -146,5 +160,68 @@ def plot_distributions():
     print(f"  Max: {speed_array.max():.2f} CPM")
     print(f"  Median: {np.median(speed_array):.2f} CPM")
 
+def plot_interactive_distributions():
+    """Create an interactive plot with slider to control sample size."""
+    from matplotlib.widgets import Slider
+    
+    # Get total number of samples
+    csv_dir = os.path.join("data", "csv")
+    total_samples = len([f for f in os.listdir(csv_dir) if f.endswith(".csv")])
+    
+    # Create figure and subplots
+    fig, axes = plt.subplots(1, 3, figsize=(18, 6))
+    plt.subplots_adjust(bottom=0.25)
+    
+    # Add slider
+    ax_slider = plt.axes([0.2, 0.02, 0.5, 0.03])
+    slider = Slider(ax_slider, 'Samples', 1, total_samples, valinit=10, valfmt='%d')
+    
+    def update_plots(val):
+        n_samples = int(slider.val)
+        
+        # Clear previous plots
+        for ax in axes:
+            ax.clear()
+        
+        # Compute stats for current sample size
+        dwell_times, flight_times, typing_speeds = computeOgStats(n_samples)
+        
+        # Calculate 95th percentiles for adaptive axis limits
+        dwell_95th = np.percentile(dwell_times, 95)
+        flight_95th = np.percentile(flight_times, 95)
+        
+        # Plot distributions
+        axes[0].hist(dwell_times, bins=30, alpha=0.7, color='skyblue', edgecolor='black')
+        axes[0].set_title(f'Dwell Time ({n_samples} samples)')
+        axes[0].set_xlabel('Dwell Time (ms)')
+        axes[0].set_xlim(0, dwell_95th)
+        axes[0].grid(True, alpha=0.3)
+        
+        axes[1].hist(flight_times, bins=30, alpha=0.7, color='lightcoral', edgecolor='black')
+        axes[1].set_title(f'Flight Time ({n_samples} samples)')
+        axes[1].set_xlabel('Flight Time (ms)')
+        axes[1].set_xlim(0, flight_95th)
+        axes[1].grid(True, alpha=0.3)
+        
+        axes[2].hist(typing_speeds, bins=30, alpha=0.7, color='lightgreen', edgecolor='black')
+        axes[2].set_title(f'Typing Speed ({n_samples} samples)')
+        axes[2].set_xlabel('Typing Speed (CPM)')
+        axes[2].grid(True, alpha=0.3)
+        
+        plt.draw()
+    
+    # Initial plot
+    update_plots(10)
+    
+    # Connect slider to update function
+    slider.on_changed(update_plots)
+    
+    plt.show()
+
 if __name__ == "__main__":
+    # Regular distribution plots
     plot_distributions()
+    
+    # Interactive plot with slider
+    print("\\nStarting interactive plot...")
+    plot_interactive_distributions()

@@ -23,7 +23,7 @@ KL_WEIGHT_START = 0.001   # KL weight at epoch 0 (focus on mean first)
 KL_WEIGHT_END   = 0.03   # KL weight at final annealing epoch (then focus on variance)
 KL_ANNEAL_EPOCHS = 8    # Linearly increase KL weight over first 6 epochs
 # Feature-specific KL multipliers [DwellTime, FlightTime, typing_speed]
-KL_FEATURE_WEIGHTS = [1.0, 0.8, 0.3]  # feature specific weights for KL divergence
+KL_FEATURE_WEIGHTS = [1.0, 0.3, 0.5]  # feature specific weights for KL divergence
 #KL_FEATURE_WEIGHTS = [2.0, 3.0, 0.5]
 MAX_TOKENS   = 512 # max tokens for transformer input
 PATIENCE     = 3 # early stopping patience, if no val improvement

@@ -47,7 +47,7 @@ def computeOgStats():
         elapsed = df['DownTime'].diff(window_size)
         typing_speed = window_size / (elapsed / 1000.0 / 60.0)  # chars per minute
         typing_speed = typing_speed.replace([np.inf, -np.inf], np.nan).fillna(method="bfill").fillna(0.0)
-        typing_speed = typing_speed.clip(upper=500)
+        typing_speed = typing_speed.clip(upper=490)
         #Add to lists
         ogDwell_times.extend(dwelltime.dropna().tolist())
         ogFlight_times.extend(flighttime.dropna().tolist())

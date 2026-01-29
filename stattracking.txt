@@ -224,3 +224,45 @@ Typing Speed:
 
   ok so graphs show alot. flightimne has a huge left side that is causing alot of the issues, gonna reduce the cap to 2000ms, (see keystroke_distributions.png)
   also gonna do something similar to typing speed. dwelltime looks good.
+
+1/29/2026
+--- BASIC STATISTICS ---
+
+Original Data:
+  DwellTime    - Mean:   100.80, Std:    49.47, N: 2555814
+  FlightTime   - Mean:   151.55, Std:   255.58, N: 2545830
+  Typing Speed - Mean:   254.16, Std:   147.84, N: 2555814
+
+Synthesized Data:
+  DwellTime    - Mean:    91.85, Std:    42.31, N: 1960056
+  FlightTime   - Mean:   145.08, Std:   128.64, N: 1955064
+  Typing Speed - Mean:   213.01, Std:   101.68, N: 1960056
+
+--- STATISTICAL TESTS ---
+
+DwellTime:
+  t-test:       t=202.714, p=0.0000 ***
+  K-S test:     D=  0.103, p=0.0000 ***
+  Cohen's d:      0.194 (negligible)
+  Mean diff:       8.95 (8.9%)
+
+FlightTime:
+  t-test:       t= 32.386, p=0.0000 ***
+  K-S test:     D=  0.276, p=0.0000 ***
+  Cohen's d:      0.032 (negligible)
+  Mean diff:       6.47 (4.3%)
+
+Typing Speed:
+  t-test:       t=333.813, p=0.0000 ***
+  K-S test:     D=  0.173, p=0.0000 ***
+  Cohen's d:      0.324 (small)
+  Mean diff:      41.15 (16.2%)
+
+
+*much improved. still some issues with flightime variance, otherwise really good results
+* gonna raise kl weight for flightime to around 1.2
+*also, not sure im fully removing typingspeeds huge spike at the end, gonna move cap frmo 500 to 490
+*noticed that the graphs for flightime and dwelltime are completely uniform, gonna do some testing on individual samples, perhaps a data artifact?
+
+*not a data artifact, i think dwelltimes in populations tend to become uniform, while individuals tend to follow a normal distribution. this is an interesting find. (run grapher.py)
+* flighttime has a long right tail, therefore i should lower its kl weight

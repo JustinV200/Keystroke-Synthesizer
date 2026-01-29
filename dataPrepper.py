@@ -99,7 +99,7 @@ class dataPrepper:
         # Use median as fallback instead of hardcoded 50.0 to avoid contaminating data
         median_speed = cpm.median() if not cpm.isna().all() else 150.0
         cpm = cpm.fillna(method="bfill").fillna(median_speed)
-        cpm = cpm.clip(upper=500)
+        cpm = cpm.clip(upper=490)  # cap at 490 cpm to avoid extreme outliers
         return cpm
 
     def add_char_encoding(self):
