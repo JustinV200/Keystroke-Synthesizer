@@ -266,3 +266,41 @@ Typing Speed:
 
 *not a data artifact, i think dwelltimes in populations tend to become uniform, while individuals tend to follow a normal distribution. this is an interesting find. (run grapher.py)
 * flighttime has a long right tail, therefore i should lower its kl weight
+
+================================================================================
+KEYSTROKE SYNTHESIS EVALUATION
+================================================================================
+KL_FEATURE_WEIGHTS = [1.0, 0.3, 0.5]
+--- BASIC STATISTICS ---
+
+Original Data:
+  DwellTime    - Mean:   100.80, Std:    49.47, N: 2555814
+  FlightTime   - Mean:   151.55, Std:   255.58, N: 2545830
+  Typing Speed - Mean:   252.95, Std:   145.85, N: 2555814
+
+Synthesized Data:
+  DwellTime    - Mean:    93.95, Std:    42.71, N: 1960056
+  FlightTime   - Mean:   145.32, Std:   128.32, N: 1955064
+  Typing Speed - Mean:   217.65, Std:   104.18, N: 1960056
+
+--- STATISTICAL TESTS ---
+
+DwellTime:
+  t-test:       t=154.537, p=0.0000 ***
+  K-S test:     D=  0.084, p=0.0000 ***
+  Cohen's d:      0.148 (negligible)
+  Mean diff:       6.85 (6.8%)
+
+FlightTime:
+  t-test:       t= 31.168, p=0.0000 ***
+  K-S test:     D=  0.276, p=0.0000 ***
+  Cohen's d:      0.031 (negligible)
+  Mean diff:       6.22 (4.1%)
+
+Typing Speed:
+  t-test:       t=287.320, p=0.0000 ***
+  K-S test:     D=  0.173, p=0.0000 ***
+  Cohen's d:      0.279 (small)
+  Mean diff:      35.31 (14.0%)
+
+  *not much better, gonna try and remove kl weights for typingspeed and flightime completely
