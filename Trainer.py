@@ -137,8 +137,8 @@ num_features = probe["target"][0].shape[-1]
 
 # Initialize multi-head model with correct feature counts:
 # - 3 continuous features: DwellTime, FlightTime, typing_speed
-# - 9 binary flags: is_letter, is_digit, is_punct, is_space, is_backspace, is_enter, is_shift, is_pause_2s, is_pause_5s
-model = TextToKeystrokeModelMultiHead(BASE_MODEL, num_continuous=3, num_flags=9).to(DEVICE)
+# - 7 binary flags: is_letter, is_digit, is_punct, is_space, is_backspace, is_enter, is_shift
+model = TextToKeystrokeModelMultiHead(BASE_MODEL, num_continuous=3, num_flags=7).to(DEVICE)
 if torch.cuda.device_count() > 1:
     model = nn.DataParallel(model)
 
@@ -151,7 +151,7 @@ best_val, patience, step = float("inf"), 0, 0
 print("Starting training...")
 #define which indices are continuous and which are binary flags
 cont_idx = [0, 1, 2]  # DwellTime, FlightTime, typing_speed
-flag_idx = [3, 4, 5, 6, 7, 8, 9, 10, 11]  # 9 binary flags
+flag_idx = [3, 4, 5, 6, 7, 8, 9]  # 7 binary flags
 
 
 for epoch in range(EPOCHS):

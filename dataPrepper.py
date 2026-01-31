@@ -81,10 +81,6 @@ class dataPrepper:
         self.data["is_backspace"] = is_backspace.astype(int)
         self.data["is_enter"]     = is_enter.astype(int)
         self.data["is_shift"]     = is_shift.astype(int)
-        #short pause
-        self.data["is_pause_2s"] = (self.data["FlightTime"] >= 2000).fillna(False).astype(int)
-        #long pause
-        self.data["is_pause_5s"] = (self.data["FlightTime"] >= 5000).fillna(False).astype(int)
 
         # typing speed (chars per minute) over rolling window of DownTime
         self.data["typing_speed"] = self._calculate_typing_speed()
@@ -148,8 +144,7 @@ class dataPrepper:
         cols = [
             "DwellTime", "FlightTime", "typing_speed",
             "is_letter", "is_digit", "is_punct", "is_space",
-            "is_backspace", "is_enter", "is_shift",
-            "is_pause_2s", "is_pause_5s"
+            "is_backspace", "is_enter", "is_shift"
         ]
         for c in cols:
             if c in self.data:
@@ -158,8 +153,9 @@ class dataPrepper:
                                 .fillna(0.0))
 
         # common NaN sources:
-        if "FlightTime" in self.data:
-            self.data["FlightTime"] = self.data["FlightTime"].fillna(0.0)
+        # FlightTime: Keep NaN (log-transformed values, NaN-aware stats in dataLoader)
+        # if "FlightTime" in self.data:
+        #     self.data["FlightTime"] = self.data["FlightTime"].fillna(0.0)
         if "typing_speed" in self.data:
             self.data["typing_speed"] = self.data["typing_speed"].fillna(0.0)
         if "DwellTime" in self.data:
@@ -177,7 +173,5 @@ class dataPrepper:
             'avg_flight_time':  safe_mean('FlightTime'),
             'backspace_rate':   safe_mean_int('is_backspace'),
             'avg_typing_speed': safe_mean('typing_speed'),
-            'pause_rate_2s':    safe_mean_int('is_pause_2s'),
-            'pause_rate_5s':    safe_mean_int('is_pause_5s'),
         }
         return stats

@@ -62,8 +62,7 @@ class dataLoader(Dataset):
                     keep_cols = [
                         "DwellTime", "FlightTime", "typing_speed",
                         "is_letter", "is_digit", "is_punct", "is_space",
-                        "is_backspace", "is_enter", "is_shift",
-                        "is_pause_2s", "is_pause_5s"
+                        "is_backspace", "is_enter", "is_shift"
                     ]
                     cols = [c for c in keep_cols if c in df.columns]
                     if not cols:

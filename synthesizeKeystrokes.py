@@ -153,15 +153,13 @@ def predict_keystrokes(
     feature_cols = [
         "DwellTime", "FlightTime", "typing_speed",
         "is_letter", "is_digit", "is_punct", "is_space",
-        "is_backspace", "is_enter", "is_shift",
-        "is_pause_2s", "is_pause_5s"
+        "is_backspace", "is_enter", "is_shift"
     ]
 
     df = pd.DataFrame(preds, columns=[
         "DwellTime", "FlightTime", "typing_speed",
         "is_letter", "is_digit", "is_punct", "is_space",
-        "is_backspace", "is_enter", "is_shift",
-        "is_pause_2s", "is_pause_5s"
+        "is_backspace", "is_enter", "is_shift"
     ])
     df = df[feature_cols] 
 
