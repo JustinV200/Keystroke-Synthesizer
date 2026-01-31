@@ -52,7 +52,8 @@ class dataPrepper:
         
         # Cap FlightTime at 900ms to remove  outliers (any extended breaks, we just wanna capture normal typing)
         self.data.loc[self.data['FlightTime'] > 900, 'FlightTime'] = np.nan
-
+        #log normal implementation for flightime:
+        self.data['FlightTime'] = np.log(self.data['FlightTime'] + 1)  # +1 handles any zeros
         # Cap DwellTime at reasonable upper bound (300-400ms for normal typing)
         self.data.loc[self.data['DwellTime'] > 300, 'DwellTime'] = np.nan
 
