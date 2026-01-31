@@ -141,25 +141,21 @@ class dataPrepper:
 
     # finalize finite values in key columns
     def _finalize_finite(self):
-        cols = [
-            "DwellTime", "FlightTime", "typing_speed",
+        # Handle each column separately - FlightTime keeps NaN (log-transformed)
+        cols_to_fill = [
+            "DwellTime", "typing_speed",
             "is_letter", "is_digit", "is_punct", "is_space",
             "is_backspace", "is_enter", "is_shift"
         ]
-        for c in cols:
+        for c in cols_to_fill:
             if c in self.data:
                 self.data[c] = (self.data[c]
                                 .replace([np.inf, -np.inf], np.nan)
                                 .fillna(0.0))
-
-        # common NaN sources:
-        # FlightTime: Keep NaN (log-transformed values, NaN-aware stats in dataLoader)
-        # if "FlightTime" in self.data:
-        #     self.data["FlightTime"] = self.data["FlightTime"].fillna(0.0)
-        if "typing_speed" in self.data:
-            self.data["typing_speed"] = self.data["typing_speed"].fillna(0.0)
-        if "DwellTime" in self.data:
-            self.data["DwellTime"] = self.data["DwellTime"].fillna(0.0)
+        
+        # FlightTime: Only replace inf, keep NaN for log-transformed values
+        if "FlightTime" in self.data:
+            self.data["FlightTime"] = self.data["FlightTime"].replace([np.inf, -np.inf], np.nan)
     # get statistics on the data, may be useful for reporting
     def get_statistics(self):
         def safe_mean(col):
