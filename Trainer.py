@@ -178,17 +178,22 @@ for epoch in range(EPOCHS):
             for j, target in enumerate(targets):
                 L = min(mean.shape[1], target.shape[0])
 
+                # Create mask for valid (non-NaN) continuous features
+                valid_mask = ~torch.isnan(target[:L, cont_idx])  # [L, 3]
+
                 # Gaussian Negative Log-Likelihood loss for continuous features
                 # NLL = 0.5 * [log(var) + (target - mean)^2 / var]
                 var = torch.exp(logvar[j, :L, :])
                 nll = 0.5 * (logvar[j, :L, :] + ((target[:L, cont_idx] - mean[j, :L, :]) ** 2) / (var + 1e-8))
-                nll_loss = nll.sum()
+                # Only sum over valid (non-NaN) positions
+                nll_loss = (nll * valid_mask).sum()
                 
                 # KL divergence penalty: penalize predicted variance deviating from empirical
                 # 0.5 * [-logvar_pred + log(σ²_emp) + exp(logvar_pred)/σ²_emp - 1]
                 kl_div = 0.5 * (-logvar[j, :L, :] + torch.log(empirical_var) + var / empirical_var - 1.0)
-                # Apply feature-specific weights: DwellTime=1.0, FlightTime=1.0, typing_speed=0.3
-                kl_loss = (kl_div * kl_feature_weights).sum()
+                # Apply feature-specific weights: DwellTime=1.0, FlightTime=0.0, typing_speed=0.3
+                # Only compute KL on valid positions
+                kl_loss = ((kl_div * kl_feature_weights) * valid_mask).sum()
                 
                 # Compute binary cross-entropy loss on flag logits for classification
                 bce = F.binary_cross_entropy_with_logits(logits[j, :L, :], target[:L, flag_idx].float(), reduction="sum")
@@ -224,19 +229,25 @@ for epoch in range(EPOCHS):
                 mean, logvar, logits = model(input_ids, attention_m)
                 for j, target in enumerate(targets):
                     L = min(mean.shape[1], target.shape[0])
+                    
+                    # Create mask for valid (non-NaN) continuous features
+                    valid_mask = ~torch.isnan(target[:L, cont_idx])  # [L, 3]
+                    
                     # Compute NLL loss on continuous features
                     var = torch.exp(logvar[j, :L, :])
                     nll = 0.5 * (logvar[j, :L, :] + ((target[:L, cont_idx] - mean[j, :L, :]) ** 2) / (var + 1e-8))
-                    nll_loss = nll.sum()
+                    # Only sum over valid (non-NaN) positions
+                    nll_loss = (nll * valid_mask).sum()
                     
                     # Compute KL divergence penalty with feature-specific weights
                     kl_div = 0.5 * (-logvar[j, :L, :] + torch.log(empirical_var) + var / empirical_var - 1.0)
-                    kl_loss = (kl_div * kl_feature_weights).sum()
+                    # Only compute KL on valid positions
+                    kl_loss = ((kl_div * kl_feature_weights) * valid_mask).sum()
                     
                     # Compute BCE loss on binary flag logits
                     bce = F.binary_cross_entropy_with_logits(logits[j, :L, :], target[:L, flag_idx].float(), reduction="sum")
-                    # Track MAE on mean predictions for interpretability
-                    ae = (mean[j, :L, :] - target[:L, cont_idx]).abs()
+                    # Track MAE on mean predictions for interpretability (only on valid positions)
+                    ae = ((mean[j, :L, :] - target[:L, cont_idx]).abs() * valid_mask)
                     
                     val_loss_sum += nll_loss.item()
                     val_bce_sum  += bce.item()

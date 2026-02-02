@@ -54,6 +54,7 @@ class dataPrepper:
         self.data.loc[self.data['FlightTime'] > 900, 'FlightTime'] = np.nan
         # Cap DwellTime at reasonable upper bound (300ms for normal typing)
         self.data.loc[self.data['DwellTime'] > 300, 'DwellTime'] = np.nan
+        #cap typing speed at 490 cpm in later step
 
         self.data.reset_index(drop=True, inplace=True)
         removed = initial_len - len(self.data)
@@ -88,13 +89,10 @@ class dataPrepper:
         elapsed = self.data['DownTime'].diff(window_size)
         # cpm = window_size / (elapsed_seconds / 60)
         cpm = window_size / (elapsed / 1000.0 / 60.0)
-        cpm = cpm.replace([np.inf, -np.inf], np.nan).fillna(method="bfill")
-        # Replace 0s with NaN (invalid data), then backfill
+        cpm = cpm.replace([np.inf, -np.inf], np.nan)
+        # Replace 0s with NaN (invalid data)
         cpm = cpm.replace(0.0, np.nan)
-        # Use median as fallback instead of hardcoded 50.0 to avoid contaminating data
-        median_speed = cpm.median() if not cpm.isna().all() else 150.0
-        cpm = cpm.fillna(method="bfill").fillna(median_speed)
-        cpm = cpm.clip(upper=490)  # cap at 490 cpm to avoid extreme outliers
+        cpm = cpm.clip(upper=490)  # cap at 490 cpm to avoid extreme outliers, keep NaN as NaN
         return cpm
 
     def add_char_encoding(self):
@@ -146,9 +144,8 @@ class dataPrepper:
         ]
         for c in cols:
             if c in self.data:
-                self.data[c] = (self.data[c]
-                                .replace([np.inf, -np.inf], np.nan)
-                                .fillna(0.0))
+                # Replace inf with NaN, but keep NaN as NaN (don't fill with 0)
+                self.data[c] = self.data[c].replace([np.inf, -np.inf], np.nan)
     # get statistics on the data, may be useful for reporting
     def get_statistics(self):
         def safe_mean(col):
