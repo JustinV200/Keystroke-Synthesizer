@@ -40,14 +40,14 @@ def computeOgStats():
         if len(flighttime) > 0:
             flighttime.iloc[0] = np.nan
         # Cap FlightTime at 900ms to match training data preprocessing (dataPrepper.py line 54)
-        flighttime = flighttime.clip(upper=900)
-        dwelltime = dwelltime.clip(upper=300)
+        flighttime = flighttime.clip(lower = 0, upper=900)
+        dwelltime = dwelltime.clip(lower = 0, upper=300)
         # Calculate typing speed per keystroke using rolling window (matching synthesized approach)
         window_size = 10
         elapsed = df['DownTime'].diff(window_size)
         typing_speed = window_size / (elapsed / 1000.0 / 60.0)  # chars per minute
         typing_speed = typing_speed.replace([np.inf, -np.inf], np.nan).fillna(method="bfill").fillna(0.0)
-        typing_speed = typing_speed.clip(upper=490)
+        typing_speed = typing_speed.clip(lower = 0,upper=490)
         #Add to lists
         ogDwell_times.extend(dwelltime.dropna().tolist())
         ogFlight_times.extend(flighttime.dropna().tolist())
