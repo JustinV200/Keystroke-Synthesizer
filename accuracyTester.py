@@ -41,8 +41,6 @@ def computeOgStats():
             flighttime.iloc[0] = np.nan
         # Cap FlightTime at 900ms to match training data preprocessing (dataPrepper.py line 54)
         flighttime = flighttime.clip(upper=900)
-        # Apply log transform to match training preprocessing (log-normal distribution)
-        flighttime = np.log(flighttime + 1)
         dwelltime = dwelltime.clip(upper=300)
         # Calculate typing speed per keystroke using rolling window (matching synthesized approach)
         window_size = 10

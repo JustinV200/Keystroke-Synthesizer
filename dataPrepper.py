@@ -50,11 +50,9 @@ class dataPrepper:
         self.data = self.data[self.data['DwellTime'] >= 0]
         self.data = self.data[(self.data['FlightTime'].isna()) | (self.data['FlightTime'] >= 0)]
         
-        # Cap FlightTime at 900ms to remove  outliers (any extended breaks, we just wanna capture normal typing)
+        # Cap FlightTime at 900ms to remove outliers
         self.data.loc[self.data['FlightTime'] > 900, 'FlightTime'] = np.nan
-        #log normal implementation for flightime:
-        self.data['FlightTime'] = np.log(self.data['FlightTime'] + 1)  # +1 handles any zeros
-        # Cap DwellTime at reasonable upper bound (300-400ms for normal typing)
+        # Cap DwellTime at reasonable upper bound (300ms for normal typing)
         self.data.loc[self.data['DwellTime'] > 300, 'DwellTime'] = np.nan
 
         self.data.reset_index(drop=True, inplace=True)
@@ -141,21 +139,16 @@ class dataPrepper:
 
     # finalize finite values in key columns
     def _finalize_finite(self):
-        # Handle each column separately - FlightTime keeps NaN (log-transformed)
-        cols_to_fill = [
-            "DwellTime", "typing_speed",
+        cols = [
+            "DwellTime", "FlightTime", "typing_speed",
             "is_letter", "is_digit", "is_punct", "is_space",
             "is_backspace", "is_enter", "is_shift"
         ]
-        for c in cols_to_fill:
+        for c in cols:
             if c in self.data:
                 self.data[c] = (self.data[c]
                                 .replace([np.inf, -np.inf], np.nan)
                                 .fillna(0.0))
-        
-        # FlightTime: Only replace inf, keep NaN for log-transformed values
-        if "FlightTime" in self.data:
-            self.data["FlightTime"] = self.data["FlightTime"].replace([np.inf, -np.inf], np.nan)
     # get statistics on the data, may be useful for reporting
     def get_statistics(self):
         def safe_mean(col):

@@ -118,9 +118,6 @@ def predict_keystrokes(
     continuous = continuous.float()
     flags = flags.float()
 
-    # Undo log transform for FlightTime (index 1) - converts from log-space back to milliseconds
-    continuous[:, :, 1] = torch.exp(continuous[:, :, 1]) - 1
-
     #  Physical constraints 
     #todo, find actual minimums
     continuous[:, :, 0] = torch.clamp(continuous[:, :, 0], min=20.0, max=300.0)  # DwellTime (cap at 300ms to match training)
