@@ -9,7 +9,7 @@ import torch.nn.functional as F
 import numpy as np
 
 class TextToKeystrokeModelMultiHead(nn.Module):
-    def __init__(self, base_model, num_continuous=3, num_flags=9):
+    def __init__(self, base_model, num_continuous=3, num_flags=7):
         super().__init__()
         self.encoder = AutoModel.from_pretrained(base_model)
         hidden = self.encoder.config.hidden_size
@@ -60,7 +60,7 @@ def predict_keystrokes(
 
     #  Load tokenizer and model 
     tokenizer = AutoTokenizer.from_pretrained(base_model)
-    num_continuous, num_flags = 3, 9
+    num_continuous, num_flags = 3, 7
     model = TextToKeystrokeModelMultiHead(base_model, num_continuous, num_flags).to(device)
 
     checkpoint = torch.load(checkpoint_path, map_location=device)
@@ -126,11 +126,11 @@ def predict_keystrokes(
 
 #  Assemble full feature tensor 
     B, T, _ = continuous.shape
-    out = torch.zeros(B, T, 12, device=continuous.device)
+    out = torch.zeros(B, T, 10, device=continuous.device)
 
     # Indices must match training
     cont_idx = [0, 1, 2]  # 3 continuous outputs: DwellTime, FlightTime, typing_speed
-    flag_idx = [3, 4, 5, 6, 7, 8, 9, 10, 11]  # 9 binary flags
+    flag_idx = [3, 4, 5, 6, 7, 8, 9]  # 7 binary flags
 
     out[:, :, cont_idx] = continuous
     out[:, :, flag_idx] = flags

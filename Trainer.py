@@ -24,12 +24,12 @@ KL_WEIGHT_END   = 0.03   # KL weight at final annealing epoch (then focus on var
 KL_ANNEAL_EPOCHS = 8    # Linearly increase KL weight over first 6 epochs
 # Feature-specific KL multipliers [DwellTime, FlightTime, typing_speed]
 KL_FEATURE_WEIGHTS = [1.0, 0, .3]  # feature specific weights for KL divergence
-#KL_FEATURE_WEIGHTS = [2.0, 3.0, 0.5]
+#KL_FEATURE_WEIGHTS = [2.0, 3.0, 0.5] #old kl wieghts
 MAX_TOKENS   = 512 # max tokens for transformer input
 PATIENCE     = 3 # early stopping patience, if no val improvement
 OUTPUT_DIR   = "checkpoints" # where to save models
 os.makedirs(OUTPUT_DIR, exist_ok=True)
-torch.set_float32_matmul_precision("high") 
+torch.set_float32_matmul_precision("high")
 
 # this will pad the variable-length inputs and targets in each batch
 def make_collate_fn(pad_token_id: int):
