@@ -90,7 +90,8 @@ for idx in range(min(len(train_dataset), 2000)):  # Sample 2000
     sample = train_dataset[idx]
     all_cont_features.append(sample["target"][:, [0, 1, 2]])  # DwellTime, FlightTime, typing_speed
 all_cont = torch.cat(all_cont_features, dim=0)
-empirical_var = all_cont.var(dim=0, unbiased=True)  # [3] - variance per feature
+# Use NaN-aware variance computation (same approach as dataLoader)
+empirical_var = torch.tensor([all_cont[:, i][~torch.isnan(all_cont[:, i])].var(unbiased=True) for i in range(all_cont.shape[1])])
 print(f"Empirical variance (standardized space): {empirical_var.tolist()}")
 empirical_var = empirical_var.to(DEVICE)
 
