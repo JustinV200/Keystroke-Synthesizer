@@ -117,6 +117,10 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         self.mean_head = nn.Linear(256, num_continuous)
         self.logvar_head = nn.Linear(256, num_continuous)  # log-variance for numerical stability
         
+        # Initialize logvar head to predict small variance initially
+        nn.init.constant_(self.logvar_head.weight, 0.0)
+        nn.init.constant_(self.logvar_head.bias, -2.0)  # exp(-2) ≈ 0.135 initial variance
+        
         # Classification head (binary flags)
         self.classification_head = nn.Linear(256, num_flags)
 
@@ -184,14 +188,16 @@ for epoch in range(EPOCHS):
 
                 # Gaussian Negative Log-Likelihood loss for continuous features
                 # NLL = 0.5 * [log(var) + (target - mean)^2 / var]
-                var = torch.exp(logvar[j, :L, :])
-                nll = 0.5 * (logvar[j, :L, :] + ((target[:L, cont_idx] - mean[j, :L, :]) ** 2) / (var + 1e-8))
+                # Clamp logvar to prevent numerical instability
+                logvar_clamped = torch.clamp(logvar[j, :L, :], min=-10, max=10)
+                var = torch.exp(logvar_clamped)
+                nll = 0.5 * (logvar_clamped + ((target[:L, cont_idx] - mean[j, :L, :]) ** 2) / (var + 1e-6))
                 # Use torch.where to zero out NaN positions (NaN * 0 = NaN in PyTorch!)
                 nll_loss = torch.where(valid_mask, nll, torch.zeros_like(nll)).sum()
                 
                 # KL divergence penalty: penalize predicted variance deviating from empirical
                 # 0.5 * [-logvar_pred + log(σ²_emp) + exp(logvar_pred)/σ²_emp - 1]
-                kl_div = 0.5 * (-logvar[j, :L, :] + torch.log(empirical_var) + var / empirical_var - 1.0)
+                kl_div = 0.5 * (-logvar_clamped + torch.log(empirical_var + 1e-6) + var / (empirical_var + 1e-6) - 1.0)
                 # Apply feature-specific weights and mask NaN positions
                 kl_loss = torch.where(valid_mask, kl_div * kl_feature_weights, torch.zeros_like(kl_div)).sum()
                 
@@ -205,8 +211,28 @@ for epoch in range(EPOCHS):
             loss = (loss_sum + bce_sum) / max(1, count)
 
         scaler.scale(loss).backward()
-        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
-        scaler.step(optimizer)
+        
+        # Unscale gradients before clipping
+        scaler.unscale_(optimizer)
+        
+        # Clip gradients to prevent explosion
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+        
+        # Check for NaN/Inf gradients
+        valid_gradients = True
+        for name, param in model.named_parameters():
+            if param.grad is not None:
+                if torch.isnan(param.grad).any() or torch.isinf(param.grad).any():
+                    print(f"  WARNING: NaN/Inf gradient detected in {name}")
+                    valid_gradients = False
+                    break
+        
+        # Only step optimizer if gradients are valid
+        if valid_gradients:
+            scaler.step(optimizer)
+        else:
+            print("  Skipping optimizer step due to invalid gradients")
+        
         scaler.update()
         scheduler.step(epoch + (i + 1) / max(1, len(train_loader)))
 
@@ -243,13 +269,14 @@ for epoch in range(EPOCHS):
                     valid_mask = ~torch.isnan(target[:L, cont_idx])  # [L, 3]
                     
                     # Compute NLL loss on continuous features
-                    var = torch.exp(logvar[j, :L, :])
-                    nll = 0.5 * (logvar[j, :L, :] + ((target[:L, cont_idx] - mean[j, :L, :]) ** 2) / (var + 1e-8))
+                    logvar_clamped = torch.clamp(logvar[j, :L, :], min=-10, max=10)
+                    var = torch.exp(logvar_clamped)
+                    nll = 0.5 * (logvar_clamped + ((target[:L, cont_idx] - mean[j, :L, :]) ** 2) / (var + 1e-6))
                     # Use torch.where to zero out NaN positions
                     nll_loss = torch.where(valid_mask, nll, torch.zeros_like(nll)).sum()
                     
                     # Compute KL divergence penalty with feature-specific weights
-                    kl_div = 0.5 * (-logvar[j, :L, :] + torch.log(empirical_var) + var / empirical_var - 1.0)
+                    kl_div = 0.5 * (-logvar_clamped + torch.log(empirical_var + 1e-6) + var / (empirical_var + 1e-6) - 1.0)
                     # Apply feature-specific weights and mask NaN positions
                     kl_loss = torch.where(valid_mask, kl_div * kl_feature_weights, torch.zeros_like(kl_div)).sum()
                     
