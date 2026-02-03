@@ -212,6 +212,15 @@ for epoch in range(EPOCHS):
 
         train_loss_sum += loss.item()
         step += 1
+        
+        # Debug: Check gradients on first batch
+        if i == 0:
+            grad_norms = []
+            for name, param in model.named_parameters():
+                if param.grad is not None:
+                    grad_norms.append((name, param.grad.norm().item()))
+            if grad_norms:
+                print(f"  Sample gradient norms: {grad_norms[:3]}")  # Print first 3
 
     avg_train = train_loss_sum / max(1, len(train_loader))
 
