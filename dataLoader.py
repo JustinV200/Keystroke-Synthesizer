@@ -84,7 +84,7 @@ class dataLoader(Dataset):
             if not self.samples:
                 raise ValueError("No samples remained after preprocessing.")
 
-            # --- compute and save stats if not loaded ---
+            # compute and save stats to json
             if self.standardize and not stats_loaded and all_cont_features:
                 all_cont = torch.cat(all_cont_features, dim=0)
                 # Use nanmean and nanstd to handle NaN values (e.g., from FlightTime >10s cap)
@@ -101,7 +101,7 @@ class dataLoader(Dataset):
                     json.dump(stats, f)
                 print(f"[INFO] Saved continuous feature stats to {self.stats_file}")
 
-        # when we don't standardize, set mean=0, std=1, dont rlly use this anymore but kept for safety
+        # when we don't standardize, set mean=0, std=1, dont rlly use this anymore but kept for legacy
         if not self.standardize:
             self.cont_mean = torch.zeros(len(self.cont_idx))
             self.cont_std  = torch.ones(len(self.cont_idx))
@@ -126,7 +126,7 @@ class dataLoader(Dataset):
                 truncation=True,        # cap to model max length (e.g., 512)
                 max_length=self.max_length,
             )
-            enc = {k: v.squeeze(0) for k, v in enc.items()}  # -> 1D tensors
+            enc = {k: v.squeeze(0) for k, v in enc.items()}  # remove batch dim
 
         features  = torch.tensor(s["features"], dtype=torch.float32)  # [L_i, F]
         valid_len = torch.tensor(s["valid_len"], dtype=torch.long)

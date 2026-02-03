@@ -38,10 +38,13 @@ def computeOgStats(n=None):
         # Set first FlightTime to NaN to match synthesized data
         if len(flighttime) > 0:
             flighttime.iloc[0] = np.nan
-        # Cap FlightTime at 10 seconds to match training data preprocessing (dataPrepper.py line 54)
+        # Cap FlightTime at 10 seconds
         flighttime = flighttime.clip(upper=10000)
         # Remove negative flight times (data artifacts)
         flighttime = flighttime.clip(lower=0)
+        #replace 0s with nan
+        dwelltime = dwelltime.replace(0.0, np.nan)
+        flighttime = flighttime.replace(0.0, np.nan)
         # Calculate typing speed per keystroke using rolling window (matching synthesized approach)
         window_size = 10
         elapsed = df['DownTime'].diff(window_size)
