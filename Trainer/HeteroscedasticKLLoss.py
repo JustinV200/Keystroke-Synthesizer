@@ -69,10 +69,10 @@ class HeteroscedasticKLLoss:
             # NLL = 0.5 * [log(var) + (target - mean)^2 / var] 
             # Use wider clamping: [-1.5, 1.5] -> var in [0.22, 4.48]
             # Need wider range to prevent mean_head gradient explosion from squared_error/var
-            logvar_clamped = torch.clamp(logvar[j, :L, :], min=-1.5, max=1.5)
+            logvar_clamped = torch.clamp(logvar[j, :L, :], min=-1, max=1)
             
             # Use exp with larger epsilon for stability
-            var = torch.exp(logvar_clamped) + 5e-2  # Larger epsilon prevents division issues
+            var = torch.exp(logvar_clamped) + 5e-4  # Larger epsilon prevents division issues
             
             # Additional safety: check for any extreme values
             if torch.isnan(logvar_clamped).any() or torch.isinf(logvar_clamped).any():
