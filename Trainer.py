@@ -92,6 +92,8 @@ for idx in range(min(len(train_dataset), 2000)):  # Sample 2000
 all_cont = torch.cat(all_cont_features, dim=0)
 # Use NaN-aware variance computation (same approach as dataLoader)
 empirical_var = torch.tensor([all_cont[:, i][~torch.isnan(all_cont[:, i])].var(unbiased=True) for i in range(all_cont.shape[1])])
+# Ensure empirical variance is never too small to prevent numerical issues
+empirical_var = torch.clamp(empirical_var, min=1e-4)
 print(f"Empirical variance (standardized space): {empirical_var.tolist()}")
 empirical_var = empirical_var.to(DEVICE)
 
@@ -187,8 +189,8 @@ for epoch in range(EPOCHS):
 
                 # Gaussian Negative Log-Likelihood loss for continuous features
                 # NLL = 0.5 * [log(var) + (target - mean)^2 / var]
-                # Clamp logvar to prevent numerical instability
-                logvar_clamped = torch.clamp(logvar[j, :L, :], min=-10, max=10)
+                # More conservative clamping to prevent numerical instability
+                logvar_clamped = torch.clamp(logvar[j, :L, :], min=-5, max=2)
                 var = torch.exp(logvar_clamped) + 1e-6  # Add epsilon to prevent division by zero
                 
                 # Compute squared error, replacing NaN with 0
@@ -200,7 +202,7 @@ for epoch in range(EPOCHS):
                 
                 # KL divergence penalty: penalize predicted variance deviating from empirical
                 # 0.5 * [-logvar_pred + log(σ²_emp) + exp(logvar_pred)/σ²_emp - 1]
-                safe_emp_var = empirical_var + 1e-6
+                safe_emp_var = torch.clamp(empirical_var, min=1e-4)  # Ensure never too small
                 kl_div = 0.5 * (-logvar_clamped + torch.log(safe_emp_var) + var / safe_emp_var - 1.0)
                 # Apply feature-specific weights and mask NaN positions
                 kl_loss = torch.where(valid_mask, kl_div * kl_feature_weights, torch.zeros_like(kl_div)).sum()
