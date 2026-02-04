@@ -10,8 +10,13 @@ from transformers import AutoTokenizer, AutoModel
 from tqdm.auto import tqdm
 from torch import amp
 from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts
-from dataPipeline.dataLoader import dataLoader
 import sys
+import os
+
+# Add parent directory to path for imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from dataPipeline.dataLoader import dataLoader
 from TextToKeystrokeModelMultiHead import TextToKeystrokeModelMultiHead
 from make_collate import make_collate_fn
 from config import *  # Import all configuration constants
