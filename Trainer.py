@@ -10,7 +10,7 @@ from transformers import AutoTokenizer, AutoModel
 from tqdm.auto import tqdm
 from torch import amp
 from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts
-from dataLoader import dataLoader
+from dataPipeline.dataLoader import dataLoader
 import sys
 # config and init
 BASE_MODEL   = "microsoft/deberta-v3-base"

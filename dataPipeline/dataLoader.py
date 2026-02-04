@@ -2,7 +2,7 @@ import os
 import json
 import torch
 from torch.utils.data import Dataset
-from dataPrepper import dataPrepper
+from dataPipeline.dataPrepper import dataPrepper
 import numpy as np
 
 class dataLoader(Dataset):
