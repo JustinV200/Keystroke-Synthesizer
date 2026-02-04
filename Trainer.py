@@ -11,7 +11,7 @@ from tqdm.auto import tqdm
 from torch import amp
 from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts
 from dataLoader import dataLoader
-
+import sys
 # config and init
 BASE_MODEL   = "microsoft/deberta-v3-base"
 DEVICE       = torch.device("cuda" if torch.cuda.is_available() else "cpu") #use gpu if possible
@@ -83,7 +83,7 @@ val_loader   = DataLoader(val_dataset,   batch_size=BATCH_SIZE, shuffle=False,
 
 print(f"Train samples: {len(train_dataset)}, Val samples: {len(val_dataset)}")
 
-# Compute empirical variance from training data (in standardized space)
+# Compute empirical variance from training data, used for kl weights, train towards realistic uncertainty estimates
 print("Computing empirical variance from training data...")
 all_cont_features = []
 for idx in range(min(len(train_dataset), 2000)):  # Sample 2000
@@ -133,7 +133,6 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         mean = self.mean_head(shared)  # [B, T, num_continuous]
         logvar = self.logvar_head(shared)  # [B, T, num_continuous]
         logits = self.classification_head(shared)  # [B, T, num_flags]
-        
         return mean, logvar, logits
 
 # infer feature size from one batch
@@ -225,13 +224,15 @@ for epoch in range(EPOCHS):
                 if torch.isnan(param.grad).any() or torch.isinf(param.grad).any():
                     print(f"  WARNING: NaN/Inf gradient detected in {name}")
                     valid_gradients = False
-                    break
+                    #invaid gradients, then exit
+                    sys.exit()
         
         # Only step optimizer if gradients are valid
         if valid_gradients:
             scaler.step(optimizer)
         else:
             print("  Skipping optimizer step due to invalid gradients")
+            sys.exit()
         
         scaler.update()
         scheduler.step(epoch + (i + 1) / max(1, len(train_loader)))

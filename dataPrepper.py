@@ -146,6 +146,18 @@ class dataPrepper:
             if c in self.data:
                 # Replace inf with NaN, but keep NaN as NaN (don't fill with 0)
                 self.data[c] = self.data[c].replace([np.inf, -np.inf], np.nan)
+        
+        # Drop rows with NaN or 0 in critical timing features
+        initial_len = len(self.data)
+        self.data = self.data[
+            (self.data['DwellTime'].notna()) & (self.data['DwellTime'] != 0) &
+            (self.data['FlightTime'].notna()) & (self.data['FlightTime'] != 0) &
+            (self.data['typing_speed'].notna()) & (self.data['typing_speed'] != 0)
+        ]
+        self.data.reset_index(drop=True, inplace=True)
+        removed = initial_len - len(self.data)
+        if removed > 0:
+            print(f"Dropped rows with NaN/0 in DwellTime/FlightTime/typing_speed: {removed} rows ({removed/initial_len*100:.1f}%)")
     # get statistics on the data, may be useful for reporting
     def get_statistics(self):
         def safe_mean(col):
