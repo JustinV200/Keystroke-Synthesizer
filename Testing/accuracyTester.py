@@ -206,10 +206,5 @@ def compare():
         print(f"  Mean diff:    {mean_diff:7.2f} ({mean_pct:.1f}%)")
         print()
     
-    print("="*80)
-    print("Note: larger datasets will not necessarily yield better p-values due to increased statistical power.")
-    print("consider the size of the dataset, for larger ones, cohen's d and mean differences may be more informative.")
-
-    print("="*80)
 if __name__ == "__main__":
     compare()
