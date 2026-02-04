@@ -66,10 +66,19 @@ class HeteroscedasticKLLoss:
                 continue  # Skip if no valid data in this sequence
             
             # 1. Gaussian Negative Log-Likelihood Loss for continuous features
-            # NLL = 0.5 * [log(var) + (target - mean)^2 / var]
-            # Use ultra-conservative clamping: [-0.3, 0.3] -> var in [0.74, 1.35]
-            logvar_clamped = torch.clamp(logvar[j, :L, :], min=-0.5, max=0.5)
-            var = torch.exp(logvar_clamped) + 2e-2  # Larger epsilon for maximum stability
+            # NLL = 0.5 * [log(var) + (target - mean)^2 / var] 
+            # Use moderate clamping: [-0.7, 0.7] -> var in [0.50, 2.01]
+            # This is a sweet spot: expressive enough but stable
+            logvar_clamped = torch.clamp(logvar[j, :L, :], min=-0.7, max=0.7)
+            
+            # Additional pre-clamp check: detect if raw logvar is going extreme
+            raw_logvar_max = logvar[j, :L, :].abs().max().item()
+            if raw_logvar_max > 10.0:
+                print(f"  WARNING: Extreme raw logvar detected ({raw_logvar_max:.2f}), clamping saved us")
+            
+            # Use softplus for better gradient stability: softplus(x) = log(1 + exp(x))
+            # This prevents gradient explosion while still being expressive
+            var = F.softplus(logvar_clamped) + 1e-2  # Softplus is smoother than raw exp
             
             # Additional safety: check for any extreme values
             if torch.isnan(logvar_clamped).any() or torch.isinf(logvar_clamped).any():
@@ -95,6 +104,7 @@ class HeteroscedasticKLLoss:
             # 2. KL Divergence Penalty - Ultra Conservative, been havving issues
             # KL(q||p) = 0.5 * [-log(var_q) + log(var_p) + var_q/var_p - 1]
             # Use very safe empirical variance bounds
+            #dont think this is really used anymore but kept for saftey
             safe_emp_var = torch.clamp(self.empirical_var, min=0.6, max=1.8)  # Tighter bounds
             
             # Compute KL terms with extreme safety checks
