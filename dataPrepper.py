@@ -132,6 +132,15 @@ class dataPrepper:
 
         print(f"Preprocessing complete: {len(self.data)} rows retained "
               f"({len(self.data)/self.original_length*100:.1f}% of original)")
+        
+        # Debug: Check for any remaining NaNs
+        nan_check_cols = ["DwellTime", "FlightTime", "typing_speed", "is_letter", "is_digit", "is_punct", "is_space", "is_backspace", "is_enter", "is_shift"]
+        for col in nan_check_cols:
+            if col in self.data.columns:
+                nan_count = self.data[col].isna().sum()
+                if nan_count > 0:
+                    print(f"WARNING: {col} still has {nan_count} NaN values after preprocessing!")
+        
         print(f"Stats on data after preprocessing: {self.get_statistics()}")
         return self.data
 

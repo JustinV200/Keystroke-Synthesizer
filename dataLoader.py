@@ -92,6 +92,15 @@ class dataLoader(Dataset):
                 self.cont_std  = torch.tensor([all_cont[:, i][~torch.isnan(all_cont[:, i])].std() for i in range(all_cont.shape[1])])
                 # prevent division by zero
                 self.cont_std[self.cont_std == 0] = 1.0
+                
+                # Debug: Print standardization stats
+                print(f"[DEBUG] Computed standardization stats:")
+                print(f"  cont_mean: {self.cont_mean}")
+                print(f"  cont_std: {self.cont_std}")
+                print(f"  any zero std: {(self.cont_std == 0).any()}")
+                print(f"  any nan in mean: {torch.isnan(self.cont_mean).any()}")
+                print(f"  any nan in std: {torch.isnan(self.cont_std).any()}")
+                
                 # save to JSON
                 stats = {
                     "mean": self.cont_mean.tolist(),
@@ -134,6 +143,14 @@ class dataLoader(Dataset):
         # standardize continuous features
         if self.standardize:
             features[:, self.cont_idx] = (features[:, self.cont_idx] - self.cont_mean) / self.cont_std
+            
+            # Debug: Check for NaN after standardization
+            if torch.isnan(features[:, self.cont_idx]).any():
+                print(f"WARNING: NaN detected after standardization in sample {s['id']}")
+                print(f"  cont_mean: {self.cont_mean}")
+                print(f"  cont_std: {self.cont_std}")
+                print(f"  features shape: {features.shape}")
+                print(f"  NaN locations: {torch.isnan(features[:, self.cont_idx]).sum(dim=0)}")
 
         return {
             "id": s["id"],
