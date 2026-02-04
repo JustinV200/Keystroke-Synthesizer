@@ -67,9 +67,9 @@ class HeteroscedasticKLLoss:
             
             # 1. Gaussian Negative Log-Likelihood Loss for continuous features
             # NLL = 0.5 * [log(var) + (target - mean)^2 / var]
-            # Use extremely conservative clamping: [-0.5, 0.5] -> var in [0.61, 1.65]
-            logvar_clamped = torch.clamp(logvar[j, :L, :], min=-0.5, max=0.5)
-            var = torch.exp(logvar_clamped) + 1e-2  # Larger epsilon for more stability
+            # Use ultra-conservative clamping: [-0.3, 0.3] -> var in [0.74, 1.35]
+            logvar_clamped = torch.clamp(logvar[j, :L, :], min=-0.3, max=0.3)
+            var = torch.exp(logvar_clamped) + 2e-2  # Larger epsilon for maximum stability
             
             # Additional safety: check for any extreme values
             if torch.isnan(logvar_clamped).any() or torch.isinf(logvar_clamped).any():
@@ -95,11 +95,11 @@ class HeteroscedasticKLLoss:
             # 2. KL Divergence Penalty - Ultra Conservative, been havving issues
             # KL(q||p) = 0.5 * [-log(var_q) + log(var_p) + var_q/var_p - 1]
             # Use very safe empirical variance bounds
-            safe_emp_var = torch.clamp(self.empirical_var, min=0.5, max=2.0)  # More conservative
+            safe_emp_var = torch.clamp(self.empirical_var, min=0.6, max=1.8)  # Tighter bounds
             
             # Compute KL terms with extreme safety checks
             log_emp_var = torch.log(safe_emp_var)
-            var_ratio = torch.clamp(var / safe_emp_var, min=0.1, max=10.0)  # Much more conservative ratio
+            var_ratio = torch.clamp(var / safe_emp_var, min=0.2, max=5.0)  # Much tighter ratio
             
             # Compute KL with bounds checking
             kl_div = 0.5 * (-logvar_clamped + log_emp_var + var_ratio - 1.0)
