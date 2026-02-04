@@ -147,17 +147,29 @@ class dataPrepper:
                 # Replace inf with NaN, but keep NaN as NaN (don't fill with 0)
                 self.data[c] = self.data[c].replace([np.inf, -np.inf], np.nan)
         
+        # Convert NaN to 0 for binary classification flags (these should never be NaN)
+        flag_cols = ["is_letter", "is_digit", "is_punct", "is_space", "is_backspace", "is_enter", "is_shift"]
+        for flag_col in flag_cols:
+            if flag_col in self.data.columns:
+                self.data[flag_col] = self.data[flag_col].fillna(0).astype(int)
+        
         # Drop rows with NaN in critical timing features, but allow 0 values for FlightTime
         initial_len = len(self.data)
         self.data = self.data[
             (self.data['DwellTime'].notna()) & (self.data['DwellTime'] != 0) &
-            (self.data['FlightTime'].notna()) &  # Keep 0 FlightTime (immediate keystrokes)
+            (self.data['FlightTime'].notna()) &  # Keep 0 FlightTime (immediate keystrokes)  
             (self.data['typing_speed'].notna()) & (self.data['typing_speed'] != 0)
         ]
+        # Additional safety: drop any remaining rows with NaN in timing features only
+        # (binary flags are already cleaned above)
+        timing_cols = ["DwellTime", "FlightTime", "typing_speed"]
+        existing_timing_cols = [c for c in timing_cols if c in self.data.columns]
+        self.data = self.data.dropna(subset=existing_timing_cols)
+        
         self.data.reset_index(drop=True, inplace=True)
         removed = initial_len - len(self.data)
         if removed > 0:
-            print(f"Dropped rows with NaN/0 in DwellTime/typing_speed or NaN in FlightTime: {removed} rows ({removed/initial_len*100:.1f}%)")
+            print(f"Dropped rows with NaN/0 in timing features or NaN in any feature: {removed} rows ({removed/initial_len*100:.1f}%)")
     # get statistics on the data, may be useful for reporting
     def get_statistics(self):
         def safe_mean(col):
