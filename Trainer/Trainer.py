@@ -168,14 +168,7 @@ class Trainer():
                 # Unscale gradients before clipping
                 self.scaler.unscale_(self.optimizer)
                 
-                # CRITICAL: Apply extra-conservative clipping to logvar head specifically
-                # The logvar head is prone to gradient explosion due to exp() in variance
-                for name, param in self.model.named_parameters():
-                    if 'logvar_head' in name and param.grad is not None:
-                        # Clip logvar head gradients more aggressively (max_norm=0.5)
-                        torch.nn.utils.clip_grad_norm_([param], max_norm=0.5)
-                
-                # Clip gradients to prevent explosion (standard clipping for all params)
+                # Gradient clipping
                 torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
                 
                 # Check for NaN/Inf gradients with detailed monitoring

@@ -71,11 +71,6 @@ class HeteroscedasticKLLoss:
             # This is a sweet spot: expressive enough but stable
             logvar_clamped = torch.clamp(logvar[j, :L, :], min=-0.7, max=0.7)
             
-            # Additional pre-clamp check: detect if raw logvar is going extreme
-            raw_logvar_max = logvar[j, :L, :].abs().max().item()
-            if raw_logvar_max > 10.0:
-                print(f"  WARNING: Extreme raw logvar detected ({raw_logvar_max:.2f}), clamping saved us")
-            
             # Use softplus for better gradient stability: softplus(x) = log(1 + exp(x))
             # This prevents gradient explosion while still being expressive
             var = F.softplus(logvar_clamped) + 1e-2  # Softplus is smoother than raw exp
