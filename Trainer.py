@@ -121,7 +121,7 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         
         # Initialize logvar head to predict small variance initially
         nn.init.constant_(self.logvar_head.weight, 0.0)
-        nn.init.constant_(self.logvar_head.bias, -2.0)  # exp(-2) ≈ 0.135 initial variance
+        nn.init.constant_(self.logvar_head.bias, -0.5)  # exp(-0.5) ≈ 0.6 initial variance
         
         # Classification head (binary flags)
         self.classification_head = nn.Linear(256, num_flags)
@@ -212,9 +212,9 @@ for epoch in range(EPOCHS):
 
                 # Gaussian Negative Log-Likelihood loss for continuous features
                 # NLL = 0.5 * [log(var) + (target - mean)^2 / var]
-                # More conservative clamping to prevent numerical instability
-                logvar_clamped = torch.clamp(logvar[j, :L, :], min=-5, max=2)
-                var = torch.exp(logvar_clamped) + 1e-6  # Add epsilon to prevent division by zero
+                # Very conservative clamping to prevent numerical instability
+                logvar_clamped = torch.clamp(logvar[j, :L, :], min=-1, max=1)  # Much safer range
+                var = torch.exp(logvar_clamped) + 1e-3  # Larger epsilon for stability
                 
                 # Compute squared error, replacing NaN with 0
                 squared_error = (target[:L, cont_idx] - mean[j, :L, :]) ** 2
@@ -225,8 +225,13 @@ for epoch in range(EPOCHS):
                 
                 # KL divergence penalty: penalize predicted variance deviating from empirical
                 # 0.5 * [-logvar_pred + log(σ²_emp) + exp(logvar_pred)/σ²_emp - 1]
-                safe_emp_var = torch.clamp(empirical_var, min=1e-4)  # Ensure never too small
-                kl_div = 0.5 * (-logvar_clamped + torch.log(safe_emp_var) + var / safe_emp_var - 1.0)
+                safe_emp_var = torch.clamp(empirical_var, min=1e-2)  # Much more conservative
+                
+                # Compute KL terms with additional safety checks
+                log_emp_var = torch.log(safe_emp_var)
+                var_ratio = torch.clamp(var / safe_emp_var, min=1e-3, max=1e3)  # Clamp ratio
+                
+                kl_div = 0.5 * (-logvar_clamped + log_emp_var + var_ratio - 1.0)
                 # Apply feature-specific weights and mask NaN positions
                 kl_loss = torch.where(valid_mask, kl_div * kl_feature_weights, torch.zeros_like(kl_div)).sum()
                 
