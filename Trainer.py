@@ -189,14 +189,19 @@ for epoch in range(EPOCHS):
                 # NLL = 0.5 * [log(var) + (target - mean)^2 / var]
                 # Clamp logvar to prevent numerical instability
                 logvar_clamped = torch.clamp(logvar[j, :L, :], min=-10, max=10)
-                var = torch.exp(logvar_clamped)
-                nll = 0.5 * (logvar_clamped + ((target[:L, cont_idx] - mean[j, :L, :]) ** 2) / (var + 1e-6))
-                # Use torch.where to zero out NaN positions (NaN * 0 = NaN in PyTorch!)
+                var = torch.exp(logvar_clamped) + 1e-6  # Add epsilon to prevent division by zero
+                
+                # Compute squared error, replacing NaN with 0
+                squared_error = (target[:L, cont_idx] - mean[j, :L, :]) ** 2
+                squared_error = torch.where(valid_mask, squared_error, torch.zeros_like(squared_error))
+                
+                nll = 0.5 * (logvar_clamped + squared_error / var)
                 nll_loss = torch.where(valid_mask, nll, torch.zeros_like(nll)).sum()
                 
                 # KL divergence penalty: penalize predicted variance deviating from empirical
                 # 0.5 * [-logvar_pred + log(σ²_emp) + exp(logvar_pred)/σ²_emp - 1]
-                kl_div = 0.5 * (-logvar_clamped + torch.log(empirical_var + 1e-6) + var / (empirical_var + 1e-6) - 1.0)
+                safe_emp_var = empirical_var + 1e-6
+                kl_div = 0.5 * (-logvar_clamped + torch.log(safe_emp_var) + var / safe_emp_var - 1.0)
                 # Apply feature-specific weights and mask NaN positions
                 kl_loss = torch.where(valid_mask, kl_div * kl_feature_weights, torch.zeros_like(kl_div)).sum()
                 
@@ -207,7 +212,17 @@ for epoch in range(EPOCHS):
                 bce_sum += bce + kl_weight * kl_loss  # Use annealed kl_weight
                 count += valid_mask.sum().item()  # Count only valid positions
             
-            loss = (loss_sum + bce_sum) / max(1, count)
+            # Skip batch if no valid data
+            if count == 0:
+                print(f"  WARNING: Batch {i} has no valid data, skipping")
+                continue
+                
+            loss = (loss_sum + bce_sum) / count
+            
+            # Check for NaN/Inf in loss before backward
+            if torch.isnan(loss) or torch.isinf(loss):
+                print(f"  WARNING: NaN/Inf loss detected in batch {i}, skipping")
+                continue
 
         scaler.scale(loss).backward()
         
@@ -271,13 +286,17 @@ for epoch in range(EPOCHS):
                     
                     # Compute NLL loss on continuous features
                     logvar_clamped = torch.clamp(logvar[j, :L, :], min=-10, max=10)
-                    var = torch.exp(logvar_clamped)
-                    nll = 0.5 * (logvar_clamped + ((target[:L, cont_idx] - mean[j, :L, :]) ** 2) / (var + 1e-6))
-                    # Use torch.where to zero out NaN positions
+                    var = torch.exp(logvar_clamped) + 1e-6
+                    
+                    squared_error = (target[:L, cont_idx] - mean[j, :L, :]) ** 2
+                    squared_error = torch.where(valid_mask, squared_error, torch.zeros_like(squared_error))
+                    
+                    nll = 0.5 * (logvar_clamped + squared_error / var)
                     nll_loss = torch.where(valid_mask, nll, torch.zeros_like(nll)).sum()
                     
                     # Compute KL divergence penalty with feature-specific weights
-                    kl_div = 0.5 * (-logvar_clamped + torch.log(empirical_var + 1e-6) + var / (empirical_var + 1e-6) - 1.0)
+                    safe_emp_var = empirical_var + 1e-6
+                    kl_div = 0.5 * (-logvar_clamped + torch.log(safe_emp_var) + var / safe_emp_var - 1.0)
                     # Apply feature-specific weights and mask NaN positions
                     kl_loss = torch.where(valid_mask, kl_div * kl_feature_weights, torch.zeros_like(kl_div)).sum()
                     
