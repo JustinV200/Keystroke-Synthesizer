@@ -178,8 +178,31 @@ for epoch in range(EPOCHS):
 
         optimizer.zero_grad(set_to_none=True)
         with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
+            # Debug: Check for NaN in inputs
+            if torch.isnan(input_ids).any():
+                print(f"  WARNING: NaN in input_ids for batch {i}")
+                continue
+            if torch.isnan(attention_m).any():
+                print(f"  WARNING: NaN in attention_mask for batch {i}")
+                continue
+            for j, target in enumerate(targets):
+                if torch.isnan(target).any():
+                    print(f"  WARNING: NaN in target {j} for batch {i}")
+                    print(f"    Target shape: {target.shape}")
+                    print(f"    NaN locations: {torch.isnan(target).sum(dim=0)}")
+            
             # Model now returns mean, logvar, logits
-            mean, logvar, logits = model(input_ids, attention_m)   
+            mean, logvar, logits = model(input_ids, attention_m)
+            
+            # Debug: Check for NaN in model outputs
+            if torch.isnan(mean).any():
+                print(f"  WARNING: NaN in mean output for batch {i}")
+            if torch.isnan(logvar).any():
+                print(f"  WARNING: NaN in logvar output for batch {i}")
+                print(f"    logvar range: min={logvar.min():.3f}, max={logvar.max():.3f}")
+            if torch.isnan(logits).any():
+                print(f"  WARNING: NaN in logits output for batch {i}")
+            
             loss_sum, bce_sum, count = 0.0, 0.0, 0
             for j, target in enumerate(targets):
                 L = min(mean.shape[1], target.shape[0])
