@@ -68,7 +68,7 @@ class HeteroscedasticKLLoss:
             # 1. Gaussian Negative Log-Likelihood Loss for continuous features
             # NLL = 0.5 * [log(var) + (target - mean)^2 / var]
             # Use ultra-conservative clamping: [-0.3, 0.3] -> var in [0.74, 1.35]
-            logvar_clamped = torch.clamp(logvar[j, :L, :], min=-0.3, max=0.3)
+            logvar_clamped = torch.clamp(logvar[j, :L, :], min=-0.5, max=0.5)
             var = torch.exp(logvar_clamped) + 2e-2  # Larger epsilon for maximum stability
             
             # Additional safety: check for any extreme values
