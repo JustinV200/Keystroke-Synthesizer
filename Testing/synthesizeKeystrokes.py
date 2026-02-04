@@ -2,44 +2,18 @@
 import torch
 import pandas as pd
 import json
+import sys
+import os
 from transformers import AutoTokenizer, AutoModel
 from torch import nn
 from collections import OrderedDict
 import torch.nn.functional as F
 import numpy as np
 
-class TextToKeystrokeModelMultiHead(nn.Module):
-    def __init__(self, base_model, num_continuous=3, num_flags=7):
-        super().__init__()
-        self.encoder = AutoModel.from_pretrained(base_model)
-        hidden = self.encoder.config.hidden_size
+# Add parent directory to path for imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-        # Shared backbone
-        self.backbone = nn.Sequential(
-            nn.Linear(hidden, 512),
-            nn.LayerNorm(512),
-            nn.ReLU(),
-            nn.Dropout(0.2),
-            nn.Linear(512, 256),
-            nn.ReLU()
-        )
-
-        # Heteroscedastic regression heads - predict mean AND variance
-        self.mean_head = nn.Linear(256, num_continuous)
-        self.logvar_head = nn.Linear(256, num_continuous)
-
-        # Classification head (binary flags)
-        self.classification_head = nn.Linear(256, num_flags)
-
-    def forward(self, input_ids, attention_mask):
-        x = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
-        shared = self.backbone(x.last_hidden_state)
-
-        mean = self.mean_head(shared)
-        logvar = self.logvar_head(shared)
-        logits = self.classification_head(shared)
-        
-        return mean, logvar, logits
+from Trainer.TextToKeystrokeModelMultiHead import TextToKeystrokeModelMultiHead
 
 
 def predict_keystrokes(
@@ -118,11 +92,10 @@ def predict_keystrokes(
     continuous = continuous.float()
     flags = flags.float()
 
-    #  Physical constraints 
-    #todo, find actual minimums
-    continuous[:, :, 0] = torch.clamp(continuous[:, :, 0], min=20.0, max=300.0)  # DwellTime (cap at 300ms to match training)
-    continuous[:, :, 1] = torch.clamp(continuous[:, :, 1], min=10.0, max=900.0)  # FlightTime (cap at 900ms to match training)
-    continuous[:, :, 2] = torch.clamp(continuous[:, :, 2], min=10.0, max=500.0)  # typing_speed (realistic minimum)
+    #  Physical constraints (match training data preprocessing)
+    continuous[:, :, 0] = torch.clamp(continuous[:, :, 0], min=0.0, max=300.0)  # DwellTime (matches dataPrepper cap)
+    continuous[:, :, 1] = torch.clamp(continuous[:, :, 1], min=0.0, max=900.0)  # FlightTime (matches dataPrepper cap)
+    continuous[:, :, 2] = torch.clamp(continuous[:, :, 2], min=0.0, max=490.0)  # typing_speed (matches dataPrepper cap)
 
 #  Assemble full feature tensor 
     B, T, _ = continuous.shape

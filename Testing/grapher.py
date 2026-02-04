@@ -1,15 +1,21 @@
 
 import os
-
+import sys
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# Add parent directory to path for imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from dataPipeline.dataPrepper import dataPrepper
+
 def computeOgStats(n=None):
-    base_dir = "data"
-    text_dir = os.path.join(base_dir, "texts")
-    csv_dir  = os.path.join(base_dir, "csv")
+    """Extract original keystroke statistics using dataPrepper pipeline."""
+    base_dir = "../data"
+    csv_dir = os.path.join(base_dir, "csv")
+    
     ogDwell_times = []
     ogFlight_times = []
     ogTyping_speeds = []
@@ -22,40 +28,46 @@ def computeOgStats(n=None):
     else:
         print(f"Analyzing all {len(csv_files)} samples")
     
-    for fid in csv_files:
-        if not fid.endswith(".csv"):
-            continue
-        csv_path = os.path.join(csv_dir, fid)
+    for i, csv_file in enumerate(csv_files):
+        csv_path = os.path.join(csv_dir, csv_file)
+        
         try:
-            df = pd.read_csv(csv_path, encoding='utf-8')
-        except UnicodeDecodeError:
-            df = pd.read_csv(csv_path, encoding='latin-1')
-        # set size of df to first 512 rows to match synthesized data length
-        df = df.head(512)
-        #calculate features
-        dwelltime = df['UpTime'] - df['DownTime']
-        flighttime = df['DownTime'].shift(-1) - df['UpTime']
-        # Set first FlightTime to NaN to match synthesized data
-        if len(flighttime) > 0:
-            flighttime.iloc[0] = np.nan
-        # Cap FlightTime at 10 seconds
-        flighttime = flighttime.clip(upper=10000)
-        # Remove negative flight times (data artifacts)
-        flighttime = flighttime.clip(lower=0)
-        #replace 0s with nan
-        dwelltime = dwelltime.replace(0.0, np.nan)
-        flighttime = flighttime.replace(0.0, np.nan)
-        # Calculate typing speed per keystroke using rolling window (matching synthesized approach)
-        window_size = 10
-        elapsed = df['DownTime'].diff(window_size)
-        typing_speed = window_size / (elapsed / 1000.0 / 60.0)  # chars per minute
-        typing_speed = typing_speed.replace([np.inf, -np.inf], np.nan)
-        typing_speed = typing_speed.replace(0.0, np.nan)  # Replace 0s with NaN
-        typing_speed = typing_speed.clip(upper=500)
-        #Add to lists
-        ogDwell_times.extend(dwelltime.dropna().tolist())
-        ogFlight_times.extend(flighttime.dropna().tolist())
-        ogTyping_speeds.extend(typing_speed.dropna().tolist())
+            # Use dataPrepper to process each CSV file with exact same logic as training
+            prepper = dataPrepper(csv_path)
+            prepper.clean_data()
+            prepper.transform_data()
+            prepper.addContextFlags()
+            prepper._calculate_typing_speed()
+            prepper.add_char_encoding()
+            prepper._finalize_finite()
+            
+            # Get the processed data (already cleaned by dataPrepper)
+            processed_data = prepper.get_prepared_data()
+            
+            # Extract continuous features: [DwellTime, FlightTime, typing_speed]
+            cont_idx = [0, 1, 2]  # Match training indices
+            
+            dwell = processed_data[:, cont_idx[0]]
+            flight = processed_data[:, cont_idx[1]]
+            typing = processed_data[:, cont_idx[2]]
+            
+            # Set first FlightTime to NaN for consistency (no previous keystroke)
+            if len(flight) > 0:
+                flight = flight.copy()
+                flight[0] = np.nan
+            
+            # Filter out NaNs for graphing (no NaNs in plots)
+            dwell_clean = dwell[~np.isnan(dwell)]
+            flight_clean = flight[~np.isnan(flight)]  # Removes first FlightTime NaN
+            typing_clean = typing[~np.isnan(typing)]
+            
+            ogDwell_times.extend(dwell_clean.tolist())
+            ogFlight_times.extend(flight_clean.tolist())
+            ogTyping_speeds.extend(typing_clean.tolist())
+            
+        except Exception as e:
+            print(f"Error processing {csv_file}: {e}")
+            continue
     
     # Debug FlightTime distribution to check for outliers
     flight_array = np.array(ogFlight_times)

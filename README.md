@@ -63,21 +63,24 @@ trainer.train()
 
 ### Generating Keystrokes
 ```python
-from synthesizeKeystrokes import synthesize_text
+from Testing.synthesizeKeystrokes import predict_keystrokes
 
 # Generate keystroke pattern for text
-text = "Hello, world! This is a test."
-keystrokes = synthesize_text(text, model_path="checkpoints/best_model.pt")
-print(keystrokes)
+text_path = "sample.txt"
+predict_keystrokes(
+    text_path=text_path,
+    checkpoint_path="checkpoints/best_model.pt",
+    output_csv="predicted_keystrokes.csv"
+)
 ```
 
 ### Testing Accuracy
 ```python
-from accuracyTester import test_accuracy
+from Testing.accuracyTester import compare
 
 # Evaluate model performance
-results = test_accuracy(model_path="checkpoints/best_model.pt")
-print(f"MAE: {results['mae']:.3f}ms")
+compare()  # Compares original vs synthetic keystroke statistics
+```
 ```
 
 ## 📊 Data Pipeline
@@ -138,22 +141,28 @@ The model tracks multiple performance indicators:
 keystroke-synthesizer/
 ├── 📁 data/                    # Training data
 │   ├── csv/                    # Keystroke timing data
-│   └── texts/                  # Corresponding text samples
+│   ├── texts/                  # Corresponding text samples
+│   └── predicted_csvs/         # Generated synthetic keystroke data
 ├── 📁 dataPipeline/           # Data processing pipeline
+│   ├── __init__.py            # Package initialization
 │   ├── dataPrepper.py         # Data cleaning & preprocessing
 │   └── dataLoader.py          # Dataset loading & standardization
 ├── 📁 Trainer/                # Training components
+│   ├── __init__.py            # Package initialization
 │   ├── Trainer.py             # Main training class
 │   ├── TextToKeystrokeModelMultiHead.py  # Model architecture
 │   ├── HeteroscedasticKLLoss.py          # Loss function
 │   ├── config.py              # Training configuration
 │   ├── make_collate.py        # Batch processing
 │   └── utils.py               # Training utilities
+├── 📁 Testing/                # Evaluation and analysis tools
+│   ├── synthesizeKeystrokes.py # Text-to-keystroke generation
+│   ├── accuracyTester.py      # Model evaluation & comparison
+│   └── grapher.py             # Results visualization
 ├── 📁 checkpoints/            # Saved models
 ├── 📁 graphs/                 # Performance visualizations
-├── synthesizeKeystrokes.py    # Text-to-keystroke generation
-├── accuracyTester.py          # Model evaluation
-├── grapher.py                 # Results visualization
+├── 📁 misc/                   # Miscellaneous utilities
+├── 📁 runs/                   # Training logs and outputs
 └── README.md                  # This file
 ```
 
