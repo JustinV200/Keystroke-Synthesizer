@@ -69,14 +69,16 @@ class HeteroscedasticKLLoss:
             # NLL = 0.5 * [log(var) + (target - mean)^2 / var] 
             # Use wider clamping: [-1.5, 1.5] -> var in [0.22, 4.48]
             # Need wider range to prevent mean_head gradient explosion from squared_error/var
-            logvar_clamped = torch.clamp(logvar[j, :L, :], min=-1, max=1)
+            #stop clamping altogether, we wanna make sure we are learning proper variance.
+            #logvar_clamped = torch.clamp(logvar[j, :L, :], min=-1, max=1)
+            logvar_clean = logvar[j, :L, :]
             
             # Use exp with larger epsilon for stability
-            var = torch.exp(logvar_clamped) + 5e-4  # Larger epsilon prevents division issues
+            var = torch.exp(logvar_clean) + 5e-4  # Larger epsilon prevents division issues
             
             # Additional safety: check for any extreme values
-            if torch.isnan(logvar_clamped).any() or torch.isinf(logvar_clamped).any():
-                print(f"  WARNING: Invalid logvar_clamped detected, skipping sequence {j}")
+            if torch.isnan(logvar_clean).any() or torch.isinf(logvar_clean).any():
+                print(f"  WARNING: Invalid logvar_clean detected, skipping sequence {j}")
                 continue
             if torch.isnan(var).any() or torch.isinf(var).any():
                 print(f"  WARNING: Invalid var detected, skipping sequence {j}")
@@ -87,7 +89,7 @@ class HeteroscedasticKLLoss:
             squared_error = torch.where(valid_mask, squared_error, torch.zeros_like(squared_error))
             
             # Compute NLL loss with additional safety
-            nll = 0.5 * (logvar_clamped + squared_error / var)
+            nll = 0.5 * (logvar_clean + squared_error / var)
             nll_loss = torch.where(valid_mask, nll, torch.zeros_like(nll)).sum()
             
             # Safety check on NLL loss
@@ -106,7 +108,7 @@ class HeteroscedasticKLLoss:
             var_ratio = torch.clamp(var / safe_emp_var, min=0.2, max=5.0)  # Much tighter ratio
             
             # Compute KL with bounds checking
-            kl_div = 0.5 * (-logvar_clamped + log_emp_var + var_ratio - 1.0)
+            kl_div = 0.5 * (-logvar_clean + log_emp_var + var_ratio - 1.0)
             
             # Safety check on KL divergence
             if torch.isnan(kl_div).any() or torch.isinf(kl_div).any():
