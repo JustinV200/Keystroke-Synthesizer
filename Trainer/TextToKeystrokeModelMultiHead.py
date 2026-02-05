@@ -22,8 +22,9 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         self.logvar_head = nn.Linear(256, num_continuous)  # log-variance for numerical stability
         
         # Initialize logvar head to predict small variance initially
-        nn.init.constant_(self.logvar_head.weight, 0.0)
-        nn.init.constant_(self.logvar_head.bias, -0.5)  # exp(-0.5) ≈ 0.6 initial variance
+        #small random weights instead of getting stuck in constant output
+        nn.init.normal_(self.logvar_head.weight, mean=0.0, std=0.1)
+        nn.init.constant_(self.logvar_head.bias, 0.0)
         
         # Classification head (binary flags)
         self.classification_head = nn.Linear(256, num_flags)
