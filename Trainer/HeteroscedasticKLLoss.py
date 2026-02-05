@@ -73,8 +73,12 @@ class HeteroscedasticKLLoss:
             #logvar_clamped = torch.clamp(logvar[j, :L, :], min=-1, max=1)
             logvar_clean = logvar[j, :L, :]
             
+            # Debug: Check for extreme logvar values that could cause numerical issues
+            if logvar_clean.abs().max() > 8.0:
+                print(f"  DEBUG: Extreme logvar range: [{logvar_clean.min():.2f}, {logvar_clean.max():.2f}]")
+            
             # Use exp with larger epsilon for stability
-            var = torch.exp(logvar_clean) + 5e-4  # Larger epsilon prevents division issues
+            var = torch.exp(logvar_clean) + 1e-3  # Larger epsilon prevents division issues with extreme logvar
             
             # Additional safety: check for any extreme values
             if torch.isnan(logvar_clean).any() or torch.isinf(logvar_clean).any():

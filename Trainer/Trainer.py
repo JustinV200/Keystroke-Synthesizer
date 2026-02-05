@@ -198,11 +198,17 @@ class Trainer():
                 # Debug: Check gradients on first batch
                 if i == 0:
                     grad_norms = []
+                    logvar_head_weights = None
                     for name, param in self.model.named_parameters():
                         if param.grad is not None:
                             grad_norms.append((name, param.grad.norm().item()))
+                            # Track logvar_head weights specifically
+                            if 'logvar_head' in name and 'weight' in name:
+                                logvar_head_weights = param.data
                     if grad_norms:
                         print(f"  Sample gradient norms: {grad_norms[:3]}")  # Print first 3
+                        if logvar_head_weights is not None:
+                            print(f"  Logvar head range: [{logvar_head_weights.min():.3f}, {logvar_head_weights.max():.3f}]")
 
             avg_train = train_loss_sum / max(1, len(self.train_loader))
             
