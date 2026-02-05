@@ -25,6 +25,9 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         #small random weights instead of getting stuck in constant output
         nn.init.normal_(self.logvar_head.weight, mean=0.0, std=0.1)
         nn.init.constant_(self.logvar_head.bias, 0.0)
+        #old values"
+        #nn.init.constant_(self.logvar_head.weight, 0.0)
+        #nn.init.constant_(self.logvar_head.bias, -0.5) 
         
         # Classification head (binary flags)
         self.classification_head = nn.Linear(256, num_flags)

@@ -71,7 +71,7 @@ class HeteroscedasticKLLoss:
             # Need wider range to prevent mean_head gradient explosion from squared_error/var
             #stop clamping altogether, we wanna make sure we are learning proper variance.
             #logvar_clamped = torch.clamp(logvar[j, :L, :], min=-1, max=1)
-            logvar_clean = logvar[j, :L, :]
+            logvar_clean = torch.clamp(logvar[j, :L, :], min=-3.0, max=3.0)
             
             # Debug: Check for extreme logvar values that could cause numerical issues
             if logvar_clean.abs().max() > 8.0:
