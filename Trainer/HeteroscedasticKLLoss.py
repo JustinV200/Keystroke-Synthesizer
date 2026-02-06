@@ -131,11 +131,18 @@ class HeteroscedasticKLLoss:
                 continue
             
             # 3. Binary Cross-Entropy Loss for flag features
-            bce_loss = F.binary_cross_entropy_with_logits(
-                logits[j, :L, :], 
-                target[:L, self.flag_idx].float(), 
-                reduction="sum"
-            )
+            # Mask NaNs to avoid propagating invalid gradients
+            flag_targets = target[:L, self.flag_idx].float()
+            flag_valid_mask = ~torch.isnan(flag_targets)
+            if flag_valid_mask.sum() == 0:
+                bce_loss = torch.tensor(0.0, device=self.device)
+            else:
+                bce_raw = F.binary_cross_entropy_with_logits(
+                    logits[j, :L, :],
+                    torch.where(flag_valid_mask, flag_targets, torch.zeros_like(flag_targets)),
+                    reduction="none"
+                )
+                bce_loss = torch.where(flag_valid_mask, bce_raw, torch.zeros_like(bce_raw)).sum()
             
             # Accumulate losses
             nll_loss_sum += nll_loss
