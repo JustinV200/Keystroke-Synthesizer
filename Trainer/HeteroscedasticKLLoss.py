@@ -110,7 +110,9 @@ class HeteroscedasticKLLoss:
             # Compute KL terms with extreme safety checks
             log_emp_var = torch.log(safe_emp_var)
             #var_ratio = torch.clamp(var / safe_emp_var, min=0.2, max=5.0)  # Much tighter ratio
-            var_ratio = torch.clamp(var / safe_emp_var) # no more clamps, let model learn proper variance
+            #var_ratio = torch.clamp(var / safe_emp_var)
+             # no more clamps, let model learn proper variance
+            var_ratio = var / safe_emp_var
             
             # Compute KL with bounds checking
             kl_div = 0.5 * (-logvar_clean + log_emp_var + var_ratio - 1.0)
