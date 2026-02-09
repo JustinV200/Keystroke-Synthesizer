@@ -39,14 +39,8 @@ def computeOgStats():
         try:
             # Use dataPrepper to process each CSV file with exact same logic as training
             prepper = dataPrepper(csv_path)
-            prepper.clean_data()
-            prepper.transform_data()
-            prepper.addContextFlags()
-            prepper._calculate_typing_speed()
-            prepper.add_char_encoding()
-            prepper._finalize_finite()
-            
-            # Get the processed data (already cleaned by dataPrepper)
+
+            # clean and process data to extract features
             processed_data = prepper.get_prepared_data()
             
             # Extract continuous features: [DwellTime, FlightTime, typing_speed] 

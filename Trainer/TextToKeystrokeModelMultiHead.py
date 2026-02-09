@@ -6,7 +6,7 @@ import sys
 
 class TextToKeystrokeModelMultiHead(nn.Module):
 
-    def __init__(self, base_model, num_continuous=3, num_flags=9):
+    def __init__(self, base_model, num_continuous=3, num_flags=7):
         super().__init__()
         self.encoder = AutoModel.from_pretrained(base_model)
         hidden = self.encoder.config.hidden_size
