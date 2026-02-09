@@ -43,7 +43,6 @@ class Trainer():
         self.n_total = len(self.full_dataset)
         self.n_val   = int(0.2 * self.n_total) # 20% for validation
         self.n_train = self.n_total - self.n_val # rest for training
-
         # random split with fixed seed for reproducibility
         self.train_dataset, self.val_dataset = random_split(
             self.full_dataset, [self.n_train, self.n_val],
@@ -76,7 +75,7 @@ class Trainer():
         # Compute empirical variance from training data, used for kl weights, train towards realistic uncertainty estimates
         self.empirical_var = self._compute_empirical_variance()
         self.kl_feature_weights = self._get_kl_feature_weights()
-
+        self.bad_batches = 0  # Counter for batches with invalid gradients
         #heteroscedasticKLLoss.py
         self.heteroscedastic_loss = HeteroscedasticKLLoss(self.empirical_var, self.kl_feature_weights, self.cont_idx, self.flag_idx, DEVICE)
 
@@ -101,7 +100,7 @@ class Trainer():
         return model
     
 
-    def _check_gradients(self, check_all=False):
+    def _check_gradients(self):
         """Check for NaN/Inf gradients and return gradient statistics"""
         grad_stats = {'has_nan': False, 'has_inf': False, 'max_norm': 0.0, 'problem_params': []}
         
@@ -170,18 +169,24 @@ class Trainer():
                 
                 # Gradient clipping
                 #changed from 1 to 75, only catch extreme outliers.
-                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=75.0)
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=5.0)
                 
                 # Check for NaN/Inf gradients with detailed monitoring
                 grad_stats = self._check_gradients()
-                
+
                 if grad_stats['has_nan'] or grad_stats['has_inf']:
-                    print(f"  ERROR: Invalid gradients detected in batch {i}")
+                    print(f"  WARNING: Invalid gradients in batch {i}, skipping update")
                     print(f"    Problem parameters: {grad_stats['problem_params'][:5]}")
-                    print(f"    Max gradient norm: {grad_stats['max_norm']:.6f}")
-                    print("  Stopping training to prevent model corruption")
-                    sys.exit()
-                
+                    # Zero out gradients so they don't corrupt model weights
+                    self.optimizer.zero_grad(set_to_none=True)
+                    # Still update scaler so it reduces its scale factor
+                    self.scaler.update()
+                    self.bad_batches += 1
+                    if self.bad_batches > 20:
+                        print("  ERROR: Too many bad batches (>20), stopping training.")
+                        return
+                    continue
+                self.bad_batches = 0
                 # Check for suspiciously large gradients
                 if grad_stats['max_norm'] > 50.0:
                     print(f"  WARNING: Large gradient detected (norm={grad_stats['max_norm']:.3f})")
