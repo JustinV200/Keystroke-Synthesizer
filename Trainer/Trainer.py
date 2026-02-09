@@ -61,7 +61,16 @@ class Trainer():
         print(f"Train samples: {len(self.train_dataset)}, Val samples: {len(self.val_dataset)}")
         # Initialize model, optimizer, scheduler, scaler
         self.model = self._create_model()
-        self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
+        #create seperate parameter groups for logvar head
+        logvar_head_params = [p for n, p in self.model.named_parameters() if 'logvar_head' in n]
+        other_params = [p for n, p in self.model.named_parameters() if 'logvar_head' not in n]
+        
+        self.optimizer = torch.optim.AdamW([
+            {'params': other_params, 'lr': LR},
+            {'params': logvar_head_params, 'lr': LR * 5},  # 5x LR for logvar head
+        ], weight_decay=WEIGHT_DECAY)
+
+
         self.scheduler = CosineAnnealingWarmRestarts(self.optimizer, T_0=3, T_mult=2)
         self.scaler    = amp.GradScaler(device="cuda" if DEVICE.type == "cuda" else "cpu")
 

@@ -13,8 +13,8 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         
         # Shared backbone
         self.backbone = nn.Sequential(
-            nn.Linear(hidden, 512), nn.LayerNorm(512), nn.ReLU(), nn.Dropout(0.2),
-            nn.Linear(512, 256), nn.ReLU()
+            nn.Linear(hidden, 768), nn.LayerNorm(768), nn.ReLU(), nn.Dropout(0.2),
+            nn.Linear(768, 256), nn.ReLU()
         )
         
         # Heteroscedastic regression heads - predict mean AND variance
