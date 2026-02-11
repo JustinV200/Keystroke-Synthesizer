@@ -5,7 +5,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from accuracyTester import computeOgStats
 # Add parent directory to path for imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -83,6 +82,7 @@ class grapher:
     def ogDataplots(self, n=None):
         """Plot histograms and distribution plots for the original keystroke metrics."""
         print("Computing original statistics...")
+        from accuracyTester import computeOgStats
         dwell_times, flight_times, typing_speeds = computeOgStats(n)
         
         # Set up the plotting style
