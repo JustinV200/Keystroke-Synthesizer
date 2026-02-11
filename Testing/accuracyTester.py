@@ -26,12 +26,17 @@ def computeOgStats():
     base_dir = "../data"
     csv_dir = os.path.join(base_dir, "csv")
     
+    # Check if csv_dir exists before listing files
+    if not os.path.isdir(csv_dir):
+        print(f"Directory not found: {csv_dir}")
+        print(f"Current working directory: {os.getcwd()}")
+        raise FileNotFoundError(f"CSV directory does not exist: {csv_dir}")
+    csv_files = [f for f in os.listdir(csv_dir) if f.endswith('.csv')]
+    print(f"Processing {len(csv_files)} CSV files...")
+    
     ogDwell_times = []
     ogFlight_times = []
     ogTyping_speeds = []
-    
-    csv_files = [f for f in os.listdir(csv_dir) if f.endswith('.csv')]
-    print(f"Processing {len(csv_files)} CSV files...")
     
     for i, csv_file in enumerate(csv_files):
         csv_path = os.path.join(csv_dir, csv_file)
