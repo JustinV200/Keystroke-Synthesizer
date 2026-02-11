@@ -16,7 +16,7 @@ from dataPipeline.dataPrepper import dataPrepper
 from dataPipeline.dataLoader import dataLoader
 from scipy import stats
 from torch.utils.data import DataLoader as TorchDataLoader
-from grapher import grapher
+from Testing.grapher import grapher
 # Use existing data pipeline to get original statistics
 def computeOgStats():
     """Extract original keystroke statistics using dataPrepper pipeline."""
