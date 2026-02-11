@@ -343,3 +343,40 @@ Typing Speed:
 *no real differences, except typingspeeds std is slightly worse, gonna return to the previous 0.3 kl weight.
 *model struggles alot modeling flightime, gonna attempt lognormal, should be a better fit for the heavily right skewed data
 
+2/11/2026
+
+--- BASIC STATISTICS ---
+
+Original Data:
+  DwellTime    - Mean:    88.32, Std:    38.40, N: 11554744
+  FlightTime   - Mean:   136.81, Std:   162.69, N: 11549773
+  Typing Speed - Mean:   215.28, Std:   123.04, N: 11554744
+
+Synthesized Data:
+  DwellTime    - Mean:    97.43, Std:    38.35, N: 1960056
+  FlightTime   - Mean:   154.13, Std:   139.49, N: 1955064
+  Typing Speed - Mean:   197.44, Std:   111.12, N: 1960056
+
+--- STATISTICAL TESTS ---
+
+DwellTime:
+  t-test:       t=-306.970, p=0.0000 ***
+  K-S test:     D=  0.132, p=0.0000 ***
+  Cohen's d:     -0.237 (small)
+  Mean diff:       9.10 (10.3%)
+
+FlightTime:
+  t-test:       t=-140.380, p=0.0000 ***
+  K-S test:     D=  0.186, p=0.0000 ***
+  Cohen's d:     -0.114 (negligible)
+  Mean diff:      17.32 (12.7%)
+
+Typing Speed:
+  t-test:       t=190.226, p=0.0000 ***
+  K-S test:     D=  0.067, p=0.0000 ***
+  Cohen's d:      0.152 (negligible)
+  Mean diff:      17.84 (8.3%)
+
+
+*Huge improvements, although slightly worse mean difference, standard deviations are way better.
+* also, large number of 100s in typign speed no longer an issue

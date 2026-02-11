@@ -16,7 +16,7 @@ from dataPipeline.dataPrepper import dataPrepper
 from dataPipeline.dataLoader import dataLoader
 from scipy import stats
 from torch.utils.data import DataLoader as TorchDataLoader
-
+from grapher import grapher
 # Use existing data pipeline to get original statistics
 def computeOgStats():
     """Extract original keystroke statistics using dataPrepper pipeline."""
@@ -53,11 +53,6 @@ def computeOgStats():
             flight = processed_data["FlightTime"].values
             typing = processed_data["typing_speed"].values
             
-            # Extract continuous features and filter any remaining NaNs for safety
-            #dwell = processed_data[:, cont_idx[0]]
-            #flight = processed_data[:, cont_idx[1]]
-            #typing = processed_data[:, cont_idx[2]]
-            
             # Set first FlightTime to NaN for consistency (no previous keystroke)
             if len(flight) > 0:
                 flight = flight.copy()  # Avoid modifying original array
@@ -67,7 +62,16 @@ def computeOgStats():
             dwell_clean = dwell[~np.isnan(dwell)]
             flight_clean = flight[~np.isnan(flight)]  # This will skip the first FlightTime NaN
             typing_clean = typing[~np.isnan(typing)]
+
+            #512 tokens only, to match data synthesizer
+            if len(dwell_clean) > 512:
+                dwell_clean = dwell_clean[:512]
+            if len(flight_clean) > 512:
+                flight_clean = flight_clean[:512]
+            if len(typing_clean) > 512:
+                typing_clean = typing_clean[:512]
             
+            # Append cleaned values to overall lists
             ogDwell_times.extend(dwell_clean.tolist())
             ogFlight_times.extend(flight_clean.tolist())
             ogTyping_speeds.extend(typing_clean.tolist())
@@ -206,6 +210,7 @@ def compare():
         mean_pct = (mean_diff / np.mean(orig) * 100) if np.mean(orig) != 0 else 0
         print(f"  Mean diff:    {mean_diff:7.2f} ({mean_pct:.1f}%)")
         print()
-    
+    graphmaker = grapher()
+    graphmaker.comparisonPlots(synthDwell, synthFlight, synthTyping, ogDwell, ogFlight, ogTyping)
 if __name__ == "__main__":
     compare()
