@@ -23,7 +23,7 @@ def computeOgStats():
     print("Loading original data using dataPrepper pipeline...")
     
     # Process all CSV files using dataPrepper (same as dataLoader does internally)
-    base_dir = "../data"
+    base_dir = "./data"
     csv_dir = os.path.join(base_dir, "csv")
     
     # Check if csv_dir exists before listing files
