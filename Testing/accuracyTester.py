@@ -21,11 +21,11 @@ from torch.utils.data import DataLoader as TorchDataLoader
 def computeOgStats():
     """Extract original keystroke statistics using dataPrepper pipeline."""
     print("Loading original data using dataPrepper pipeline...")
-    
+
     # Process all CSV files using dataPrepper (same as dataLoader does internally)
     base_dir = "./data"
     csv_dir = os.path.join(base_dir, "csv")
-    
+
     # Check if csv_dir exists before listing files
     if not os.path.isdir(csv_dir):
         print(f"Directory not found: {csv_dir}")
@@ -46,7 +46,9 @@ def computeOgStats():
             prepper = dataPrepper(csv_path)
 
             # clean and process data to extract features
-            processed_data = prepper.get_prepared_data()
+            processed_data = prepper.clean_data
+            processed_data = prepper.transform_data(processed_data)
+            processed_data["typing_speed"] = prepper._calculate_typing_speed(processed_data)
             
             # Extract continuous features: [DwellTime, FlightTime, typing_speed] 
             cont_idx = [0, 1, 2]  # Match training indices
@@ -94,7 +96,7 @@ def computeOgStats():
 # Synthesize keystrokes and compute stats using existing pipeline
 def computeSynthStats(synthesize=True):
     """Generate synthetic keystrokes and extract statistics."""
-    base_dir = "../data"
+    base_dir = "./data"
     text_dir = os.path.join(base_dir, "texts")
     csv_dir = os.path.join(base_dir, "predicted_csvs")
     
@@ -119,7 +121,7 @@ def computeSynthStats(synthesize=True):
                     checkpoint_path="../checkpoints/best_model.pt",
                     base_model="microsoft/deberta-v3-base",
                     output_csv=output_csv,
-                    stats_path="../data/cont_stats.json"
+                    stats_path="./data/cont_stats.json"
                 )
             except Exception as e:
                 print(f"Error processing {text_file}: {e}")

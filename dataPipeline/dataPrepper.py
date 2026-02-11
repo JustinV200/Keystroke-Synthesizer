@@ -110,7 +110,7 @@ class dataPrepper:
             return 0
         self.data["char_code"] = de.apply(char_to_code)
 
-    #use to normalize features, no longer used in main pipeline
+
     def save_scaler(self, path):
         if self.scaler:
             joblib.dump(self.scaler, path)
