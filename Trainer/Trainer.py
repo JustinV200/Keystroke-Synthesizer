@@ -17,11 +17,11 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from dataPipeline.dataLoader import dataLoader
-from TextToKeystrokeModelMultiHead import TextToKeystrokeModelMultiHead
-from make_collate import make_collate_fn
-from config import *  # Import all configuration constants
-from utils import *
-from HeteroscedasticKLLoss import *
+from .TextToKeystrokeModelMultiHead import TextToKeystrokeModelMultiHead
+from .make_collate import make_collate_fn
+from .config import *  # Import all configuration constants
+from .utils import *
+from .HeteroscedasticKLLoss import *
 # Data loading
 
 
