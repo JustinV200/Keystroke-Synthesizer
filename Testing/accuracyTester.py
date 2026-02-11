@@ -47,7 +47,7 @@ def computeOgStats():
 
             # clean and process data to extract features
             processed_data = prepper.clean_data
-            processed_data = prepper.transform_data(processed_data)
+            processed_data = prepper.transform_data()
             processed_data["typing_speed"] = prepper._calculate_typing_speed(processed_data)
             
             # Extract continuous features: [DwellTime, FlightTime, typing_speed] 
