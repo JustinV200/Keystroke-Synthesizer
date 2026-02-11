@@ -46,17 +46,17 @@ def computeOgStats():
             prepper = dataPrepper(csv_path)
 
             # clean and process data to extract features
-            processed_data = prepper.clean_data
-            processed_data = prepper.transform_data()
-            processed_data["typing_speed"] = prepper._calculate_typing_speed(processed_data)
+            processed_data = prepper.get_prepared_data()
             
             # Extract continuous features: [DwellTime, FlightTime, typing_speed] 
-            cont_idx = [0, 1, 2]  # Match training indices
+            dwell = processed_data["DwellTime"].values
+            flight = processed_data["FlightTime"].values
+            typing = processed_data["typing_speed"].values
             
             # Extract continuous features and filter any remaining NaNs for safety
-            dwell = processed_data[:, cont_idx[0]]
-            flight = processed_data[:, cont_idx[1]]
-            typing = processed_data[:, cont_idx[2]]
+            #dwell = processed_data[:, cont_idx[0]]
+            #flight = processed_data[:, cont_idx[1]]
+            #typing = processed_data[:, cont_idx[2]]
             
             # Set first FlightTime to NaN for consistency (no previous keystroke)
             if len(flight) > 0:
@@ -118,7 +118,7 @@ def computeSynthStats(synthesize=True):
             try:
                 predict_keystrokes(
                     text_path=text_path,
-                    checkpoint_path="../checkpoints/best_model.pt",
+                    checkpoint_path="./checkpoints/best_model.pt",
                     base_model="microsoft/deberta-v3-base",
                     output_csv=output_csv,
                     stats_path="./data/cont_stats.json"
