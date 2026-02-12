@@ -380,3 +380,63 @@ Typing Speed:
 
 *Huge improvements, although slightly worse mean difference, standard deviations are way better.
 * also, large number of 100s in typign speed no longer an issue
+
+2/11/2026
+
+DwellTime:
+  t-test:       t=-22.524, p=0.0000 ***
+  K-S test:     D=  0.049, p=0.0000 ***
+  Cohen's d:     -0.021 (negligible)
+  Mean diff:       0.84 (0.9%)
+
+FlightTime:
+  t-test:       t=-65.346, p=0.0000 ***
+  K-S test:     D=  0.164, p=0.0000 ***
+  Cohen's d:     -0.063 (negligible)
+  Mean diff:       9.64 (6.8%)
+
+Typing Speed:
+  t-test:       t=-20.427, p=0.0000 ***
+  K-S test:     D=  0.061, p=0.0000 ***
+  Cohen's d:     -0.019 (negligible)
+  Mean diff:       2.21 (1.1%)
+
+
+2/11/2026
+
+--- BASIC STATISTICS ---
+
+Original Data:
+  DwellTime    - Mean:    96.63, Std:    39.01, N: 2544553
+  FlightTime   - Mean:   142.19, Std:   166.41, N: 2544545
+  Typing Speed - Mean:   194.80, Std:   113.76, N: 2544553
+
+Synthesized Data:
+  DwellTime    - Mean:    97.47, Std:    39.74, N: 1960056
+  FlightTime   - Mean:   151.83, Std:   139.23, N: 1955064
+  Typing Speed - Mean:   197.01, Std:   113.64, N: 1960056
+
+--- STATISTICAL TESTS ---
+
+DwellTime:
+  t-test:       t=-22.524, p=0.0000 ***
+  K-S test:     D=  0.049, p=0.0000 ***
+  Cohen's d:     -0.021 (negligible)
+  Mean diff:       0.84 (0.9%)
+
+FlightTime:
+  t-test:       t=-65.346, p=0.0000 ***
+  K-S test:     D=  0.164, p=0.0000 ***
+  Cohen's d:     -0.063 (negligible)
+  Mean diff:       9.64 (6.8%)
+
+Typing Speed:
+  t-test:       t=-20.427, p=0.0000 ***
+  K-S test:     D=  0.061, p=0.0000 ***
+  Cohen's d:     -0.019 (negligible)
+  Mean diff:       2.21 (1.1%)
+
+
+*much better now that sample sizes are similar, not sure why they are not equal but gonna call that close enough.
+grapher didint work, gonna retry that
+*struggling a bit with flightime std but overall not bad cant complain

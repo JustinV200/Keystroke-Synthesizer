@@ -25,11 +25,11 @@ class grapher:
         fig.suptitle(f'Original vs Synthesized Keystroke Data Distributions', fontsize=16, fontweight='bold')
         
         # Calculate reasonable x-axis limits (focus on 95th percentile to avoid extreme outliers)
-        dwell_95th = max(np.percentile(self.ogDwell_times, 95), np.percentile(synthDwell_times, 95))
-        flight_95th = max(np.percentile(self.ogFlight_times, 95), np.percentile(synthFlight_times, 95))
+        dwell_95th = max(np.percentile(ogDwell_times, 95), np.percentile(synthDwell_times, 95))
+        flight_95th = max(np.percentile(ogFlight_times, 95), np.percentile(synthFlight_times, 95))
         
         # Dwell Time plots
-        axes[0, 0].hist(self.ogDwell_times, bins=50, alpha=0.7, color='skyblue', edgecolor='black', label='Original')
+        axes[0, 0].hist(ogDwell_times, bins=50, alpha=0.7, color='skyblue', edgecolor='black', label='Original')
         axes[0, 0].hist(synthDwell_times, bins=50, alpha=0.7, color='salmon', edgecolor='black', label='Synthesized')
         axes[0, 0].set_title('Dwell Time Distribution')
         axes[0, 0].set_xlabel('Dwell Time (ms)')
@@ -39,14 +39,14 @@ class grapher:
         axes[0, 0].legend()
         
         # Dwell Time box plot
-        axes[1, 0].boxplot([self.ogDwell_times, synthDwell_times], vert=True)
+        axes[1, 0].boxplot([ogDwell_times, synthDwell_times], vert=True)
         axes[1, 0].set_title('Dwell Time Box Plot')
         axes[1, 0].set_ylabel('Dwell Time (ms)')
         axes[1, 0].set_xticklabels(['Original', 'Synthesized'])
         axes[1, 0].set_ylim(0, dwell_95th)  # Larger range to show full distribution
         axes[1, 0].grid(True, alpha=0.3)
         # Flight Time plots
-        axes[0, 1].hist(self.ogFlight_times, bins=50, alpha=0.7, color='lightcoral', edgecolor='black', label='Original')
+        axes[0, 1].hist(ogFlight_times, bins=50, alpha=0.7, color='lightcoral', edgecolor='black', label='Original')
         axes[0, 1].hist(synthFlight_times, bins=50, alpha=0.7, color='lightblue', edgecolor='black', label='Synthesized')
         axes[0, 1].set_title('Flight Time Distribution')
         axes[0, 1].set_xlabel('Flight Time (ms)')
@@ -55,14 +55,14 @@ class grapher:
         axes[0, 1].grid(True, alpha=0.3)
         axes[0, 1].legend()
         # Flight Time box plot
-        axes[1, 1].boxplot([self.ogFlight_times, synthFlight_times], vert=True)
+        axes[1, 1].boxplot([ogFlight_times, synthFlight_times], vert=True)
         axes[1, 1].set_title('Flight Time Box Plot')
         axes[1, 1].set_ylabel('Flight Time (ms)')
         axes[1, 1].set_xticklabels(['Original', 'Synthesized'])
         axes[1, 1].set_ylim(0, flight_95th)  # Larger range to show full distribution
         axes[1, 1].grid(True, alpha=0.3)
         # Typing Speed plots
-        axes[0, 2].hist(self.ogTyping_speeds, bins=50, alpha=0.7, color='lightgreen', edgecolor='black', label='Original')
+        axes[0, 2].hist(ogTyping_speeds, bins=50, alpha=0.7, color='lightgreen', edgecolor='black', label='Original')
         axes[0, 2].hist(synthTyping_speeds, bins=50, alpha=0.7, color='lightyellow', edgecolor='black', label='Synthesized')
         axes[0, 2].set_title('Typing Speed Distribution')
         axes[0, 2].set_xlabel('Typing Speed (CPM)')
@@ -70,7 +70,7 @@ class grapher:
         axes[0, 2].grid(True, alpha=0.3)
         axes[0, 2].legend()
         # Typing Speed box plot
-        axes[1, 2].boxplot([self.ogTyping_speeds, synthTyping_speeds], vert=True)
+        axes[1, 2].boxplot([ogTyping_speeds, synthTyping_speeds], vert=True)
         axes[1, 2].set_title('Typing Speed Box Plot')
         axes[1, 2].set_ylabel('Typing Speed (CPM)')
         axes[1, 2].set_xticklabels(['Original', 'Synthesized'])
