@@ -1,4 +1,4 @@
-
+import torch
 from transformers import AutoTokenizer, AutoModel
 import torch.nn as nn
 import torch.nn.functional as F
@@ -32,9 +32,13 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         # Classification head (binary flags)
         self.classification_head = nn.Linear(256, num_flags)
 
-    def forward(self, input_ids, attention_mask):
+    def forward(self, input_ids, attention_mask, token_to_char_idx=None):
         x = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
-        hidden = x.last_hidden_state  # [B, T, hidden]
+        hidden = x.last_hidden_state  # [B, T_tok, hidden]
+        
+        # Expand token-level embeddings to character-level if mapping provided
+        if token_to_char_idx is not None:
+            hidden = self._expand_to_chars(hidden, token_to_char_idx)  # [B, T_char, hidden]
         
         shared = self.backbone(hidden)  # [B, T, 256]
         
@@ -42,3 +46,22 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         logvar = self.logvar_head(shared)  # [B, T, num_continuous]
         logits = self.classification_head(shared)  # [B, T, num_flags]
         return mean, logvar, logits
+
+    def _expand_to_chars(self, token_embeds, token_to_char_idx):
+        """Expand token-level embeddings to character-level using index mapping.
+        
+        Each character position gets the embedding of the subword token that covers it.
+        This gives us per-character predictions instead of per-token predictions.
+        
+        Args:
+            token_embeds: [B, T_tok, hidden] - DeBERTa encoder output
+            token_to_char_idx: [B, T_char] - for each char, which token index covers it
+        Returns:
+            char_embeds: [B, T_char, hidden]
+        """
+        safe_idx = token_to_char_idx.clamp(0, token_embeds.size(1) - 1)
+        char_embeds = torch.gather(
+            token_embeds, 1,
+            safe_idx.unsqueeze(-1).expand(-1, -1, token_embeds.size(-1))
+        )
+        return char_embeds

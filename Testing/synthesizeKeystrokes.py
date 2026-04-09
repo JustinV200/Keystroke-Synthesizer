@@ -64,13 +64,34 @@ def predict_keystrokes(
         truncation=True,
         padding="max_length",
         max_length=512,
+        return_offsets_mapping=True,
     )
+
+    # Build character-to-token mapping for character-level predictions
+    offset_mapping = enc["offset_mapping"].squeeze(0)  # [T, 2]
+    max_char_covered = 0
+    for i in range(offset_mapping.shape[0]):
+        end_val = offset_mapping[i, 1].item()
+        if end_val > max_char_covered:
+            max_char_covered = end_val
+    char_len = min(len(text), max_char_covered)
+
+    token_to_char_idx = torch.zeros(char_len, dtype=torch.long, device=device)
+    for tok_idx in range(offset_mapping.shape[0]):
+        start = offset_mapping[tok_idx, 0].item()
+        end = offset_mapping[tok_idx, 1].item()
+        if start == end:  # special token (CLS, SEP, PAD)
+            continue
+        for c in range(start, min(end, char_len)):
+            token_to_char_idx[c] = tok_idx
+    token_to_char_idx = token_to_char_idx.unsqueeze(0)  # [1, T_char]
+
     enc = {k: v.to(device) for k, v in enc.items() if k in ["input_ids", "attention_mask"]}
 
     #  Run inference 
     with torch.no_grad(), torch.amp.autocast("cuda" if device.type == "cuda" else "cpu"):
         # Model outputs STANDARDIZED mean and log-variance
-        mean_std, logvar_std, logits = model(**enc)
+        mean_std, logvar_std, logits = model(token_to_char_idx=token_to_char_idx, **enc)
 
         # Convert logits → probabilities for binary flags
         flags = torch.sigmoid(logits)  # values in [0, 1]
@@ -110,9 +131,8 @@ def predict_keystrokes(
 
     preds = out.cpu().numpy()[0]
 
-    # Trim predictions to actual text length
-    seq_len = enc["attention_mask"].sum().item()
-    preds = preds[:seq_len]
+    # Trim predictions to actual character length
+    preds = preds[:char_len]
     
     # fix first flight time
     # FlightTime for first keystroke is undefined (no previous key)
@@ -121,6 +141,7 @@ def predict_keystrokes(
 
     # Save to CSV
     feature_cols = [
+        "char", "prev_char",
         "DwellTime", "FlightTime", "typing_speed",
         "is_letter", "is_digit", "is_punct", "is_space",
         "is_backspace", "is_enter", "is_shift"
@@ -131,6 +152,13 @@ def predict_keystrokes(
         "is_letter", "is_digit", "is_punct", "is_space",
         "is_backspace", "is_enter", "is_shift"
     ])
+
+    # Add character columns — ties each DwellTime to a char, each FlightTime to a char pair
+    chars = list(text[:len(df)])
+    prev_chars = [""] + chars[:-1]
+    df.insert(0, "char", chars[:len(df)])
+    df.insert(1, "prev_char", prev_chars[:len(df)])
+
     df = df[feature_cols] 
 
     df.to_csv(output_csv, index=False)

@@ -61,8 +61,6 @@ class dataLoader(Dataset):
                     df = prep.get_prepared_data()  
                     keep_cols = [
                         "DwellTime", "FlightTime", "typing_speed",
-                        "is_letter", "is_digit", "is_punct", "is_space",
-                        "is_backspace", "is_enter", "is_shift"
                     ]
                     cols = [c for c in keep_cols if c in df.columns]
                     if not cols:
@@ -127,6 +125,7 @@ class dataLoader(Dataset):
 
         # Tokenize (variable length; do NOT pad here)
         enc = {}
+        token_to_char_idx = None
         if self.tokenizer is not None:
             enc = self.tokenizer(
                 text,
@@ -134,8 +133,29 @@ class dataLoader(Dataset):
                 padding=False,          # natural token length
                 truncation=True,        # cap to model max length (e.g., 512)
                 max_length=self.max_length,
+                return_offsets_mapping=True,
             )
             enc = {k: v.squeeze(0) for k, v in enc.items()}  # remove batch dim
+
+            # Build character-to-token mapping from offset_mapping
+            # This maps each character in the text to the subword token that covers it
+            offset_mapping = enc.pop("offset_mapping")  # [T_tokens, 2]
+            max_char_covered = 0
+            for i in range(offset_mapping.shape[0]):
+                end_val = offset_mapping[i, 1].item()
+                if end_val > max_char_covered:
+                    max_char_covered = end_val
+            char_len = min(len(text), max_char_covered)
+
+            # For each character position, store the token index that covers it
+            token_to_char_idx = torch.zeros(char_len, dtype=torch.long)
+            for tok_idx in range(offset_mapping.shape[0]):
+                start = offset_mapping[tok_idx, 0].item()
+                end = offset_mapping[tok_idx, 1].item()
+                if start == end:  # special token (CLS, SEP)
+                    continue
+                for c in range(start, min(end, char_len)):
+                    token_to_char_idx[c] = tok_idx
 
         features  = torch.tensor(s["features"], dtype=torch.float32)  # [L_i, F]
         valid_len = torch.tensor(s["valid_len"], dtype=torch.long)
@@ -157,6 +177,7 @@ class dataLoader(Dataset):
             "text": text,
             "input_ids": enc.get("input_ids"),          # 1D (T_i,) or None
             "attention_mask": enc.get("attention_mask"),
+            "token_to_char_idx": token_to_char_idx,     # [T_chars] char→token mapping
             "target": features,                         # [L_i, F] standardized features
             "target_len": valid_len
         }

@@ -149,11 +149,14 @@ class Trainer():
                 input_ids    = batch["input_ids"].to(DEVICE, non_blocking=True)
                 attention_m  = batch["attention_mask"].to(DEVICE, non_blocking=True)
                 targets      = [t.to(DEVICE, non_blocking=True) for t in batch["target"]]
+                token_to_char_idx = batch.get("token_to_char_idx")
+                if token_to_char_idx is not None:
+                    token_to_char_idx = token_to_char_idx.to(DEVICE, non_blocking=True)
 
                 self.optimizer.zero_grad(set_to_none=True)
                 with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
                     # Model now returns mean, logvar, logits
-                    mean, logvar, logits = self.model(input_ids, attention_m)
+                    mean, logvar, logits = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
                     # Debug: Check for NaN in model outputs
                     checkforNans(mean, logvar, logits, i, input_ids, attention_m, targets)
                     
@@ -252,10 +255,13 @@ class Trainer():
                 input_ids    = batch["input_ids"].to(DEVICE, non_blocking=True)
                 attention_m  = batch["attention_mask"].to(DEVICE, non_blocking=True)
                 targets      = [t.to(DEVICE, non_blocking=True) for t in batch["target"]]
+                token_to_char_idx = batch.get("token_to_char_idx")
+                if token_to_char_idx is not None:
+                    token_to_char_idx = token_to_char_idx.to(DEVICE, non_blocking=True)
 
                 with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
                     # Unpack mean, logvar, and flag outputs from model
-                    mean, logvar, logits = self.model(input_ids, attention_m)
+                    mean, logvar, logits = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
                     
                     # Compute validation loss using HeteroscedasticKLLoss
                     loss_dict = self.heteroscedastic_loss.forward(mean, logvar, logits, targets, kl_weight)
