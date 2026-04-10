@@ -4,8 +4,7 @@ import pandas as pd
 import json
 import sys
 import os
-from transformers import AutoTokenizer, AutoModel
-from torch import nn
+from transformers import AutoTokenizer
 from collections import OrderedDict
 import numpy as np
 

@@ -1,7 +1,5 @@
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import StandardScaler
-import joblib
 
 class dataPrepper:
     def __init__(self, data):
@@ -11,7 +9,6 @@ class dataPrepper:
             self.data = data.copy()
         else:
             raise ValueError("data must be a CSV path or pandas DataFrame.")
-        self.scaler = None
         self.original_length = len(self.data)
 
     # cleaning data, remove invalid entries
@@ -152,12 +149,6 @@ class dataPrepper:
         self.data["char"] = de.apply(event_to_char)
         self.data["prev_char"] = self.data["char"].shift(1).fillna("")
 
-
-    def save_scaler(self, path):
-        if self.scaler:
-            joblib.dump(self.scaler, path)
-    def load_scaler(self, path):
-        self.scaler = joblib.load(path)
 
     #  do everything here
     def get_prepared_data(self):

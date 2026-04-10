@@ -2,7 +2,7 @@ import torch
 def compute_empirical_variance(train_dataset, device, max_samples=2000):
     # Compute empirical variance of continuous features from a subset of the training data
     all_cont_features = []
-    for idx in range(min(len(train_dataset), 2000)):  # Sample 2000
+    for idx in range(min(len(train_dataset), max_samples)):
         sample = train_dataset[idx]
         all_cont_features.append(sample["target"][:, [0, 1, 2]])  # DwellTime, FlightTime, typing_speed
     all_cont = torch.cat(all_cont_features, dim=0)

@@ -152,22 +152,27 @@ class Trainer():
                 self.optimizer.zero_grad(set_to_none=True)
                 with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
                     mean, logvar = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
-                    # Debug: Check for NaN in model outputs
-                    checkforNans(mean, logvar, i, input_ids, attention_m, targets)
-                    
-                    # Compute loss using HeteroscedasticKLLoss (same as validation)
-                    loss_dict = self.heteroscedastic_loss.forward(mean, logvar, targets, kl_weight)
-                    loss = loss_dict['total_loss']
-                    
-                    # Skip batch if no valid data
-                    if loss_dict['valid_count'] == 0:
-                        print(f"  WARNING: Batch {i} has no valid data, skipping")
-                        continue
-                    
-                    # Check for NaN/Inf in loss before backward
-                    if torch.isnan(loss) or torch.isinf(loss):
-                        print(f"  WARNING: NaN/Inf loss detected in batch {i}, skipping")
-                        continue
+                
+                # Cast to fp32 for loss computation — NLL division overflows in fp16
+                mean = mean.float()
+                logvar = logvar.float()
+
+                # Debug: Check for NaN in model outputs
+                checkforNans(mean, logvar, i, input_ids, attention_m, targets)
+                
+                # Compute loss in fp32
+                loss_dict = self.heteroscedastic_loss.forward(mean, logvar, targets, kl_weight)
+                loss = loss_dict['total_loss']
+                
+                # Skip batch if no valid data
+                if loss_dict['valid_count'] == 0:
+                    print(f"  WARNING: Batch {i} has no valid data, skipping")
+                    continue
+                
+                # Check for NaN/Inf in loss before backward
+                if torch.isnan(loss) or torch.isinf(loss):
+                    print(f"  WARNING: NaN/Inf loss detected in batch {i}, skipping")
+                    continue
 
                 self.scaler.scale(loss).backward()
                 
@@ -256,18 +261,22 @@ class Trainer():
 
                 with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
                     mean, logvar = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
-                    
-                    # Compute validation loss using HeteroscedasticKLLoss
-                    loss_dict = self.heteroscedastic_loss.forward(mean, logvar, targets, kl_weight)
-                    
-                    # Compute MAE for interpretability
-                    mae = self.heteroscedastic_loss.compute_mae(mean, targets)
-                    
-                    # Accumulate validation metrics
-                    if loss_dict['valid_count'] > 0:
-                        val_loss_sum += loss_dict['total_loss'].item() * loss_dict['valid_count']
-                        val_mae_sum += mae * loss_dict['valid_count']
-                        val_count += loss_dict['valid_count']
+                
+                # Cast to fp32 for loss computation
+                mean = mean.float()
+                logvar = logvar.float()
+
+                # Compute validation loss in fp32
+                loss_dict = self.heteroscedastic_loss.forward(mean, logvar, targets, kl_weight)
+                
+                # Compute MAE for interpretability
+                mae = self.heteroscedastic_loss.compute_mae(mean, targets)
+                
+                # Accumulate validation metrics
+                if loss_dict['valid_count'] > 0:
+                    val_loss_sum += loss_dict['total_loss'].item() * loss_dict['valid_count']
+                    val_mae_sum += mae * loss_dict['valid_count']
+                    val_count += loss_dict['valid_count']
 
         # Compute validation metrics
         val_loss = val_loss_sum / max(1, val_count)
