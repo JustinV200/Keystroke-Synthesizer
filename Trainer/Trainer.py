@@ -109,22 +109,26 @@ class Trainer():
         """Check for NaN/Inf gradients and return gradient statistics"""
         grad_stats = {'has_nan': False, 'has_inf': False, 'max_norm': 0.0, 'problem_params': []}
         
-        for name, param in self.model.named_parameters():
-            if param.grad is not None:
-                grad_norm = param.grad.norm().item()
-                grad_stats['max_norm'] = max(grad_stats['max_norm'], grad_norm)
-                
-                if torch.isnan(param.grad).any():
-                    grad_stats['has_nan'] = True
-                    grad_stats['problem_params'].append(f"{name}(NaN)")
+        try:
+            for name, param in self.model.named_parameters():
+                if param.grad is not None:
+                    grad_norm = param.grad.norm().item()
+                    grad_stats['max_norm'] = max(grad_stats['max_norm'], grad_norm)
                     
-                if torch.isinf(param.grad).any():
-                    grad_stats['has_inf'] = True
-                    grad_stats['problem_params'].append(f"{name}(Inf)")
-                    
-                # Check for extremely large gradients
-                if grad_norm > 100.0:
-                    grad_stats['problem_params'].append(f"{name}(large:{grad_norm:.2f})")
+                    if torch.isnan(param.grad).any():
+                        grad_stats['has_nan'] = True
+                        grad_stats['problem_params'].append(f"{name}(NaN)")
+                        
+                    if torch.isinf(param.grad).any():
+                        grad_stats['has_inf'] = True
+                        grad_stats['problem_params'].append(f"{name}(Inf)")
+                        
+                    # Check for extremely large gradients
+                    if grad_norm > 100.0:
+                        grad_stats['problem_params'].append(f"{name}(large:{grad_norm:.2f})")
+        except RuntimeError as e:
+            print(f"  WARNING: Error during gradient check: {e}")
+            grad_stats['has_nan'] = True
         
         return grad_stats
     
@@ -157,7 +161,17 @@ class Trainer():
                 mean = mean.float()
                 logvar = logvar.float()
 
-                # Debug: Check for NaN in model outputs
+                # Skip batch if model produced NaN/Inf — backward on corrupt output causes CUDA errors
+                if torch.isnan(mean).any() or torch.isinf(mean).any() or torch.isnan(logvar).any() or torch.isinf(logvar).any():
+                    print(f"  WARNING: Invalid model output for batch {i}, skipping")
+                    self.optimizer.zero_grad(set_to_none=True)
+                    self.bad_batches += 1
+                    if self.bad_batches > 20:
+                        print("  ERROR: Too many bad batches (>20), stopping training.")
+                        return
+                    continue
+
+                # Debug: Check for NaN in inputs
                 checkforNans(mean, logvar, i, input_ids, attention_m, targets)
                 
                 # Compute loss in fp32
