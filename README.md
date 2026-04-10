@@ -3,33 +3,37 @@
 
 > **Transform text into realistic keystroke patterns using deep learning**
 
-A  neural network that learns individual typing behaviors and generates synthetic keystroke dynamics from text input. Built with transformer architecture and heteroscedastic regression for accurate timing prediction.
+A neural network that learns individual typing behaviors and generates synthetic keystroke dynamics from text input. Built with a DeBERTa-v3 transformer and heteroscedastic regression for accurate timing prediction with calibrated uncertainty.
 
 ## 🌟 Features
 
-- **🧠 Advanced Architecture**: DeBERTa-v3 transformer with multi-head prediction
-- **⚡ Heteroscedastic Modeling**: Predicts both mean and uncertainty for realistic variation  
-- **📊 Comprehensive Metrics**: Dwell time, flight time, typing speed, and keystroke flags
-- **🛡️ Numerical Stability**: Conservative bounds and gradient monitoring for robust training
+- **🧠 Transformer Architecture**: DeBERTa-v3-base encoder with character-level expansion
+- **⚡ Heteroscedastic Modeling**: Predicts both mean and variance for realistic per-keystroke variation
+- **📊 Timing Prediction**: Dwell time, flight time, and typing speed
+- **🛡️ Numerical Stability**: Gradient monitoring, NaN handling, and mixed-precision training
 - **🔄 Real-time Synthesis**: Generate keystroke sequences from any text input
-- **📈 Performance Tracking**: Built-in accuracy testing and visualization tools
+- **📈 Evaluation Tools**: Built-in accuracy testing and distribution visualization
 
 ## 🏗️ Architecture
 
 ```
 Text Input → DeBERTa Tokenizer → Transformer Encoder
                                         ↓
-                               Shared Backbone (512→256)
+                              Token-to-Char Expansion
                                         ↓
-                          ┌─────────────┼─────────────┐
-                          ▼             ▼             ▼
-                    Mean Head    LogVar Head   Classification Head
-                   (3 features)  (3 features)    (7 binary flags)
-                          ↓             ↓             ↓
-                    [DwellTime,   [Uncertainty]   [is_letter,
-                     FlightTime,                   is_digit, ...]
-                     typing_speed]
+                               Shared Backbone (768→256)
+                                        ↓
+                          ┌─────────────┴─────────────┐
+                          ▼                           ▼
+                    Mean Head                  LogVar Head
+                   (3 features)               (3 features)
+                          ↓                           ↓
+                    [DwellTime,               [Uncertainty per
+                     FlightTime,               feature, used for
+                     typing_speed]             sampling at inference]
 ```
+
+The model produces character-level predictions by expanding token embeddings to character positions via an offset mapping. Each character gets the embedding of the subword token that covers it, enabling per-character timing predictions.
 
 ## 📦 Installation
 
@@ -46,8 +50,6 @@ cd keystroke-synthesizer
 
 # Install dependencies
 pip install -r requirements.txt
-
-# Download and prepare dataset (see Data section)
 ```
 
 ## 🚀 Quick Start
@@ -56,142 +58,133 @@ pip install -r requirements.txt
 ```python
 from Trainer.Trainer import Trainer
 
-# Initialize and train
 trainer = Trainer()
 trainer.train()
+```
+
+Or from the command line:
+```bash
+python -m Trainer.Trainer
 ```
 
 ### Generating Keystrokes
 ```python
 from Testing.synthesizeKeystrokes import predict_keystrokes
 
-# Generate keystroke pattern for text
-text_path = "sample.txt"
 predict_keystrokes(
-    text_path=text_path,
+    text_path="sample.txt",
     checkpoint_path="checkpoints/best_model.pt",
     output_csv="predicted_keystrokes.csv"
 )
 ```
 
-### Testing Accuracy
+### Evaluating Accuracy
 ```python
 from Testing.accuracyTester import compare
 
-# Evaluate model performance
-compare()  # Compares original vs synthetic keystroke statistics
-```
+compare()  # Compares original vs synthetic keystroke distributions
 ```
 
 ## 📊 Data Pipeline
 
-The system processes keystroke data through a robust pipeline:
+1. **Preprocessing** (`dataPipeline/dataPrepper.py`)
+   - Cleans raw keystroke CSV data (removes duplicates, invalid entries)
+   - Replays edit sequences to keep only surviving keystrokes (backspace handling)
+   - Computes DwellTime (key press duration), FlightTime (time between keys), and typing speed (CPM)
+   - NaN-aware: FlightTime is NaN at non-consecutive transitions, typing speed NaN for first rows in rolling window
 
-1. **Data Preprocessing** (`dataPipeline/dataPrepper.py`)
-   - Outlier detection and capping
-   - Feature engineering and validation
-   - Comprehensive NaN handling
+2. **Loading** (`dataPipeline/dataLoader.py`)
+   - Pairs text files with keystroke CSVs by matching filenames
+   - Standardizes continuous features (z-score) with persisted stats (`cont_stats.json`)
+   - Builds character-to-token offset mapping for character-level predictions
+   - Returns variable-length sequences (no target padding)
 
-2. **Data Loading** (`dataPipeline/dataLoader.py`) 
-   - NaN-aware standardization
-   - Statistics persistence via JSON
-   - Efficient batch processing
-
-3. **Model Training** (`Trainer/Trainer.py`)
-   - Conservative numerical bounds
-   - Enhanced gradient monitoring  
-   - Early stopping with validation
+3. **Training** (`Trainer/Trainer.py`)
+   - Heteroscedastic loss: Gaussian NLL + KL divergence penalty (annealed)
+   - Mixed-precision training with gradient scaling
+   - Gradient clipping and NaN/Inf monitoring
+   - Cosine annealing warm restarts scheduler
+   - Early stopping with patience
 
 ## 🎛️ Configuration
 
-Key training parameters in [`Trainer/config.py`](Trainer/config.py):
+Training parameters in [`Trainer/config.py`](Trainer/config.py):
 
 ```python
-# Model Configuration
-BASE_MODEL = "microsoft/deberta-v3-base"
-MAX_TOKENS = 512
-
-# Training Configuration  
-EPOCHS = 12
-BATCH_SIZE = 8
-LR = 1e-5  # Conservative for stability
+BASE_MODEL   = "microsoft/deberta-v3-base"
+MAX_TOKENS   = 512
+EPOCHS       = 12
+BATCH_SIZE   = 8
+LR           = 1e-5
 WEIGHT_DECAY = 0.01
+PATIENCE     = 3
 
-# KL Regularization
-KL_WEIGHT_START = 0.001
-KL_WEIGHT_END = 0.03
+# KL annealing: gradually shift focus from mean accuracy to variance calibration
+KL_WEIGHT_START  = 0.001
+KL_WEIGHT_END    = 0.01
 KL_ANNEAL_EPOCHS = 8
 
-# Feature-specific weights [DwellTime, FlightTime, typing_speed]
+# Per-feature KL weights [DwellTime, FlightTime, typing_speed]
 KL_FEATURE_WEIGHTS = [1.0, 0, 0.3]
 ```
 
 ## 📈 Results & Metrics
 
-The model tracks multiple performance indicators:
+The model tracks:
 
 - **Mean Absolute Error (MAE)**: Timing prediction accuracy
-- **KL Divergence**: Uncertainty calibration quality  
-- **Classification Accuracy**: Keystroke type prediction
-- **Empirical Variance**: Realistic variation modeling
+- **NLL Loss**: Gaussian negative log-likelihood (mean + variance fit)
+- **KL Divergence**: Variance calibration toward empirical variance
+- **Empirical Variance**: Computed from training data for regularization targets
 
 ## 🗂️ Project Structure
 
 ```
 keystroke-synthesizer/
-├── 📁 data/                    # Training data
-│   ├── csv/                    # Keystroke timing data
-│   ├── texts/                  # Corresponding text samples
-│   └── predicted_csvs/         # Generated synthetic keystroke data
-├── 📁 dataPipeline/           # Data processing pipeline
-│   ├── __init__.py            # Package initialization
-│   ├── dataPrepper.py         # Data cleaning & preprocessing
-│   └── dataLoader.py          # Dataset loading & standardization
-├── 📁 Trainer/                # Training components
-│   ├── __init__.py            # Package initialization
-│   ├── Trainer.py             # Main training class
-│   ├── TextToKeystrokeModelMultiHead.py  # Model architecture
-│   ├── HeteroscedasticKLLoss.py          # Loss function
-│   ├── config.py              # Training configuration
-│   ├── make_collate.py        # Batch processing
-│   └── utils.py               # Training utilities
-├── 📁 Testing/                # Evaluation and analysis tools
-│   ├── synthesizeKeystrokes.py # Text-to-keystroke generation
-│   ├── accuracyTester.py      # Model evaluation & comparison
-│   └── grapher.py             # Results visualization
-├── 📁 checkpoints/            # Saved models
-├── 📁 graphs/                 # Performance visualizations
-├── 📁 misc/                   # Miscellaneous utilities
-├── 📁 runs/                   # Training logs and outputs
-└── README.md                  # This file
+├── data/                       # Training data
+│   ├── csv/                    # Keystroke timing CSVs
+│   └── texts/                  # Corresponding text files
+├── dataPipeline/               # Data processing
+│   ├── dataPrepper.py          # CSV cleaning, edit replay, feature extraction
+│   └── dataLoader.py           # Dataset class, standardization, tokenization
+├── Trainer/                    # Training components
+│   ├── Trainer.py              # Main training loop
+│   ├── TextToKeystrokeModelMultiHead.py  # DeBERTa + regression heads
+│   ├── HeteroscedasticKLLoss.py          # NLL + KL loss
+│   ├── config.py               # Hyperparameters
+│   ├── make_collate.py         # Variable-length batch collation
+│   └── utils.py                # Empirical variance, NaN checks
+├── Testing/                    # Evaluation
+│   ├── synthesizeKeystrokes.py # Inference: text → keystroke CSV
+│   ├── accuracyTester.py       # Distribution comparison
+│   └── grapher.py              # Visualization plots
+├── checkpoints/                # Saved model weights
+├── graphs/                     # Output plots
+└── runs/                       # TensorBoard logs
 ```
 
 ## 🔬 Technical Details
 
 ### Heteroscedastic Regression
-The model predicts both mean timing and uncertainty (log-variance) for each keystroke feature, enabling realistic variation in generated patterns.
+The model predicts both mean and log-variance for each continuous feature at every character position. At inference, keystrokes are sampled from $\mathcal{N}(\mu, \sigma^2)$ where $\sigma^2 = e^{\text{logvar}} \cdot \text{std}_{\text{train}}^2$, producing realistic variation rather than deterministic outputs.
 
-### Conservative Numerical Bounds
-- Log-variance clamped to `[-0.5, 0.5]` → variance ∈ `[0.6, 1.6]`
-- Empirical variance bounds: `[0.5, 2.0]`  
-- Variance ratio limits: `[0.1, 10.0]`
+### KL Annealing
+KL weight increases linearly from 0.001 to 0.01 over the first 8 epochs. This lets the model focus on learning accurate means first, then gradually calibrate variance predictions toward the empirical variance of the training data.
 
-### Gradient Monitoring
-Real-time detection of NaN/Inf gradients with immediate training termination to prevent model corruption.
+### Character-Level Expansion
+DeBERTa produces subword token embeddings, but keystroke timing is per-character. The model uses offset mappings to expand token embeddings to character positions via `torch.gather`, giving each character the embedding of its covering token.
+
+### Edit Replay
+Raw keystroke logs include backspaces and non-producing keys. The data pipeline replays the edit sequence to identify which keystrokes actually survived in the final text, then recomputes FlightTime only between consecutive survivors.
 
 ## 📊 Dataset
 
 **Source**: [KLiCKe Dataset](https://www.kaggle.com/datasets/julesking/tla-lab-pii-competition-dataset?resource=download-directory)
 
-The dataset contains over 2,000 text-keystroke pairs with detailed timing information:
-- **Dwell Time**: Key press duration
-- **Flight Time**: Time between keystrokes  
-- **Typing Speed**: Characters per minute
-- **Keystroke Flags**: Letter, digit, punctuation, etc.
-
-*Special thanks to the KLiCKe dataset contributors for making this research possible.*
-
-
+The dataset contains text-keystroke pairs with detailed timing information:
+- **Dwell Time**: Key press duration (capped at 300ms)
+- **Flight Time**: Time between consecutive keystrokes (capped at 900ms)
+- **Typing Speed**: Characters per minute over a rolling window (capped at 490 CPM)
 
 ## 🙏 Acknowledgments
 

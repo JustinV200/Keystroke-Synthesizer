@@ -1,12 +1,10 @@
 import torch
-from transformers import AutoTokenizer, AutoModel
+from transformers import AutoModel
 import torch.nn as nn
-import torch.nn.functional as F
-import sys
 
 class TextToKeystrokeModelMultiHead(nn.Module):
 
-    def __init__(self, base_model, num_continuous=3, num_flags=7):
+    def __init__(self, base_model, num_continuous=3):
         super().__init__()
         self.encoder = AutoModel.from_pretrained(base_model)
         hidden = self.encoder.config.hidden_size
@@ -27,10 +25,7 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         nn.init.constant_(self.logvar_head.bias, 0.0)
         #old values"
         #nn.init.constant_(self.logvar_head.weight, 0.0)
-        #nn.init.constant_(self.logvar_head.bias, -0.5) 
-        
-        # Classification head (binary flags)
-        self.classification_head = nn.Linear(256, num_flags)
+        #nn.init.constant_(self.logvar_head.bias, -0.5)
 
     def forward(self, input_ids, attention_mask, token_to_char_idx=None):
         x = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
@@ -44,8 +39,7 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         
         mean = self.mean_head(shared)  # [B, T, num_continuous]
         logvar = self.logvar_head(shared)  # [B, T, num_continuous]
-        logits = self.classification_head(shared)  # [B, T, num_flags]
-        return mean, logvar, logits
+        return mean, logvar
 
     def _expand_to_chars(self, token_embeds, token_to_char_idx):
         """Expand token-level embeddings to character-level using index mapping.

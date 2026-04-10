@@ -7,7 +7,6 @@ import os
 from transformers import AutoTokenizer, AutoModel
 from torch import nn
 from collections import OrderedDict
-import torch.nn.functional as F
 import numpy as np
 
 # Add parent directory to path for imports
@@ -34,8 +33,8 @@ def predict_keystrokes(
 
     #  Load tokenizer and model 
     tokenizer = AutoTokenizer.from_pretrained(base_model)
-    num_continuous, num_flags = 3, 7
-    model = TextToKeystrokeModelMultiHead(base_model, num_continuous, num_flags).to(device)
+    num_continuous = 3
+    model = TextToKeystrokeModelMultiHead(base_model, num_continuous).to(device)
 
     checkpoint = torch.load(checkpoint_path, map_location=device)
 
@@ -91,10 +90,7 @@ def predict_keystrokes(
     #  Run inference 
     with torch.no_grad(), torch.amp.autocast("cuda" if device.type == "cuda" else "cpu"):
         # Model outputs STANDARDIZED mean and log-variance
-        mean_std, logvar_std, logits = model(token_to_char_idx=token_to_char_idx, **enc)
-
-        # Convert logits → probabilities for binary flags
-        flags = torch.sigmoid(logits)  # values in [0, 1]
+        mean_std, logvar_std = model(token_to_char_idx=token_to_char_idx, **enc)
 
         #  De-standardize mean and variance 
         # De-standardize mean: y_mean = y_std * std + mean
@@ -111,25 +107,15 @@ def predict_keystrokes(
 
     # force outputs to float32
     continuous = continuous.float()
-    flags = flags.float()
 
     #  Physical constraints (match training data preprocessing)
     continuous[:, :, 0] = torch.clamp(continuous[:, :, 0], min=0.0, max=300.0)  # DwellTime (matches dataPrepper cap)
     continuous[:, :, 1] = torch.clamp(continuous[:, :, 1], min=0.0, max=900.0)  # FlightTime (matches dataPrepper cap)
     continuous[:, :, 2] = torch.clamp(continuous[:, :, 2], min=0.0, max=490.0)  # typing_speed (matches dataPrepper cap)
 
-#  Assemble full feature tensor 
+#  Assemble output 
     B, T, _ = continuous.shape
-    out = torch.zeros(B, T, 10, device=continuous.device)
-
-    # Indices must match training
-    cont_idx = [0, 1, 2]  # 3 continuous outputs: DwellTime, FlightTime, typing_speed
-    flag_idx = [3, 4, 5, 6, 7, 8, 9]  # 7 binary flags
-
-    out[:, :, cont_idx] = continuous
-    out[:, :, flag_idx] = flags
-
-    preds = out.cpu().numpy()[0]
+    preds = continuous.cpu().numpy()[0]
 
     # Trim predictions to actual character length
     preds = preds[:char_len]
@@ -143,14 +129,10 @@ def predict_keystrokes(
     feature_cols = [
         "char", "prev_char",
         "DwellTime", "FlightTime", "typing_speed",
-        "is_letter", "is_digit", "is_punct", "is_space",
-        "is_backspace", "is_enter", "is_shift"
     ]
 
     df = pd.DataFrame(preds, columns=[
         "DwellTime", "FlightTime", "typing_speed",
-        "is_letter", "is_digit", "is_punct", "is_space",
-        "is_backspace", "is_enter", "is_shift"
     ])
 
     # Add character columns — ties each DwellTime to a char, each FlightTime to a char pair

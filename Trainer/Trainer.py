@@ -4,14 +4,12 @@
 import os
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 from torch.utils.data import DataLoader, random_split
-from transformers import AutoTokenizer, AutoModel
+from transformers import AutoTokenizer
 from tqdm.auto import tqdm
 from torch import amp
 from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts
 import sys
-import os
 
 # Add parent directory to path for imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -74,19 +72,17 @@ class Trainer():
         self.scheduler = CosineAnnealingWarmRestarts(self.optimizer, T_0=3, T_mult=2)
         self.scaler    = amp.GradScaler(device="cuda" if DEVICE.type == "cuda" else "cpu")
 
-        #flags
+        #features
         # - 3 continuous features: DwellTime, FlightTime, typing_speed
-        # - 7 binary flags: is_letter, is_digit, is_punct, is_space, is_backspace, is_enter, is_shift
 
         self.cont_idx = [0, 1, 2]  # DwellTime, FlightTime, typing_speed
-        self.flag_idx = [3, 4, 5, 6, 7, 8, 9]  # 7 binary flags
         
         # Compute empirical variance from training data, used for kl weights, train towards realistic uncertainty estimates
         self.empirical_var = self._compute_empirical_variance()
         self.kl_feature_weights = self._get_kl_feature_weights()
         self.bad_batches = 0  # Counter for batches with invalid gradients
         #heteroscedasticKLLoss.py
-        self.heteroscedastic_loss = HeteroscedasticKLLoss(self.empirical_var, self.kl_feature_weights, self.cont_idx, self.flag_idx, DEVICE)
+        self.heteroscedastic_loss = HeteroscedasticKLLoss(self.empirical_var, self.kl_feature_weights, self.cont_idx, DEVICE)
 
 
     def _compute_empirical_variance(self):
@@ -103,7 +99,7 @@ class Trainer():
         
 
     def _create_model(self):
-        model = TextToKeystrokeModelMultiHead(BASE_MODEL, num_continuous=3, num_flags=7).to(DEVICE)
+        model = TextToKeystrokeModelMultiHead(BASE_MODEL, num_continuous=3).to(DEVICE)
         if torch.cuda.device_count() > 1: # use multiple GPUs if available
             model = nn.DataParallel(model)
         return model
@@ -155,13 +151,12 @@ class Trainer():
 
                 self.optimizer.zero_grad(set_to_none=True)
                 with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
-                    # Model now returns mean, logvar, logits
-                    mean, logvar, logits = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
+                    mean, logvar = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
                     # Debug: Check for NaN in model outputs
-                    checkforNans(mean, logvar, logits, i, input_ids, attention_m, targets)
+                    checkforNans(mean, logvar, i, input_ids, attention_m, targets)
                     
                     # Compute loss using HeteroscedasticKLLoss (same as validation)
-                    loss_dict = self.heteroscedastic_loss.forward(mean, logvar, logits, targets, kl_weight)
+                    loss_dict = self.heteroscedastic_loss.forward(mean, logvar, targets, kl_weight)
                     loss = loss_dict['total_loss']
                     
                     # Skip batch if no valid data
@@ -260,11 +255,10 @@ class Trainer():
                     token_to_char_idx = token_to_char_idx.to(DEVICE, non_blocking=True)
 
                 with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
-                    # Unpack mean, logvar, and flag outputs from model
-                    mean, logvar, logits = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
+                    mean, logvar = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
                     
                     # Compute validation loss using HeteroscedasticKLLoss
-                    loss_dict = self.heteroscedastic_loss.forward(mean, logvar, logits, targets, kl_weight)
+                    loss_dict = self.heteroscedastic_loss.forward(mean, logvar, targets, kl_weight)
                     
                     # Compute MAE for interpretability
                     mae = self.heteroscedastic_loss.compute_mae(mean, targets)

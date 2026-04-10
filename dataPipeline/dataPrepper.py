@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import string
 from sklearn.preprocessing import StandardScaler
 import joblib
 
@@ -109,31 +108,6 @@ class dataPrepper:
         if len(event) == 1:
             return True
         return event in ('Space', 'Enter')
-    #add in contextual flags, what type of key was pressed, pauses, cumulative counts, typing speed
-    def addContextFlags(self):
-    #this is for classification head, which we dont use anymore, but may be useful for analysis and future work
-        de = self.data["DownEvent"].astype(str)
-        punct_set = set(string.punctuation)
-
-        is_letter    = de.str.len().eq(1) & de.str.isalpha()
-        is_digit     = de.str.len().eq(1) & de.str.isdigit()
-        is_space     = (de == "Space") | (de == " ")
-        is_backspace = (de == "Backspace")
-        is_punct     = de.apply(lambda x: len(x) == 1 and x in punct_set)
-        is_enter     = (de == "Enter") | (de == "\n")
-        is_shift     = (de == "Shift")
-
-        self.data["is_letter"]    = is_letter.astype(int)
-        self.data["is_digit"]     = is_digit.astype(int)
-        self.data["is_punct"]     = is_punct.astype(int)
-        self.data["is_space"]     = is_space.astype(int)
-        self.data["is_backspace"] = is_backspace.astype(int)
-        self.data["is_enter"]     = is_enter.astype(int)
-        self.data["is_shift"]     = is_shift.astype(int)
-
-        # typing speed (chars per minute) over rolling window of DownTime
-        self.data["typing_speed"] = self._calculate_typing_speed()
-
     def _calculate_typing_speed(self, window_size=10):
         # elapsed ms across window steps; first window_size rows become NaN
         elapsed = self.data['DownTime'].diff(window_size)

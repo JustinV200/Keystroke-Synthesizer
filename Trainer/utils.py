@@ -15,7 +15,7 @@ def compute_empirical_variance(train_dataset, device, max_samples=2000):
     return empirical_var
 
 
-def checkforNans(mean, logvar, logits, i, input_ids=None, attention_m=None, targets=None):
+def checkforNans(mean, logvar, i, input_ids=None, attention_m=None, targets=None):
     # Debug: Check for NaN in inputs
     if torch.isnan(input_ids).any():
         print(f"  WARNING: NaN in input_ids for batch {i}")
@@ -32,5 +32,3 @@ def checkforNans(mean, logvar, logits, i, input_ids=None, attention_m=None, targ
     if torch.isnan(logvar).any():
         print(f"  WARNING: NaN in logvar output for batch {i}")
         print(f"    logvar range: min={logvar.min():.3f}, max={logvar.max():.3f}")
-    if torch.isnan(logits).any():
-        print(f"  WARNING: NaN in logits output for batch {i}")
