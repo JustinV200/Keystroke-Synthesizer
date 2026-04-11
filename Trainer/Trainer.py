@@ -7,7 +7,6 @@ import torch.nn as nn
 from torch.utils.data import DataLoader, random_split
 from transformers import AutoTokenizer
 from tqdm.auto import tqdm
-from torch import amp
 from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts
 import sys
 
@@ -70,7 +69,6 @@ class Trainer():
 
 
         self.scheduler = CosineAnnealingWarmRestarts(self.optimizer, T_0=3, T_mult=2)
-        self.scaler    = amp.GradScaler(device="cuda" if DEVICE.type == "cuda" else "cpu")
 
         #features
         # - 3 continuous features: DwellTime, FlightTime, typing_speed
@@ -154,12 +152,7 @@ class Trainer():
                     token_to_char_idx = token_to_char_idx.to(DEVICE, non_blocking=True)
 
                 self.optimizer.zero_grad(set_to_none=True)
-                with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
-                    mean, logvar = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
-                
-                # Cast to fp32 for loss computation — NLL division overflows in fp16
-                mean = mean.float()
-                logvar = logvar.float()
+                mean, logvar = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
 
                 # Skip batch if model produced NaN/Inf — backward on corrupt output causes CUDA errors
                 if torch.isnan(mean).any() or torch.isinf(mean).any() or torch.isnan(logvar).any() or torch.isinf(logvar).any():
@@ -188,13 +181,9 @@ class Trainer():
                     print(f"  WARNING: NaN/Inf loss detected in batch {i}, skipping")
                     continue
 
-                self.scaler.scale(loss).backward()
-                
-                # Unscale gradients before clipping
-                self.scaler.unscale_(self.optimizer)
+                loss.backward()
                 
                 # Gradient clipping
-                #changed from 1 to 75, only catch extreme outliers.
                 torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=5.0)
                 
                 # Check for NaN/Inf gradients with detailed monitoring
@@ -205,8 +194,6 @@ class Trainer():
                     print(f"    Problem parameters: {grad_stats['problem_params'][:5]}")
                     # Zero out gradients so they don't corrupt model weights
                     self.optimizer.zero_grad(set_to_none=True)
-                    # Still update scaler so it reduces its scale factor
-                    self.scaler.update()
                     self.bad_batches += 1
                     if self.bad_batches > 20:
                         print("  ERROR: Too many bad batches (>20), stopping training.")
@@ -218,10 +205,7 @@ class Trainer():
                     print(f"  WARNING: Large gradient detected (norm={grad_stats['max_norm']:.3f})")
                     print(f"    Problem parameters: {grad_stats['problem_params'][:3]}")
                 
-                # Step optimizer (we've already checked for invalid gradients above)
-                self.scaler.step(self.optimizer)
-                
-                self.scaler.update()
+                self.optimizer.step()
                 self.scheduler.step(epoch + (i + 1) / max(1, len(self.train_loader)))
 
                 train_loss_sum += loss.item()
@@ -273,12 +257,7 @@ class Trainer():
                 if token_to_char_idx is not None:
                     token_to_char_idx = token_to_char_idx.to(DEVICE, non_blocking=True)
 
-                with amp.autocast(device_type="cuda", enabled=(DEVICE.type == "cuda")):
-                    mean, logvar = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
-                
-                # Cast to fp32 for loss computation
-                mean = mean.float()
-                logvar = logvar.float()
+                mean, logvar = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
 
                 # Compute validation loss in fp32
                 loss_dict = self.heteroscedastic_loss.forward(mean, logvar, targets, kl_weight)
