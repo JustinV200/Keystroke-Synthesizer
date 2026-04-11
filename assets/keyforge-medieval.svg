@@ -1,0 +1,310 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340">
+  <defs>
+    <!-- Parchment gradient -->
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5e6c8"/>
+      <stop offset="30%" stop-color="#e8d5a8"/>
+      <stop offset="70%" stop-color="#dcc898"/>
+      <stop offset="100%" stop-color="#d0bb85"/>
+    </linearGradient>
+    <linearGradient id="parchDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8b080"/>
+      <stop offset="100%" stop-color="#a89060"/>
+    </linearGradient>
+    <!-- Ink gradient -->
+    <linearGradient id="inkGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1008"/>
+      <stop offset="100%" stop-color="#2a1a10"/>
+    </linearGradient>
+    <!-- Gold illumination -->
+    <linearGradient id="goldLeaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0d060"/>
+      <stop offset="40%" stop-color="#c8a030"/>
+      <stop offset="100%" stop-color="#a08020"/>
+    </linearGradient>
+    <!-- Red illumination -->
+    <linearGradient id="redInk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c03020"/>
+      <stop offset="100%" stop-color="#801810"/>
+    </linearGradient>
+    <!-- Blue illumination -->
+    <linearGradient id="blueInk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2040a0"/>
+      <stop offset="100%" stop-color="#102060"/>
+    </linearGradient>
+    <!-- Wax seal gradient -->
+    <radialGradient id="waxSeal" cx="50%" cy="40%">
+      <stop offset="0%" stop-color="#d03020"/>
+      <stop offset="60%" stop-color="#a01810"/>
+      <stop offset="100%" stop-color="#701008"/>
+    </radialGradient>
+    <!-- Candle flame -->
+    <radialGradient id="flameGrad" cx="50%" cy="70%">
+      <stop offset="0%" stop-color="#fff8e0"/>
+      <stop offset="30%" stop-color="#ffd040"/>
+      <stop offset="70%" stop-color="#ff8010"/>
+      <stop offset="100%" stop-color="#c04000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="candleGlow" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#ffd040" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#ffd040" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Filters -->
+    <filter id="paperTexture" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="2" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply"/>
+    </filter>
+    <filter id="inkBleed" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="5" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+    </filter>
+    <filter id="dropShadow">
+      <feDropShadow dx="1" dy="1" stdDeviation="1" flood-color="#2a1a10" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes quillWrite { 
+      0% { transform: translate(0,0) rotate(0deg); } 
+      15% { transform: translate(12px, 1px) rotate(-1deg); }
+      30% { transform: translate(24px, -1px) rotate(0.5deg); }
+      45% { transform: translate(36px, 1px) rotate(-0.5deg); }
+      60% { transform: translate(48px, 0px) rotate(0deg); }
+      70% { transform: translate(48px, -3px) rotate(2deg); }
+      80% { transform: translate(0px, 8px) rotate(-1deg); }
+      90% { transform: translate(0px, 8px) rotate(0deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+    @keyframes flicker { 
+      0%, 100% { opacity: 0.85; transform: scaleY(1) scaleX(1); } 
+      25% { opacity: 1; transform: scaleY(1.06) scaleX(0.96); }
+      50% { opacity: 0.9; transform: scaleY(0.95) scaleX(1.04); }
+      75% { opacity: 0.95; transform: scaleY(1.03) scaleX(0.98); }
+    }
+    @keyframes glowPulse { 0%, 100% { opacity: 0.12; } 50% { opacity: 0.2; } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes inkAppear { 
+      0% { stroke-dashoffset: 100; opacity: 0; } 
+      10% { opacity: 1; }
+      100% { stroke-dashoffset: 0; opacity: 1; }
+    }
+    @keyframes writeText { 0% { opacity: 0; } 100% { opacity: 1; } }
+    @keyframes sealStamp { 
+      0%, 60% { opacity: 0; transform: scale(1.5) rotate(-10deg); }
+      70% { opacity: 1; transform: scale(1) rotate(0deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+    @keyframes smokeWisp {
+      0% { opacity: 0.3; transform: translateY(0) translateX(0); }
+      100% { opacity: 0; transform: translateY(-20px) translateX(5px); }
+    }
+    @keyframes inkDrip {
+      0%, 80% { r: 0; opacity: 0; }
+      90% { r: 1.5; opacity: 0.4; }
+      100% { r: 2; opacity: 0; }
+    }
+
+    .quill { animation: quillWrite 6s ease-in-out infinite; transform-origin: 90% 90%; }
+    .flame { animation: flicker 0.8s ease-in-out infinite; transform-origin: center bottom; }
+    .candle-glow { animation: glowPulse 2s ease-in-out infinite; }
+    .write-line { opacity: 0; animation: writeText 0.3s ease forwards; }
+    .seal { animation: sealStamp 5s ease forwards; transform-origin: center; }
+    .smoke { animation: smokeWisp 3s ease-out infinite; }
+    .smoke2 { animation: smokeWisp 3s ease-out 1s infinite; }
+    .smoke3 { animation: smokeWisp 3s ease-out 2s infinite; }
+  </style>
+
+  <!-- Background: dark wood desk -->
+  <rect width="720" height="340" fill="#1a1008"/>
+  <!-- Wood grain -->
+  <g opacity="0.06">
+    <rect x="0" y="0" width="720" height="340" fill="#2a1a10"/>
+    <line x1="0" y1="30" x2="720" y2="32" stroke="#3a2a18" stroke-width="2"/>
+    <line x1="0" y1="75" x2="720" y2="73" stroke="#3a2a18" stroke-width="1.5"/>
+    <line x1="0" y1="130" x2="720" y2="131" stroke="#3a2a18" stroke-width="2.5"/>
+    <line x1="0" y1="185" x2="720" y2="183" stroke="#3a2a18" stroke-width="1"/>
+    <line x1="0" y1="240" x2="720" y2="242" stroke="#3a2a18" stroke-width="2"/>
+    <line x1="0" y1="290" x2="720" y2="288" stroke="#3a2a18" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== PARCHMENT SCROLL ===== -->
+  <g transform="translate(140, 20)">
+    <!-- Scroll shadow -->
+    <ellipse cx="220" cy="310" rx="230" ry="8" fill="#000" opacity="0.2"/>
+
+    <!-- Main parchment body -->
+    <rect x="10" y="15" width="420" height="280" fill="url(#parchment)" filter="url(#paperTexture)" rx="2"/>
+
+    <!-- Parchment edge shading -->
+    <rect x="10" y="15" width="420" height="280" fill="none" stroke="#b8a070" stroke-width="0.5" rx="2"/>
+    <rect x="10" y="15" width="8" height="280" fill="#c8b080" opacity="0.3"/>
+    <rect x="422" y="15" width="8" height="280" fill="#a89060" opacity="0.3"/>
+
+    <!-- Top scroll roll -->
+    <ellipse cx="220" cy="18" rx="218" ry="12" fill="url(#parchDark)"/>
+    <ellipse cx="220" cy="18" rx="218" ry="8" fill="url(#parchment)"/>
+    <line x1="2" y1="18" x2="438" y2="18" stroke="#a89060" stroke-width="0.5" opacity="0.5"/>
+
+    <!-- Bottom scroll curl hint -->
+    <ellipse cx="220" cy="293" rx="218" ry="6" fill="url(#parchDark)" opacity="0.4"/>
+
+    <!-- ===== ILLUMINATED TITLE ===== -->
+    <!-- Decorative initial "K" with illumination -->
+    <g transform="translate(52, 42)" filter="url(#goldGlow)">
+      <!-- Gold square background for initial -->
+      <rect x="-8" y="-2" width="48" height="52" rx="3" fill="none" stroke="url(#goldLeaf)" stroke-width="2" opacity="0.6"/>
+      <!-- Corner flourishes -->
+      <circle cx="-8" cy="-2" r="2.5" fill="url(#goldLeaf)" opacity="0.5"/>
+      <circle cx="40" cy="-2" r="2.5" fill="url(#goldLeaf)" opacity="0.5"/>
+      <circle cx="-8" cy="50" r="2.5" fill="url(#goldLeaf)" opacity="0.5"/>
+      <circle cx="40" cy="50" r="2.5" fill="url(#goldLeaf)" opacity="0.5"/>
+      <!-- Ornamental vine inside -->
+      <path d="M -4,46 Q 5,35 0,25 Q -5,15 5,5" stroke="#307030" stroke-width="1" fill="none" opacity="0.5"/>
+      <circle cx="3" cy="8" r="2" fill="#408040" opacity="0.4"/>
+      <circle cx="-2" cy="28" r="1.5" fill="#408040" opacity="0.4"/>
+      <circle cx="4" cy="42" r="2" fill="#c03020" opacity="0.3"/>
+      <!-- The letter K -->
+      <text x="16" y="40" text-anchor="middle" font-family="'Georgia', 'Times New Roman', serif" font-size="46" fill="url(#goldLeaf)" font-weight="bold">K</text>
+    </g>
+
+    <!-- Rest of title -->
+    <text y="80" font-family="'Georgia', 'Times New Roman', serif" font-weight="bold" filter="url(#dropShadow)">
+      <tspan x="100" font-size="38" fill="url(#goldLeaf)">ey</tspan>
+      <tspan font-size="38" fill="url(#redInk)">F</tspan>
+      <tspan font-size="38" fill="url(#goldLeaf)">orge</tspan>
+    </text>
+
+    <!-- Decorated divider -->
+    <line x1="50" y1="92" x2="380" y2="92" stroke="url(#goldLeaf)" stroke-width="0.8" opacity="0.5"/>
+    <g fill="url(#goldLeaf)" opacity="0.4">
+      <polygon points="215,89 218,92 215,95 212,92"/>
+      <circle cx="80" cy="92" r="1.5"/>
+      <circle cx="350" cy="92" r="1.5"/>
+    </g>
+
+    <!-- Subtitle in script -->
+    <text x="215" y="110" text-anchor="middle" font-family="'Georgia', serif" font-size="12" fill="#5a4a30" font-style="italic" letter-spacing="2" opacity="0" style="animation: fadeIn 1s ease forwards 1s;">
+      The Art of Keystroke Synthesis
+    </text>
+
+    <!-- ===== MANUSCRIPT TEXT (written by quill) ===== -->
+    <g font-family="'Georgia', serif" font-size="11" fill="#3a2a18" filter="url(#inkBleed)">
+      <text x="50" y="145" class="write-line" style="animation-delay: 2s;">In the ancient tradition of the scribes,</text>
+      <text x="50" y="163" class="write-line" style="animation-delay: 2.8s;">each keystroke is forged with precision —</text>
+      <text x="50" y="181" class="write-line" style="animation-delay: 3.6s;">timing, rhythm, and pressure captured</text>
+      <text x="50" y="199" class="write-line" style="animation-delay: 4.4s;">as faithfully as ink upon parchment.</text>
+    </g>
+
+    <!-- Marginal annotation -->
+    <g transform="translate(355, 140)" opacity="0" style="animation: fadeIn 0.5s ease forwards 5s;">
+      <text font-family="'Georgia', serif" font-size="7" fill="#8a2010" font-style="italic" transform="rotate(-5)">
+        <tspan x="0" y="0">dwell: 82ms</tspan>
+        <tspan x="0" dy="10">flight: 41ms</tspan>
+        <tspan x="0" dy="10">wpm: 67</tspan>
+      </text>
+      <!-- Bracket -->
+      <path d="M -5,-5 Q -10,15 -5,35" stroke="#8a2010" stroke-width="0.5" fill="none" opacity="0.5"/>
+    </g>
+
+    <!-- ===== QUILL PEN ===== -->
+    <g transform="translate(46, 133)" class="quill">
+      <!-- Feather -->
+      <path d="M 52,-30 Q 40,-15 35,0 Q 30,10 28,20" stroke="#4a3a28" stroke-width="0.5" fill="none"/>
+      <path d="M 52,-30 Q 55,-20 48,-10 Q 42,-2 35,0" fill="#f0e8d8" stroke="#a09070" stroke-width="0.3"/>
+      <path d="M 52,-30 Q 45,-18 38,-8 Q 33,0 35,0" fill="#e0d8c0" opacity="0.6"/>
+      <!-- Feather barbs -->
+      <path d="M 52,-30 Q 60,-25 55,-20" stroke="#c0b090" stroke-width="0.3" fill="none"/>
+      <path d="M 50,-25 Q 58,-20 52,-15" stroke="#c0b090" stroke-width="0.3" fill="none"/>
+      <path d="M 48,-18 Q 55,-14 48,-10" stroke="#c0b090" stroke-width="0.3" fill="none"/>
+      <!-- Quill shaft -->
+      <line x1="35" y1="0" x2="28" y2="20" stroke="#5a4a30" stroke-width="1.5"/>
+      <!-- Nib -->
+      <path d="M 28,20 L 26,26 L 28,25 L 30,26 Z" fill="#3a3030"/>
+      <!-- Ink drip -->
+      <circle cx="28" cy="27" fill="#2a1a10" style="animation: inkDrip 6s ease infinite;"><set attributeName="r" to="0"/></circle>
+    </g>
+
+    <!-- ===== INK WELL (bottom-left of parchment) ===== -->
+    <g transform="translate(30, 230)">
+      <ellipse cx="0" cy="20" rx="16" ry="5" fill="#1a1008" opacity="0.3"/>
+      <rect x="-12" y="0" width="24" height="20" rx="3" fill="#2a2018" stroke="#4a3a28" stroke-width="0.8"/>
+      <ellipse cx="0" cy="0" rx="12" ry="5" fill="#2a2018" stroke="#4a3a28" stroke-width="0.8"/>
+      <ellipse cx="0" cy="1" rx="8" ry="3" fill="#0a0804"/>
+      <!-- Ink surface shimmer -->
+      <ellipse cx="-2" cy="0" rx="4" ry="1.5" fill="#1a1810" opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- ===== CANDLE (left side) ===== -->
+  <g transform="translate(80, 100)">
+    <!-- Candle glow -->
+    <circle cx="0" cy="0" r="70" fill="url(#candleGlow)" class="candle-glow"/>
+
+    <!-- Candlestick holder -->
+    <rect x="-6" y="180" width="12" height="8" rx="1" fill="#b87333" stroke="#8a5520" stroke-width="0.5"/>
+    <ellipse cx="0" cy="180" rx="14" ry="4" fill="#b87333" stroke="#8a5520" stroke-width="0.5"/>
+    <rect x="-10" y="184" width="20" height="4" rx="1" fill="#a06828"/>
+    <ellipse cx="0" cy="188" rx="16" ry="5" fill="#b87333" stroke="#8a5520" stroke-width="0.5"/>
+
+    <!-- Candle body -->
+    <rect x="-5" y="60" width="10" height="120" rx="2" fill="#f0e8d0" stroke="#d0c8b0" stroke-width="0.5"/>
+    <!-- Wax drips -->
+    <path d="M -5,90 Q -8,95 -7,105 Q -6,110 -5,108" fill="#e8e0c8" stroke="#d0c8b0" stroke-width="0.3"/>
+    <path d="M 5,110 Q 8,118 7,125 Q 6,130 5,128" fill="#e8e0c8" stroke="#d0c8b0" stroke-width="0.3"/>
+
+    <!-- Wick -->
+    <line x1="0" y1="60" x2="0" y2="48" stroke="#3a3028" stroke-width="1"/>
+
+    <!-- Flame -->
+    <g class="flame">
+      <ellipse cx="0" cy="38" rx="7" ry="16" fill="url(#flameGrad)"/>
+      <ellipse cx="0" cy="40" rx="3" ry="8" fill="#fff8e0" opacity="0.7"/>
+    </g>
+
+    <!-- Smoke wisps -->
+    <g transform="translate(0, 20)">
+      <ellipse cx="2" cy="0" rx="3" ry="5" fill="#a09080" opacity="0" class="smoke"/>
+      <ellipse cx="-2" cy="-5" rx="2" ry="4" fill="#a09080" opacity="0" class="smoke2"/>
+      <ellipse cx="4" cy="-3" rx="2.5" ry="4" fill="#a09080" opacity="0" class="smoke3"/>
+    </g>
+  </g>
+
+  <!-- ===== WAX SEAL (bottom-right of parchment) ===== -->
+  <g transform="translate(510, 270)" class="seal">
+    <!-- Ribbon tails -->
+    <path d="M -5,8 L -15,35 L -8,28 L -2,35 Z" fill="#a01810" opacity="0.7"/>
+    <path d="M 5,8 L 15,35 L 8,28 L 2,35 Z" fill="#801008" opacity="0.7"/>
+    <!-- Seal body -->
+    <circle cx="0" cy="0" r="18" fill="url(#waxSeal)"/>
+    <circle cx="0" cy="0" r="14" fill="none" stroke="#c04030" stroke-width="0.5" opacity="0.4"/>
+    <!-- Seal imprint: "KF" monogram -->
+    <text x="0" y="6" text-anchor="middle" font-family="'Georgia', serif" font-size="16" fill="#d05040" font-weight="bold" opacity="0.7">KF</text>
+    <!-- Wax texture highlight -->
+    <ellipse cx="-5" cy="-5" rx="8" ry="5" fill="white" opacity="0.06" transform="rotate(-20)"/>
+  </g>
+
+  <!-- ===== DECORATIVE BORDER ELEMENTS ===== -->
+  <!-- Top corners: Celtic knot hints -->
+  <g opacity="0.15" stroke="url(#goldLeaf)" stroke-width="1" fill="none">
+    <path d="M 20,20 Q 20,8 32,8 L 60,8"/>
+    <path d="M 20,20 Q 8,20 8,32 L 8,60"/>
+    <path d="M 700,20 Q 700,8 688,8 L 660,8"/>
+    <path d="M 700,20 Q 712,20 712,32 L 712,60"/>
+    <path d="M 20,320 Q 8,320 8,308 L 8,280"/>
+    <path d="M 20,320 Q 20,332 32,332 L 60,332"/>
+    <path d="M 700,320 Q 712,320 712,308 L 712,280"/>
+    <path d="M 700,320 Q 700,332 688,332 L 660,332"/>
+  </g>
+
+  <!-- Ambient warm glow from candle -->
+  <ellipse cx="80" cy="160" rx="120" ry="150" fill="#ffd040" opacity="0.03" filter="url(#softGlow)"/>
+</svg>

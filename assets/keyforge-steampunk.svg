@@ -1,0 +1,375 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340">
+  <defs>
+    <!-- Brass gradient -->
+    <linearGradient id="brassGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4a04a"/>
+      <stop offset="50%" stop-color="#b87333"/>
+      <stop offset="100%" stop-color="#8b6914"/>
+    </linearGradient>
+    <linearGradient id="brassShine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0d080"/>
+      <stop offset="40%" stop-color="#c9943a"/>
+      <stop offset="100%" stop-color="#7a5510"/>
+    </linearGradient>
+    <linearGradient id="darkLeather" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a1f14"/>
+      <stop offset="100%" stop-color="#1a1008"/>
+    </linearGradient>
+    <linearGradient id="steamGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#c8c0b0" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#c8c0b0" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="pipeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c99a40"/>
+      <stop offset="30%" stop-color="#a07020"/>
+      <stop offset="70%" stop-color="#a07020"/>
+      <stop offset="100%" stop-color="#c99a40"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="brassGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="warmGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4"/>
+    </filter>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="emboss">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"/>
+      <feSpecularLighting in="blur" surfaceScale="3" specularConstant="0.6" specularExponent="15" result="spec">
+        <fePointLight x="200" y="50" z="100"/>
+      </feSpecularLighting>
+      <feComposite in="spec" in2="SourceAlpha" operator="in" result="specOut"/>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="specOut"/></feMerge>
+    </filter>
+
+    <!-- Gear clip for rotation -->
+    <clipPath id="viewClip"><rect x="0" y="0" width="720" height="340"/></clipPath>
+  </defs>
+
+  <style>
+    @keyframes gearSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes gearSpinR { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+    @keyframes steamRise { 0% { opacity:0.5; transform: translateY(0) scale(1); } 100% { opacity:0; transform: translateY(-50px) scale(2); } }
+    @keyframes pistonPump { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    @keyframes flicker { 0%,100% { opacity:0.6; } 50% { opacity:0.9; } }
+    @keyframes typeKey { 0%,70%,100% { transform: translateY(0); } 80% { transform: translateY(3px); } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes cursorBlink { 0%,49% { opacity:1; } 50%,100% { opacity:0; } }
+    @keyframes printChar { 0% { opacity:0; } 100% { opacity:1; } }
+    @keyframes needleTick { 0%,100% { transform: rotate(-30deg); } 50% { transform: rotate(30deg); } }
+    @keyframes pressureNeedle { 0%,100% { transform: rotate(-40deg); } 30% { transform: rotate(20deg); } 60% { transform: rotate(5deg); } }
+
+    .gear-slow { animation: gearSpin 12s linear infinite; transform-origin: 0px 0px; }
+    .gear-slow-r { animation: gearSpinR 12s linear infinite; transform-origin: 0px 0px; }
+    .gear-med { animation: gearSpin 8s linear infinite; transform-origin: 0px 0px; }
+    .gear-med-r { animation: gearSpinR 8s linear infinite; transform-origin: 0px 0px; }
+    .gear-fast { animation: gearSpin 5s linear infinite; transform-origin: 0px 0px; }
+    .steam { animation: steamRise 3s ease-out infinite; }
+    .steam2 { animation: steamRise 3s ease-out 1s infinite; }
+    .steam3 { animation: steamRise 3s ease-out 2s infinite; }
+    .piston { animation: pistonPump 2s ease-in-out infinite; }
+    .piston2 { animation: pistonPump 2s ease-in-out 0.5s infinite; }
+
+    .title-text {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 62px;
+      font-weight: bold;
+      fill: url(#brassShine);
+      filter: url(#brassGlow);
+      letter-spacing: 2px;
+    }
+    .subtitle-text {
+      font-family: 'Georgia', serif;
+      font-size: 13px;
+      fill: #a08a60;
+      letter-spacing: 4px;
+    }
+    .type-char { animation: printChar 0.1s ease forwards; opacity: 0; }
+  </style>
+
+  <g clip-path="url(#viewClip)">
+
+  <!-- Background: dark leather -->
+  <rect width="720" height="340" fill="url(#darkLeather)"/>
+  <!-- Subtle texture lines -->
+  <g opacity="0.04">
+    <line x1="0" y1="20" x2="720" y2="20" stroke="#a08050" stroke-width="0.5"/>
+    <line x1="0" y1="60" x2="720" y2="60" stroke="#a08050" stroke-width="0.5"/>
+    <line x1="0" y1="100" x2="720" y2="100" stroke="#a08050" stroke-width="0.5"/>
+    <line x1="0" y1="140" x2="720" y2="140" stroke="#a08050" stroke-width="0.5"/>
+    <line x1="0" y1="180" x2="720" y2="180" stroke="#a08050" stroke-width="0.5"/>
+    <line x1="0" y1="220" x2="720" y2="220" stroke="#a08050" stroke-width="0.5"/>
+    <line x1="0" y1="260" x2="720" y2="260" stroke="#a08050" stroke-width="0.5"/>
+    <line x1="0" y1="300" x2="720" y2="300" stroke="#a08050" stroke-width="0.5"/>
+  </g>
+
+  <!-- Victorian border -->
+  <rect x="8" y="8" width="704" height="324" rx="4" fill="none" stroke="url(#brassGrad)" stroke-width="2" opacity="0.6"/>
+  <rect x="14" y="14" width="692" height="312" rx="2" fill="none" stroke="#8b6914" stroke-width="0.5" opacity="0.4"/>
+  <!-- Corner ornaments -->
+  <g opacity="0.5" fill="#b87333">
+    <circle cx="20" cy="20" r="4"/><circle cx="700" cy="20" r="4"/>
+    <circle cx="20" cy="320" r="4"/><circle cx="700" cy="320" r="4"/>
+    <circle cx="20" cy="20" r="2" fill="#d4a04a"/><circle cx="700" cy="20" r="2" fill="#d4a04a"/>
+    <circle cx="20" cy="320" r="2" fill="#d4a04a"/><circle cx="700" cy="320" r="2" fill="#d4a04a"/>
+  </g>
+
+  <!-- ===== LEFT SIDE: Gears ===== -->
+  <g transform="translate(85, 100)">
+    <!-- Large gear -->
+    <g class="gear-slow">
+      <circle cx="0" cy="0" r="45" fill="none" stroke="url(#brassGrad)" stroke-width="4"/>
+      <circle cx="0" cy="0" r="38" fill="none" stroke="#8b6914" stroke-width="1" opacity="0.5"/>
+      <circle cx="0" cy="0" r="12" fill="url(#brassGrad)" stroke="#7a5510" stroke-width="1"/>
+      <circle cx="0" cy="0" r="5" fill="#2a1f14"/>
+      <!-- Teeth -->
+      <g fill="url(#brassGrad)">
+        <rect x="-4" y="-51" width="8" height="8" rx="1"/>
+        <rect x="-4" y="43" width="8" height="8" rx="1"/>
+        <rect x="-51" y="-4" width="8" height="8" rx="1"/>
+        <rect x="43" y="-4" width="8" height="8" rx="1"/>
+        <rect x="28" y="-40" width="8" height="8" rx="1" transform="rotate(45,32,-36)"/>
+        <rect x="-36" y="-40" width="8" height="8" rx="1" transform="rotate(-45,-32,-36)"/>
+        <rect x="28" y="32" width="8" height="8" rx="1" transform="rotate(-45,32,36)"/>
+        <rect x="-36" y="32" width="8" height="8" rx="1" transform="rotate(45,-32,36)"/>
+      </g>
+      <!-- Spokes -->
+      <line x1="-30" y1="0" x2="30" y2="0" stroke="#7a5510" stroke-width="2"/>
+      <line x1="0" y1="-30" x2="0" y2="30" stroke="#7a5510" stroke-width="2"/>
+      <line x1="-22" y1="-22" x2="22" y2="22" stroke="#7a5510" stroke-width="1.5"/>
+      <line x1="-22" y1="22" x2="22" y2="-22" stroke="#7a5510" stroke-width="1.5"/>
+    </g>
+  </g>
+
+  <!-- Medium gear (meshed) -->
+  <g transform="translate(140, 60)">
+    <g class="gear-med-r">
+      <circle cx="0" cy="0" r="28" fill="none" stroke="url(#brassGrad)" stroke-width="3"/>
+      <circle cx="0" cy="0" r="8" fill="url(#brassGrad)" stroke="#7a5510" stroke-width="1"/>
+      <circle cx="0" cy="0" r="3" fill="#2a1f14"/>
+      <g fill="url(#brassGrad)">
+        <rect x="-3" y="-34" width="6" height="7" rx="1"/>
+        <rect x="-3" y="27" width="6" height="7" rx="1"/>
+        <rect x="-34" y="-3" width="7" height="6" rx="1"/>
+        <rect x="27" y="-3" width="7" height="6" rx="1"/>
+        <rect x="17" y="-27" width="6" height="7" rx="1" transform="rotate(45,20,-24)"/>
+        <rect x="-23" y="-27" width="6" height="7" rx="1" transform="rotate(-45,-20,-24)"/>
+      </g>
+      <line x1="-20" y1="0" x2="20" y2="0" stroke="#7a5510" stroke-width="1.5"/>
+      <line x1="0" y1="-20" x2="0" y2="20" stroke="#7a5510" stroke-width="1.5"/>
+    </g>
+  </g>
+
+  <!-- Small gear -->
+  <g transform="translate(48, 65)">
+    <g class="gear-fast">
+      <circle cx="0" cy="0" r="18" fill="none" stroke="url(#brassGrad)" stroke-width="2.5"/>
+      <circle cx="0" cy="0" r="6" fill="url(#brassGrad)"/>
+      <circle cx="0" cy="0" r="2.5" fill="#2a1f14"/>
+      <g fill="url(#brassGrad)">
+        <rect x="-2.5" y="-23" width="5" height="6" rx="1"/>
+        <rect x="-2.5" y="17" width="5" height="6" rx="1"/>
+        <rect x="-23" y="-2.5" width="6" height="5" rx="1"/>
+        <rect x="17" y="-2.5" width="6" height="5" rx="1"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- ===== Brass pipes ===== -->
+  <!-- Horizontal pipe top -->
+  <rect x="30" y="170" width="130" height="8" rx="4" fill="url(#pipeGrad)" opacity="0.7"/>
+  <circle cx="35" cy="174" r="6" fill="url(#brassGrad)" stroke="#7a5510" stroke-width="1" opacity="0.6"/>
+  <circle cx="155" cy="174" r="6" fill="url(#brassGrad)" stroke="#7a5510" stroke-width="1" opacity="0.6"/>
+
+  <!-- Vertical pipe with piston -->
+  <rect x="80" y="178" width="8" height="55" rx="4" fill="url(#pipeGrad)" opacity="0.6"/>
+  <g class="piston">
+    <rect x="75" y="195" width="18" height="10" rx="3" fill="url(#brassGrad)" stroke="#7a5510" stroke-width="0.5"/>
+  </g>
+
+  <!-- Steam puffs from pipe -->
+  <g transform="translate(84, 178)">
+    <ellipse cx="0" cy="-5" rx="8" ry="5" fill="url(#steamGrad)" class="steam"/>
+    <ellipse cx="8" cy="-3" rx="6" ry="4" fill="url(#steamGrad)" class="steam2"/>
+    <ellipse cx="-5" cy="-6" rx="7" ry="4" fill="url(#steamGrad)" class="steam3"/>
+  </g>
+
+  <!-- ===== CENTER: Title ===== -->
+  <text x="360" y="105" text-anchor="middle" class="title-text" filter="url(#softShadow)" opacity="0" style="animation: fadeIn 0.8s ease forwards 0.3s;">
+    <tspan fill="url(#brassShine)">Key</tspan><tspan fill="url(#brassShine)">Forge</tspan>
+  </text>
+
+  <!-- Divider line -->
+  <line x1="240" y1="118" x2="480" y2="118" stroke="url(#brassGrad)" stroke-width="1" opacity="0.5"/>
+  <circle cx="360" cy="118" r="2.5" fill="#d4a04a" opacity="0.6"/>
+  <circle cx="250" cy="118" r="1.5" fill="#b87333" opacity="0.4"/>
+  <circle cx="470" cy="118" r="1.5" fill="#b87333" opacity="0.4"/>
+
+  <!-- Subtitle -->
+  <text x="360" y="138" text-anchor="middle" class="subtitle-text" opacity="0" style="animation: fadeIn 1s ease forwards 0.8s;">
+    AUTOMATED KEYSTROKE SYNTHESIS
+  </text>
+
+  <!-- ===== TYPEWRITER SECTION (center-bottom) ===== -->
+  <g transform="translate(220, 165)">
+    <!-- Typewriter body -->
+    <rect x="0" y="55" width="280" height="50" rx="6" fill="#3a2a18" stroke="#5a4020" stroke-width="1"/>
+    <rect x="10" y="60" width="260" height="15" rx="3" fill="#2a1a0a" opacity="0.5"/>
+
+    <!-- Paper roll area -->
+    <rect x="40" y="10" width="200" height="45" rx="2" fill="#f5f0e0" opacity="0.9"/>
+    <rect x="40" y="10" width="200" height="3" fill="#c0b890"/>
+
+    <!-- Typed text on paper -->
+    <text x="55" y="35" font-family="'Courier New', monospace" font-size="11" fill="#2a1a0a">
+      <tspan class="type-char" style="animation-delay:1.5s">k</tspan>
+      <tspan class="type-char" style="animation-delay:1.7s">e</tspan>
+      <tspan class="type-char" style="animation-delay:1.9s">y</tspan>
+      <tspan class="type-char" style="animation-delay:2.1s">f</tspan>
+      <tspan class="type-char" style="animation-delay:2.3s">o</tspan>
+      <tspan class="type-char" style="animation-delay:2.5s">r</tspan>
+      <tspan class="type-char" style="animation-delay:2.7s">g</tspan>
+      <tspan class="type-char" style="animation-delay:2.9s">e</tspan>
+      <tspan class="type-char" style="animation-delay:3.2s"> </tspan>
+      <tspan class="type-char" style="animation-delay:3.4s">s</tspan>
+      <tspan class="type-char" style="animation-delay:3.6s">y</tspan>
+      <tspan class="type-char" style="animation-delay:3.8s">n</tspan>
+      <tspan class="type-char" style="animation-delay:4.0s">t</tspan>
+      <tspan class="type-char" style="animation-delay:4.2s">h</tspan>
+      <tspan class="type-char" style="animation-delay:4.4s">e</tspan>
+      <tspan class="type-char" style="animation-delay:4.6s">s</tspan>
+      <tspan class="type-char" style="animation-delay:4.8s">i</tspan>
+      <tspan class="type-char" style="animation-delay:5.0s">z</tspan>
+      <tspan class="type-char" style="animation-delay:5.2s">e</tspan>
+    </text>
+    <text x="55" y="48" font-family="'Courier New', monospace" font-size="9" fill="#6a5a40" opacity="0.6">
+      &gt; generating keystrokes...
+    </text>
+
+    <!-- Typewriter keys (two rows) -->
+    <g transform="translate(20, 80)">
+      <!-- Row 1 -->
+      <g style="animation: typeKey 2s ease infinite 1.5s;">
+        <rect x="0" y="0" width="22" height="18" rx="4" fill="#4a3a28" stroke="#6a5030" stroke-width="0.5"/>
+        <text x="11" y="13" text-anchor="middle" font-family="monospace" font-size="9" fill="#c0a878">K</text>
+      </g>
+      <g style="animation: typeKey 2s ease infinite 1.7s;">
+        <rect x="26" y="0" width="22" height="18" rx="4" fill="#4a3a28" stroke="#6a5030" stroke-width="0.5"/>
+        <text x="37" y="13" text-anchor="middle" font-family="monospace" font-size="9" fill="#c0a878">E</text>
+      </g>
+      <g style="animation: typeKey 2s ease infinite 1.9s;">
+        <rect x="52" y="0" width="22" height="18" rx="4" fill="#4a3a28" stroke="#6a5030" stroke-width="0.5"/>
+        <text x="63" y="13" text-anchor="middle" font-family="monospace" font-size="9" fill="#c0a878">Y</text>
+      </g>
+      <g>
+        <rect x="78" y="0" width="22" height="18" rx="4" fill="#4a3a28" stroke="#6a5030" stroke-width="0.5"/>
+        <text x="89" y="13" text-anchor="middle" font-family="monospace" font-size="9" fill="#c0a878">S</text>
+      </g>
+      <g>
+        <rect x="104" y="0" width="22" height="18" rx="4" fill="#4a3a28" stroke="#6a5030" stroke-width="0.5"/>
+        <text x="115" y="13" text-anchor="middle" font-family="monospace" font-size="9" fill="#c0a878">T</text>
+      </g>
+      <g>
+        <rect x="130" y="0" width="22" height="18" rx="4" fill="#4a3a28" stroke="#6a5030" stroke-width="0.5"/>
+        <text x="141" y="13" text-anchor="middle" font-family="monospace" font-size="9" fill="#c0a878">R</text>
+      </g>
+      <g>
+        <rect x="156" y="0" width="22" height="18" rx="4" fill="#4a3a28" stroke="#6a5030" stroke-width="0.5"/>
+        <text x="167" y="13" text-anchor="middle" font-family="monospace" font-size="9" fill="#c0a878">O</text>
+      </g>
+      <g>
+        <rect x="182" y="0" width="22" height="18" rx="4" fill="#4a3a28" stroke="#6a5030" stroke-width="0.5"/>
+        <text x="193" y="13" text-anchor="middle" font-family="monospace" font-size="9" fill="#c0a878">K</text>
+      </g>
+      <g>
+        <rect x="208" y="0" width="22" height="18" rx="4" fill="#4a3a28" stroke="#6a5030" stroke-width="0.5"/>
+        <text x="219" y="13" text-anchor="middle" font-family="monospace" font-size="9" fill="#c0a878">E</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ===== RIGHT SIDE: Pressure gauge ===== -->
+  <g transform="translate(620, 85)">
+    <!-- Gauge body -->
+    <circle cx="0" cy="0" r="42" fill="#3a2a18" stroke="url(#brassGrad)" stroke-width="3"/>
+    <circle cx="0" cy="0" r="36" fill="#1a1008" stroke="#5a4020" stroke-width="1"/>
+
+    <!-- Gauge markings -->
+    <g stroke="#8a7a50" stroke-width="0.5" opacity="0.6">
+      <line x1="-28" y1="-10" x2="-33" y2="-12"/>
+      <line x1="-22" y1="-22" x2="-26" y2="-26"/>
+      <line x1="-10" y1="-28" x2="-12" y2="-33"/>
+      <line x1="5" y1="-30" x2="6" y2="-35"/>
+      <line x1="20" y1="-24" x2="24" y2="-28"/>
+      <line x1="28" y1="-12" x2="33" y2="-14"/>
+    </g>
+
+    <!-- Labels -->
+    <text x="-25" y="5" font-family="monospace" font-size="5" fill="#8a7a50">LOW</text>
+    <text x="12" y="-20" font-family="monospace" font-size="5" fill="#c04030">HIGH</text>
+    <text x="-12" y="20" font-family="serif" font-size="6" fill="#8a7a50">PSI</text>
+
+    <!-- Needle -->
+    <g style="animation: pressureNeedle 4s ease-in-out infinite; transform-origin: 0px 0px;">
+      <line x1="0" y1="0" x2="0" y2="-28" stroke="#c04030" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="3" fill="#b87333"/>
+    </g>
+
+    <!-- Glass reflection -->
+    <ellipse cx="-10" cy="-12" rx="14" ry="8" fill="white" opacity="0.04" transform="rotate(-30)"/>
+  </g>
+
+  <!-- Gauge label -->
+  <text x="620" y="142" text-anchor="middle" font-family="serif" font-size="8" fill="#8a7a50" letter-spacing="2">SYNTHESIS</text>
+  <text x="620" y="152" text-anchor="middle" font-family="serif" font-size="8" fill="#8a7a50" letter-spacing="2">PRESSURE</text>
+
+  <!-- ===== RIGHT: Small decorative gear ===== -->
+  <g transform="translate(660, 200)">
+    <g class="gear-med">
+      <circle cx="0" cy="0" r="15" fill="none" stroke="url(#brassGrad)" stroke-width="2"/>
+      <circle cx="0" cy="0" r="5" fill="url(#brassGrad)"/>
+      <g fill="url(#brassGrad)">
+        <rect x="-2" y="-19" width="4" height="5" rx="1"/>
+        <rect x="-2" y="14" width="4" height="5" rx="1"/>
+        <rect x="-19" y="-2" width="5" height="4" rx="1"/>
+        <rect x="14" y="-2" width="5" height="4" rx="1"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Pipe connecting gauge to gear -->
+  <rect x="654" y="160" width="6" height="30" rx="3" fill="url(#pipeGrad)" opacity="0.5"/>
+
+  <!-- ===== RIGHT: Steam vents ===== -->
+  <g transform="translate(640, 260)">
+    <rect x="-8" y="0" width="16" height="20" rx="3" fill="#4a3a28" stroke="#6a5030" stroke-width="0.5"/>
+    <rect x="-6" y="2" width="12" height="3" rx="1" fill="#2a1a0a"/>
+    <rect x="-6" y="8" width="12" height="3" rx="1" fill="#2a1a0a"/>
+    <rect x="-6" y="14" width="12" height="3" rx="1" fill="#2a1a0a"/>
+    <!-- Steam -->
+    <ellipse cx="0" cy="-5" rx="10" ry="6" fill="url(#steamGrad)" class="steam"/>
+    <ellipse cx="6" cy="-8" rx="7" ry="5" fill="url(#steamGrad)" class="steam2"/>
+    <ellipse cx="-4" cy="-4" rx="8" ry="5" fill="url(#steamGrad)" class="steam3"/>
+  </g>
+
+  <!-- ===== Bottom: Data readout ===== -->
+  <g transform="translate(35, 270)">
+    <rect x="0" y="0" width="145" height="48" rx="4" fill="#1a1008" stroke="#5a4020" stroke-width="0.8" opacity="0.8"/>
+    <text x="10" y="15" font-family="'Courier New', monospace" font-size="8" fill="#80a050">
+      <tspan>DWELL:  82.4ms</tspan>
+      <tspan x="10" dy="13">FLIGHT: 41.2ms</tspan>
+      <tspan x="10" dy="13">WPM:    67.3</tspan>
+    </text>
+    <!-- Blinking indicator -->
+    <circle cx="135" cy="10" r="3" fill="#50a040" style="animation: cursorBlink 1s step-end infinite;"/>
+  </g>
+
+  <!-- Warm ambient glow from center -->
+  <ellipse cx="360" cy="170" rx="200" ry="100" fill="#d4a04a" opacity="0.02" filter="url(#warmGlow)"/>
+
+  </g>
+</svg>

@@ -1,0 +1,275 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340">
+  <defs>
+    <linearGradient id="stoneGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3a3628"/>
+      <stop offset="100%" stop-color="#1e1c14"/>
+    </linearGradient>
+    <linearGradient id="runeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ff88"/>
+      <stop offset="50%" stop-color="#00cc66"/>
+      <stop offset="100%" stop-color="#009944"/>
+    </linearGradient>
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="40%" stop-color="#ffaa00"/>
+      <stop offset="100%" stop-color="#cc8800"/>
+    </linearGradient>
+    <linearGradient id="xpBarBg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a2a1a"/>
+      <stop offset="100%" stop-color="#1a2a1a"/>
+    </linearGradient>
+    <linearGradient id="xpBarFill" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00cc44"/>
+      <stop offset="100%" stop-color="#44ff88"/>
+    </linearGradient>
+    <filter id="runeGlowF">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="goldGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#ffd700" flood-opacity="0.15"/>
+      <feComposite in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="pixelShadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <!-- Stone texture pattern -->
+    <pattern id="stoneTex" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="transparent"/>
+      <rect x="3" y="7" width="1" height="1" fill="#2a2820" opacity="0.3"/>
+      <rect x="12" y="3" width="1" height="1" fill="#2a2820" opacity="0.2"/>
+      <rect x="8" y="15" width="1" height="1" fill="#2a2820" opacity="0.25"/>
+      <rect x="16" y="11" width="1" height="1" fill="#2a2820" opacity="0.15"/>
+    </pattern>
+  </defs>
+
+  <style>
+    @keyframes runeActivate {
+      0%, 70% { fill: #2a4a2a; filter: none; opacity: 0.4; }
+      80% { fill: #00ff88; filter: url(#runeGlowF); opacity: 1; }
+      90% { fill: #00cc66; filter: url(#runeGlowF); opacity: 0.8; }
+      100% { fill: #2a4a2a; filter: none; opacity: 0.4; }
+    }
+    @keyframes runeA1 { 0%, 100% { fill: #2a4a2a; opacity: 0.4; } 10%, 20% { fill: #00ff88; opacity: 1; filter: url(#runeGlowF); } }
+    @keyframes runeA2 { 0%, 100% { fill: #2a4a2a; opacity: 0.4; } 15%, 25% { fill: #00ff88; opacity: 1; filter: url(#runeGlowF); } }
+    @keyframes runeA3 { 0%, 100% { fill: #2a4a2a; opacity: 0.4; } 20%, 30% { fill: #00ff88; opacity: 1; filter: url(#runeGlowF); } }
+    @keyframes runeA4 { 0%, 100% { fill: #2a4a2a; opacity: 0.4; } 30%, 40% { fill: #00ff88; opacity: 1; filter: url(#runeGlowF); } }
+    @keyframes runeA5 { 0%, 100% { fill: #2a4a2a; opacity: 0.4; } 40%, 50% { fill: #00ff88; opacity: 1; filter: url(#runeGlowF); } }
+    @keyframes runeA6 { 0%, 100% { fill: #2a4a2a; opacity: 0.4; } 50%, 60% { fill: #00ff88; opacity: 1; filter: url(#runeGlowF); } }
+
+    @keyframes goldReveal {
+      0%, 8% { opacity: 0; transform: translateY(2px); }
+      10% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 1; }
+    }
+    @keyframes xpGrow {
+      0% { width: 0; }
+      100% { width: 160px; }
+    }
+    @keyframes xpFlash {
+      0%, 90% { opacity: 0; }
+      95% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    @keyframes skillPopup {
+      0% { opacity: 0; transform: translateY(10px); }
+      10% { opacity: 1; transform: translateY(0); }
+      80% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+    @keyframes tabHover {
+      0%, 100% { fill: #2a2820; }
+      50% { fill: #3a3830; }
+    }
+    @keyframes statsCount {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes borderGlow {
+      0%, 100% { stroke-opacity: 0.2; }
+      50% { stroke-opacity: 0.5; }
+    }
+
+    .rune { font-family: 'Times New Roman', serif; font-size: 20px; }
+    .r1 { animation: runeA1 4s ease infinite; }
+    .r2 { animation: runeA2 4s ease infinite; }
+    .r3 { animation: runeA3 4s ease infinite; }
+    .r4 { animation: runeA4 4s ease infinite; }
+    .r5 { animation: runeA5 4s ease infinite; }
+    .r6 { animation: runeA6 4s ease infinite; }
+
+    .title-char {
+      font-family: 'Times New Roman', 'Georgia', serif;
+      font-weight: 900;
+      font-size: 72px;
+      fill: url(#goldText);
+      stroke: #aa7700;
+      stroke-width: 0.5;
+      filter: url(#goldGlow);
+    }
+    .tc1 { opacity: 0; animation: goldReveal 8s ease forwards; animation-delay: 0.5s; }
+    .tc2 { opacity: 0; animation: goldReveal 8s ease forwards; animation-delay: 0.7s; }
+    .tc3 { opacity: 0; animation: goldReveal 8s ease forwards; animation-delay: 0.85s; }
+    .tc4 { opacity: 0; animation: goldReveal 8s ease forwards; animation-delay: 1.2s; }
+    .tc5 { opacity: 0; animation: goldReveal 8s ease forwards; animation-delay: 1.35s; }
+    .tc6 { opacity: 0; animation: goldReveal 8s ease forwards; animation-delay: 1.5s; }
+    .tc7 { opacity: 0; animation: goldReveal 8s ease forwards; animation-delay: 1.65s; }
+    .tc8 { opacity: 0; animation: goldReveal 8s ease forwards; animation-delay: 1.8s; }
+
+    .xp-fill { animation: xpGrow 3s ease forwards; animation-delay: 2.2s; width: 0; }
+    .xp-popup { animation: skillPopup 3s ease infinite; animation-delay: 2.8s; opacity: 0; }
+    .skill-icon { transform-origin: center; }
+    .stone-border { animation: borderGlow 3s ease-in-out infinite; }
+    .tab-anim { animation: tabHover 4s ease infinite; }
+  </style>
+
+  <!-- Background - dark parchment -->
+  <rect width="800" height="340" rx="8" fill="#0f0e0a"/>
+
+  <!-- Stone border -->
+  <rect x="8" y="8" width="784" height="324" rx="6" fill="none" stroke="#3a3628" stroke-width="2" class="stone-border"/>
+  <rect x="12" y="12" width="776" height="316" rx="4" fill="none" stroke="#2a2820" stroke-width="1"/>
+
+  <!-- ===== LEFT: Rune stones ===== -->
+  <g transform="translate(40, 65)">
+    <!-- Stone tablet background -->
+    <rect x="0" y="0" width="130" height="190" rx="4" fill="url(#stoneGrad)" stroke="#4a4838" stroke-width="1"/>
+    <rect x="0" y="0" width="130" height="190" rx="4" fill="url(#stoneTex)"/>
+
+    <!-- Decorative border on stone -->
+    <rect x="6" y="6" width="118" height="178" rx="2" fill="none" stroke="#4a4838" stroke-width="0.5" stroke-dasharray="2 2"/>
+
+    <!-- Rune symbols (ancient-looking marks) -->
+    <text x="30" y="40" class="rune r1" fill="#2a4a2a">ᚠ</text>
+    <text x="65" y="40" class="rune r2" fill="#2a4a2a">ᚢ</text>
+    <text x="100" y="40" class="rune r3" fill="#2a4a2a">ᚦ</text>
+
+    <text x="30" y="75" class="rune r4" fill="#2a4a2a">ᚨ</text>
+    <text x="65" y="75" class="rune r5" fill="#2a4a2a">ᚱ</text>
+    <text x="100" y="75" class="rune r6" fill="#2a4a2a">ᚲ</text>
+
+    <text x="30" y="110" class="rune r1" fill="#2a4a2a" style="animation-delay: 0.3s">ᚷ</text>
+    <text x="65" y="110" class="rune r3" fill="#2a4a2a" style="animation-delay: 0.6s">ᚹ</text>
+    <text x="100" y="110" class="rune r5" fill="#2a4a2a" style="animation-delay: 0.9s">ᚺ</text>
+
+    <text x="30" y="145" class="rune r2" fill="#2a4a2a" style="animation-delay: 1.2s">ᚾ</text>
+    <text x="65" y="145" class="rune r4" fill="#2a4a2a" style="animation-delay: 1.5s">ᛁ</text>
+    <text x="100" y="145" class="rune r6" fill="#2a4a2a" style="animation-delay: 1.8s">ᛃ</text>
+
+    <!-- Carved line separators -->
+    <line x1="15" y1="55" x2="115" y2="55" stroke="#4a4838" stroke-width="0.5"/>
+    <line x1="15" y1="90" x2="115" y2="90" stroke="#4a4838" stroke-width="0.5"/>
+    <line x1="15" y1="125" x2="115" y2="125" stroke="#4a4838" stroke-width="0.5"/>
+    <line x1="15" y1="160" x2="115" y2="160" stroke="#4a4838" stroke-width="0.5"/>
+  </g>
+
+  <!-- ===== CENTER: Title ===== -->
+  <g>
+    <text x="199" y="135" class="title-char tc1">K</text>
+    <text x="250" y="135" class="title-char tc2">e</text>
+    <text x="286" y="135" class="title-char tc3">y</text>
+    <text x="335" y="135" class="title-char tc4">F</text>
+    <text x="379" y="135" class="title-char tc5">o</text>
+    <text x="419" y="135" class="title-char tc6">r</text>
+    <text x="449" y="135" class="title-char tc7">g</text>
+    <text x="487" y="135" class="title-char tc8">e</text>
+
+    <!-- Decorative swords/dividers around title -->
+    <line x1="195" y1="155" x2="520" y2="155" stroke="#aa7700" stroke-width="0.5" opacity="0.4"/>
+    <line x1="215" y1="159" x2="500" y2="159" stroke="#aa7700" stroke-width="0.3" opacity="0.3"/>
+    <!-- Diamond ornaments -->
+    <polygon points="357,153 360,156 357,159 354,156" fill="#aa7700" opacity="0.5"/>
+    <polygon points="225,153 228,156 225,159 222,156" fill="#aa7700" opacity="0.3"/>
+    <polygon points="490,153 493,156 490,159 487,156" fill="#aa7700" opacity="0.3"/>
+  </g>
+
+  <!-- Subtitle -->
+  <text x="357" y="180" text-anchor="middle" font-family="'Times New Roman', serif" font-size="13" fill="#8a7a5a" letter-spacing="3" opacity="0" style="animation: fadeIn 1s ease forwards 2.2s;">
+    LEVEL 99 KEYSTROKE SMITHING
+  </text>
+
+  <!-- ===== RIGHT: Skill panel (RS-style) ===== -->
+  <g transform="translate(535, 55)">
+    <!-- Panel background -->
+    <rect x="0" y="0" width="220" height="230" rx="4" fill="#1a1810" stroke="#3a3628" stroke-width="1.5"/>
+    <!-- Tab bar -->
+    <rect x="0" y="0" width="220" height="24" rx="4" fill="#2a2820"/>
+    <rect x="0" y="12" width="220" height="12" fill="#2a2820"/>
+    <!-- Tab items -->
+    <rect x="4" y="4" width="40" height="16" rx="2" fill="#3a3830" class="tab-anim"/>
+    <text x="24" y="16" text-anchor="middle" font-family="'Courier New', monospace" font-size="8" fill="#ffd700">Stats</text>
+    <rect x="48" y="4" width="40" height="16" rx="2" fill="#2a2820"/>
+    <text x="68" y="16" text-anchor="middle" font-family="'Courier New', monospace" font-size="8" fill="#8a7a5a">Inv</text>
+    <rect x="92" y="4" width="40" height="16" rx="2" fill="#2a2820"/>
+    <text x="112" y="16" text-anchor="middle" font-family="'Courier New', monospace" font-size="8" fill="#8a7a5a">Keys</text>
+
+    <!-- Skill rows -->
+    <!-- Smithing -->
+    <g transform="translate(10, 36)">
+      <rect x="0" y="0" width="24" height="24" rx="2" fill="#2a2820" stroke="#3a3628" stroke-width="0.5"/>
+      <text x="12" y="16" text-anchor="middle" font-size="14" class="skill-icon">⚒</text>
+      <text x="30" y="10" font-family="'Courier New', monospace" font-size="10" fill="#ff8800" font-weight="bold">Smithing</text>
+      <text x="30" y="22" font-family="'Courier New', monospace" font-size="9" fill="#ffd700">Lvl 99</text>
+      <text x="130" y="16" font-family="'Courier New', monospace" font-size="9" fill="#00cc44">13,034,431 xp</text>
+    </g>
+
+    <!-- Typing -->
+    <g transform="translate(10, 66)">
+      <rect x="0" y="0" width="24" height="24" rx="2" fill="#2a2820" stroke="#3a3628" stroke-width="0.5"/>
+      <text x="12" y="16" text-anchor="middle" font-size="14" class="skill-icon" style="animation-delay: 0.3s">⌨</text>
+      <text x="30" y="10" font-family="'Courier New', monospace" font-size="10" fill="#ff8800" font-weight="bold">Typing</text>
+      <text x="30" y="22" font-family="'Courier New', monospace" font-size="9" fill="#ffd700">Lvl 92</text>
+      <text x="130" y="16" font-family="'Courier New', monospace" font-size="9" fill="#00cc44">6,517,253 xp</text>
+    </g>
+
+    <!-- Synthesis -->
+    <g transform="translate(10, 96)">
+      <rect x="0" y="0" width="24" height="24" rx="2" fill="#2a2820" stroke="#3a3628" stroke-width="0.5"/>
+      <text x="12" y="16" text-anchor="middle" font-size="14" class="skill-icon" style="animation-delay: 0.6s">🔮</text>
+      <text x="30" y="10" font-family="'Courier New', monospace" font-size="10" fill="#ff8800" font-weight="bold">Synthesis</text>
+      <text x="30" y="22" font-family="'Courier New', monospace" font-size="9" fill="#ffd700">Lvl 85</text>
+      <text x="130" y="16" font-family="'Courier New', monospace" font-size="9" fill="#00cc44">3,258,594 xp</text>
+    </g>
+
+    <!-- Precision -->
+    <g transform="translate(10, 126)">
+      <rect x="0" y="0" width="24" height="24" rx="2" fill="#2a2820" stroke="#3a3628" stroke-width="0.5"/>
+      <text x="12" y="16" text-anchor="middle" font-size="14" class="skill-icon" style="animation-delay: 0.9s">🎯</text>
+      <text x="30" y="10" font-family="'Courier New', monospace" font-size="10" fill="#ff8800" font-weight="bold">Precision</text>
+      <text x="30" y="22" font-family="'Courier New', monospace" font-size="9" fill="#ffd700">Lvl 78</text>
+      <text x="130" y="16" font-family="'Courier New', monospace" font-size="9" fill="#00cc44">1,629,200 xp</text>
+    </g>
+
+    <!-- Separator -->
+    <line x1="10" y1="158" x2="210" y2="158" stroke="#3a3628" stroke-width="0.5"/>
+
+    <!-- XP Bar -->
+    <g transform="translate(10, 166)">
+      <text x="0" y="10" font-family="'Courier New', monospace" font-size="9" fill="#8a7a5a">Total XP</text>
+      <rect x="0" y="16" width="196" height="14" rx="3" fill="#1a2a1a" stroke="#2a3a2a" stroke-width="0.5"/>
+      <rect x="1" y="17" width="0" height="12" rx="2" fill="url(#xpBarFill)" class="xp-fill"/>
+      <text x="98" y="27" text-anchor="middle" font-family="'Courier New', monospace" font-size="8" fill="#ffffff" opacity="0.8">24,439,478 / 30,000,000</text>
+    </g>
+
+    <!-- Recent activity -->
+    <g transform="translate(10, 200)">
+      <text x="0" y="10" font-family="'Courier New', monospace" font-size="8" fill="#5a5848">Recent: +142 Smithing XP</text>
+      <text x="0" y="22" font-family="'Courier New', monospace" font-size="8" fill="#5a5848">Forged: 847 keystrokes</text>
+    </g>
+  </g>
+
+  <!-- Bottom decorative band -->
+  <g transform="translate(0, 296)">
+    <rect x="30" y="0" width="740" height="1" fill="#3a3628" opacity="0.3"/>
+    <text x="400" y="18" text-anchor="middle" font-family="'Times New Roman', serif" font-size="9" fill="#4a4838" letter-spacing="2">
+      ⚔ FORGE YOUR KEYSTROKES WITH ANCIENT PRECISION ⚔
+    </text>
+  </g>
+</svg>

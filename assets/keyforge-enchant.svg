@@ -1,0 +1,337 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340">
+  <defs>
+    <radialGradient id="enchGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6a00ff15"/>
+      <stop offset="60%" stop-color="#3a008808"/>
+      <stop offset="100%" stop-color="#00000000"/>
+    </radialGradient>
+    <radialGradient id="bookGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#aa66ff30"/>
+      <stop offset="100%" stop-color="#6a00ff00"/>
+    </radialGradient>
+    <linearGradient id="bookCoverL" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3a2a1a"/>
+      <stop offset="100%" stop-color="#2a1a0a"/>
+    </linearGradient>
+    <linearGradient id="bookCoverR" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3a2a1a"/>
+      <stop offset="100%" stop-color="#2a1a0a"/>
+    </linearGradient>
+    <linearGradient id="pageL" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#e8e0d0"/>
+      <stop offset="100%" stop-color="#d8d0c0"/>
+    </linearGradient>
+    <linearGradient id="pageR" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e8e0d0"/>
+      <stop offset="100%" stop-color="#d0c8b8"/>
+    </linearGradient>
+    <linearGradient id="tableGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0a0a18"/>
+    </linearGradient>
+    <filter id="eGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="eHeavyGlow">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="eSoftGlow">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textShadow">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#8844ff" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes orbit {
+      0% { transform: rotate(0deg) translateX(90px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
+    }
+    @keyframes orbitSlow {
+      0% { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+    }
+    @keyframes orbitFast {
+      0% { transform: rotate(0deg) translateX(65px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(65px) rotate(-360deg); }
+    }
+    @keyframes glyphFloat {
+      0%, 100% { opacity: 0.3; transform: translateY(0); }
+      50% { opacity: 0.7; transform: translateY(-3px); }
+    }
+    @keyframes particleIn {
+      0% { opacity: 0.8; }
+      100% { opacity: 0; }
+    }
+    @keyframes bookFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    @keyframes pageFlip {
+      0%, 80% { opacity: 1; }
+      90% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+    @keyframes enchantPulse {
+      0%, 100% { opacity: 0.15; r: 60; }
+      50% { opacity: 0.25; r: 70; }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(8px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes resolveGlyph {
+      0%, 30% { opacity: 0; }
+      40% { opacity: 0.5; fill: #8844ff; }
+      70% { fill: #aa88ff; }
+      100% { opacity: 1; fill: #e0e4f0; }
+    }
+    @keyframes resolveAccent {
+      0%, 30% { opacity: 0; }
+      40% { opacity: 0.5; fill: #8844ff; }
+      70% { fill: #aa88ff; }
+      100% { opacity: 1; fill: #aa66ff; }
+    }
+    @keyframes diamondSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes streamIn {
+      0% { opacity: 0; transform: translate(var(--sx), var(--sy)); }
+      50% { opacity: 0.6; }
+      100% { opacity: 0; transform: translate(0, 0); }
+    }
+    @keyframes xpBarGrow {
+      0% { width: 0; }
+      100% { width: 120px; }
+    }
+    @keyframes lvlPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .orbit1 { animation: orbit 12s linear infinite; transform-origin: 0 0; }
+    .orbit2 { animation: orbit 12s linear infinite; transform-origin: 0 0; animation-delay: -3s; }
+    .orbit3 { animation: orbit 12s linear infinite; transform-origin: 0 0; animation-delay: -6s; }
+    .orbit4 { animation: orbit 12s linear infinite; transform-origin: 0 0; animation-delay: -9s; }
+    .orbit5 { animation: orbitSlow 18s linear infinite; transform-origin: 0 0; }
+    .orbit6 { animation: orbitSlow 18s linear infinite; transform-origin: 0 0; animation-delay: -6s; }
+    .orbit7 { animation: orbitSlow 18s linear infinite; transform-origin: 0 0; animation-delay: -12s; }
+    .orbit8 { animation: orbitFast 8s linear infinite; transform-origin: 0 0; }
+    .orbit9 { animation: orbitFast 8s linear infinite; transform-origin: 0 0; animation-delay: -4s; }
+
+    .glyph-float { animation: glyphFloat 3s ease-in-out infinite; }
+    .gf1 { animation-delay: 0s; }
+    .gf2 { animation-delay: 0.5s; }
+    .gf3 { animation-delay: 1s; }
+    .gf4 { animation-delay: 1.5s; }
+    .gf5 { animation-delay: 2s; }
+
+    .book-float { animation: bookFloat 4s ease-in-out infinite; }
+
+    .enchant-ring { animation: enchantPulse 3s ease-in-out infinite; }
+
+    .title-glyph {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-weight: 800;
+      font-size: 52px;
+    }
+    .tg1 { animation: resolveGlyph 3s ease forwards 0.3s; opacity: 0; }
+    .tg2 { animation: resolveGlyph 3s ease forwards 0.45s; opacity: 0; }
+    .tg3 { animation: resolveGlyph 3s ease forwards 0.58s; opacity: 0; }
+    .tg4 { animation: resolveAccent 3s ease forwards 0.9s; opacity: 0; }
+    .tg5 { animation: resolveAccent 3s ease forwards 1.05s; opacity: 0; }
+    .tg6 { animation: resolveAccent 3s ease forwards 1.18s; opacity: 0; }
+    .tg7 { animation: resolveAccent 3s ease forwards 1.3s; opacity: 0; }
+    .tg8 { animation: resolveAccent 3s ease forwards 1.45s; opacity: 0; }
+
+    .subtitle {
+      opacity: 0;
+      animation: slideUp 0.8s ease forwards 2s;
+    }
+
+    /* Galactic alphabet glyphs (SGA-inspired characters) */
+    .sga { font-family: 'Segoe UI Symbol', 'Arial Unicode MS', sans-serif; font-size: 16px; }
+  </style>
+
+  <!-- Background -->
+  <rect width="800" height="340" rx="12" fill="#0d0d14"/>
+  <rect width="800" height="340" rx="12" fill="url(#enchGlow)"/>
+
+  <!-- Subtle obsidian texture -->
+  <g opacity="0.02">
+    <rect x="0" y="0" width="800" height="340" rx="12" fill="#ffffff"/>
+  </g>
+
+  <!-- ===== ENCHANTING TABLE (left-center) ===== -->
+  <g transform="translate(180, 195)">
+    <!-- Table base -->
+    <rect x="-35" y="20" width="70" height="35" rx="3" fill="url(#tableGrad)" stroke="#2a2a4e" stroke-width="1"/>
+    <!-- Table top (diamond shape ornament) -->
+    <rect x="-40" y="14" width="80" height="10" rx="2" fill="#1a1a2e" stroke="#2a2a4e" stroke-width="0.5"/>
+    <!-- Obsidian legs -->
+    <rect x="-30" y="55" width="8" height="12" rx="1" fill="#0a0a18"/>
+    <rect x="22" y="55" width="8" height="12" rx="1" fill="#0a0a18"/>
+    <!-- Diamond inlay -->
+    <polygon points="0,30 8,38 0,46 -8,38" fill="#44dddd" opacity="0.3" filter="url(#eGlow)">
+      <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2s" repeatCount="indefinite"/>
+    </polygon>
+    <!-- Red cloth detail -->
+    <rect x="-28" y="18" width="56" height="3" rx="1" fill="#8b0000" opacity="0.4"/>
+
+    <!-- Open book floating above table -->
+    <g class="book-float" transform="translate(0, -20)">
+      <!-- Left page -->
+      <path d="M-2,0 L-2,-25 Q-2,-28 -5,-28 L-32,-28 Q-35,-28 -35,-25 L-35,0 Z" fill="url(#pageL)"/>
+      <!-- Right page -->
+      <path d="M2,0 L2,-25 Q2,-28 5,-28 L32,-28 Q35,-28 35,-25 L35,0 Z" fill="url(#pageR)"/>
+      <!-- Spine -->
+      <rect x="-2" y="-28" width="4" height="28" fill="#4a3a2a"/>
+      <!-- Page text (tiny glyphs) -->
+      <g opacity="0.3">
+        <text x="-28" y="-18" font-family="monospace" font-size="4" fill="#4a3a2a">ᔑ ᓭ╎リ⊣ꖎᒷ</text>
+        <text x="-28" y="-12" font-family="monospace" font-size="4" fill="#4a3a2a">ꖌᒷ||ᓭℸ ̣ ∷𝙹ꖌᒷ</text>
+        <text x="-28" y="-6" font-family="monospace" font-size="4" fill="#4a3a2a">⎓𝙹∷⊣ᒷ↸</text>
+        <text x="6" y="-18" font-family="monospace" font-size="4" fill="#4a3a2a">ℸ ̣ ╎ᒲ╎リ⊣</text>
+        <text x="6" y="-12" font-family="monospace" font-size="4" fill="#4a3a2a">↸ᔑℸ ̣ ᔑ</text>
+        <text x="6" y="-6" font-family="monospace" font-size="4" fill="#4a3a2a">ᓭ||リℸ ̣ ⍑</text>
+      </g>
+      <!-- Book glow -->
+      <ellipse cx="0" cy="-14" rx="20" ry="12" fill="#8844ff" opacity="0.1" filter="url(#eHeavyGlow)"/>
+    </g>
+
+    <!-- Enchantment glow ring around table -->
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#8844ff" stroke-width="0.5" opacity="0.15" class="enchant-ring"/>
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#aa66ff" stroke-width="0.3" opacity="0.1" class="enchant-ring" style="animation-delay: 0.5s"/>
+  </g>
+
+  <!-- ===== ORBITING GLYPHS ===== -->
+  <g transform="translate(180, 185)">
+    <!-- Inner orbit - fast -->
+    <g class="orbit8">
+      <text x="0" y="0" font-size="14" fill="#8844ff" opacity="0.6" filter="url(#eGlow)">ᔑ</text>
+    </g>
+    <g class="orbit9">
+      <text x="0" y="0" font-size="14" fill="#aa66ff" opacity="0.5" filter="url(#eGlow)">ꖌ</text>
+    </g>
+
+    <!-- Mid orbit -->
+    <g class="orbit1">
+      <text x="0" y="0" font-size="12" fill="#8844ff" opacity="0.5" filter="url(#eGlow)">ᒷ</text>
+    </g>
+    <g class="orbit2">
+      <text x="0" y="0" font-size="12" fill="#aa66ff" opacity="0.4" filter="url(#eGlow)">ᓭ</text>
+    </g>
+    <g class="orbit3">
+      <text x="0" y="0" font-size="12" fill="#8844ff" opacity="0.5" filter="url(#eGlow)">⊣</text>
+    </g>
+    <g class="orbit4">
+      <text x="0" y="0" font-size="12" fill="#aa66ff" opacity="0.4" filter="url(#eGlow)">∷</text>
+    </g>
+
+    <!-- Outer orbit - slow -->
+    <g class="orbit5">
+      <text x="0" y="0" font-size="10" fill="#6633cc" opacity="0.3" filter="url(#eGlow)">⎓</text>
+    </g>
+    <g class="orbit6">
+      <text x="0" y="0" font-size="10" fill="#6633cc" opacity="0.3" filter="url(#eGlow)">ℸ</text>
+    </g>
+    <g class="orbit7">
+      <text x="0" y="0" font-size="10" fill="#6633cc" opacity="0.3" filter="url(#eGlow)">╎</text>
+    </g>
+  </g>
+
+  <!-- ===== TITLE (center-right) ===== -->
+  <g filter="url(#textShadow)">
+    <text x="430" y="120" class="title-glyph tg1" fill="#8844ff">K</text>
+    <text x="463" y="120" class="title-glyph tg2" fill="#8844ff">e</text>
+    <text x="490" y="120" class="title-glyph tg3" fill="#8844ff">y</text>
+    <text x="530" y="120" class="title-glyph tg4" fill="#8844ff">F</text>
+    <text x="563" y="120" class="title-glyph tg5" fill="#8844ff">o</text>
+    <text x="593" y="120" class="title-glyph tg6" fill="#8844ff">r</text>
+    <text x="615" y="120" class="title-glyph tg7" fill="#8844ff">g</text>
+    <text x="647" y="120" class="title-glyph tg8" fill="#8844ff">e</text>
+  </g>
+
+  <!-- Subtitle -->
+  <text x="555" y="152" text-anchor="middle" class="subtitle"
+        font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#6a5a8a" letter-spacing="3">
+    ENCHANTED KEYSTROKE SYNTHESIS
+  </text>
+
+  <!-- ===== ENCHANTMENT OPTIONS (right panel) ===== -->
+  <g transform="translate(440, 180)" opacity="0.7">
+    <!-- Option slots -->
+    <rect x="0" y="0" width="220" height="36" rx="3" fill="#1a1a2e" stroke="#2a2a4e" stroke-width="0.5"/>
+    <text x="10" y="14" font-family="monospace" font-size="5" fill="#6633cc" opacity="0.6">ᓭ||リℸ ̣ ⍑ᒷᓭ╎∓ᒷ ꖌᒷ||ᓭ</text>
+    <text x="10" y="26" font-family="'Segoe UI', sans-serif" font-size="11" fill="#aa88ff">Synthesize Human Keystrokes</text>
+    <text x="190" y="24" font-family="'Segoe UI', sans-serif" font-size="10" fill="#44ddaa" font-weight="bold">30</text>
+
+    <rect x="0" y="42" width="220" height="36" rx="3" fill="#1a1a2e" stroke="#2a2a4e" stroke-width="0.5"/>
+    <text x="10" y="56" font-family="monospace" font-size="5" fill="#6633cc" opacity="0.6">⊣ᒷリᒷ∷ᔑℸ ̣ ᒷ ᓵᓭ⍊</text>
+    <text x="10" y="68" font-family="'Segoe UI', sans-serif" font-size="11" fill="#7766aa">Generate Timing CSV</text>
+    <text x="190" y="66" font-family="'Segoe UI', sans-serif" font-size="10" fill="#44ddaa" font-weight="bold">15</text>
+
+    <rect x="0" y="84" width="220" height="36" rx="3" fill="#1a1a2e" stroke="#2a2a4e" stroke-width="0.5"/>
+    <text x="10" y="98" font-family="monospace" font-size="5" fill="#6633cc" opacity="0.6">ℸ ̣ ||!¡ᒷ ∷ᒷᔑꖎ╎ᓭℸ ̣ ╎ᓵ</text>
+    <text x="10" y="110" font-family="'Segoe UI', sans-serif" font-size="11" fill="#5a5580">Type with Realistic Cadence</text>
+    <text x="190" y="108" font-family="'Segoe UI', sans-serif" font-size="10" fill="#44ddaa" font-weight="bold">8</text>
+  </g>
+
+  <!-- Lapis cost indicator -->
+  <g transform="translate(648, 182)" opacity="0.6">
+    <rect x="0" y="0" width="14" height="14" rx="2" fill="#2244aa" stroke="#3355cc" stroke-width="0.5"/>
+    <rect x="3" y="3" width="8" height="8" rx="1" fill="#4488ff" opacity="0.5"/>
+  </g>
+  <g transform="translate(648, 224)" opacity="0.4">
+    <rect x="0" y="0" width="14" height="14" rx="2" fill="#2244aa" stroke="#3355cc" stroke-width="0.5"/>
+    <rect x="3" y="3" width="8" height="8" rx="1" fill="#4488ff" opacity="0.5"/>
+  </g>
+  <g transform="translate(648, 266)" opacity="0.25">
+    <rect x="0" y="0" width="14" height="14" rx="2" fill="#2244aa" stroke="#3355cc" stroke-width="0.5"/>
+    <rect x="3" y="3" width="8" height="8" rx="1" fill="#4488ff" opacity="0.5"/>
+  </g>
+
+  <!-- ===== FLOATING PARTICLES ===== -->
+  <g opacity="0.4">
+    <circle cx="120" cy="100" r="1.5" fill="#8844ff">
+      <animate attributeName="cy" values="100;60" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="200" cy="120" r="1" fill="#aa66ff">
+      <animate attributeName="cy" values="120;80" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="160" cy="90" r="1.2" fill="#6633cc">
+      <animate attributeName="cy" values="90;50" dur="4.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="240" cy="130" r="0.8" fill="#aa88ff">
+      <animate attributeName="cy" values="130;90" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="140" cy="140" r="1.3" fill="#8844ff">
+      <animate attributeName="cy" values="140;100" dur="3.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0" dur="3.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Bottom bar -->
+  <text x="400" y="324" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#2a2a4e" letter-spacing="2">
+    ENCHANT YOUR TEXT WITH HUMAN TIMING
+  </text>
+
+  <!-- Corner decorations -->
+  <path d="M16,30 L16,16 L30,16" fill="none" stroke="#8844ff20" stroke-width="1"/>
+  <path d="M770,16 L784,16 L784,30" fill="none" stroke="#8844ff20" stroke-width="1"/>
+  <path d="M16,310 L16,324 L30,324" fill="none" stroke="#8844ff20" stroke-width="1"/>
+  <path d="M770,324 L784,324 L784,310" fill="none" stroke="#8844ff20" stroke-width="1"/>
+</svg>
