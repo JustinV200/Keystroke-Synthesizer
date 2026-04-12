@@ -81,8 +81,10 @@ class HeteroscedasticKLLoss:
                 print(f"  WARNING: Invalid var detected, skipping sequence {j}")
                 continue
             
-            # Compute squared error, masking NaN positions
-            squared_error = (target[:L, self.cont_idx] - mean[j, :L, :]) ** 2
+            # Compute squared error — replace NaN targets with 0 BEFORE computation
+            # (torch.where on the result doesn't prevent NaN gradients: 0 * NaN = NaN in IEEE 754)
+            target_clean = torch.where(valid_mask, target[:L, self.cont_idx], torch.zeros_like(target[:L, self.cont_idx]))
+            squared_error = (target_clean - mean[j, :L, :]) ** 2
             squared_error = torch.where(valid_mask, squared_error, torch.zeros_like(squared_error))
             
             # Compute NLL loss with additional safety
