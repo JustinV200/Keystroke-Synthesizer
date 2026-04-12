@@ -29,5 +29,5 @@ export TORCH_USE_CUDA_DSA=1
 # CUDA_LAUNCH_BLOCKING=1  # Only enable for debugging — forces synchronous CUDA, very slow
 
 #python -m Trainer.Trainer
-#python synthesizeKeystrokes.py
-python Testing/accuracyTester.py
+python Testing/synthesizeKeystrokes.py
+#python Testing/accuracyTester.py
