@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#12121a"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4f4f5"/>
+      <stop offset="60%" stop-color="#d4d4d8"/>
+      <stop offset="100%" stop-color="#a1a1aa"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes cursorBlink { 0%,49% { opacity:1; } 50%,100% { opacity:0; } }
+    @keyframes typeChar { 0% { opacity:0; } 100% { opacity:1; } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    .type-char { animation: typeChar 0.05s ease forwards; opacity: 0; }
+  </style>
+
+  <!-- Background -->
+  <rect width="720" height="340" fill="url(#bgGrad)"/>
+
+  <!-- Soft glow behind title -->
+  <ellipse cx="360" cy="145" rx="220" ry="80" fill="#6366f1" opacity="0.06" filter="url(#glow)"/>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="720" height="1" fill="url(#accentGrad)" opacity="0.4"/>
+
+  <!-- ===== TITLE ===== -->
+  <text x="360" y="175" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', 'Arial', sans-serif" font-size="110" font-weight="800" fill="url(#textGrad)" letter-spacing="-3" opacity="0" style="animation: fadeIn 0.8s ease forwards 0.2s;">
+    KeyForge
+  </text>
+
+  <!-- Accent underline -->
+  <rect x="220" y="192" width="280" height="2.5" rx="1.25" fill="url(#accentGrad)" opacity="0.5"/>
+
+  <!-- Subtitle -->
+  <text x="360" y="222" text-anchor="middle" font-family="'SF Mono', 'Consolas', 'Courier New', monospace" font-size="12" fill="#52525b" letter-spacing="6" opacity="0" style="animation: fadeIn 0.8s ease forwards 0.6s;">
+    KEYSTROKE SYNTHESIS
+  </text>
+
+  <!-- ===== BOTTOM: Typing line ===== -->
+  <g opacity="0" style="animation: fadeIn 0.6s ease forwards 1.0s;">
+    <!-- Thin separator -->
+    <line x1="160" y1="270" x2="560" y2="270" stroke="#27272a" stroke-width="0.5"/>
+
+    <!-- Terminal prompt with typing animation -->
+    <text x="200" y="300" font-family="'SF Mono', 'Consolas', 'Courier New', monospace" font-size="13" fill="#6366f1">$</text>
+    <text x="218" y="300" font-family="'SF Mono', 'Consolas', 'Courier New', monospace" font-size="13" fill="#71717a">
+      <tspan class="type-char" style="animation-delay:1.5s">g</tspan>
+      <tspan class="type-char" style="animation-delay:1.6s">e</tspan>
+      <tspan class="type-char" style="animation-delay:1.7s">n</tspan>
+      <tspan class="type-char" style="animation-delay:1.8s">e</tspan>
+      <tspan class="type-char" style="animation-delay:1.9s">r</tspan>
+      <tspan class="type-char" style="animation-delay:2.0s">a</tspan>
+      <tspan class="type-char" style="animation-delay:2.1s">t</tspan>
+      <tspan class="type-char" style="animation-delay:2.2s">i</tspan>
+      <tspan class="type-char" style="animation-delay:2.3s">n</tspan>
+      <tspan class="type-char" style="animation-delay:2.4s">g</tspan>
+      <tspan class="type-char" style="animation-delay:2.6s"> </tspan>
+      <tspan class="type-char" style="animation-delay:2.7s">k</tspan>
+      <tspan class="type-char" style="animation-delay:2.8s">e</tspan>
+      <tspan class="type-char" style="animation-delay:2.9s">y</tspan>
+      <tspan class="type-char" style="animation-delay:3.0s">s</tspan>
+      <tspan class="type-char" style="animation-delay:3.1s">t</tspan>
+      <tspan class="type-char" style="animation-delay:3.2s">r</tspan>
+      <tspan class="type-char" style="animation-delay:3.3s">o</tspan>
+      <tspan class="type-char" style="animation-delay:3.4s">k</tspan>
+      <tspan class="type-char" style="animation-delay:3.5s">e</tspan>
+      <tspan class="type-char" style="animation-delay:3.6s">s</tspan>
+      <tspan class="type-char" style="animation-delay:3.7s">.</tspan>
+      <tspan class="type-char" style="animation-delay:3.8s">.</tspan>
+      <tspan class="type-char" style="animation-delay:3.9s">.</tspan>
+    </text>
+    <!-- Cursor -->
+    <rect x="405" y="288" width="8" height="14" rx="1" fill="#6366f1" style="animation: cursorBlink 1s step-end infinite 4.1s;"/>
+  </g>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="339" width="720" height="1" fill="url(#accentGrad)" opacity="0.2"/>
+
+</svg>

@@ -37,6 +37,15 @@ def make_collate_fn(pad_token_id: int):
             t2c_maps = None
             char_masks = None
 
+        # Character identity side (pad char_ids with 0)
+        char_ids_list = [b["char_ids"] for b in batch]
+        if char_ids_list[0] is not None:
+            max_c = max(m.shape[0] for m in char_ids_list)
+            char_ids_list = [F.pad(m, (0, max_c - m.shape[0]), value=0) for m in char_ids_list]
+            char_ids_batch = torch.stack(char_ids_list, dim=0)
+        else:
+            char_ids_batch = None
+
         # Target side (keep variable-length sequences)
         targets = [b["target"] for b in batch]
 
@@ -45,6 +54,7 @@ def make_collate_fn(pad_token_id: int):
             "attention_mask": attn_mask,
             "token_to_char_idx": t2c_maps,     # [B, max_chars] or None
             "char_mask": char_masks,            # [B, max_chars] or None
+            "char_ids": char_ids_batch,         # [B, max_chars] or None
             "target": targets,                  # list of [L_i, F]
         }
     return collate

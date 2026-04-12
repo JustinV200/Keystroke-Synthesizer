@@ -107,12 +107,17 @@ def predict_keystrokes(
             token_to_char_idx[c] = tok_idx
     token_to_char_idx = token_to_char_idx.unsqueeze(0)  # [1, T_char]
 
+    # Character identity tensor: explicit per-key signal for the model
+    char_ids = torch.tensor(
+        [ord(ch) % 256 for ch in text[:char_len]], dtype=torch.long, device=device
+    ).unsqueeze(0)  # [1, T_char]
+
     enc = {k: v.to(device) for k, v in enc.items() if k in ["input_ids", "attention_mask"]}
 
     #  Run inference 
     with torch.no_grad(), torch.amp.autocast("cuda" if device.type == "cuda" else "cpu"):
         # Model outputs STANDARDIZED mean and log-variance
-        mean_std, logvar_std = model(token_to_char_idx=token_to_char_idx, **enc)
+        mean_std, logvar_std = model(token_to_char_idx=token_to_char_idx, char_ids=char_ids, **enc)
 
         #  De-standardize mean and variance 
         # De-standardize mean: y_mean = y_std * std + mean

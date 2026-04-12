@@ -167,16 +167,16 @@ def computeSynthStats(synthesize=True):
             df = pd.read_csv(csv_path, encoding='utf-8')
             
             # Extract features and remove NaN values
-            dwell = df['DwellTime'].dropna()
-            flight = df['FlightTime'].dropna()  # Already has NaN for first keystroke
-            typing = df['typing_speed'].dropna()
+            dwell = df['DwellTime'].dropna().iloc[:512]
+            flight = df['FlightTime'].dropna().iloc[:512]  # Already has NaN for first keystroke
+            typing = df['typing_speed'].dropna().iloc[:512]
             
             synthDwell_times.extend(dwell.tolist())
             synthFlight_times.extend(flight.tolist())
             synthTyping_speeds.extend(typing.tolist())
 
             # Collect per-character data for detailed analysis
-            synth_row_df = df[['char', 'prev_char', 'DwellTime', 'FlightTime', 'typing_speed']].copy()
+            synth_row_df = df[['char', 'prev_char', 'DwellTime', 'FlightTime', 'typing_speed']].head(512).copy()
             all_synth_rows.append(synth_row_df)
             
         except Exception as e:

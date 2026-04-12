@@ -168,9 +168,12 @@ class Trainer():
                 token_to_char_idx = batch.get("token_to_char_idx")
                 if token_to_char_idx is not None:
                     token_to_char_idx = token_to_char_idx.to(DEVICE, non_blocking=True)
+                char_ids = batch.get("char_ids")
+                if char_ids is not None:
+                    char_ids = char_ids.to(DEVICE, non_blocking=True)
 
                 self.optimizer.zero_grad(set_to_none=True)
-                mean, logvar = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
+                mean, logvar = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx, char_ids=char_ids)
 
                 # Skip batch if model produced NaN/Inf — backward on corrupt output causes CUDA errors
                 if torch.isnan(mean).any() or torch.isinf(mean).any() or torch.isnan(logvar).any() or torch.isinf(logvar).any():
@@ -284,8 +287,11 @@ class Trainer():
                 token_to_char_idx = batch.get("token_to_char_idx")
                 if token_to_char_idx is not None:
                     token_to_char_idx = token_to_char_idx.to(DEVICE, non_blocking=True)
+                char_ids = batch.get("char_ids")
+                if char_ids is not None:
+                    char_ids = char_ids.to(DEVICE, non_blocking=True)
 
-                mean, logvar = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx)
+                mean, logvar = self.model(input_ids, attention_m, token_to_char_idx=token_to_char_idx, char_ids=char_ids)
 
                 # Compute validation loss in fp32
                 loss_dict = self.heteroscedastic_loss.forward(mean, logvar, targets, kl_weight)

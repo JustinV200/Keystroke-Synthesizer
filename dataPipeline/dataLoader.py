@@ -159,6 +159,7 @@ class dataLoader(Dataset):
         # Tokenize (variable length; do NOT pad here)
         enc = {}
         token_to_char_idx = None
+        char_ids = None
         if self.tokenizer is not None:
             enc = self.tokenizer(
                 text,
@@ -190,6 +191,9 @@ class dataLoader(Dataset):
                 for c in range(start, min(end, char_len)):
                     token_to_char_idx[c] = tok_idx
 
+            # Character identity: explicit per-key signal for the model
+            char_ids = torch.tensor([ord(ch) % 256 for ch in text[:char_len]], dtype=torch.long)
+
         features  = torch.tensor(s["features"], dtype=torch.float32)  # [L_i, F]
         valid_len = torch.tensor(s["valid_len"], dtype=torch.long)
 
@@ -211,6 +215,7 @@ class dataLoader(Dataset):
             "input_ids": enc.get("input_ids"),          # 1D (T_i,) or None
             "attention_mask": enc.get("attention_mask"),
             "token_to_char_idx": token_to_char_idx,     # [T_chars] char→token mapping
+            "char_ids": char_ids,                       # [T_chars] ord(char)%256 per character
             "target": features,                         # [L_i, F] standardized features
             "target_len": valid_len
         }
