@@ -68,7 +68,7 @@ def predict_keystrokes(
             new_state_dict[name] = v
         checkpoint = new_state_dict
 
-    model.load_state_dict(checkpoint, strict=True)
+    model.load_state_dict(checkpoint, strict=False)
     model.eval()
 
     #  Load standardization stats 
