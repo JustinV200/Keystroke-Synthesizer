@@ -65,15 +65,27 @@ class TextToKeystrokeModelMultiHead(nn.Module):
                 ``[B, T, num_continuous]`` where *T* is ``T_char`` if the mapping
                 is provided, else ``T_tok``.
         """
+        # --- input validation (catches OOB before CUDA async errors hide the source) ---
+        vocab_size = self.encoder.config.vocab_size
+        assert input_ids.min() >= 0 and input_ids.max() < vocab_size, \
+            f"input_ids OOB: [{input_ids.min()}, {input_ids.max()}] vs vocab {vocab_size}"
+        if char_ids is not None:
+            assert char_ids.min() >= 0 and char_ids.max() < 256, \
+                f"char_ids OOB: [{char_ids.min()}, {char_ids.max()}]"
+
         x = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
         hidden = x.last_hidden_state  # [B, T_tok, hidden]
         
         # Expand token-level embeddings to character-level if mapping provided
         if token_to_char_idx is not None:
+            assert token_to_char_idx.max() < hidden.size(1), \
+                f"token_to_char_idx OOB: max={token_to_char_idx.max()} vs T_tok={hidden.size(1)}"
             hidden = self._expand_to_chars(hidden, token_to_char_idx)  # [B, T_char, hidden]
 
         # Concatenate character identity embedding if provided
         if char_ids is not None:
+            assert char_ids.shape[1] == hidden.shape[1], \
+                f"char_ids/hidden seq len mismatch: {char_ids.shape[1]} vs {hidden.shape[1]}"
             char_emb = self.char_embed(char_ids)  # [B, T_char, 32]
             hidden = torch.cat([hidden, char_emb], dim=-1)  # [B, T_char, hidden+32]
         else:

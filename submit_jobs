@@ -26,7 +26,7 @@ nvidia-smi
 export TOKENIZERS_PARALLELISM=false
 export OMP_NUM_THREADS=$(nproc)
 export TORCH_USE_CUDA_DSA=1
-# CUDA_LAUNCH_BLOCKING=1  # Only enable for debugging — forces synchronous CUDA, very slow
+export CUDA_LAUNCH_BLOCKING=1  # DEBUG: forces synchronous CUDA so errors show real line numbers
 
 #python -m Trainer.Trainer
 #python Testing/synthesizeKeystrokes.py
