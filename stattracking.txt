@@ -440,3 +440,40 @@ Typing Speed:
 *much better now that sample sizes are similar, not sure why they are not equal but gonna call that close enough.
 grapher didint work, gonna retry that
 *struggling a bit with flightime std but overall not bad cant complain
+
+4/12/2026
+
+
+--- BASIC STATISTICS ---
+
+Original Data:
+  DwellTime    - Mean:   109.57, Std:    39.97, N: 2544713
+  FlightTime   - Mean:   133.46, Std:   151.67, N: 2538914
+  Typing Speed - Mean:   225.52, Std:   142.56, N: 2544653
+
+Synthesized Data:
+  DwellTime    - Mean:    97.48, Std:    39.72, N: 1960056
+  FlightTime   - Mean:   151.68, Std:   139.11, N: 1955064
+  Typing Speed - Mean:   197.01, Std:   113.57, N: 1960056
+
+--- STATISTICAL TESTS ---
+
+DwellTime:
+  t-test:       t=319.057, p=0.0000 ***
+  K-S test:     D=  0.115, p=0.0000 ***
+  Cohen's d:      0.303 (small)
+  Mean diff:      12.09 (11.0%)
+
+FlightTime:
+  t-test:       t=-130.830, p=0.0000 ***
+  K-S test:     D=  0.209, p=0.0000 ***
+  Cohen's d:     -0.125 (negligible)
+  Mean diff:      18.22 (13.6%)
+
+Typing Speed:
+  t-test:       t=229.475, p=0.0000 ***
+  K-S test:     D=  0.123, p=0.0000 ***
+  Cohen's d:      0.221 (small)
+  Mean diff:      28.51 (12.6%)
+
+*stats after removal of classification head, and per character training

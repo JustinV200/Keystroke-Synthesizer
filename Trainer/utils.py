@@ -1,6 +1,19 @@
 import torch
 def compute_empirical_variance(train_dataset, device, max_samples=2000):
-    # Compute empirical variance of continuous features from a subset of the training data
+    """Compute per-feature empirical variance from training targets.
+
+    Samples up to *max_samples* training examples and computes the unbiased
+    variance for each continuous feature (DwellTime, FlightTime, typing_speed),
+    ignoring NaN positions.
+
+    Args:
+        train_dataset: Indexable dataset returning dicts with a ``target`` tensor.
+        device (torch.device): Device to place the result on.
+        max_samples (int): Maximum number of samples to use.
+
+    Returns:
+        torch.Tensor: Empirical variance for each feature, shape ``[3]``.
+    """
     all_cont_features = []
     for idx in range(min(len(train_dataset), max_samples)):
         sample = train_dataset[idx]
@@ -16,7 +29,19 @@ def compute_empirical_variance(train_dataset, device, max_samples=2000):
 
 
 def checkforNans(mean, logvar, i, input_ids=None, attention_m=None, targets=None):
-    # Debug: Check for NaN in inputs
+    """Log warnings if any batch tensors contain NaN values.
+
+    Checks input_ids, attention_mask, targets, and model outputs (mean,
+    logvar) and prints diagnostic info for the first NaN occurrence found.
+
+    Args:
+        mean (torch.Tensor): Predicted means from the model.
+        logvar (torch.Tensor): Predicted log-variances from the model.
+        i (int): Batch index (used in log messages).
+        input_ids (torch.Tensor | None): Tokenized input IDs.
+        attention_m (torch.Tensor | None): Attention mask.
+        targets (list[torch.Tensor] | None): List of per-sequence target tensors.
+    """
     if torch.isnan(input_ids).any():
         print(f"  WARNING: NaN in input_ids for batch {i}")
     if torch.isnan(attention_m).any():

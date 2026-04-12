@@ -23,9 +23,22 @@ from .HeteroscedasticKLLoss import *
 
 
 class Trainer():
+    """Orchestrates end-to-end training of the keystroke synthesis model.
+
+    Handles data loading, model creation, optimizer/scheduler setup, the
+    training loop with gradient safety checks, validation with early
+    stopping, and model checkpointing.
+    """
 
 
     def __init__(self):
+        """Initialize datasets, model, optimizer, scheduler, and loss function.
+
+        Loads the tokenizer and full dataset, splits into train/val (80/20),
+        creates data loaders, builds the model (with DataParallel if multi-GPU),
+        configures AdamW with a higher learning rate for the logvar head, and
+        sets up the heteroscedastic KL loss with empirical variance.
+        """
 
         print("Loading tokenizer and datasets...")
         self.tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
@@ -84,19 +97,23 @@ class Trainer():
 
 
     def _compute_empirical_variance(self):
+        """Compute empirical variance of continuous features from training data."""
         return compute_empirical_variance(self.train_dataset, DEVICE)
     
 
     def _get_kl_feature_weights(self):
+        """Return the per-feature KL divergence weight tensor."""
         return torch.tensor(KL_FEATURE_WEIGHTS, device=DEVICE)  # [3]
 
 
     def _get_feature_size(self):
+        """Probe the first batch to determine the target feature dimensionality."""
         probe = next(iter(self.train_loader))
         return probe["target"][0].shape[-1]
         
 
     def _create_model(self):
+        """Instantiate the model on DEVICE, wrapping in DataParallel if multi-GPU."""
         model = TextToKeystrokeModelMultiHead(BASE_MODEL, num_continuous=3).to(DEVICE)
         if torch.cuda.device_count() > 1: # use multiple GPUs if available
             model = nn.DataParallel(model)
@@ -131,6 +148,7 @@ class Trainer():
         return grad_stats
     
     def _train(self):
+        """Run the full training loop with KL annealing, gradient checks, and early stopping."""
         #define variables for training loop
         best_val, patience, step = float("inf"), 0, 0
         for epoch in range(EPOCHS):
@@ -245,6 +263,16 @@ class Trainer():
         print("Training complete!")
 
     def _validate(self, epoch, kl_weight, avg_train):
+        """Evaluate the model on the validation set.
+
+        Args:
+            epoch (int): Current epoch number (0-indexed).
+            kl_weight (float): Current KL divergence weight for loss computation.
+            avg_train (float): Average training loss for the epoch (for logging).
+
+        Returns:
+            tuple[float, float]: ``(val_loss, val_mae)`` averaged over valid samples.
+        """
         # Validation
         self.model.eval()
         val_loss_sum, val_mae_sum, val_count = 0.0, 0.0, 0

@@ -3,6 +3,19 @@ from transformers import AutoModel
 import torch.nn as nn
 
 class TextToKeystrokeModelMultiHead(nn.Module):
+    """DeBERTa-based model that predicts keystroke timing distributions from text.
+
+    Architecture:
+        1. A pretrained DeBERTa encoder maps token sequences to contextual embeddings.
+        2. Token embeddings are expanded to character-level via an index mapping.
+        3. A shared backbone MLP projects embeddings to a lower dimension.
+        4. Two parallel heads predict per-character **mean** and **log-variance**
+           for each continuous feature (DwellTime, FlightTime, typing_speed).
+
+    Args:
+        base_model (str): HuggingFace model identifier for the encoder.
+        num_continuous (int): Number of continuous features to predict.
+    """
 
     def __init__(self, base_model, num_continuous=3):
         super().__init__()
@@ -28,6 +41,20 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         #nn.init.constant_(self.logvar_head.bias, -0.5)
 
     def forward(self, input_ids, attention_mask, token_to_char_idx=None):
+        """Run a forward pass through the model.
+
+        Args:
+            input_ids (torch.Tensor): Tokenized input IDs ``[B, T_tok]``.
+            attention_mask (torch.Tensor): Attention mask ``[B, T_tok]``.
+            token_to_char_idx (torch.Tensor | None): Character-to-token index
+                mapping ``[B, T_char]``.  If provided, token embeddings are
+                expanded to character-level before the regression heads.
+
+        Returns:
+            tuple[torch.Tensor, torch.Tensor]: ``(mean, logvar)`` each of shape
+                ``[B, T, num_continuous]`` where *T* is ``T_char`` if the mapping
+                is provided, else ``T_tok``.
+        """
         x = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
         hidden = x.last_hidden_state  # [B, T_tok, hidden]
         

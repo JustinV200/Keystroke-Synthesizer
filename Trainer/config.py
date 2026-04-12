@@ -1,6 +1,8 @@
-# Training Configuration
-# Justin Verlin, Keystroke Synthesizer
-# config.py - Centralized configuration for training
+"""Centralized training configuration for the Keystroke Synthesizer.
+
+All hyperparameters, paths, and hardware settings are defined here so they
+can be imported with ``from .config import *`` by the trainer and other modules.
+"""
 
 import torch
 import os

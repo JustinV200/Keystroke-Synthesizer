@@ -1,3 +1,9 @@
+"""Evaluate synthesis accuracy by comparing original vs. synthesized keystroke statistics.
+
+Runs statistical tests (t-test, K-S, Cohen's d) and generates comparison
+plots via :class:`grapher`.
+"""
+
 #accuracy tester.py
 # Evaluates model accuracy using existing data pipeline components
 # Compares original vs synthesized keystroke statistics
@@ -37,6 +43,7 @@ def computeOgStats():
     ogDwell_times = []
     ogFlight_times = []
     ogTyping_speeds = []
+    all_og_rows = []
     
     for i, csv_file in enumerate(csv_files):
         csv_path = os.path.join(csv_dir, csv_file)
@@ -75,6 +82,10 @@ def computeOgStats():
             ogDwell_times.extend(dwell_clean.tolist())
             ogFlight_times.extend(flight_clean.tolist())
             ogTyping_speeds.extend(typing_clean.tolist())
+
+            # Collect per-character data for detailed analysis
+            char_df = processed_data[['char', 'prev_char', 'DwellTime', 'FlightTime', 'typing_speed']].head(512).copy()
+            all_og_rows.append(char_df)
             
         except Exception as e:
             print(f"Error processing {csv_file}: {e}")
@@ -95,11 +106,21 @@ def computeOgStats():
         print(f"  Min: {flight_array.min():.2f}, Max: {flight_array.max():.2f}")
         print(f"  Percentiles: 50%={np.percentile(flight_array, 50):.1f}, 90%={np.percentile(flight_array, 90):.1f}, 99%={np.percentile(flight_array, 99):.1f}")
     
-    return ogDwell_times, ogFlight_times, ogTyping_speeds
+    og_df = pd.concat(all_og_rows, ignore_index=True) if all_og_rows else pd.DataFrame()
+    return ogDwell_times, ogFlight_times, ogTyping_speeds, og_df
 
 # Synthesize keystrokes and compute stats using existing pipeline
 def computeSynthStats(synthesize=True):
-    """Generate synthetic keystrokes and extract statistics."""
+    """Generate synthetic keystrokes for all texts and collect their statistics.
+
+    Args:
+        synthesize (bool): If True, run inference to produce predicted CSVs
+            before collecting stats.  If False, read existing predicted CSVs.
+
+    Returns:
+        tuple[list, list, list]: ``(synthDwell, synthFlight, synthTyping)``
+            lists of raw feature values.
+    """
     base_dir = "./data"
     text_dir = os.path.join(base_dir, "texts")
     csv_dir = os.path.join(base_dir, "predicted_csvs")
@@ -136,6 +157,7 @@ def computeSynthStats(synthesize=True):
     synthDwell_times = []
     synthFlight_times = []
     synthTyping_speeds = []
+    all_synth_rows = []
     
     predicted_files = [f for f in os.listdir(csv_dir) if f.endswith(".csv")]
     
@@ -152,16 +174,22 @@ def computeSynthStats(synthesize=True):
             synthDwell_times.extend(dwell.tolist())
             synthFlight_times.extend(flight.tolist())
             synthTyping_speeds.extend(typing.tolist())
+
+            # Collect per-character data for detailed analysis
+            synth_row_df = df[['char', 'prev_char', 'DwellTime', 'FlightTime', 'typing_speed']].copy()
+            all_synth_rows.append(synth_row_df)
             
         except Exception as e:
             print(f"Error reading {csv_file}: {e}")
             continue
     
-    return synthDwell_times, synthFlight_times, synthTyping_speeds
+    synth_df = pd.concat(all_synth_rows, ignore_index=True) if all_synth_rows else pd.DataFrame()
+    return synthDwell_times, synthFlight_times, synthTyping_speeds, synth_df
 
 def compare():
-    ogDwell, ogFlight, ogTyping = computeOgStats()
-    synthDwell, synthFlight, synthTyping = computeSynthStats()
+    """Run full evaluation: compute original and synthesized stats, print results, and plot."""
+    ogDwell, ogFlight, ogTyping, og_df = computeOgStats()
+    synthDwell, synthFlight, synthTyping, synth_df = computeSynthStats()
     
     print("="*80)
     print("KEYSTROKE SYNTHESIS EVALUATION")
@@ -213,6 +241,8 @@ def compare():
     from Testing.grapher import grapher
     graphmaker = grapher()
     graphmaker.comparisonPlots(synthDwell, synthFlight, synthTyping, ogDwell, ogFlight, ogTyping)
+    graphmaker.perCharPlots(og_df, synth_df)
+    graphmaker.charPairPlots(og_df, synth_df)
 if __name__ == "__main__":
     # Import grapher only if needed, to avoid circular import
     # from Testing.grapher import grapher

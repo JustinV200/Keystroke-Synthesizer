@@ -1,7 +1,20 @@
 import torch
 import torch.nn.functional as F
 def make_collate_fn(pad_token_id: int):
+    """Create a collate function for batching variable-length keystroke samples.
+
+    Pads token sequences (input_ids, attention_mask) to the longest sequence in
+    the batch, pads character-level mappings (token_to_char_idx) similarly, and
+    keeps target feature tensors as a variable-length list.
+
+    Args:
+        pad_token_id (int): Token ID used for padding input_ids.
+
+    Returns:
+        Callable: A collate function suitable for :class:`torch.utils.data.DataLoader`.
+    """
     def collate(batch):
+        """Collate a list of dataset samples into a padded batch dict."""
         # Token side (pad for transformer)
         input_ids = [b["input_ids"] for b in batch]
         attn_mask = [b["attention_mask"] for b in batch]

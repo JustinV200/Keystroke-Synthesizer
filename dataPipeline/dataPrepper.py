@@ -2,7 +2,28 @@ import pandas as pd
 import numpy as np
 
 class dataPrepper:
+    """Cleans, filters, and feature-engineers raw keystroke CSV data.
+
+    Given a raw keystroke CSV (with columns like DownTime, UpTime, ActionTime,
+    DownEvent), this class performs the full preprocessing pipeline:
+    cleaning, DwellTime/FlightTime calculation, backspace-aware keystroke
+    filtering, typing speed estimation, and character encoding.
+
+    Attributes:
+        data (pd.DataFrame): The current state of the keystroke dataframe.
+        original_length (int): Row count before any preprocessing.
+    """
+
     def __init__(self, data):
+        """Initialize with a CSV path or DataFrame.
+
+        Args:
+            data (str | pd.DataFrame): Path to a keystroke CSV file, or
+                an already-loaded DataFrame.
+
+        Raises:
+            ValueError: If *data* is neither a string path nor a DataFrame.
+        """
         if isinstance(data, str):
             self.data = pd.read_csv(data)
         elif isinstance(data, pd.DataFrame):
@@ -11,8 +32,12 @@ class dataPrepper:
             raise ValueError("data must be a CSV path or pandas DataFrame.")
         self.original_length = len(self.data)
 
-    # cleaning data, remove invalid entries
     def clean_data(self):
+        """Remove duplicate and invalid rows and sort by DownTime.
+
+        Drops duplicates, rows missing essential columns (DownTime, UpTime,
+        ActionTime, DownEvent), and rows with non-numeric timing values.
+        """
         initial_len = len(self.data)
         #drop duplicates
         self.data.drop_duplicates(inplace=True)
@@ -30,9 +55,13 @@ class dataPrepper:
         removed = initial_len - len(self.data)
         if removed > 0:
             print(f"Cleaned data: removed {removed} rows ({removed/initial_len*100:.1f}%)")
-    # Calculate DwellTime (per-key, independent of neighbors)
-    # FlightTime is calculated later in _filter_to_surviving_keystrokes after filtering
     def transform_data(self):
+        """Compute per-key DwellTime and remove invalid values.
+
+        DwellTime is ``UpTime - DownTime``.  Negative values are dropped and
+        values exceeding 300 ms are set to NaN.  FlightTime is deferred to
+        :meth:`_filter_to_surviving_keystrokes`.
+        """
         # dwell = Up - Down
         self.data['DwellTime'] = self.data['UpTime'] - self.data['DownTime']
 
@@ -106,6 +135,18 @@ class dataPrepper:
             return True
         return event in ('Space', 'Enter')
     def _calculate_typing_speed(self, window_size=10):
+        """Compute a rolling typing-speed estimate in characters per minute.
+
+        Uses a sliding window of *window_size* keystrokes to smooth the
+        estimate.  The first *window_size* rows will be NaN.  Values are
+        capped at 490 CPM.
+
+        Args:
+            window_size (int): Number of keystrokes in the rolling window.
+
+        Returns:
+            pd.Series: Typing speed in CPM for each row.
+        """
         # elapsed ms across window steps; first window_size rows become NaN
         elapsed = self.data['DownTime'].diff(window_size)
         # cpm = window_size / (elapsed_seconds / 60)
@@ -117,9 +158,12 @@ class dataPrepper:
         return cpm
 
     def add_char_encoding(self):
-        # map DownEvent to char code
-        #if space, backspace, enter, shift, use standard codes
-        #otherwise, use char_to_code to get ASCII code
+        """Map each DownEvent to its integer character code.
+
+        Produces a ``char_code`` column.  Single characters use their ASCII
+        ordinal; special keys (Space, Backspace, Enter, Shift) use standard
+        codes; unrecognized keys map to 0.
+        """
         de = self.data["DownEvent"].astype(str)
         def char_to_code(char):
             if len(char) == 1:
@@ -150,8 +194,19 @@ class dataPrepper:
         self.data["prev_char"] = self.data["char"].shift(1).fillna("")
 
 
-    #  do everything here
     def get_prepared_data(self):
+        """Run the full preprocessing pipeline and return the cleaned DataFrame.
+
+        Sequentially calls :meth:`clean_data`, :meth:`transform_data`,
+        :meth:`_filter_to_surviving_keystrokes`, typing-speed calculation,
+        :meth:`add_char_encoding`, :meth:`_add_char_columns`, and
+        :meth:`_finalize_finite`.
+
+        Returns:
+            pd.DataFrame: Processed keystroke data with columns including
+                DwellTime, FlightTime, typing_speed, char_code, char, and
+                prev_char.
+        """
         print(f"Starting preprocessing: {len(self.data)} rows")
 
         self.clean_data()
@@ -177,8 +232,13 @@ class dataPrepper:
         print(f"Stats: {self.get_statistics()}")
         return self.data
 
-    # finalize finite values in key columns
     def _finalize_finite(self):
+        """Replace infinities with NaN and drop rows with invalid DwellTime.
+
+        FlightTime and typing_speed NaNs are intentional and preserved
+        (the loss function masks them).  Only rows where DwellTime is NaN
+        or zero are removed.
+        """
         cols = ["DwellTime", "FlightTime", "typing_speed"]
         for c in cols:
             if c in self.data:
@@ -197,8 +257,14 @@ class dataPrepper:
         removed = initial_len - len(self.data)
         if removed > 0:
             print(f"Dropped rows with invalid DwellTime: {removed} rows ({removed/initial_len*100:.1f}%)")
-    # get statistics on the data, may be useful for reporting
     def get_statistics(self):
+        """Return summary statistics on the processed keystroke data.
+
+        Returns:
+            dict: Keys include ``total_keystrokes``, ``avg_dwell_time``,
+                ``avg_flight_time``, ``avg_typing_speed``, and
+                ``nan_flight_pct``.
+        """
         def safe_mean(col):
             if col in self.data and len(self.data):
                 return float(self.data[col].mean(skipna=True))

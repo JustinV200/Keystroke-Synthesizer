@@ -1,4 +1,11 @@
-# synthesizeKeystrokes.py
+"""Generate synthetic keystroke timing data from a text file using a trained model.
+
+Loads a trained :class:`TextToKeystrokeModelMultiHead` checkpoint, tokenizes the
+input text, runs inference to predict per-character mean and variance for
+DwellTime / FlightTime / typing_speed, samples from the predicted distributions,
+and writes the results to a CSV.
+"""
+
 import torch
 import pandas as pd
 import json
@@ -22,6 +29,22 @@ def predict_keystrokes(
     stats_path="data/cont_stats.json",
     device=None,
 ):
+    """Predict keystroke timing features for every character in a text file.
+
+    The model outputs standardized mean and log-variance per character.  These
+    are de-standardized using saved statistics, sampled from Gaussian
+    distributions, and clamped to physical bounds matching the training
+    preprocessing (DwellTime <= 300 ms, FlightTime <= 900 ms, typing_speed
+    <= 490 CPM).
+
+    Args:
+        text_path (str): Path to the input ``.txt`` file.
+        checkpoint_path (str): Path to the model checkpoint (``.pt``).
+        base_model (str): HuggingFace model identifier for the encoder.
+        output_csv (str): Destination path for the predicted CSV.
+        stats_path (str): Path to the JSON file with standardization mean/std.
+        device (torch.device | None): Compute device; auto-detected if None.
+    """
     if device is None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

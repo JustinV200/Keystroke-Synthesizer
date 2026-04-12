@@ -6,10 +6,32 @@ from dataPipeline.dataPrepper import dataPrepper
 import numpy as np
 
 class dataLoader(Dataset):
-   # loads up data from data/txts/*.txt and data/csv/*.csv
-   # pairs together and preps for training
+    """PyTorch Dataset that loads matched text/CSV keystroke file pairs.
+
+    Pairs text files from ``data/texts/*.txt`` with keystroke CSVs from
+    ``data/csv/*.csv``, preprocesses them via :class:`dataPrepper`, tokenizes
+    the text with a HuggingFace tokenizer, and standardizes continuous
+    features (DwellTime, FlightTime, typing_speed).
+
+    Attributes:
+        samples (list[dict]): List of sample dicts with file paths and features.
+        cont_mean (torch.Tensor): Mean of continuous features used for standardization.
+        cont_std (torch.Tensor): Std of continuous features used for standardization.
+    """
+
     def __init__(self, base_dir, prepper_class=dataPrepper, tokenizer=None,
                  max_length=512, preprocess=True, standardize=True, stats_file="cont_stats.json"):
+        """Initialize the dataset.
+
+        Args:
+            base_dir (str): Root directory containing ``texts/`` and ``csv/`` subdirectories.
+            prepper_class (type): Class used to preprocess each CSV file.
+            tokenizer: HuggingFace tokenizer instance (or None to skip tokenization).
+            max_length (int): Maximum token length for truncation.
+            preprocess (bool): Whether to preprocess CSVs on load.
+            standardize (bool): Whether to z-score standardize continuous features.
+            stats_file (str): Filename for saving/loading standardization statistics.
+        """
         self.text_dir = os.path.join(base_dir, "texts")
         self.csv_dir  = os.path.join(base_dir, "csv")
         self.prepper_class = prepper_class
@@ -114,9 +136,20 @@ class dataLoader(Dataset):
             self.cont_std  = torch.ones(len(self.cont_idx))
 
     def __len__(self):
+        """Return the number of valid text/CSV sample pairs."""
         return len(self.samples)
 
     def __getitem__(self, idx):
+        """Return a single sample as a dict.
+
+        Args:
+            idx (int): Sample index.
+
+        Returns:
+            dict: Contains ``id``, ``text``, ``input_ids``, ``attention_mask``,
+                ``token_to_char_idx``, ``target`` (standardized features), and
+                ``target_len``.
+        """
         s = self.samples[idx]
 
         # Load full text
