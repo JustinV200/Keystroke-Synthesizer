@@ -34,11 +34,6 @@ class TextToKeystrokeModelMultiHead(nn.Module):
             nn.Linear(hidden + CHAR_EMBED_DIM, 768), nn.LayerNorm(768), nn.ReLU(), nn.Dropout(0.2),
             nn.Linear(768, 256), nn.ReLU()
         )
-        # Zero-init char columns so char signal starts silent; xavier for DeBERTa columns
-        with torch.no_grad():
-            nn.init.xavier_normal_(self.backbone[0].weight[:, :hidden])
-            nn.init.zeros_(self.backbone[0].weight[:, hidden:])
-            nn.init.zeros_(self.backbone[0].bias)
         
         # Heteroscedastic regression heads - predict mean AND variance
         self.mean_head = nn.Linear(256, num_continuous)
