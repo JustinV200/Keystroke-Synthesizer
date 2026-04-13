@@ -26,8 +26,8 @@ class TextToKeystrokeModelMultiHead(nn.Module):
         # Indexed by ord(char) % 256, concatenated onto DeBERTa embedding before backbone
         CHAR_EMBED_DIM = 32
         self.char_embed = nn.Embedding(256, CHAR_EMBED_DIM)
-        # Init to match DeBERTa hidden state scale (~0.01-0.1) to prevent dominant char signal
-        nn.init.normal_(self.char_embed.weight, mean=0.0, std=0.01)
+        # Init moderately — strong enough to differentiate chars, not so large it dominates DeBERTa
+        nn.init.normal_(self.char_embed.weight, mean=0.0, std=0.05)
         
         # Shared backbone — input is hidden + CHAR_EMBED_DIM
         self.backbone = nn.Sequential(

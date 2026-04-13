@@ -477,3 +477,40 @@ Typing Speed:
   Mean diff:      28.51 (12.6%)
 
 *stats after removal of classification head, and per character training
+
+4/13/2025
+
+--- BASIC STATISTICS ---
+
+Original Data:
+  DwellTime    - Mean:   109.57, Std:    39.97, N: 2544713
+  FlightTime   - Mean:   133.46, Std:   151.67, N: 2538914
+  Typing Speed - Mean:   225.52, Std:   142.56, N: 2544653
+
+Synthesized Data:
+  DwellTime    - Mean:   106.09, Std:    39.92, N: 2555570
+  FlightTime   - Mean:   150.48, Std:   131.40, N: 2555566
+  Typing Speed - Mean:   230.52, Std:   131.57, N: 2555570
+
+--- STATISTICAL TESTS ---
+
+DwellTime:
+  t-test:       t= 98.303, p=0.0000 ***
+  K-S test:     D=  0.056, p=0.0000 ***
+  Cohen's d:      0.087 (negligible)
+  Mean diff:       3.48 (3.2%)
+
+FlightTime:
+  t-test:       t=-135.336, p=0.0000 ***
+  K-S test:     D=  0.186, p=0.0000 ***
+  Cohen's d:     -0.120 (negligible)
+  Mean diff:      17.01 (12.7%)
+
+Typing Speed:
+  t-test:       t=-41.145, p=0.0000 ***
+  K-S test:     D=  0.067, p=0.0000 ***
+  Cohen's d:     -0.036 (negligible)
+  Mean diff:       5.00 (2.2%)
+
+
+*overtrained?

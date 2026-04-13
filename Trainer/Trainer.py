@@ -71,13 +71,15 @@ class Trainer():
         print(f"Train samples: {len(self.train_dataset)}, Val samples: {len(self.val_dataset)}")
         # Initialize model, optimizer, scheduler, scaler
         self.model = self._create_model()
-        #create seperate parameter groups for logvar head
+        #create seperate parameter groups for logvar head and char_embed
         logvar_head_params = [p for n, p in self.model.named_parameters() if 'logvar_head' in n]
-        other_params = [p for n, p in self.model.named_parameters() if 'logvar_head' not in n]
+        char_embed_params = [p for n, p in self.model.named_parameters() if 'char_embed' in n]
+        other_params = [p for n, p in self.model.named_parameters() if 'logvar_head' not in n and 'char_embed' not in n]
         
         self.optimizer = torch.optim.AdamW([
             {'params': other_params, 'lr': LR},
             {'params': logvar_head_params, 'lr': LR * 5},  # 5x LR for logvar head
+            {'params': char_embed_params, 'lr': LR * 10},  # 10x LR for char_embed (random init, needs to learn fast)
         ], weight_decay=WEIGHT_DECAY)
 
 
