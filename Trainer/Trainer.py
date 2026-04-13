@@ -205,7 +205,7 @@ class Trainer():
                 loss.backward()
                 
                 # Gradient clipping
-                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=3.0)
                 
                 # Check for NaN/Inf gradients with detailed monitoring
                 grad_stats = self._check_gradients()

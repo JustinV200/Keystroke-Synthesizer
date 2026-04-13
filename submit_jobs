@@ -26,9 +26,9 @@ nvidia-smi
 export TOKENIZERS_PARALLELISM=false
 export OMP_NUM_THREADS=$(nproc)
 export TORCH_USE_CUDA_DSA=1
-export CUDA_LAUNCH_BLOCKING=1       # DEBUG: synchronous CUDA for real tracebacks
-export CUDA_VISIBLE_DEVICES=0       # DEBUG: single GPU to avoid DataParallel deadlock with LAUNCH_BLOCKING
+# CUDA_LAUNCH_BLOCKING=1  # Only enable for debugging
+# CUDA_VISIBLE_DEVICES=0  # Only enable for debugging
 
-#python -m Trainer.Trainer
+python -m Trainer.Trainer
 #python Testing/synthesizeKeystrokes.py
-python Testing/accuracyTester.py
+#python Testing/accuracyTester.py

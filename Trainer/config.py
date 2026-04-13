@@ -17,7 +17,7 @@ EPOCHS       = 12 # number of runs
 BATCH_SIZE   = 8 # per-GPU batch size
 LR           = 1e-5 # learning rate (reduced for stability)
 WEIGHT_DECAY = 0.01 # weight decay, for how much to regularize
-PATIENCE     = 3 # early stopping patience, if no val improvement
+PATIENCE     = 5 # early stopping patience, if no val improvement
 
 # KL Regularization Configuration
 KL_WEIGHT_START = 0.001   # KL weight at epoch 0 (focus on mean first)
