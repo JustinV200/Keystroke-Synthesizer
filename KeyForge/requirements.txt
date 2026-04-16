@@ -1,0 +1,20 @@
+# KeyForge runtime dependencies (inference + UI only)
+# Tkinter ships with CPython, no pip install needed.
+#
+# Install with:
+#     pip install -r KeyForge/requirements.txt
+#
+# For GPU, install torch separately from https://pytorch.org/get-started/locally/
+# before running this file, otherwise pip will pull the CPU build.
+
+torch>=2.1
+transformers>=4.40
+pandas>=2.0
+numpy>=1.24
+
+# DeBERTa-v3 tokenizer requires SentencePiece + protobuf
+sentencepiece>=0.1.99
+protobuf>=3.20
+
+# OS-level keyboard injection for the "TypeIt" feature
+pynput>=1.7
