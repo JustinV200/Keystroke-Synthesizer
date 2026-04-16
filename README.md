@@ -55,6 +55,14 @@ pip install -r requirements.txt
 
 ## 🚀 Quick Start
 
+All training/testing code lives under `src/`. From the repo root, add it to `PYTHONPATH`:
+
+```bash
+export PYTHONPATH=src           # Linux / macOS / WSL
+# or on Windows PowerShell:
+$env:PYTHONPATH = "src"
+```
+
 ### Training a Model
 ```python
 from Trainer.Trainer import Trainer
@@ -63,7 +71,7 @@ trainer = Trainer()
 trainer.train()
 ```
 
-Or from the command line:
+Or from the command line (run from the repo root with `PYTHONPATH=src`):
 ```bash
 python -m Trainer.Trainer
 ```
@@ -73,11 +81,18 @@ python -m Trainer.Trainer
 from Testing.synthesizeKeystrokes import predict_keystrokes
 
 predict_keystrokes(
-    text_path="sample.txt",
+    text_path="example/sample.txt",
     checkpoint_path="checkpoints/best_model.pt",
     output_csv="predicted_keystrokes.csv"
 )
 ```
+
+### SLURM Submission
+A ready-to-go batch script is provided:
+```bash
+sbatch src/scripts/submit_jobs
+```
+It self-locates to the repo root, sets `PYTHONPATH=src`, and writes logs to `logs/job-<jobid>.{out,err}`.
 
 ### Desktop App (KeyForge)
 For an interactive UI — generate, download, or live-replay keystrokes into any window:
@@ -96,19 +111,19 @@ compare()  # Compares original vs synthetic keystroke distributions
 
 ## 📊 Data Pipeline
 
-1. **Preprocessing** (`dataPipeline/dataPrepper.py`)
+1. **Preprocessing** (`src/dataPipeline/dataPrepper.py`)
    - Cleans raw keystroke CSV data (removes duplicates, invalid entries)
    - Replays edit sequences to keep only surviving keystrokes (backspace handling)
    - Computes DwellTime (key press duration), FlightTime (time between keys), and typing speed (CPM)
    - NaN-aware: FlightTime is NaN at non-consecutive transitions, typing speed NaN for first rows in rolling window
 
-2. **Loading** (`dataPipeline/dataLoader.py`)
+2. **Loading** (`src/dataPipeline/dataLoader.py`)
    - Pairs text files with keystroke CSVs by matching filenames
    - Standardizes continuous features (z-score) with persisted stats (`cont_stats.json`)
    - Builds character-to-token offset mapping for character-level predictions
    - Returns variable-length sequences (no target padding)
 
-3. **Training** (`Trainer/Trainer.py`)
+3. **Training** (`src/Trainer/Trainer.py`)
    - Heteroscedastic loss: Gaussian NLL + KL divergence penalty (annealed)
    - Mixed-precision training with gradient scaling
    - Gradient clipping and NaN/Inf monitoring
@@ -117,7 +132,7 @@ compare()  # Compares original vs synthetic keystroke distributions
 
 ## 🎛️ Configuration
 
-Training parameters in [`Trainer/config.py`](Trainer/config.py):
+Training parameters in [`src/Trainer/config.py`](src/Trainer/config.py):
 
 ```python
 BASE_MODEL   = "microsoft/deberta-v3-base"
@@ -154,20 +169,23 @@ keystroke-synthesizer/
 │   ├── csv/                    # Keystroke timing CSVs
 │   ├── texts/                  # Corresponding text files
 │   └── cont_stats.json         # Standardization stats (written by loader)
-├── dataPipeline/               # Data processing
-│   ├── dataPrepper.py          # CSV cleaning, edit replay, feature extraction
-│   └── dataLoader.py           # Dataset class, standardization, tokenization
-├── Trainer/                    # Training components
-│   ├── Trainer.py              # Main training loop
-│   ├── TextToKeystrokeModelMultiHead.py  # DeBERTa + regression heads
-│   ├── HeteroscedasticKLLoss.py          # NLL + KL loss
-│   ├── config.py               # Hyperparameters
-│   ├── make_collate.py         # Variable-length batch collation
-│   └── utils.py                # Empirical variance, NaN checks
-├── Testing/                    # Evaluation
-│   ├── synthesizeKeystrokes.py # Inference: text file → keystroke CSV
-│   ├── accuracyTester.py       # Distribution comparison
-│   └── grapher.py              # Visualization plots
+├── src/                        # Training pipeline (add to PYTHONPATH)
+│   ├── dataPipeline/           # Data processing
+│   │   ├── dataPrepper.py      # CSV cleaning, edit replay, feature extraction
+│   │   └── dataLoader.py       # Dataset class, standardization, tokenization
+│   ├── Trainer/                # Training components
+│   │   ├── Trainer.py          # Main training loop
+│   │   ├── TextToKeystrokeModelMultiHead.py  # DeBERTa + regression heads
+│   │   ├── HeteroscedasticKLLoss.py          # NLL + KL loss
+│   │   ├── config.py           # Hyperparameters
+│   │   ├── make_collate.py     # Variable-length batch collation
+│   │   └── utils.py            # Empirical variance, NaN checks
+│   ├── Testing/                # Evaluation
+│   │   ├── synthesizeKeystrokes.py  # Inference: text file → keystroke CSV
+│   │   ├── accuracyTester.py        # Distribution comparison
+│   │   └── grapher.py               # Visualization plots
+│   └── scripts/
+│       └── submit_jobs         # SLURM batch script
 ├── KeyForge/                   # Desktop app (self-contained)
 │   ├── app.py                  # Tkinter UI
 │   ├── config.py               # Paths, model + UI defaults
@@ -176,9 +194,11 @@ keystroke-synthesizer/
 │       ├── load_model.py       # Tokenizer + checkpoint loader
 │       ├── synthesize.py       # predict_keystrokes(text) → DataFrame
 │       └── TextToKeystrokeModelMultiHead.py
+├── example/                    # sample.txt + reference predicted_keystrokes.csv
 ├── checkpoints/                # Saved model weights
 ├── graphs/                     # Output plots
-└── runs/                       # TensorBoard logs
+├── runs/                       # TensorBoard logs
+└── logs/                       # SLURM job stdout/stderr
 ```
 
 ## 🔬 Technical Details
