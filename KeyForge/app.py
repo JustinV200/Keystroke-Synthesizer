@@ -7,7 +7,7 @@ from tkinter import ttk, filedialog, messagebox
 import pandas as pd
 from pynput.keyboard import Controller, Key
 
-from Synthesize.synthesize import predict_keystrokes, DEFAULT_OUTPUT_DIR
+from Synthesize.synthesize import predict_keystrokes, load_model, DEFAULT_OUTPUT_DIR
 
 
 # Characters that need a pynput Key enum instead of a raw string
@@ -72,6 +72,31 @@ class KeyForgeApp(tk.Tk):
         self.keystrokes = None
         self.keyboard = Controller()
 
+        # Model is loaded once in the background so the UI is responsive and
+        # subsequent Generate clicks don't re-pay the ~15s DeBERTa load.
+        self.model_bundle = None
+        self.generate_button.config(state="disabled")
+        self._set_busy(True, "Loading model...")
+        threading.Thread(target=self._load_model_worker, daemon=True).start()
+
+    def _load_model_worker(self):
+        try:
+            bundle = load_model()
+        except Exception as e:
+            self.after(0, self._load_model_done, None, e)
+            return
+        self.after(0, self._load_model_done, bundle, None)
+
+    def _load_model_done(self, bundle, err):
+        self._set_busy(False, "")
+        if err is not None:
+            messagebox.showerror("Error", f"Failed to load model:\n{err}")
+            self.status_var.set("Model failed to load.")
+            return
+        self.model_bundle = bundle
+        self.generate_button.config(state="normal")
+        self.status_var.set("Model ready.")
+
     def _on_wpm_change(self, _value):
         # Scale is a float coming in; keep IntVar display clean
         self.wpm_label.config(text=f"Typing speed: {self.wpm_var.get()} WPM")
@@ -85,7 +110,7 @@ class KeyForgeApp(tk.Tk):
             return
 
         # Disable controls, show spinner
-        self._set_busy(True, "Loading model & synthesizing...")
+        self._set_busy(True, "Synthesizing keystrokes...")
 
         # Run inference on a background thread so the Tk event loop stays alive
         threading.Thread(
@@ -95,7 +120,7 @@ class KeyForgeApp(tk.Tk):
     def _generate_worker(self, input_text):
         # Generate keystrokes in a background thread
         try:
-            df = predict_keystrokes(input_text)
+            df = predict_keystrokes(input_text, bundle=self.model_bundle)
         except Exception as e:       # surface errors back to the UI thread
             self.after(0, self._generate_done, None, e)
             return
@@ -191,7 +216,9 @@ class KeyForgeApp(tk.Tk):
             self.typeit_button.config(state="disabled")
         else:
             self.progress.stop()
-            self.generate_button.config(state="normal")
+            # Generate is only valid once the model bundle has loaded.
+            if self.model_bundle is not None:
+                self.generate_button.config(state="normal")
 
 
 if __name__ == "__main__":

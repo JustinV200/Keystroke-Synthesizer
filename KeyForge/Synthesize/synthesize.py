@@ -23,51 +23,30 @@ _KEYFORGE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _DEFAULT_CKPT = os.path.join(_KEYFORGE_DIR, "Model", "best_model.pt")
 _DEFAULT_STATS = os.path.join(_KEYFORGE_DIR, "Model", "cont_stats.json")
 DEFAULT_OUTPUT_DIR = os.path.join(_KEYFORGE_DIR, "output")
+DEFAULT_BASE_MODEL = "microsoft/deberta-v3-base"
+NUM_CONTINUOUS = 3
 
 
-def predict_keystrokes(
-    text,
+def load_model(
     checkpoint_path=_DEFAULT_CKPT,
-    base_model="microsoft/deberta-v3-base",
-    output_csv=None,
+    base_model=DEFAULT_BASE_MODEL,
     stats_path=_DEFAULT_STATS,
     device=None,
 ):
-    """Predict keystroke timing features for every character in ``text``.
+    """Load the tokenizer, model, and standardization stats once.
 
-    The model outputs standardized mean and log-variance per character. These
-    are de-standardized using saved statistics, sampled from Gaussian
-    distributions, and clamped to physical bounds matching the training
-    preprocessing (DwellTime <= 300 ms, FlightTime <= 900 ms, typing_speed
-    <= 490 CPM).
-
-    Args:
-        text (str): Raw text to synthesize keystrokes for.
-        checkpoint_path (str): Path to the model checkpoint (``.pt``).
-        base_model (str): HuggingFace model identifier for the encoder.
-        output_csv (str | None): If provided, writes the DataFrame to this path.
-        stats_path (str): Path to the JSON file with standardization mean/std.
-        device (torch.device | None): Compute device; auto-detected if None.
+    Call this at startup and pass the returned dict to :func:`predict_keystrokes`
+    to avoid re-loading DeBERTa (~400 MB) on every invocation.
 
     Returns:
-        pandas.DataFrame: Columns ``char, prev_char, DwellTime, FlightTime,
-        typing_speed`` — one row per character (truncated to 512 tokens).
+        dict: Keys ``tokenizer``, ``model``, ``cont_mean``, ``cont_std``,
+        ``device``.
     """
-    if not isinstance(text, str):
-        raise TypeError(f"text must be str, got {type(text).__name__}")
-    text = text.strip()
-    if not text:
-        raise ValueError("text is empty")
-
     if device is None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    print(f"Synthesizing keystrokes for {len(text)} characters")
-
-    #  Load tokenizer and model 
     tokenizer = AutoTokenizer.from_pretrained(base_model)
-    num_continuous = 3
-    model = TextToKeystrokeModelMultiHead(base_model, num_continuous).to(device)
+    model = TextToKeystrokeModelMultiHead(base_model, NUM_CONTINUOUS).to(device)
 
     checkpoint = torch.load(checkpoint_path, map_location=device)
 
@@ -82,12 +61,78 @@ def predict_keystrokes(
     model.load_state_dict(checkpoint, strict=False)
     model.eval()
 
-    #  Load standardization stats 
     with open(stats_path, "r") as f:
         stats = json.load(f)
 
     cont_mean = torch.tensor(stats["mean"], device=device)
-    cont_std  = torch.tensor(stats["std"],  device=device)
+    cont_std = torch.tensor(stats["std"], device=device)
+
+    return {
+        "tokenizer": tokenizer,
+        "model": model,
+        "cont_mean": cont_mean,
+        "cont_std": cont_std,
+        "device": device,
+    }
+
+
+def predict_keystrokes(
+    text,
+    bundle=None,
+    checkpoint_path=_DEFAULT_CKPT,
+    base_model=DEFAULT_BASE_MODEL,
+    output_csv=None,
+    stats_path=_DEFAULT_STATS,
+    device=None,
+):
+    """Predict keystroke timing features for every character in ``text``.
+
+    The model outputs standardized mean and log-variance per character. These
+    are de-standardized using saved statistics, sampled from Gaussian
+    distributions, and clamped to physical bounds matching the training
+    preprocessing (DwellTime <= 300 ms, FlightTime <= 900 ms, typing_speed
+    <= 490 CPM).
+
+    Args:
+        text (str): Raw text to synthesize keystrokes for.
+        bundle (dict | None): Preloaded output of :func:`load_model`. If None,
+            the model is loaded on every call (slow — prefer passing a cached
+            bundle from the UI).
+        checkpoint_path (str): Path to the model checkpoint (``.pt``). Ignored
+            when ``bundle`` is provided.
+        base_model (str): HuggingFace model identifier for the encoder.
+            Ignored when ``bundle`` is provided.
+        output_csv (str | None): If provided, writes the DataFrame to this path.
+        stats_path (str): Path to the JSON file with standardization mean/std.
+            Ignored when ``bundle`` is provided.
+        device (torch.device | None): Compute device; auto-detected if None.
+            Ignored when ``bundle`` is provided.
+
+    Returns:
+        pandas.DataFrame: Columns ``char, prev_char, DwellTime, FlightTime,
+        typing_speed`` — one row per character (truncated to 512 tokens).
+    """
+    if not isinstance(text, str):
+        raise TypeError(f"text must be str, got {type(text).__name__}")
+    text = text.strip()
+    if not text:
+        raise ValueError("text is empty")
+
+    if bundle is None:
+        bundle = load_model(
+            checkpoint_path=checkpoint_path,
+            base_model=base_model,
+            stats_path=stats_path,
+            device=device,
+        )
+
+    tokenizer = bundle["tokenizer"]
+    model = bundle["model"]
+    cont_mean = bundle["cont_mean"]
+    cont_std = bundle["cont_std"]
+    device = bundle["device"]
+
+    print(f"Synthesizing keystrokes for {len(text)} characters")
 
     #  Tokenize input text 
     enc = tokenizer(
