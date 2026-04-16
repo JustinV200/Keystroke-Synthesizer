@@ -154,11 +154,3 @@ def predict_keystrokes(text, bundle=None, output_csv=None, **load_kwargs):
         print(f"Saved predicted keystroke CSV: {output_csv}")
     print(df.head())
     return df
-
-
-if __name__ == "__main__":
-    _sample_path = os.path.join(os.path.dirname(__file__), "..", "..", "sample.txt")
-    with open(_sample_path, "r", encoding="utf-8") as f:
-        sample_text = f.read()
-    out_path = os.path.join(OUTPUT_DIR, "predicted_keystrokes.csv")
-    predict_keystrokes(sample_text, output_csv=out_path)

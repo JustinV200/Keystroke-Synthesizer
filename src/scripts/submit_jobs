@@ -5,8 +5,13 @@
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:4
 #SBATCH -t 7-00:00:00
-#SBATCH -o job.out
-#SBATCH -e job.err
+#SBATCH -o logs/job-%j.out
+#SBATCH -e logs/job-%j.err
+
+# cd to repo root regardless of where sbatch was run from
+# script lives at <repo>/src/scripts/submit_jobs, so go up two levels
+cd "$(dirname "$(realpath "$0")")/../.."
+mkdir -p logs
 
 # --- env setup ---
 module purge
@@ -23,6 +28,7 @@ python -c "import torch; print('torch', torch.__version__, 'cuda?', torch.cuda.i
 nvidia-smi
 
 # PyTorch/HF niceties
+export PYTHONPATH="src:$PYTHONPATH"
 export TOKENIZERS_PARALLELISM=false
 export OMP_NUM_THREADS=$(nproc)
 export TORCH_USE_CUDA_DSA=1
@@ -30,5 +36,5 @@ export TORCH_USE_CUDA_DSA=1
 # CUDA_VISIBLE_DEVICES=0  # Only enable for debugging
 
 #python -m Trainer.Trainer
-#python Testing/synthesizeKeystrokes.py
-python Testing/accuracyTester.py
+#python -m Testing.synthesizeKeystrokes
+python -m Testing.accuracyTester
