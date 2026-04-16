@@ -13,6 +13,7 @@ A neural network that learns individual typing behaviors and generates synthetic
 - **🛡️ Numerical Stability**: Gradient monitoring, NaN handling, and mixed-precision training
 - **🔄 Real-time Synthesis**: Generate keystroke sequences from any text input
 - **📈 Evaluation Tools**: Built-in accuracy testing and distribution visualization
+- **🖥️ KeyForge Desktop App**: Tkinter UI that generates and replays keystrokes into any window
 
 ## 🏗️ Architecture
 
@@ -77,6 +78,14 @@ predict_keystrokes(
     output_csv="predicted_keystrokes.csv"
 )
 ```
+
+### Desktop App (KeyForge)
+For an interactive UI — generate, download, or live-replay keystrokes into any window:
+```bash
+cd KeyForge
+python app.py
+```
+Requires a trained checkpoint and stats file at `KeyForge/Model/best_model.pt` and `KeyForge/Model/cont_stats.json`. See [`KeyForge/README.md`](KeyForge/README.md) for details.
 
 ### Evaluating Accuracy
 ```python
@@ -143,7 +152,8 @@ The model tracks:
 keystroke-synthesizer/
 ├── data/                       # Training data
 │   ├── csv/                    # Keystroke timing CSVs
-│   └── texts/                  # Corresponding text files
+│   ├── texts/                  # Corresponding text files
+│   └── cont_stats.json         # Standardization stats (written by loader)
 ├── dataPipeline/               # Data processing
 │   ├── dataPrepper.py          # CSV cleaning, edit replay, feature extraction
 │   └── dataLoader.py           # Dataset class, standardization, tokenization
@@ -155,9 +165,17 @@ keystroke-synthesizer/
 │   ├── make_collate.py         # Variable-length batch collation
 │   └── utils.py                # Empirical variance, NaN checks
 ├── Testing/                    # Evaluation
-│   ├── synthesizeKeystrokes.py # Inference: text → keystroke CSV
+│   ├── synthesizeKeystrokes.py # Inference: text file → keystroke CSV
 │   ├── accuracyTester.py       # Distribution comparison
 │   └── grapher.py              # Visualization plots
+├── KeyForge/                   # Desktop app (self-contained)
+│   ├── app.py                  # Tkinter UI
+│   ├── config.py               # Paths, model + UI defaults
+│   ├── Model/                  # best_model.pt, cont_stats.json
+│   └── Synthesize/
+│       ├── load_model.py       # Tokenizer + checkpoint loader
+│       ├── synthesize.py       # predict_keystrokes(text) → DataFrame
+│       └── TextToKeystrokeModelMultiHead.py
 ├── checkpoints/                # Saved model weights
 ├── graphs/                     # Output plots
 └── runs/                       # TensorBoard logs

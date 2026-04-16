@@ -11,7 +11,7 @@ This folder is self-contained — you can grab just `KeyForge/` if you only want
 ## Features
 
 - **Generate** — predicts per-character `DwellTime` and `FlightTime` from your input text.
-- **Download CSV** — saves the raw prediction to `KeyForge/output/`.
+- **Download CSV** — saves the raw prediction to `KeyForge/output/` (or anywhere you pick).
 - **TypeIt** — replays the keystrokes via `pynput` into whatever window has focus, with a 3-second countdown so you can click into your target.
 - **Typing-speed slider** — rescales replay timing between 20–120 WPM (default ≈40 WPM, the average typist). Only affects replay; the CSV is always the raw model output.
 
@@ -43,16 +43,20 @@ python app.py
 ```
 KeyForge/
 ├── app.py                   # Tkinter UI
+├── config.py                # Paths, model constants, UI defaults
 ├── requirements.txt
 ├── assets/                  # themed SVG headers
 ├── Model/
 │   ├── best_model.pt
 │   └── cont_stats.json
-├── output/                  # CSVs land here
+├── output/                  # CSVs land here by default
 └── Synthesize/
-    ├── synthesize.py        # predict_keystrokes(text) -> DataFrame
+    ├── load_model.py        # Tokenizer + checkpoint loader (cached once)
+    ├── synthesize.py        # predict_keystrokes(text, bundle) -> DataFrame
     └── TextToKeystrokeModelMultiHead.py
 ```
+
+All tunables (paths, WPM range, feature bounds, window title, etc.) live in [`config.py`](config.py) — edit there instead of hunting through modules.
 
 ## How the slider works
 
