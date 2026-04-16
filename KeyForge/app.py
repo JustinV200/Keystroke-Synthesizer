@@ -5,17 +5,19 @@ import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 
 import pandas as pd
-from pynput.keyboard import Controller, Key
+from pynput.keyboard import Controller
 
-from Synthesize.synthesize import predict_keystrokes, load_model, DEFAULT_OUTPUT_DIR
-
-
-# Characters that need a pynput Key enum instead of a raw string
-_SPECIAL_KEYS = {
-    " ": Key.space,
-    "\n": Key.enter,
-    "\t": Key.tab,
-}
+from config import (
+    BASELINE_WPM,
+    COUNTDOWN_SECONDS,
+    OUTPUT_DIR,
+    SPECIAL_KEYS,
+    WINDOW_SIZE,
+    WINDOW_TITLE,
+    WPM_MAX,
+    WPM_MIN,
+)
+from Synthesize import load_model, predict_keystrokes
 
 
 class KeyForgeApp(tk.Tk):
@@ -25,8 +27,8 @@ class KeyForgeApp(tk.Tk):
     # keystrokes in real time, with the app showing the timing of each keystroke as they type
     def __init__(self):
         super().__init__()
-        self.title("KeyForge")
-        self.geometry("420x460")
+        self.title(WINDOW_TITLE)
+        self.geometry(WINDOW_SIZE)
 
         # Create input box
         self.input_label = ttk.Label(self, text="Enter text to generate keystrokes:")
@@ -49,14 +51,14 @@ class KeyForgeApp(tk.Tk):
 
         # Typing speed slider (WPM). Scales replay only — the downloaded CSV
         # always reflects the raw model prediction. 40 WPM is the avg typist.
-        self.BASELINE_WPM = 40.0
+        self.BASELINE_WPM = BASELINE_WPM
         self.wpm_var = tk.IntVar(value=int(self.BASELINE_WPM))
         wpm_frame = ttk.Frame(self)
         wpm_frame.pack(pady=(10, 2), fill="x", padx=20)
         self.wpm_label = ttk.Label(wpm_frame, text=f"Typing speed: {self.wpm_var.get()} WPM")
         self.wpm_label.pack(anchor="w")
         self.wpm_slider = ttk.Scale(
-            wpm_frame, from_=20, to=120, orient="horizontal",
+            wpm_frame, from_=WPM_MIN, to=WPM_MAX, orient="horizontal",
             variable=self.wpm_var, command=self._on_wpm_change,
         )
         self.wpm_slider.pack(fill="x")
@@ -101,7 +103,7 @@ class KeyForgeApp(tk.Tk):
         # Scale is a float coming in; keep IntVar display clean
         self.wpm_label.config(text=f"Typing speed: {self.wpm_var.get()} WPM")
 
-    # -- Generate 
+    # Generate 
     def generate_keystrokes(self):
         # Get input text and generate the keystroke dataframe using synthesize.py's predict_keystrokes function.  This runs on a background thread to keep the UI responsive, with a busy spinner and status message while it runs.
         input_text = self.input_entry.get("1.0", "end-1c").strip()
@@ -144,7 +146,7 @@ class KeyForgeApp(tk.Tk):
             messagebox.showwarning("No data", "Generate keystrokes first.")
             return
         path = filedialog.asksaveasfilename(
-            initialdir=DEFAULT_OUTPUT_DIR,
+            initialdir=OUTPUT_DIR,
             initialfile="keystrokes.csv",
             defaultextension=".csv",
             filetypes=[("CSV files", "*.csv"), ("All files", "*.*")],
@@ -152,7 +154,19 @@ class KeyForgeApp(tk.Tk):
         if not path:
             return
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        self.keystrokes.to_csv(path, index=False)
+        try:
+            self.keystrokes.to_csv(path, index=False)
+        except PermissionError:
+            messagebox.showerror(
+                "Save failed",
+                f"Could not write to:\n{path}\n\n"
+                "The file is open in another program (e.g. Excel). "
+                "Close it and try again, or pick a different filename.",
+            )
+            return
+        except OSError as e:
+            messagebox.showerror("Save failed", f"Could not save CSV:\n{e}")
+            return
         messagebox.showinfo("Saved", f"Saved to:\n{path}")
 
     # Type it out
@@ -163,7 +177,7 @@ class KeyForgeApp(tk.Tk):
             return
         self.typeit_button.config(state="disabled")
         self.generate_button.config(state="disabled")
-        self._countdown(3)
+        self._countdown(COUNTDOWN_SECONDS)
 
     def _countdown(self, n):
         # Countdown before starting to type, giving the user time to focus the target window
@@ -188,7 +202,7 @@ class KeyForgeApp(tk.Tk):
                 if pd.notna(ft) and ft > 0:
                     time.sleep((ft * scale) / 1000.0)
                 ch = row["char"]
-                key = _SPECIAL_KEYS.get(ch, ch)
+                key = SPECIAL_KEYS.get(ch, ch)
                 try:
                     self.keyboard.press(key)
                     time.sleep(max(row["DwellTime"] * scale, 1) / 1000.0)

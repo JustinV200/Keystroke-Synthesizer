@@ -1,116 +1,45 @@
-"""Generate synthetic keystroke timing data from a text string using a trained model.
+"""Generate synthetic keystroke timing data from text using a trained model.
 
-Loads a trained :class:`TextToKeystrokeModelMultiHead` checkpoint, tokenizes the
-input text, runs inference to predict per-character mean and variance for
-DwellTime / FlightTime / typing_speed, samples from the predicted distributions,
-and returns a DataFrame (optionally writing a CSV).
+Tokenizes the input, runs the cached model bundle from
+:func:`Synthesize.load_model.load_model`, samples per-character Dwell/Flight/
+typing_speed from the predicted Gaussian distributions, clamps to physical
+bounds, and returns a DataFrame (optionally writing a CSV).
 """
 import contextlib
-import torch
-import pandas as pd
-import json
 import os
-from transformers import AutoTokenizer
-from collections import OrderedDict
+
 import numpy as np
+import pandas as pd
+import torch
 
-from Synthesize.TextToKeystrokeModelMultiHead import TextToKeystrokeModelMultiHead
-
-
-# Resolve default asset paths relative to the KeyForge package so the UI
-# works regardless of the current working directory.
-_KEYFORGE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-_DEFAULT_CKPT = os.path.join(_KEYFORGE_DIR, "Model", "best_model.pt")
-_DEFAULT_STATS = os.path.join(_KEYFORGE_DIR, "Model", "cont_stats.json")
-DEFAULT_OUTPUT_DIR = os.path.join(_KEYFORGE_DIR, "output")
-DEFAULT_BASE_MODEL = "microsoft/deberta-v3-base"
-NUM_CONTINUOUS = 3
+from config import (
+    FEATURE_BOUNDS,
+    FEATURE_COLUMNS,
+    MAX_TOKEN_LENGTH,
+    OUTPUT_DIR,
+)
+from Synthesize.load_model import load_model
 
 
-def load_model(
-    checkpoint_path=_DEFAULT_CKPT,
-    base_model=DEFAULT_BASE_MODEL,
-    stats_path=_DEFAULT_STATS,
-    device=None,
-):
-    """Load the tokenizer, model, and standardization stats once.
-
-    Call this at startup and pass the returned dict to :func:`predict_keystrokes`
-    to avoid re-loading DeBERTa (~400 MB) on every invocation.
-
-    Returns:
-        dict: Keys ``tokenizer``, ``model``, ``cont_mean``, ``cont_std``,
-        ``device``.
-    """
-    if device is None:
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-    tokenizer = AutoTokenizer.from_pretrained(base_model)
-    model = TextToKeystrokeModelMultiHead(base_model, NUM_CONTINUOUS).to(device)
-
-    checkpoint = torch.load(checkpoint_path, map_location=device)
-
-    # handle DataParallel checkpoints
-    if any(k.startswith("module.") for k in checkpoint.keys()):
-        new_state_dict = OrderedDict()
-        for k, v in checkpoint.items():
-            name = k[7:] if k.startswith("module.") else k
-            new_state_dict[name] = v
-        checkpoint = new_state_dict
-
-    model.load_state_dict(checkpoint, strict=False)
-    model.eval()
-
-    with open(stats_path, "r") as f:
-        stats = json.load(f)
-
-    cont_mean = torch.tensor(stats["mean"], device=device)
-    cont_std = torch.tensor(stats["std"], device=device)
-
-    return {
-        "tokenizer": tokenizer,
-        "model": model,
-        "cont_mean": cont_mean,
-        "cont_std": cont_std,
-        "device": device,
-    }
+# Re-export for backwards compatibility with existing imports.
+DEFAULT_OUTPUT_DIR = OUTPUT_DIR
 
 
-def predict_keystrokes(
-    text,
-    bundle=None,
-    checkpoint_path=_DEFAULT_CKPT,
-    base_model=DEFAULT_BASE_MODEL,
-    output_csv=None,
-    stats_path=_DEFAULT_STATS,
-    device=None,
-):
+def predict_keystrokes(text, bundle=None, output_csv=None, **load_kwargs):
     """Predict keystroke timing features for every character in ``text``.
-
-    The model outputs standardized mean and log-variance per character. These
-    are de-standardized using saved statistics, sampled from Gaussian
-    distributions, and clamped to physical bounds matching the training
-    preprocessing (DwellTime <= 300 ms, FlightTime <= 900 ms, typing_speed
-    <= 490 CPM).
 
     Args:
         text (str): Raw text to synthesize keystrokes for.
         bundle (dict | None): Preloaded output of :func:`load_model`. If None,
             the model is loaded on every call (slow — prefer passing a cached
             bundle from the UI).
-        checkpoint_path (str): Path to the model checkpoint (``.pt``). Ignored
-            when ``bundle`` is provided.
-        base_model (str): HuggingFace model identifier for the encoder.
-            Ignored when ``bundle`` is provided.
         output_csv (str | None): If provided, writes the DataFrame to this path.
-        stats_path (str): Path to the JSON file with standardization mean/std.
-            Ignored when ``bundle`` is provided.
-        device (torch.device | None): Compute device; auto-detected if None.
-            Ignored when ``bundle`` is provided.
+        **load_kwargs: Forwarded to :func:`load_model` when ``bundle`` is None
+            (``checkpoint_path``, ``base_model``, ``stats_path``, ``device``).
 
     Returns:
         pandas.DataFrame: Columns ``char, prev_char, DwellTime, FlightTime,
-        typing_speed`` — one row per character (truncated to 512 tokens).
+        typing_speed`` — one row per character (truncated to MAX_TOKEN_LENGTH).
     """
     if not isinstance(text, str):
         raise TypeError(f"text must be str, got {type(text).__name__}")
@@ -119,12 +48,7 @@ def predict_keystrokes(
         raise ValueError("text is empty")
 
     if bundle is None:
-        bundle = load_model(
-            checkpoint_path=checkpoint_path,
-            base_model=base_model,
-            stats_path=stats_path,
-            device=device,
-        )
+        bundle = load_model(**load_kwargs)
 
     tokenizer = bundle["tokenizer"]
     model = bundle["model"]
@@ -140,7 +64,7 @@ def predict_keystrokes(
         return_tensors="pt",
         truncation=True,
         padding="max_length",
-        max_length=512,
+        max_length=MAX_TOKEN_LENGTH,
         return_offsets_mapping=True,
     )
 
@@ -195,9 +119,9 @@ def predict_keystrokes(
     continuous = continuous.float()
 
     #  Physical constraints (match training data preprocessing)
-    continuous[:, :, 0] = torch.clamp(continuous[:, :, 0], min=0.0, max=300.0)  # DwellTime (matches dataPrepper cap)
-    continuous[:, :, 1] = torch.clamp(continuous[:, :, 1], min=0.0, max=900.0)  # FlightTime (matches dataPrepper cap)
-    continuous[:, :, 2] = torch.clamp(continuous[:, :, 2], min=0.0, max=490.0)  # typing_speed (matches dataPrepper cap)
+    for idx, key in enumerate(["DwellTime", "FlightTime", "typing_speed"]):
+        lo, hi = FEATURE_BOUNDS[key]
+        continuous[:, :, idx] = torch.clamp(continuous[:, :, idx], min=lo, max=hi)
 
 #  Assemble output 
     B, T, _ = continuous.shape
@@ -212,11 +136,6 @@ def predict_keystrokes(
         preds[0, 1] = np.nan  # Set first FlightTime to NaN
 
     # Save to CSV
-    feature_cols = [
-        "char", "prev_char",
-        "DwellTime", "FlightTime", "typing_speed",
-    ]
-
     df = pd.DataFrame(preds, columns=[
         "DwellTime", "FlightTime", "typing_speed",
     ])
@@ -227,7 +146,7 @@ def predict_keystrokes(
     df.insert(0, "char", chars[:len(df)])
     df.insert(1, "prev_char", prev_chars[:len(df)])
 
-    df = df[feature_cols]
+    df = df[FEATURE_COLUMNS]
 
     if output_csv is not None:
         os.makedirs(os.path.dirname(os.path.abspath(output_csv)), exist_ok=True)
@@ -238,8 +157,8 @@ def predict_keystrokes(
 
 
 if __name__ == "__main__":
-    sample_path = os.path.join(_KEYFORGE_DIR, "..", "sample.txt")
-    with open(sample_path, "r", encoding="utf-8") as f:
+    _sample_path = os.path.join(os.path.dirname(__file__), "..", "..", "sample.txt")
+    with open(_sample_path, "r", encoding="utf-8") as f:
         sample_text = f.read()
-    out_path = os.path.join(DEFAULT_OUTPUT_DIR, "predicted_keystrokes.csv")
+    out_path = os.path.join(OUTPUT_DIR, "predicted_keystrokes.csv")
     predict_keystrokes(sample_text, output_csv=out_path)
