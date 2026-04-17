@@ -41,7 +41,7 @@ WINDOW_SIZE = "420x460"
 # Average typist speed; replay is scaled relative to this baseline.
 BASELINE_WPM = 40.0
 WPM_MIN = 20
-WPM_MAX = 120
+WPM_MAX = 200
 COUNTDOWN_SECONDS = 3
 
 # Characters that need a pynput Key enum instead of a raw string.
