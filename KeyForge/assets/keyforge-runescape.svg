@@ -192,7 +192,7 @@
 
   <!-- Subtitle -->
   <text x="357" y="180" text-anchor="middle" font-family="'Times New Roman', serif" font-size="13" fill="#8a7a5a" letter-spacing="3" opacity="0" style="animation: fadeIn 1s ease forwards 2.2s;">
-    LEVEL 99 KEYSTROKE SMITHING
+    Type > Forge > Conquer.
   </text>
 
   <!-- ===== RIGHT: Skill panel (RS-style) ===== -->
@@ -211,13 +211,13 @@
     <text x="112" y="16" text-anchor="middle" font-family="'Courier New', monospace" font-size="8" fill="#8a7a5a">Keys</text>
 
     <!-- Skill rows -->
-    <!-- Smithing -->
+    <!-- Calibration -->
     <g transform="translate(10, 36)">
       <rect x="0" y="0" width="24" height="24" rx="2" fill="#2a2820" stroke="#3a3628" stroke-width="0.5"/>
       <text x="12" y="16" text-anchor="middle" font-size="14" class="skill-icon">⚒</text>
-      <text x="30" y="10" font-family="'Courier New', monospace" font-size="10" fill="#ff8800" font-weight="bold">Smithing</text>
+      <text x="30" y="10" font-family="'Courier New', monospace" font-size="10" fill="#ff8800" font-weight="bold">Calibration</text>
       <text x="30" y="22" font-family="'Courier New', monospace" font-size="9" fill="#ffd700">Lvl 99</text>
-      <text x="130" y="16" font-family="'Courier New', monospace" font-size="9" fill="#00cc44">13,034,431 xp</text>
+      <text x="115" y="16" font-family="'Courier New', monospace" font-size="9" fill="#00cc44">13,034,431 keys</text>
     </g>
 
     <!-- Typing -->
@@ -226,7 +226,7 @@
       <text x="12" y="16" text-anchor="middle" font-size="14" class="skill-icon" style="animation-delay: 0.3s">⌨</text>
       <text x="30" y="10" font-family="'Courier New', monospace" font-size="10" fill="#ff8800" font-weight="bold">Typing</text>
       <text x="30" y="22" font-family="'Courier New', monospace" font-size="9" fill="#ffd700">Lvl 92</text>
-      <text x="130" y="16" font-family="'Courier New', monospace" font-size="9" fill="#00cc44">6,517,253 xp</text>
+      <text x="115" y="16" font-family="'Courier New', monospace" font-size="9" fill="#00cc44">6,517,253 keys</text>
     </g>
 
     <!-- Synthesis -->
@@ -235,7 +235,7 @@
       <text x="12" y="16" text-anchor="middle" font-size="14" class="skill-icon" style="animation-delay: 0.6s">🔮</text>
       <text x="30" y="10" font-family="'Courier New', monospace" font-size="10" fill="#ff8800" font-weight="bold">Synthesis</text>
       <text x="30" y="22" font-family="'Courier New', monospace" font-size="9" fill="#ffd700">Lvl 85</text>
-      <text x="130" y="16" font-family="'Courier New', monospace" font-size="9" fill="#00cc44">3,258,594 xp</text>
+      <text x="115" y="16" font-family="'Courier New', monospace" font-size="9" fill="#00cc44">3,258,594 keys</text>
     </g>
 
     <!-- Precision -->
@@ -244,7 +244,7 @@
       <text x="12" y="16" text-anchor="middle" font-size="14" class="skill-icon" style="animation-delay: 0.9s">🎯</text>
       <text x="30" y="10" font-family="'Courier New', monospace" font-size="10" fill="#ff8800" font-weight="bold">Precision</text>
       <text x="30" y="22" font-family="'Courier New', monospace" font-size="9" fill="#ffd700">Lvl 78</text>
-      <text x="130" y="16" font-family="'Courier New', monospace" font-size="9" fill="#00cc44">1,629,200 xp</text>
+      <text x="115" y="16" font-family="'Courier New', monospace" font-size="9" fill="#00cc44">1,629,200 keys</text>
     </g>
 
     <!-- Separator -->
@@ -252,7 +252,7 @@
 
     <!-- XP Bar -->
     <g transform="translate(10, 166)">
-      <text x="0" y="10" font-family="'Courier New', monospace" font-size="9" fill="#8a7a5a">Total XP</text>
+      <text x="0" y="10" font-family="'Courier New', monospace" font-size="9" fill="#8a7a5a">Total Keystrokes</text>
       <rect x="0" y="16" width="196" height="14" rx="3" fill="#1a2a1a" stroke="#2a3a2a" stroke-width="0.5"/>
       <rect x="1" y="17" width="0" height="12" rx="2" fill="url(#xpBarFill)" class="xp-fill"/>
       <text x="98" y="27" text-anchor="middle" font-family="'Courier New', monospace" font-size="8" fill="#ffffff" opacity="0.8">24,439,478 / 30,000,000</text>
@@ -260,7 +260,7 @@
 
     <!-- Recent activity -->
     <g transform="translate(10, 200)">
-      <text x="0" y="10" font-family="'Courier New', monospace" font-size="8" fill="#5a5848">Recent: +142 Smithing XP</text>
+      <text x="0" y="10" font-family="'Courier New', monospace" font-size="8" fill="#5a5848">Recent: +142 Calibration keystrokes</text>
       <text x="0" y="22" font-family="'Courier New', monospace" font-size="8" fill="#5a5848">Forged: 847 keystrokes</text>
     </g>
   </g>
@@ -269,7 +269,7 @@
   <g transform="translate(0, 296)">
     <rect x="30" y="0" width="740" height="1" fill="#3a3628" opacity="0.3"/>
     <text x="400" y="18" text-anchor="middle" font-family="'Times New Roman', serif" font-size="9" fill="#4a4838" letter-spacing="2">
-      ⚔ FORGE YOUR KEYSTROKES WITH ANCIENT PRECISION ⚔
+      ⚔ FORGE KEYSTROKES WITH TEMPERED PRECISION ⚔
     </text>
   </g>
 </svg>
