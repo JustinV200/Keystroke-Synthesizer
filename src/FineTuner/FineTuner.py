@@ -1,9 +1,15 @@
 import os
+import sys
 import shutil
 
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
+
+# Ensure src/ is on sys.path so flat imports work regardless of cwd.
+_SRC_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _SRC_ROOT not in sys.path:
+    sys.path.insert(0, _SRC_ROOT)
 
 from dataPipeline.dataLoader import dataLoader
 from Trainer.make_collate import make_collate_fn
@@ -32,6 +38,8 @@ class FineTuner:
         self.base_model.to(self.device)
 
         self.user_dir = os.path.join(USERS_DIR, user_name)
+        # Training captures live in users/<name>/train/. test/ is held out.
+        self.train_dir = os.path.join(self.user_dir, "train")
 
         # Affine output calibration: y' = a * y + b, applied to predicted mean.
         self.a_mean = nn.Parameter(torch.ones(3, device=self.device))
@@ -44,12 +52,12 @@ class FineTuner:
         # Reuse the global standardization stats instead of recomputing from a
         # tiny enrollment set — otherwise the user's scale won't match the
         # base model's output scale and the affine head can't correct it.
-        user_stats = os.path.join(self.user_dir, "cont_stats.json")
+        user_stats = os.path.join(self.train_dir, "cont_stats.json")
         if not os.path.isfile(user_stats) and os.path.isfile(GLOBAL_STATS):
-            os.makedirs(self.user_dir, exist_ok=True)
+            os.makedirs(self.train_dir, exist_ok=True)
             shutil.copyfile(GLOBAL_STATS, user_stats)
 
-        ds = dataLoader(base_dir=self.user_dir, tokenizer=self.tokenizer)
+        ds = dataLoader(base_dir=self.train_dir, tokenizer=self.tokenizer)
         collate_fn = make_collate_fn(self.tokenizer.pad_token_id)
         self.loader = DataLoader(
             ds, batch_size=batch_size, shuffle=True,

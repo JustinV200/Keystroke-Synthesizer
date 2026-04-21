@@ -9,22 +9,53 @@ from __future__ import annotations
 
 import csv
 import os
+import random
 import re
 import time
 import tkinter as tk
 from tkinter import ttk, messagebox
 
 
-# Default prompt — a mix of common letters/bigrams and punctuation so the
-# model sees enough character variety during fine-tuning.
-DEFAULT_PROMPT = (
+# Prompt pool — one is chosen at random each time the UI opens / New Prompt is
+# pressed. Variety matters so char_embed learns the user's rhythm across a
+# wide character distribution, not just a handful of memorized bigrams.
+PROMPTS = [
+    # 1. Pangrams + keystroke-dynamics blurb (original default).
     "The quick brown fox jumps over the lazy dog. Amazingly few discotheques "
     "provide jukeboxes. Pack my box with five dozen liquor jugs. How "
     "vexingly quick daft zebras jump! Sphinx of black quartz, judge my vow.\n\n"
     "Keystroke dynamics describes the way a particular person types on a "
     "keyboard; dwell time and flight time are the two features most often "
-    "used to characterize an individual's rhythm."
-)
+    "used to characterize an individual's rhythm.",
+
+    # 2. Conversational prose with common bigrams.
+    "When I was younger, my grandfather used to tell me that the secret to a "
+    "good story is knowing which details to leave out. He would sit on the "
+    "porch in the evenings, watching the sun slip behind the hills, and "
+    "describe places he had only read about in books. I never understood "
+    "why he cared so much about accuracy until I started writing myself.",
+
+    # 3. Technical/code-adjacent text with symbols and numbers.
+    "The function returns 0 on success and -1 on failure. If the buffer is "
+    "null or size == 0, it short-circuits immediately. Remember: index 42 is "
+    "exclusive, and the caller owns the pointer. Always check errno before "
+    "assuming the syscall failed for the reason you expected — EINTR is "
+    "sneaky and shows up in roughly 2% of real-world workloads.",
+
+    # 4. News-style text with proper nouns and punctuation.
+    "Researchers at the university announced a new method for measuring "
+    "atmospheric carbon that costs roughly one-tenth of existing techniques. "
+    "The team, led by Dr. Ellen Park, published their findings in Nature on "
+    "Tuesday. \"It's not a silver bullet,\" Park said, \"but it will let "
+    "smaller labs contribute to climate monitoring in a serious way.\"",
+
+    # 5. Lyrical/varied punctuation to exercise shift-layer characters.
+    "It's strange how a song you haven't heard in years can pull you back to "
+    "a single afternoon — the smell of the kitchen, the slant of the light, "
+    "the hum of the refrigerator. Memory doesn't work in straight lines; it "
+    "loops, skips, and sometimes (when you least expect it) hands you "
+    "something you thought you'd lost forever. Isn't that odd?",
+]
 
 # Where captures are written (sibling of this file).
 USERS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "users")
@@ -86,9 +117,14 @@ class KeystrokeCapture(tk.Tk):
         self.name_entry = ttk.Entry(name_frame, textvariable=self.name_var, width=24)
         self.name_entry.pack(side="left", padx=8)
 
-        ttk.Label(self, text="Prompt (copy this as you type below):").pack(anchor="w", **pad)
+        prompt_header = ttk.Frame(self)
+        prompt_header.pack(fill="x", **pad)
+        ttk.Label(prompt_header, text="Prompt (copy this as you type below):").pack(side="left")
+        self.new_prompt_btn = ttk.Button(prompt_header, text="New prompt", command=self._pick_new_prompt, width=12)
+        self.new_prompt_btn.pack(side="right")
+
         self.prompt_box = tk.Text(self, height=7, wrap="word", bg="#f4f1ea", fg="#1a1a1a")
-        self.prompt_box.insert("1.0", DEFAULT_PROMPT)
+        self._set_prompt(random.choice(PROMPTS))
         # Keep it editable-but-readonly: block input via key/paste bindings so
         # the fg color is respected (tk.Text dims text when state=disabled and
         # has no disabledforeground option).
@@ -114,6 +150,20 @@ class KeystrokeCapture(tk.Tk):
 
         self.status_var = tk.StringVar(value="Ready. Enter a name, then Start recording.")
         ttk.Label(self, textvariable=self.status_var, foreground="#555").pack(anchor="w", **pad)
+
+    def _set_prompt(self, text: str):
+        """Replace the prompt box contents (bypassing the read-only key binding)."""
+        self.prompt_box.delete("1.0", "end")
+        self.prompt_box.insert("1.0", text)
+
+    def _pick_new_prompt(self):
+        """Swap in a different random prompt. Disabled mid-recording."""
+        if self._recording:
+            return
+        current = self.prompt_box.get("1.0", "end-1c")
+        # Avoid picking the same prompt twice in a row.
+        choices = [p for p in PROMPTS if p != current] or PROMPTS
+        self._set_prompt(random.choice(choices))
 
     # Recording control
     def _start(self):
