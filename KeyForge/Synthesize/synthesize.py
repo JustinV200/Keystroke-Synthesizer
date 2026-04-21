@@ -102,6 +102,13 @@ def predict_keystrokes(text, bundle=None, output_csv=None, **load_kwargs):
         # Model outputs STANDARDIZED mean and log-variance
         mean_std, logvar_std = model(token_to_char_idx=token_to_char_idx, char_ids=char_ids, **enc)
 
+        # Per-user affine calibration (trained in standardized space during
+        # fine-tuning). Applied only when a user adapter is loaded.
+        a_mean = bundle.get("a_mean")
+        b_mean = bundle.get("b_mean")
+        if a_mean is not None and b_mean is not None:
+            mean_std = a_mean * mean_std + b_mean
+
         #  De-standardize mean and variance 
         # De-standardize mean: y_mean = y_std * std + mean
         mean = mean_std * cont_std + cont_mean

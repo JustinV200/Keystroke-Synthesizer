@@ -23,3 +23,7 @@ stattracking.txt
 runs/
 graphs/
 checkpoints/
+
+# Ignore fine-tuning outputs (adapters)
+users/
+users/*.pt

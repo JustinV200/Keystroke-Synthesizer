@@ -12,6 +12,8 @@ from pynput.keyboard import Key
 KEYFORGE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_DIR = os.path.join(KEYFORGE_DIR, "Model")
 OUTPUT_DIR = os.path.join(KEYFORGE_DIR, "output")
+# Per-user personalization adapters: users/<name>/adapter.pt
+USERS_DIR = os.path.join(KEYFORGE_DIR, "users")
 
 CHECKPOINT_PATH = os.path.join(MODEL_DIR, "best_model.pt")
 STATS_PATH = os.path.join(MODEL_DIR, "cont_stats.json")

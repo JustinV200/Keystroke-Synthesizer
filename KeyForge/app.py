@@ -12,12 +12,18 @@ from config import (
     COUNTDOWN_SECONDS,
     OUTPUT_DIR,
     SPECIAL_KEYS,
+    USERS_DIR,
     WINDOW_SIZE,
     WINDOW_TITLE,
     WPM_MAX,
     WPM_MIN,
 )
-from Synthesize import load_model, predict_keystrokes
+from Synthesize import (
+    apply_user_adapter,
+    clear_user_adapter,
+    load_model,
+    predict_keystrokes,
+)
 
 
 class KeyForgeApp(tk.Tk):
@@ -48,6 +54,25 @@ class KeyForgeApp(tk.Tk):
         # TypeIt button — created once, disabled until keystrokes exist
         self.typeit_button = ttk.Button(self, text="TypeIt", command=self.typeit, state="disabled")
         self.typeit_button.pack(pady=5)
+
+        # User selector: pick a personalization adapter from KeyForge/users/.
+        # "Default" = base model with no per-user calibration.
+        DEFAULT_USER = "Default (base model)"
+        self._default_user_label = DEFAULT_USER
+        user_frame = ttk.Frame(self)
+        user_frame.pack(pady=(8, 2), fill="x", padx=20)
+        ttk.Label(user_frame, text="User:").pack(side="left")
+        self.user_var = tk.StringVar(value=DEFAULT_USER)
+        self.user_combo = ttk.Combobox(
+            user_frame, textvariable=self.user_var, state="readonly", width=22,
+        )
+        self.user_combo.pack(side="left", padx=(6, 6))
+        self.user_combo.bind("<<ComboboxSelected>>", self._on_user_change)
+        self.refresh_users_button = ttk.Button(
+            user_frame, text="Refresh", command=self._refresh_users, width=8,
+        )
+        self.refresh_users_button.pack(side="left")
+        self._refresh_users()
 
         # Typing speed slider (WPM). Scales replay only — the downloaded CSV
         # always reflects the raw model prediction. 40 WPM is the avg typist.
@@ -102,6 +127,47 @@ class KeyForgeApp(tk.Tk):
     def _on_wpm_change(self, _value):
         # Scale is a float coming in; keep IntVar display clean
         self.wpm_label.config(text=f"Typing speed: {self.wpm_var.get()} WPM")
+
+    # ----- User adapter selection -----
+    def _list_users(self):
+        """Return a sorted list of user names with a valid adapter.pt."""
+        if not os.path.isdir(USERS_DIR):
+            return []
+        names = []
+        for name in os.listdir(USERS_DIR):
+            if os.path.isfile(os.path.join(USERS_DIR, name, "adapter.pt")):
+                names.append(name)
+        return sorted(names)
+
+    def _refresh_users(self):
+        """Rescan USERS_DIR and update the combobox choices."""
+        os.makedirs(USERS_DIR, exist_ok=True)
+        values = [self._default_user_label] + self._list_users()
+        self.user_combo["values"] = values
+        if self.user_var.get() not in values:
+            self.user_var.set(self._default_user_label)
+
+    def _on_user_change(self, _event=None):
+        if self.model_bundle is None:
+            # Model still loading — revert silently; selection will apply later.
+            self.user_var.set(self._default_user_label)
+            return
+        name = self.user_var.get()
+        try:
+            if name == self._default_user_label:
+                clear_user_adapter(self.model_bundle)
+                self.status_var.set("Using base model.")
+            else:
+                path = os.path.join(USERS_DIR, name, "adapter.pt")
+                apply_user_adapter(self.model_bundle, path)
+                self.status_var.set(f"Loaded adapter for {name}.")
+        except Exception as e:
+            messagebox.showerror("User load failed", f"Could not load adapter:\n{e}")
+            self.user_var.set(self._default_user_label)
+            try:
+                clear_user_adapter(self.model_bundle)
+            except Exception:
+                pass
 
     # Generate 
     def generate_keystrokes(self):

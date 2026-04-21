@@ -62,4 +62,37 @@ def load_model(
         "cont_mean": cont_mean,
         "cont_std": cont_std,
         "device": device,
+        # Snapshot of the base-model char_embed so we can revert after a user
+        # adapter is loaded without reloading the whole DeBERTa bundle.
+        "base_char_embed": {k: v.detach().clone() for k, v in model.char_embed.state_dict().items()},
+        # Active per-user calibration (applied in standardized space before
+        # de-standardization in predict_keystrokes). None = base model.
+        "a_mean": None,
+        "b_mean": None,
+        "user_name": None,
     }
+
+
+def apply_user_adapter(bundle, adapter_path):
+    """Load a per-user adapter (``adapter.pt``) into an existing bundle.
+
+    Mutates ``bundle`` in place: restores ``char_embed`` from the adapter and
+    stores the affine calibration params on the bundle so
+    :func:`predict_keystrokes` can apply them.
+    """
+    device = bundle["device"]
+    adapter = torch.load(adapter_path, map_location=device)
+    bundle["model"].char_embed.load_state_dict(adapter["char_embed"])
+    bundle["a_mean"] = adapter["a_mean"].to(device)
+    bundle["b_mean"] = adapter["b_mean"].to(device)
+    bundle["user_name"] = adapter.get("user_name")
+    return bundle
+
+
+def clear_user_adapter(bundle):
+    """Revert the bundle to the base (non-personalized) model."""
+    bundle["model"].char_embed.load_state_dict(bundle["base_char_embed"])
+    bundle["a_mean"] = None
+    bundle["b_mean"] = None
+    bundle["user_name"] = None
+    return bundle
